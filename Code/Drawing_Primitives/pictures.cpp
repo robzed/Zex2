@@ -1,6 +1,9 @@
 //pictures
 //SB - Lightsoft SW 8/12/98
 /* $Log: pictures.c,v $
+/* Revision 1.1.1.1  2003/09/05 22:35:20  stu_c
+/* First Imported.
+/*
 /* Revision 1.16  2002/09/08 02:36:02  stu_c
 /* Pre compiled header support
 /*
@@ -266,7 +269,7 @@ char res1,res2;
  while(char_count<2)
  {
    if( *(source+1)=='x') source+=2;	//skip 0x
-   if( ((*source)==13) || ((*source)==9) || ((*source)==32) )
+   if( ((*source)==13) || ((*source)==10) || ((*source)==9) || ((*source)==32) )
    {
    }	//skip white space/eol
    else
