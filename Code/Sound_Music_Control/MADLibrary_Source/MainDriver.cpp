@@ -2935,7 +2935,7 @@ OSErr MADPlaySndHandle( MADDriverRec *MDriver, Handle sound, long channel, long 
 	SoundHeaderPtr 	header;
 	CmpSoundHeader	*CmpHeader=0;
 	ExtSoundHeader	*ExtHeader=0;
-	long			i;
+	unsigned long			i;
 	Boolean			stereo = false;
 	OSType			Scomp;
 	unsigned long	Ssize, Samp, SbaseFreq, Sc2spd, Sstart, Send;

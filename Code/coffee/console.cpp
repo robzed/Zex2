@@ -16,6 +16,9 @@
 // *
 /* ***********************************************************************************
  * $Log: console.c,v $
+ * Revision 1.2  2003/09/20 12:57:09  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:15  stu_c
  * First Imported.
  *
@@ -139,7 +142,7 @@ int console_check_key(void);
 
 
 int gShowConsole=0;
-int last_console_frame=0;
+unsigned int last_console_frame=0;
 int console_start_line=0;
 int console_x,console_y;
 int running_down,fully_down,running_up,fully_up;

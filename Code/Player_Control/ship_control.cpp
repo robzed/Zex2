@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
 // $Log: ship_control.c,v $
+// Revision 1.4  2003/09/27 20:41:51  robp
+// Fixed float->int warnings.
+//
 // Revision 1.3  2003/09/22 20:41:23  stu_c
 // Zex: Weapons: laser bay temperature and overheat (in progress)
 //
@@ -240,14 +243,14 @@ int hull_strength;
 //int shields_quality;	  //starts at 5 and goes down to 1 as better sheilds added
 float turn;
 int gvel_limiter=1;
-int last_range_toggle_frame=0;	//for debounce
-int last_target_toggle_frame=0;	//for debounce
-int last_dock_toggle_frame=0;	//for debounce
-int last_missile_toggle_frame=0;	//for debounce
-int last_camera_toggle_frame=0;
-int last_pause_frame=0;
+unsigned int last_range_toggle_frame=0;	//for debounce
+unsigned int last_target_toggle_frame=0;	//for debounce
+unsigned int last_dock_toggle_frame=0;	//for debounce
+unsigned int last_missile_toggle_frame=0;	//for debounce
+unsigned int last_camera_toggle_frame=0;
+unsigned int last_pause_frame=0;
 
-int last_inv_toggle_frame=0;	//for debounce
+unsigned int last_inv_toggle_frame=0;	//for debounce
 int shields_warning_timer=0;
 int tractor;	//if one, we are under tractor beam control and cant fly ourselfs
 int ship_laser_category,ship_cannon_category;
@@ -265,7 +268,7 @@ ship_power_status_type ship_power_status;
 
 extern int can_consume_fuel;
 
-static int time_since_last_cannon_shot=0;
+static unsigned int time_since_last_cannon_shot=0;
 
 //fuel consumption vars. The maximum possible consumption
 //is 20mg of fuel per second. Total fuel consumption shows this

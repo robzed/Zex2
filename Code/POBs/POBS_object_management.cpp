@@ -134,12 +134,12 @@ int constructing_linked_list=0;		// boolean = private, means we are in the prima
 // *
 
 // general functions
-int next_POB(unsigned int last_POB);
-Boolean is_inside_active_circle(unsigned int id);
+int next_POB(int last_POB);
+Boolean is_inside_active_circle(int id);
 void check_POBS_for_object_placement(void);
-unsigned int generate_new_POB(void);
-module_private void real_load_object(unsigned int POBs_id);
-module_private void real_unload_object(unsigned int POBs_id);
+int generate_new_POB(void);
+module_private void real_load_object(int POBs_id);
+module_private void real_unload_object(int POBs_id);
 void check_galactic_id_is_POBs_index(int gal_id);
 void get_random_colour(float *red, float *green, float *blue);
 int check_if_POB_is_near(int id);
@@ -236,7 +236,7 @@ construct_mothership_supply_ratings();
 // | DESCRIPTION: checks POBS for movement over the miniblock size
 // +----------------------------------------------------------------ROUTINE HEADER----
 
-int next_POB(unsigned int last_POB)
+int next_POB(int last_POB)
 {
 last_POB++;
 if(last_POB>=number_of_active_POBs)
@@ -254,7 +254,7 @@ return last_POB;
 // | DESCRIPTION:  check current camera position vs. object position
 // +----------------------------------------------------------------ROUTINE HEADER----
 
-Boolean is_inside_active_circle(unsigned int id)
+Boolean is_inside_active_circle(int id)
 {
 _3D camera_pos, other_pos;
 
@@ -318,7 +318,7 @@ return FALSE;
 void check_POBS_for_object_placement(void)
 {
 static int frame_skipper=0;
-static unsigned int id=0;
+static int id=0;
 int count;
 
 if(frame_skipper) { frame_skipper--; return; } // don't scan if we loaded on previous frame
@@ -419,7 +419,7 @@ for(id=0; id < number_of_active_POBs; id++)
 // | DESCRIPTION:  
 // +----------------------------------------------------------------ROUTINE HEADER----
 
-unsigned int generate_new_POB(void)
+int generate_new_POB(void)
 {
 if(number_of_active_POBs>=MAX_POBS_ENTRIES) { MyDebugStr(__LINE__,"POBS_object_managment.c","Exceeded Maximum POBs"); }
 number_of_active_POBs++;		 	 // new object
@@ -735,7 +735,7 @@ no_linkage(index);
 // +----------------------------------------------------------------ROUTINE HEADER----
 
 
-module_private void real_load_object(unsigned int POBs_id)
+module_private void real_load_object(int POBs_id)
 {
 double x_in_m, y_in_m, z_in_m, diameter_in_m, mass_in_kg, rotation_time_in_sec;
 int seed, galactic_id, type;
@@ -814,7 +814,7 @@ else
 // | DESCRIPTION:  
 // +----------------------------------------------------------------ROUTINE HEADER----
 
-module_private void real_unload_object(unsigned int POBs_id)
+module_private void real_unload_object(int POBs_id)
 {
 int dynocb;
 _3D object_pos;

@@ -61,7 +61,8 @@ extern DynObjectsFixedSize *ocb_ptr;
 //given a dyn object ptr, convert it to slot number
 int ptr_to_dynslot(ZObject* which_object)
 {
-  return which_object-&ocb_ptr->object_list[0]; //note ptr arithmetic, not byte!
+
+return (which_object-&ocb_ptr->object_list[0]); //note ptr arithmetic, not byte!
 }
 
 #if ACCESSORS_DEBUG 

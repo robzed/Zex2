@@ -2,6 +2,9 @@
 //SB - Lightsoft SW 8/12/98
 /*
  * $Log: pictures.c,v $
+ * Revision 1.4  2003/09/27 20:41:44  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.3  2003/09/20 12:56:56  robp
  * Removed nested comments
  *
@@ -723,7 +726,7 @@ extern int screenwidth;
 float source_x_index_inc,source_y_index_inc;
 float source_x_index,source_y_index;
 int start_x,actual_x,actual_y;
-int dest_width,dest_h;
+unsigned int dest_width,dest_h;
 int temp_y;
 
 
@@ -741,8 +744,8 @@ start_pix=(char*)screenaddr+(y*screenwidth)+x;
 
 source_x_index_inc=1/magnification;	//index into source
 source_y_index_inc=1/magnification;
-dest_width=STATIC_CAST_TO_INT(picture_w*magnification);	//how wide final picture is
-dest_h=STATIC_CAST_TO_INT(picture_h*magnification);
+dest_width=STATIC_CAST_TO_UINT(picture_w*magnification);	//how wide final picture is
+dest_h=STATIC_CAST_TO_UINT(picture_h*magnification);
 actual_x=x-(dest_width-monitor_h)/2;
 actual_y=y-(dest_h-monitor_h)/2;
 actual_y+=y_correction;
@@ -861,7 +864,7 @@ Ptr splat_pix,start_pix;
 char colour;
 extern Ptr screenaddr;	//pointer to current drawing buffer
 extern int screenwidth;
-int pixel_skip_counter, line_skip_counter;
+unsigned int pixel_skip_counter, line_skip_counter;
 picture_w=(*the_picture).pwidth;
 picture_h=(*the_picture).pheight;	//now pointing to data
 raw_data=(char *)&the_picture->raw_data;
@@ -930,7 +933,7 @@ UInt32 picture_w,picture_h;
 //UInt32 i,j;
 Ptr raw_data_top, raw_data_bottom;
 char source_from_bottom, source_from_top;
-int x,y;
+unsigned int x,y;
 Ptr start_top,start_bottom;
 
 

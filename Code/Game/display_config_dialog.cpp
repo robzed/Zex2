@@ -1498,8 +1498,8 @@ return theDisplayID;
 #define MAX_NUMBER_OF_CONTEXTS 150
 
 Fixed freqs[MAX_NUMBER_OF_CONTEXTS];
-UInt32 widths[MAX_NUMBER_OF_CONTEXTS];
-UInt32 heights[MAX_NUMBER_OF_CONTEXTS];
+SInt32 widths[MAX_NUMBER_OF_CONTEXTS];
+SInt32 heights[MAX_NUMBER_OF_CONTEXTS];
 OptionBits depthmasks[MAX_NUMBER_OF_CONTEXTS];
 
 int number_of_contexts;

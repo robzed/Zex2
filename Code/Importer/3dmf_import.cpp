@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: 3dmf_import.c,v $
+Revision 1.3  2003/09/27 20:41:38  robp
+Fixed float->int warnings.
+
 Revision 1.2  2003/09/19 20:54:52  robp
 Removed items causing warnings.
 
@@ -673,7 +676,7 @@ int n;
 
 	for (n=0;n<trimesh_count;n++)
 	{
-	 if (m<(the_trimeshes[n].connections_index+the_trimeshes[n].number_of_connections)) return the_trimeshes[n].diffuse_colour;
+	 if (STATIC_CAST_TO_UNSIGNED(m)<(the_trimeshes[n].connections_index+the_trimeshes[n].number_of_connections)) return the_trimeshes[n].diffuse_colour;
 	}
 	
 	

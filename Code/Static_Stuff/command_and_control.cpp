@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: command_and_control.c,v $
+ * Revision 1.3  2003/09/27 08:58:33  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.2  2003/09/20 12:57:09  robp
  * Removed nested comments
  *
@@ -246,8 +249,7 @@ int prefs_x,prefs_y;
 int i;
 int available_slots_index;
 extern	DynObjectsFixedSize *ocb_ptr;
-extern int last_pause_frame;
-int time_entered;
+unsigned int time_entered;
 
 
 time_entered=TickCount();	//for K key check - wait 20 ticks

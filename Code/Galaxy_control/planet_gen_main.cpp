@@ -18,6 +18,9 @@
 // *
 /*
  * $Log: planet_gen_main.c,v $
+ * Revision 1.3  2003/09/27 20:41:50  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:56:59  robp
  * Removed nested comments
  *
@@ -1146,7 +1149,7 @@ for(i=0; i<TEXTURE_SIZE; i++)
 
 void pitted_land(void)
 {
-int i;
+unsigned int i;
 int x, y;
 
 for(i=0; i<((((unsigned)Zrand())%800)+200); i++)

@@ -1,6 +1,9 @@
 //3d_top.c
 /*
 $Log: 3d_top.c,v $
+Revision 1.3  2003/09/27 21:52:38  robp
+Fixed places where we were loading an unsigned with -1.
+
 Revision 1.2  2003/09/27 20:41:52  robp
 Fixed float->int warnings.
 
@@ -1489,9 +1492,9 @@ ZObject *source_object2=0;
 _2Dp sun_coord1, sun_coord2;
 extern int Goutside;
 //_3D vd;
-unsigned int ulength;
-         int flength;
-         int fx,fy;	
+int ulength;
+int flength;
+int fx,fy;	
                                 // BIG NOTE
 int binary_suns;		// currently binaries are only handled for lense FLARES not for screen  
                                 // brightness or more importantly corona....

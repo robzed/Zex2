@@ -1,6 +1,9 @@
 /*
-$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.3 2003/09/27 08:53:04 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.4 2003/09/27 20:41:58 robp Exp $
 $Log: buy.c,v $
+Revision 1.4  2003/09/27 20:41:58  robp
+Fixed float->int warnings.
+
 Revision 1.3  2003/09/27 08:53:04  robp
 Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
 
@@ -2958,8 +2961,8 @@ for (i=1;i<KLAST+1; i++)
 
 }
 
-int other_buyers_timer;
-int credits_timer;
+unsigned int other_buyers_timer;
+unsigned int credits_timer;
 
 //From 0.88 onwards we have simulated other buyers/sellers
 void reset_other_users()

@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.c,v $
+// Revision 1.7  2003/09/27 21:52:42  robp
+// Fixed places where we were loading an unsigned with -1.
+//
 // Revision 1.5  2003/09/26 19:20:49  robp
 // Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 //
@@ -1305,7 +1308,7 @@ int i,temp_y,text_line_index,text_current_pos;	      //good old i
 int end=0;
 char the_char;
 char text_line[1024];
-long last_button_press_time=0;
+unsigned long last_button_press_time=0;
 Handle picture_H;
 LSRAW* the_picture;
 LSRAW* pictbuffer;

@@ -2,6 +2,9 @@
 // SB 190199
 
 // $Log: game_pause.c,v $
+// Revision 1.3  2003/09/26 19:20:47  robp
+// Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+//
 // Revision 1.2  2003/09/20 12:57:09  robp
 // Removed nested comments
 //
@@ -121,7 +124,6 @@ extern int freeze;
 //extern int ask_for_load
 //extern int done_load_flag
 extern int user_abort;
-//extern int last_pause_frame;
 extern int tutorial;
 
 _3D light_normal_save;
@@ -547,7 +549,6 @@ int return_val=0;
 int real_return_val,i;
 extern int old_button_state;
 //extern int quit;
-extern int last_pause_frame;
 
    prefs_x=screen_cent_x-70;
    prefs_y=screen_cent_y-140;
@@ -615,7 +616,7 @@ int return_val=0;
 int real_return_val,i;
 extern int old_button_state;
 //extern int quit;
-extern int last_pause_frame;
+
    prefs_x=screen_cent_x-70;
    prefs_y=screen_cent_y-140;
 //	SetPort((GrafPtr)the_drawing_buffer);

@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /*
  * $Log: collision.c,v $
+ * Revision 1.4  2003/09/27 20:41:54  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.3  2003/09/20 12:57:08  robp
  * Removed nested comments
  *
@@ -227,7 +230,7 @@ if (the_object_ptr->Dyn_OCB_control_data.controller== MOTHERSHIP_PART && compare
 if (the_object_ptr->Dyn_OCB_control_data.controller== MOTHERSHIP_PART && compare_object_ptr->Dyn_OCB_control_data.controller==MOTHERSHIP_PART) return; 
 
 //stop us doing to collisions per object
-if (   the_object_ptr->hit_by_slot==(unsigned long) compare_object_ptr) 
+if (   the_object_ptr->hit_by_slot== ptr_to_dynslot(compare_object_ptr)) 
    {
 	return;
     }
@@ -318,8 +321,8 @@ handle_collision_velocities(&pos_vector1, &the_object_ptr->abs_velocity_vector, 
         
 
 	//set collided with ptrs so we don't do them again
-	the_object_ptr->hit_by_slot=(unsigned long) compare_object_ptr;
-	compare_object_ptr->hit_by_slot=(unsigned long) the_object_ptr;
+	the_object_ptr->hit_by_slot=ptr_to_dynslot(compare_object_ptr);
+	compare_object_ptr->hit_by_slot = ptr_to_dynslot(the_object_ptr);
 	
 	//now, we need to translate the acceleration into damage...Hmmm...
 	//we really can't get into complex elasticity calculations here so I'll pull
@@ -588,7 +591,7 @@ int object_counter,active_object_counter;
 
        if (current_object_ptr->in_use==1 ) //if object is alive and this object is not the same object
        {
-          current_object_ptr->hit_by_slot=0;
+          current_object_ptr->hit_by_slot = -1;
           
          active_object_counter++;
        }	//end of compare object in use

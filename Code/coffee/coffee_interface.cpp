@@ -17,6 +17,9 @@
 // *
 /* ***********************************************************************************
  * $Log: coffee_interface.c,v $
+ * Revision 1.3  2003/09/24 21:39:40  robp
+ * More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
+ *
  * Revision 1.2  2003/09/20 12:57:08  robp
  * Removed nested comments
  *
@@ -224,7 +227,7 @@ module_private int get_word_address(char *name);
 //void declare_function(char *name,int *function(),int parameters,int return_param);
 
 module_private void define_display_primitives(void);
-module_private void switch_app(int process_id);
+module_private void switch_app(unsigned int process_id);
 module_private void process_pending_updates(void);
 
 // +----------------------------------------------------------------ROUTINE HEADER----
@@ -920,7 +923,7 @@ coffee2(object_deleted,id);
 
 
 
-void switch_app(int process_id)
+void switch_app(unsigned int process_id)
 {
 ProcessSerialNumber my_PSN;
 ProcessInfoRec my_PIR;

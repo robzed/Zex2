@@ -648,7 +648,7 @@ _3D MEMBER_ s_translated _MEMBER // translated object normal (which way it's fac
 //BOLTS - these allow us to construct complex objects from many other objects
 //bolt_ref comes from LMON and is a unique reference for this object
 //See 01.zlv for usage
-unsigned int MEMBER_ unique_id _MEMBER	             // an id from LMON
+int MEMBER_ unique_id _MEMBER	             // an id from LMON
 //bolted_to comes from BOLT and is set to 1 if an object is bolted onto something else
 //it stops the normal gravity moving an object
 unsigned int MEMBER_ bolted_to _MEMBER	      //object this object is bolted to

@@ -2,6 +2,9 @@
 
 /*
 $Log: zex_misc.c,v $
+Revision 1.4  2003/09/27 20:41:47  robp
+Fixed float->int warnings.
+
 Revision 1.3  2003/09/27 09:00:28  robp
 Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
 
@@ -417,7 +420,7 @@ char the_char;
 //wait for delay_ticks ticks
 void user_delay(int delay_ticks)
 {
-int stop_ticks;
+unsigned int stop_ticks;
 
 stop_ticks=TickCount()+delay_ticks;
 while (TickCount()<stop_ticks);

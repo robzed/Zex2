@@ -32,4 +32,5 @@ extern int selectSolarMap;
 
 #define ZEX2 1	//mainly debug
 
+extern unsigned int last_pause_frame;
 

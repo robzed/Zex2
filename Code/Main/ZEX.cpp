@@ -4,8 +4,11 @@
 060903 - Zex 2.3 in CVS
 
 Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.c,v 1.3 2003/09/19 20:54:52 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.c,v 1.4 2003/09/27 21:52:43 robp Exp $
 $Log: ZEX.c,v $
+Revision 1.4  2003/09/27 21:52:43  robp
+Fixed places where we were loading an unsigned with -1.
+
 Revision 1.3  2003/09/19 20:54:52  robp
 Removed items causing warnings.
 
@@ -910,7 +913,7 @@ reset_explode_list();	//as it says
 
 Microseconds(&end_micros);
 
-while (end_micros.lo-start_micros.lo <1000000/max_frame_rate)	//fps
+while (end_micros.lo-start_micros.lo < STATIC_CAST_TO_UNSIGNED(1000000/max_frame_rate))	//fps
 Microseconds(&end_micros);	//wait for time to pass. We should do something here maybe
 
 average_fps++;
