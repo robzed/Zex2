@@ -64,7 +64,7 @@ extern	DynObjectsFixedSize *ocb_ptr;
 
 //check the launch ship timer
 
-  current_object_ptr->Dyn_OCB_control_data.control_use_1_float-=time_in_secs;
+  current_object_ptr->Dyn_OCB_control_data.control_use_1_float-=real_frame_time_in_secs; //so we're not affected by TempMult
 
 if ( current_object_ptr->Dyn_OCB_control_data.control_use_1_float<0) //time to launch
  {
@@ -73,7 +73,7 @@ if ( current_object_ptr->Dyn_OCB_control_data.control_use_1_float<0) //time to l
     if (get_distance_to_nearest_NPC_in_m(it,5000)>5000) //there's no NPC within a 5 km radius
 	{
           MS_launch_ship(it, current_object_ptr->Dyn_OCB_control_data.allegiance);           
-	  current_object_ptr->Dyn_OCB_control_data.control_use_1_float=NDRangedRdm(60,300);
+	  current_object_ptr->Dyn_OCB_control_data.control_use_1_float=NDRangedRdm(120,600);
     }
   }
  }
@@ -94,11 +94,11 @@ void MS_launch_ship(int MS, int MS_allegiance)
 {
 int val=NDRangedRdm(0,10);
    
-   return;
+   //return;
    
    if (val<9)
    { 
-     launch_NPC(MS, FALCON, NPC_CLASS_FIGHTER, ALIEN); //Just hangs about looking for enemies to attack
+     launch_NPC(MS, FALCON, NPC_CLASS_GUARD, ALIEN); //Just hangs about looking for enemies to attack
    }
    else //launch a shuittle
    {
