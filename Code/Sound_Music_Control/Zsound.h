@@ -155,11 +155,14 @@ void run_periodic_sound_tasks();
 
 void load_mod_player();
 void music_set_vol(int volume);
-void play_tune(unsigned long res_id);
 int is_music_busy(void);
 void fade_out_music();
 void do_fade_out_music();
+#if PORTABLE_FILESYSTEM
+void fade_and_play(void *the_tune);
+#else
 void fade_and_play(Handle the_tune);
+#endif
 void fade_and_play_zex_resource (unsigned long res_id);
 void play_zex_resource_now (unsigned long res_id);
 

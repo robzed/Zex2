@@ -25,6 +25,9 @@
 //              in draw_it.
 //              Check if ZRAW resource got else error (text looks bad without it <G>).
 // $Log: textsplat.c,v $
+// Revision 1.2  2003/09/22 21:44:23  robp
+// Box of Curios 1: Code tidy up things, which weren't strictly incorrect, just weird. No functional changes. Examples include a block of variables that were declared twice. These things were all thrown up by the C++ compiler.
+//
 // Revision 1.1.1.1  2003/09/05 22:35:21  stu_c
 // First Imported.
 //
@@ -122,14 +125,38 @@ module_private void Draw_to_Double_Buffer(char *char_ptr, int x_pos, int y_pos, 
 
  Ptr double_buffer;
  int screen_width;
+ #if PORTABLE_FILESYSTEM
+ void *font_pointer;
+ #else
  Handle hpic;
+ #endif
  Ptr medium_font;
  Ptr tiny_font;
+ #if PORTABLE_FILESYSTEM
+ void *small_font_pointer;
+ void *large_font_pointer;
+ #else
  Handle small_font_h;
  Handle large_font_h;
+ #endif
 Ptr large_font;
 void InitText()
  {
+ #if PORTABLE_FILESYSTEM
+ 
+ font_pointer = ZGetResource('JESS',129, NULL);  //Get the Handle to the Resource 
+ if (font_pointer==NULL) report_error("Resource missing: JESS 129","\p.",4);
+ medium_font = font_pointer;
+ 
+ large_font_pointer = ZGetResource('JESS',128, NULL);  //Get the Handle to the Large font Resource 
+ if (large_font_pointer==NULL) report_error("Resource missing: JESS 128","\p.",4);
+ large_font = large_font_pointer; 
+
+ small_font_pointer = ZGetResource('JESS',130,NULL);  //Get the Handle to the Large font Resource 
+ if (small_font_pointer==NULL) report_error("Resource missing: JESS 130","\p.",4);
+ tiny_font = small_font_pointer; 
+ 
+ #else
 // hpic = (Handle) ZGetResource('ZRAW',128);  //Get the Handle to the Resource 
  hpic = (Handle) ZGetResource('JESS',129);  //Get the Handle to the Resource 
  if (hpic==0) report_error("Resource missing: ZRAW 128","\p.",4);
@@ -145,7 +172,7 @@ void InitText()
  if (small_font_h==0) report_error("Resource missing: JESS 130","\p.",4);
  HLock(small_font_h);
  tiny_font=*small_font_h; 
-
+ #endif
  }
 
 void Draw_to_Double_Buffer(char *char_ptr, int x_pos, int y_pos , unsigned char fg_colour,unsigned char bg_colour)

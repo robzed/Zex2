@@ -17,6 +17,9 @@
 // *
 /* ***********************************************************************************
  * $Log: coffee_interface.c,v $
+ * Revision 1.2  2003/09/20 12:57:08  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:15  stu_c
  * First Imported.
  *
@@ -259,7 +262,11 @@ void setup_coffee(void);
 //Handle forth_space_handle;
 Ptr forthspace;
 
+#if PORTABLE_FILESYSTEM
+void *coffee_loaded_ptr;
+#else
 Handle coffee_code_handle;
+#endif
 
 #if !CARBONIZE_COFFEE_INTERFACE
 UniversalProcPtr coffee_code_ptr;
@@ -305,6 +312,10 @@ Str63 fragname = "\pcoffee";
 //long *clear_ptr;
 //int i;
 
+#if PORTABLE_FILESYSTEM
+coffee_loaded_ptr = ZGetResource('LSGF',128, &hsize);	// load and get the size of the resource
+if (coffee_loaded_ptr==NULL) report_error("Exec: Couldn't load Coffee. Zex corrupt?","\p",4000);
+#else
 coffee_code_handle=ZGetResource('LSGF',128);
 //coffee_code_handle=Get1Resource('LSGF',128);		// fetch the resource with the code in
 //DetachResource(coffee_code_handle);			// make it only a memory handle
@@ -313,8 +324,25 @@ if (coffee_code_handle==0) report_error("Exec: Couldn't load Coffee. Zex corrupt
 
 hsize=GetHandleSize(coffee_code_handle);		// get the size of the resource
 HUnlock (coffee_code_handle);
+#endif
+
 #define OVERRUN_GAP 512					// protection only
 
+#if PORTABLE_FILESYSTEM
+coffee_loaded_ptr = ZSetResourceSize(coffee_loaded_ptr, hsize+OVERRUN_GAP+FORTH_SIZE);	// set space for the forth environment as well
+if(coffee_loaded_ptr==NULL)
+    {
+    report_error("Memory problem loading coffee","\p",-1);
+    }
+
+forthspace = coffee_loaded_ptr + OVERRUN_GAP + hsize;	// get to the beginning of forth empty space
+
+// clear the forth program area - just in case
+// clear_ptr=(long *)forthspace; for(i=0; i<(FORTH_SIZE/sizeof(long)); i++) { *clear_ptr=0; clear_ptr++; }
+
+my_err=GetMemFragment(coffee_loaded_ptr, hsize, fragname, kPrivateCFragCopy, &coffee_conn_id, 
+               (Ptr *) &coffee_main_addr,ErrName);	// prepare the code for running
+#else
 SetHandleSize(coffee_code_handle,hsize+OVERRUN_GAP+FORTH_SIZE);	// set space for the forth environment as well
 if(MemError()) report_error("Memory problem loading coffee","\pMemError1",MemError());
 
@@ -331,7 +359,7 @@ forthspace=*coffee_code_handle+OVERRUN_GAP+hsize;	// get to the beginning of for
 
 my_err=GetMemFragment(*coffee_code_handle, hsize, fragname, kPrivateCFragCopy, &coffee_conn_id, 
                (Ptr *) &coffee_main_addr,ErrName);	// prepare the code for running
-
+#endif
 // ensure on an even address
 if(0x03 & (int)coffee_main_addr) report_error("Address error loading coffee","\p",4002);
 

@@ -12,7 +12,13 @@ Handle read_file (FSSpec the_file);
 void get_zex_fsspec();
 void read_prefs();
 void write_prefs();
+#if PORTABLE_FILESYSTEM
+void *ZGetResource(unsigned int Type, short ID, int *loaded_size);	// loaded_size can be NULL.
+void ZReleaseResource(void *resource_ptr);
+void *ZSetResourceSize(void *resource_ptr, int new_size);		// returns pointer to new location, or NULL if failed. Space up 
+#else
 Handle ZGetResource(unsigned int Type, short ID);
+#endif
 typedef struct {
 int score;
 char name[63];

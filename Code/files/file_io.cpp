@@ -2,6 +2,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.c,v $
+Revision 1.2  2003/09/22 22:01:33  robp
+Work in progress: portable file system, stage 1 - load resources via C standard library calls. THIS INCLUDES A PROJECT FILE UPDATE.
+
 Revision 1.1.1.1  2003/09/05 22:35:24  stu_c
 First Imported.
 
@@ -259,8 +262,10 @@ return hData;
 // | TITLE: read_file_into_memory   | AUTHOR(s): Rob Probin   | DATE STARTED: 22 Sept 03
 // +
 // | DESCRIPTION: Read a file into memory. Must be freed by release file read into memory.
+// |
+// | loaded_size can be NULL.
 // +----------------------------------------------------------------ROUTINE HEADER----
-void *read_file_into_memory(char *directory, char *filename)
+void *read_file_into_memory(char *directory, char *filename, int *loaded_size)
 {
 ls_file_t my_file;
 char path_filename[FILENAME_LENGTH];
@@ -283,6 +288,11 @@ if(data_storage == NULL) { report_error("read_file_into_memory(filename) had an 
 actual_bytes_read = lsf_read_bytes_from_file(my_file, data_storage, file_size);
 if(actual_bytes_read != file_size) { report_error("read_file_into_memory(filename) had an error on matching bytes read.",filename,1103); }
 
+if(loaded_size !=NULL)
+    {
+    *loaded_size = file_size;
+    }
+
 lsf_close_file(my_file);
 
 return data_storage;
@@ -295,11 +305,21 @@ return data_storage;
 // | DESCRIPTION: Abstraction for file previously read into memory (so memory mechanism can change)
 // |
 // +----------------------------------------------------------------ROUTINE HEADER----
-void release_file_read_into_memory(void *memory_pointer)
+void release_file_read_into_memory(void *file_memory_pointer)
 {
-free(memory_pointer);
+free(file_memory_pointer);
 }
 
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: resize_a_file_read_into_memory | AUTHOR(s): Rob Probin   | DATE STARTED: 24 Sept 03
+// +
+// | DESCRIPTION: Change the size of a file read into memory. Returns pointer to 
+// | new space, or NULL if not possible. Space up to minimum of old and new is unchanged.
+// +----------------------------------------------------------------ROUTINE HEADER----
+void *resize_a_file_read_into_memory(void *file_memory_ptr, int new_size)
+{
+return realloc(file_memory_ptr, new_size);
+}
 
 
 short zex_res_file;
@@ -713,8 +733,38 @@ return return_value;
 }
 
 
+
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: ZReleaseResource        | AUTHOR(s): Rob Probin   | DATE STARTED: 24 Sept 03
+// +
+// | DESCRIPTION: Release a resource read into memory.
+// +----------------------------------------------------------------ROUTINE HEADER----
+void ZReleaseResource(void *resource_ptr)
+{
+release_file_read_into_memory(resource_ptr);
+}
+
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: ZReleaseResource        | AUTHOR(s): Rob Probin   | DATE STARTED: 24 Sept 03
+// +
+// | DESCRIPTION: Change the size of a resource. Returns pointer to 
+// | new space, or NULL if not possible. Space up to minimum of old and new is unchanged.
+// +----------------------------------------------------------------ROUTINE HEADER----
+void *ZSetResourceSize(void *resource_ptr, int new_size)
+{
+return resize_a_file_read_into_memory(resource_ptr, new_size);
+}
+
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: ZGetResource            | AUTHOR(s): Rob Probin   | DATE STARTED: 24 Sept 03
+// +
+// | DESCRIPTION: Load a resource previous read into memory.
+// |
+// | loaded_size can be NULL.
+// +----------------------------------------------------------------ROUTINE HEADER----
+
 #if PORTABLE_FILESYSTEM
-void *ZGetResource(unsigned int Type, short ID)
+void *ZGetResource(unsigned int Type, short ID, int *loaded_size)
 #else
 Handle ZGetResource(unsigned int Type, short ID)
 #endif
@@ -762,7 +812,7 @@ int get_file_err = 0;
 //  2. also rest of program wants me to return a handle? Do we do this or do we return a pointer and alter
 //     the rest of the program. Also do they ever de-allocate this space? With what call?
      
-  return read_file_into_memory(RESOURCE_DIRECTORY,filename);
+  return read_file_into_memory(RESOURCE_DIRECTORY,filename, loaded_size);
 #else
 //get the objects' folder
 // If osx build then we need to climb out of the bundle to get to the zd3 folder

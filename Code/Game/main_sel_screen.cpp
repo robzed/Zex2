@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.c,v $
+// Revision 1.3  2003/09/22 21:04:34  stu_c
+// Zex: Weapons: Adjustments to temp rise and fall in laser bay. Rebuild required.
+//
 // Revision 1.2  2003/09/20 12:57:10  robp
 // Removed nested comments
 //
@@ -845,7 +848,7 @@ extern int gMusicPlaying;
        {
        music_volume+=8;
        
-       if (gMusicPlaying==0)     play_tune(131);
+       if (gMusicPlaying==0)     play_zex_resource_now(131);
         
        if (music_volume>63) 
        {
@@ -1007,10 +1010,10 @@ if (real_return_val==4)	//hiscore
 //     display_wait();	  //
 ////    fade_out_music();
 // //   music_set_vol(music_volume);
-////    play_tune(128);
+////    play_zex_resource_now(128);
 //    do_hiscore_screen();
 ////    fade_out_music();
-////    play_tune(131);
+////    play_zex_resource_now(131);
 ////    music_set_vol(music_volume);
 //
 //    setup_main_screen(the_picture,button_up);
@@ -1027,10 +1030,10 @@ if (real_return_val==6)
 //     display_wait();	  //
 //    fade_out_music();
  //   music_set_vol(music_volume);
-//    play_tune(128);
+//    play_zex_resource_now(128);
     do_creds_screen();
 //    fade_out_music();
-//    play_tune(131);
+//    play_zex_resource_now(131);
 //    music_set_vol(music_volume);
 
     setup_main_screen(the_picture,button_up);
@@ -1285,7 +1288,11 @@ extern int screenwidth;
 //GrafPtr		        savePort;
 load_dyn_object_pb the_params;
 
+#if PORTABLE_FILESYSTEM
+void *text_ptr;
+#else
 Handle text_h;
+#endif
 Ptr text;
 int text_size=0;
 int text_pos;
@@ -1346,11 +1353,17 @@ int y=0;
 
 //get text
 
+ #if PORTABLE_FILESYSTEM
+ text_ptr = ZGetResource('STRY',128, &text_size);  //Get the Handle to the Resource 
+ if (text_ptr==0) report_error("Resource missing: STRY 128","\p",4);
+ text = text_ptr;
+ #else
  text_h = (Handle) ZGetResource('STRY',128);  //Get the Handle to the Resource 
  if (text_h==0) report_error("Resource missing: STRY 128","\p",4);
  HLock(text_h);
  text_size=GetHandleSize(text_h);
  text=*text_h;
+ #endif
  
     enable_inputs();
 
@@ -1586,7 +1599,11 @@ pictbuffer=(LSRAW*)NewPtr(memsize);
     gLaser=0;
    disable_inputs();
     reset_objects();	//clear out ocb's
+    #if PORTABLE_FILESYSTEM
+    ZReleaseResource(text_ptr);
+    #else
     DisposeHandle(text_h);
+    #endif
     DisposePtr((Ptr) pictbuffer);
     DisposeHandle(picture_H);
 }

@@ -5,6 +5,9 @@ Owner: SB
 Started: 29/10/98
 ©Lightsoft 98
 $Log: sound.c,v $
+Revision 1.1.1.1  2003/09/05 22:37:04  stu_c
+First Imported.
+
 Revision 1.23  2002/09/08 02:00:14  stu_c
 Precompiled header adjustments
 
@@ -141,9 +144,17 @@ return 0;	// music never busy (all ever used for)
 
 #endif
 
-
 //SndChannelPtr sound_chan [17];	//17 sound channels
+#if PORTABLE_FILESYSTEM
+// perhaps this should be the type - but what happens about the mac sound calls?
+//
+#error "No ZexSoundPtr defined yet rob!!"
+// typedef void *ZexSoundPtr;
+//
+ZexSoundPtr the_sounds[max_sounds];	//array of handles for sounds
+#else
 SndListHandle the_sounds[max_sounds];	//array of handles for sounds
+#endif
 Boolean sound_on;
 int music_volume=63;	//0-63 permissable
 int sound_volume=63;		//0-63 permissable
@@ -160,8 +171,11 @@ int init_zsound()
 {
 int	temp=0;
 int	sound_counter=0;
+#if PORTABLE_FILESYSTEM
+void *inter_sound_load=(void *)1;
+#else
 Handle inter_sound_load=(Handle)1;
-
+#endif
 
 //now get our sound resources into sound_array
 //we start at resource ID 128 and carry on until either we get an error or reach max_sounds
@@ -174,6 +188,14 @@ while (inter_sound_load!=0 && sound_counter<80)
 		 a=0;
 		
 		}
+        #if PORTABLE_FILESYSTEM
+	    inter_sound_load=ZGetResource('snd ',sound_counter+128, NULL);	//returns zero when no resource 
+            if (inter_sound_load) 
+		{
+		  the_sounds[sound_counter]=(ZexSoundPtr)inter_sound_load; //store handle in array
+		}
+            sound_counter++;	//next resource
+        #else
 	    inter_sound_load=ZGetResource('snd ',sound_counter+128);	//returns zero when no resource 
       	if (inter_sound_load) 
 		{
@@ -213,6 +235,8 @@ while (inter_sound_load!=0 && sound_counter<80)
 
         HLock((Handle) the_sounds[sound_counter]);
         sound_counter++;	//next resource
+        
+        #endif
       }
 
 temp|=eclipse_init();
@@ -332,15 +356,23 @@ void play_zsound_relative_to_zex(int the_object, int sound_number)
 //simple play sound takes ares id and starts that sound playing.
 //simple stop sound stops the sound and frees up the memory
 
+#if PORTABLE_FILESYSTEM
+ZexSoundPtr the_sound;
+#else
 SndListHandle the_sound;
+#endif
 SndChannelPtr simple_sound_chan;
 
 void simple_play_sound(int id)
 {
 SndNewChannel (&simple_sound_chan,sampledSynth,initStereo,nil);
+#if PORTABLE_FILESYSTEM
+the_sound=(ZexSoundPtr) ZGetResource('snd ',id, NULL);
+#else
 the_sound=(SndListHandle) ZGetResource('snd ',id);
 //DetachResource((Handle)the_sound);
 HLock((Handle)the_sound);
+#endif
 SndPlay (simple_sound_chan,the_sound,Async);
 
 }
@@ -348,7 +380,11 @@ SndPlay (simple_sound_chan,the_sound,Async);
 void simple_stop_sound()
 {
  SndDisposeChannel(simple_sound_chan,1);
+ #if PORTABLE_FILESYSTEM
+ ZReleaseResource(the_sound);
+ #else
  DisposeHandle((Handle)the_sound);
+ #endif
 }
 
 
@@ -447,8 +483,11 @@ int gFadeMusic=0;
 int firstcall=1;	//set to zero on subsequent calls
 int actual_volume;
 int gNewTune=0;	//at end of fade, if set music in new_music_ptr is played
+#if PORTABLE_FILESYSTEM
+void *new_music_pointer;
+#else
 Handle new_music_handle;
-
+#endif
 
 
 void fade_out_music()
@@ -466,7 +505,11 @@ extern short zex_res_file;
 //fades the music and then plays the new tune held as a Zex resource
 void fade_and_play_zex_resource (unsigned long res_id)
 {
+#if PORTABLE_FILESYSTEM
+void *music_ptr;
+#else
 Handle music_h;
+#endif
  if (music_volume<7)
  {
         stop_music_now();
@@ -478,21 +521,34 @@ Handle music_h;
   fprintf (stderr, "Music: fade_and_play %d \n",(int) res_id);
   #endif
 
+    #if PORTABLE_FILESYSTEM
+        music_ptr = ZGetResource('MADH',res_id, NULL);  //Get the Handle to the Resource
+        fade_and_play(music_ptr);
+    #else
 //        UseResFile(zex_res_file);
         music_h = (Handle) ZGetResource('MADH',res_id);  //Get the Handle to the Resource
         HLock(music_h);
 //        DetachResource(music_h);
         fade_and_play(music_h);
+    #endif
 }
 
 
+#if PORTABLE_FILESYSTEM
+void fade_and_play(void *the_tune)
+#else
 void fade_and_play(Handle the_tune)
+#endif
 {
 gFadeMusic=1;
  if (music_volume>6)
  {
   gNewTune=1;
+  #if PORTABLE_FILESYSTEM
+  new_music_pointer=the_tune;
+  #else
   new_music_handle=the_tune;
+  #endif
  }
  else
  {
@@ -535,9 +591,14 @@ if(do_fade_schedule<0)
   if (gNewTune==1) 
   {
   gNewTune=0;
+  #if PORTABLE_FILESYSTEM
+  mod_player(1,new_music_pointer); // play
+  ZReleaseResource(new_music_pointer);
+  #else
   mod_player(1,*new_music_handle); // play
   //CallUniversalProc(mod_ptr,modProcInfo,1,*new_music_handle);	//play
   DisposeHandle(new_music_handle);
+  #endif
    gMusicPlaying=1;
   music_set_vol(music_volume);
   }
@@ -555,7 +616,12 @@ if(do_fade_schedule<0)
 
 void play_zex_resource_now (unsigned long res_id)
 {
+#if PORTABLE_FILESYSTEM
+void *music_ptr;
+#else
 Handle music_h;
+#endif
+
  if (music_volume<7)
  {
         stop_music_now();
@@ -566,11 +632,16 @@ Handle music_h;
   fprintf(stderr,"Music: play_zex_resource_now %i\n",(int)res_id);
   #endif
 
-
+  #if PORTABLE_FILESYSTEM
+  music_ptr = ZGetResource('MADH',res_id, NULL);  //Get the Handle to the Resource
+  mod_player(1,music_ptr); // play
+  ZReleaseResource(music_ptr);
+  #else
 	music_h = (Handle) ZGetResource('MADH',res_id);  //Get the Handle to the Resource
 	HLock(music_h);
 	mod_player(1,*music_h); // play
     DisposeHandle(music_h);
+  #endif
    gMusicPlaying=1;
   music_set_vol(music_volume);
 }
@@ -727,36 +798,6 @@ void play_level_music()
 
 
 
-//play a MADH resource given it's ID
-void play_tune(unsigned long res_id)
-{
-Handle tune_handle;
-Ptr tune;
-
-
-if (music_volume>6)	//if volume not zero then play
-{
-// UseResFile(zex_res_file);
-
- tune_handle=ZGetResource('MADH',res_id);
- if (tune_handle==0) report_error("Corrupt ZEX. Couldn't load music resource.","\p",res_id);
- //DetachResource(tune_handle);
-
- HLock(tune_handle);
- tune=*tune_handle;
-//   CallUniversalProc(mod_ptr,modProcInfo,1,tune);	//play
- mod_player(1,tune); // play
-//   CallUniversalProc(mod_ptr,modProcInfo,1,tune);	//play
-// ReleaseResource(tune_handle);
- gMusicPlaying=1;
- //DisposeHandle(tune_handle);
-}
-else
-{
- mod_player(4,0); // stop music
- gMusicPlaying=0;
-}
-}
 
 
 //stop all music immediately, reset fading control
