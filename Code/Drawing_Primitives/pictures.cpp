@@ -2,6 +2,9 @@
 //SB - Lightsoft SW 8/12/98
 /*
  * $Log: pictures.cpp,v $
+ * Revision 1.6  2003/09/28 17:29:43  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.5  2003/09/28 10:36:04  robp
  * Signed/Unsigned comparison fixes from last night, plus collision fix.
  *
@@ -845,15 +848,44 @@ for (i=0;i<picture_h;i++)	//line loop
 
 
 
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: GetZexPicture           | AUTHOR(s): Stu/Rob      | DATE STARTED: Prehistory
+// +
+// | DESCRIPTION: Read a picture into memory.
+// +----------------------------------------------------------------ROUTINE HEADER----
+#if PORTABLE_FILESYSTEM
+LSRAW* GetZexPicture (unsigned long res_type, short resid)
+{
+ LSRAW* pic_pointer;
+
+ pic_pointer = static_cast<LSRAW *>(ZGetResource(res_type,resid, NULL));  //Get the Handle to the Resource 
+ if (pic_pointer==0) report_error("GetZexPicture: RCZ Resource missing","\p",resid);
+
+ return pic_pointer;
+}
+#else
 Handle GetZexPicture (unsigned long res_type, short resid)
 {
-Handle hpic;
+ Handle pic_pointer;
 
- hpic = (Handle) ZGetResource(res_type,resid);  //Get the Handle to the Resource 
- if (hpic==0) report_error("GetZexPicture: RCZ Resource missing","\p",resid);
-// DetachResource (hpic);
- return hpic;
+ pic_pointer = (Handle)ZGetResource(res_type,resid);  //Get the Handle to the Resource 
+ if (pic_pointer==0) report_error("GetZexPicture: RCZ Resource missing","\p",resid);
+
+ return pic_pointer;
 }
+#endif
+
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: ZReleaseResource        | AUTHOR(s): Rob Probin   | DATE STARTED: 24 Sept 03
+// +
+// | DESCRIPTION: Release a picture from memory
+// +----------------------------------------------------------------ROUTINE HEADER----
+#if PORTABLE_FILESYSTEM
+void DisposeZexPicture(LSRAW *pic_pointer)
+{
+ZReleaseResource(pic_pointer);
+}
+#endif
 
 
 

@@ -24,7 +24,14 @@ void print_crunched_pict_C(LSRAW *the_picture, UInt32 x, UInt32 y, UInt32 top, U
 void print_crunched_trans_pict(LSRAW *the_picture, UInt32 x, UInt32 y);
 void print_crunched32_trans_pict(LSRAW *the_picture, UInt32 x, UInt32 y);
 void print_crunched_translucent_pict(LSRAW *the_picture, UInt32 x, UInt32 y);
+
+#if PORTABLE_FILESYSTEM
+LSRAW* GetZexPicture (unsigned long res_type, short resid);
+void DisposeZexPicture(LSRAW *pic_pointer);
+#else
 Handle GetZexPicture (unsigned long res_type, short resid);
+#endif
+
 void decrunch_pict(LSRAW *the_picture, LSRAW *where);
 void print_pict_scaled(LSRAW *the_picture, UInt32 x, UInt32 y, UInt32 sf, UInt32 trans_on);
 void print_pict_magnified(LSRAW *the_picture, UInt32 x, UInt32 y, int y_correction, int x_correction, float magnification);
