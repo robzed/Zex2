@@ -17,7 +17,7 @@
 			F50EA3EB0177726D01AFB9BD,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 84541201;
+			PBXPerProjectTemplateStateSaveDate = 84560862;
 			PBXWorkspaceContents = (
 				{
 					LeftSlideOut = {
@@ -60,10 +60,10 @@
 						Split0 = {
 							Split0 = {
 								NavContent0 = {
-									bookmark = 208BBC22050A4B1C00000103;
+									bookmark = 209415ED050A4DE400000103;
 									history = (
 										20FE402F04F2C93E00000103,
-										202FBB5605093EA500000103,
+										20898620050A4BC900000103,
 									);
 									prevStack = (
 										20D84C2104EFE91000000103,
@@ -525,18 +525,18 @@
 					WindowLocation = "{371, 372}";
 				},
 			);
-			PBXWorkspaceStateSaveDate = 84541201;
+			PBXWorkspaceStateSaveDate = 84560862;
 		};
 		perUserProjectItems = {
-			202FBB5605093EA500000103 = 202FBB5605093EA500000103;
-			208BBC22050A4B1C00000103 = 208BBC22050A4B1C00000103;
+			20898620050A4BC900000103 = 20898620050A4BC900000103;
+			209415ED050A4DE400000103 = 209415ED050A4DE400000103;
 			20D84C2104EFE91000000103 = 20D84C2104EFE91000000103;
 			20FE402F04F2C93E00000103 = 20FE402F04F2C93E00000103;
 			20FE403104F2C93E00000103 = 20FE403104F2C93E00000103;
 		};
 		projectwideBuildSettings = {
-			OBJROOT = /Users/stu/Stu_Cocoa/ZEX2.3;
-			SYMROOT = "/Users/stu/Stu_Cocoa/ZEX2.3/LSG-ZEX";
+			OBJROOT = /Users/stu/Stu_Cocoa/ZEX2.3_cvs/ZEX2.3;
+			SYMROOT = "/Users/stu/Stu_Cocoa/ZEX2.3_cvs/ZEX2.3/LSG-ZEX";
 		};
 		userBookmarkGroup = F5BED94A01AB093A01A8010A;
 		wantsIndex = 1;
@@ -548,17 +548,7 @@
 			F50EA3EB0177726D01AFB9BD,
 		);
 	};
-	202FBB5605093EA500000103 = {
-		fRef = F5152CFC017796B501236145;
-		isa = PBXTextBookmark;
-		name = "3dmf_import.c: vp";
-		rLen = 10;
-		rLoc = 45816;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
-	};
-	208BBC22050A4B1C00000103 = {
+	20898620050A4BC900000103 = {
 		fRef = F5152CFC017796B501236145;
 		isa = PBXTextBookmark;
 		name = "3dmf_import.c: 1351";
@@ -573,6 +563,16 @@
 		isa = PBXFileBreakpoint;
 		lineNumber = 489;
 		state = 1;
+	};
+	209415ED050A4DE400000103 = {
+		fRef = F5152CFC017796B501236145;
+		isa = PBXTextBookmark;
+		name = "3dmf_import.c: 1351";
+		rLen = 10;
+		rLoc = 45816;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
 	20B49D1104C4BB8100000103 = {
 		fileReference = F5152D2C017797C101236145;
