@@ -1,0 +1,104 @@
+\ object_control_management.zsl
+\
+\ (c) Copyright 2001 Lightsoft
+\
+\ Written by Rob Probin 27/5/01
+
+
+\ how many controllers are in the forth? (maximum)
+10 CONSTANT max#FCs
+10000 CONSTANT FORTH-CONTROLLERS-START
+
+\ this is the count of current controllers
+0 VALUE #FCs
+
+
+\ Notice: we do not re-allocate controllers since we cannot be sure if 
+\ these are allocated to another (current) object. What we should do is scan through
+\ the objects available, and if none have a specific controller ID, then reallocate
+\ this controller id number. The current system, however, has the advantage that it is 
+\ simple, and allows us to get something up and running. The following method is a 
+\ fall-back method in the case that we cannot get a spare controller slot.
+: new-controller-ref ( -- ref )
+max#FCs #FCs > 		\ if there are still controllers available
+IF
+  #FCs FORTH-CONTROLLERS-START +
+  #FCs 1+ TO #FCs		\ one more forth controller
+ELSE
+  0
+THEN
+;
+
+
+: forth_controller_ref? ( dref -- flag )
+DUP 0 < SWAP #FCs >= OR IF FALSE ELSE TRUE THEN ;
+
+
+: create-controller-table  ( "<name>..." -- )
+CREATE HERE 
+max#FCs CELLS ALLOT 
+DUP HERE SWAP - 0 FILL
+;
+
+
+
+: dispatch-controller-ref ( ref table-addr -- )
+
+stack-check-start >R
+  
+  SWAP FORTH-CONTROLLERS-START -
+  DUP forth_controller_ref? 
+  IF
+    CELLS + ( @etest ) @EXECUTE
+  ELSE
+    2DROP
+  THEN
+
+R> 2 stack-check-end
+
+;
+
+
+
+: dispatch-controller-id ( id table-addr -- )
+
+stack-check-start >R
+  
+  OVER get-object-controller FORTH-CONTROLLERS-START -
+  DUP forth_controller_ref? 
+  IF
+   CELLS + @ ?DUP IF ( etest ) EXECUTE ELSE DROP THEN
+  ELSE
+    DROP 2DROP
+  THEN
+
+R> 2 stack-check-end
+
+;
+
+
+
+: install-controller ( ref xt table-addr -- )
+  ROT FORTH-CONTROLLERS-START -
+  DUP forth_controller_ref?
+  IF
+    CELLS + !		\ store execution address in table
+  ELSE
+    DROP 2DROP
+  THEN
+;
+
+
+
+: remove-controller ( ref table-addr -- )
+0 SWAP install-controller	\ install 0 in controller to disable
+;
+
+
+\ run all controllers once
+: run-all-controllers ( table-addr -- )
+#FCs FORTH-CONTROLLERS-START + FORTH-CONTROLLERS-START ?DO 
+  I OVER dispatch-controller-ref 
+LOOP 
+DROP
+;

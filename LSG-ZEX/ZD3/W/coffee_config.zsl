@@ -1,0 +1,50 @@
+\ coffee_configs.zsl
+\ 
+\ 1. Set up Zex for each user (programmer or standard game player)
+\ 2. Set up Coffee if this is defined as a TEST_SYSTEM
+
+0 CONSTANT GAME_PLAYER
+1 CONSTANT USER_ROB
+2 CONSTANT USER_STU
+
+\ User is set in subfile so that checkin is easier
+
+include user.zsl
+
+\ ---------------------------------------------
+user# USER_ROB = [IF]
+
+  instant_console ON
+  asteroid_master OFF
+  remove_opengl_context_on_switch OFF
+  bg_galaxies ON
+  show_POBs_pane
+  .( Hello Rob... ) CR
+
+[ELSE] user# USER_STU = [IF]
+
+  instant_console ON
+  asteroid_master OFF
+  remove_opengl_context_on_switch OFF
+  bg_galaxies ON
+  show_fps_pane
+  .( Hello Stu... ) CR
+  
+[ELSE] \ standard game user
+
+  instant_console OFF
+  remove_opengl_context_on_switch OFF
+  bg_galaxies ON
+[THEN] [THEN]
+
+\ ---------------------------------------------
+\ This is the TEST SYSTEM PREFS
+
+TEST_SYSTEM [IF]
+
+asteroid_master OFF
+.( You are using the test version. ) CR
+
+[THEN]
+
+\ ----------------------------------------------

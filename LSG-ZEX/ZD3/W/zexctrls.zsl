@@ -1,0 +1,53 @@
+\ zexctrls.zsl  Zex game controls
+\ added call to GraphicsPause in finder - 121200 Stu
+
+
+: fr freeze-physics ;
+: -fr unfreeze-physics ;
+: .fr physics-frozen IF ." Physics are frozen" ELSE ." Physics are not frozen" THEN ;
+
+VARIABLE freeze-frame-counter 0 freeze-frame-counter !
+
+BACKGROUND: freeze-task 
+BEGIN
+  freeze-frame-counter @ 0 > 
+  IF -1 freeze-frame-counter +! PAUSE
+  ELSE freeze-physics STOP
+  THEN
+AGAIN
+;
+
+: frames ( number-of-frames-to-run -- ) DUP 0= 
+  IF DROP ELSE unfreeze-physics 1- freeze-frame-counter ! freeze-task WAKE THEN
+;
+
+: 1frame ( -- ) 1 frames ;
+
+
+VARIABLE skip-frame-count
+
+BACKGROUND: skip-task
+BEGIN
+  skip-frame-count @ 0 
+  ?DO
+  PAUSE
+  LOOP
+  unfreeze-physics
+  PAUSE
+  freeze-physics
+AGAIN
+;
+
+: skip-frames ( n -- ) 
+DUP 0 > IF skip-frame-count ! skip-task WAKE
+ELSE DROP skip-task SLEEP
+THEN
+;
+
+( switch to finder )
+: finder fr S" MACS" DROP @ switch_app ." -fr to unfreeze" ;
+( switch to anvil )
+: anvil fr S" Lide" DROP @ switch_app ." -fr to unfreeze" ;
+
+: BYE 1 quit-var ! ;
+: bye BYE ;

@@ -1,0 +1,3 @@
+//Error_handler.ext
+void report_error(char error_string[]);
+

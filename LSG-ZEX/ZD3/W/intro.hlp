@@ -1,0 +1,161 @@
+Introduction & Background
+=========================
+
+Coffee is Zex's scripting language.
+
+Coffee is based upon Forth, a language which is easily
+extendable.
+
+The key reasons why Forth was chosen to be the scripting
+language for Zex is that it is interactive, well defined,
+a mature language and easily implemented. It is also covered
+by an ANS/ISO standard.
+
+Inventing a new scripting language can be fun, but it is very
+easy to run into limitations of the language, and end up
+doing language design rather than writing games.
+
+Writing a C-based scripting language was a possibility, but
+the compiler isn't small, and it doesn't lend itself to being
+an interactive language. We considered various other
+possibilities, all which didn't fit well.
+
+
+Some definitions might be helpful:-
+
+--------------------------------------------------------------
+Coffee - the primary Zex-style interface and words specific
+to Zex.
+
+LSGF (also known as Game Forth) - the core program that runs
+the Coffee Forth. It is based on the word-sets of the ANS
+forth, and for the core wordsets we have tried to stay as
+close as possible to the ANS definitions.
+
+Most of this is written in Forth, which is compiled on
+initialisation. The primary words, however, are in assembler.
+It is included into Zex as a shared library.
+
+--------------------------------------------------------------
+
+Coffee has access to quite a lot of Zex's C engine's functions
+and variables. The key point is to make the whole environment
+interactive so things can be quickly prototyped and tested.
+
+Although Forth helps in implementing interactivity, ensuring
+it all stays interactive still requires some thought when
+making additions.
+
+The dynamic controllers are an example of this. They are
+specifically designed so that new controllers can be loaded
+and unloaded without effecting the other controllers running
+in real time in the game.
+
+
+By typing...
+
+help
+
+...at the console you can get a list of Forth words. By
+typing...
+
+help forth
+
+... you can get a basic description about Forth. However,
+there are lots of resources on the net about Forth, including
+<www.forth.org>. These are well worth looking at.
+
+
+All Forth is made up of words. The names of these are
+characters separated by spaces. A Forth word is equivalent
+to a function, procedure or subroutine.
+
+All printable characters are accepted, so that a full 
+stop (.) can have the same characteristics as, for 
+instance, this-is-my-word.
+
+The other characteristic of Forth is it's push-down stacks.
+There is the return stack (used for subroutine return
+addresses and temporary storage), and the data (or parameter)
+stack.
+
+The data stack is used for passing parameters between words,
+and also for temporary storage of data in definitions and
+from the console.
+
+The third thing is the reverse polish notation. This just
+means that numbers tend to go before the operations, for
+example.
+
+1 2 + .
+
+Puts the numbers 1 and then 2 onto the data stack, "+" takes
+these numbers off the stack, adds these together and leaves
+the result on the data stack. The "." takes a number off the
+stack, and prints it. This leaves nothing on the stack that
+wasn't there before.
+
+
+Coffee is case-sensitive. In Coffee all standard Forth words
+are in upper case.
+
+Most of our defined words are separated by dashes (-) rather
+than underscores (_) but this is not consistent, partly
+because quite a few of these were defined from the C, which
+traditionally uses underscores. A word for instance would be
+remove-all-controllers which is part of the dynamic controller
+word set.
+
+
+To define a new word (say foobar), or even redefine a new
+word, would write:-
+
+: foobar 123 + . ;
+
+As soon as this is entered, the definition of foobar is
+immediately available. This definition adds 123 to the
+number on the data stack, and prints it. So entering...
+
+1 foobar
+
+...will print 124. You are encouraged to use very small
+definitions. Breaking the problem down into very small words
+is known in the forth world as "factorising". A well factored
+problem will be elegant and efficient. Forth has a low
+overhead compared with other some languages in breaking down
+the problem into small pieces, and therefore there is less
+of a performance hit.
+
+The advantages of good Factorising can include easier
+testing (there is a test-as-you-go approach to Forth, that
+encourages testing as you write each small piece), more
+re-use, and better maintainability.
+
+
+Coffee/LSGF is both interpreted and compiled. It uses the
+interpreter to evaluate expressions entered from the console.
+
+Definitions of words are compiled into a form of native code,
+which is technically "subroutine threading with native
+code optimisation". Most words generate a native PowerPC
+branch and link to a small sequence of code. A few words
+encode the native PowerPC code inline. Because of the
+architecture of PowerPC (separate branch unit dispatches the
+branch instructions separately from the integer and floating
+point instructions) this is very fast, and loses only slightly
+to native code generation - and in some cases can gain due to
+lower cache usage.
+
+For a scripting language this is only a bonus, since speed is
+not the primary purpose. It does however, allow us to put more
+code in the scripting engine that you would normally, and
+hence gain from interactivity.
+
+This file is also available in Coffee by typing:
+help intro
+
+EOF
+
+
+
+

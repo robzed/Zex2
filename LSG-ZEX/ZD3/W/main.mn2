@@ -1,0 +1,1 @@
+: ((tempmenu))DUP [CHAR] 1 = IF fr          ELSEDUP [CHAR] 2 = IF -fr         ELSEDUP [CHAR] 3 = IF 1frame      ELSEDUP [CHAR] 4 = IF 5 frames    ELSEDUP [CHAR] 9 = IF             ELSE THEN THEN THEN THEN THEN DROP S" main" ;((tempmenu))FORGET ((tempmenu))

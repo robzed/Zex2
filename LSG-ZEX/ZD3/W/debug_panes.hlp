@@ -1,0 +1,22 @@
+DEBUG PANES
+===========
+
+Standard Panes are as follows:-
+
+show_no_pane
+show_forth_pane
+show_basic_pane
+show_object_pane
+show_vector_pane
+show_fps_pane
+
+
+
+If you wish to add or alter a pane, edit 
+debug_panes.zsl then....
+
+include debug_panes.zsl
+
+Ignore the redefinition warnings. Assuming
+it loaded successfully you now have access
+to further debug info.

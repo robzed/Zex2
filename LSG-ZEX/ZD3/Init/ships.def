@@ -1,0 +1,354 @@
+\  Object mounting points and default control for various ships/objects
+\  ©LSG 2001 
+\  SB 090701 
+\  Where a vertex is required, > 1 means not fitted - typically 9 from German 'no'  
+\  Where a view is given it is from the rear of the object 
+\  This file is interpreted by SDS.zsl
+\ Comments are backslashes 
+
+reset_ship_data \ Tell engine to initialise the ship data 
+
+
+\ -------- ZEX -------- 
+
+ OBJID   ZEXS	\ object ID - Zex the ship 
+\ layout of an entry is position x,y,z then integer control value - 29 unsigned bits 
+\ Thrust is specified in Newtons/second and can be a maximum of 2^29 = 536870912
+\ A thrust of 0 means not fitted
+
+
+\ main thrusters 
+ MTHR1 mount_point   0.0   -0.8  -1   5500  \ Main thrust 1  - v0 rear top left 
+
+ MTHR2 mount_point   9     9     9   0      \ Main thrust 2  - v1 rear top right 
+ MREV1 mount_point   0     0  -1   3950  \ Main reverse thrust 1 - v2 rear top left 
+ MREV2 mount_point   9     9    9    0      \ Main reverse thrust 2  - v3 rear top right 
+ VTHR1 mount_point   0     -1   0    200   \ vertical thruster 1 - v4  none
+ VTHR2 mount_point   9     9    9    0      \ vertical thruster 2 - v5  none 
+ RVTH1 mount_point   0     1    0    200   \ reverse vertical thruster 1 - v6 - none  
+ RVTH2 mount_point   9     9    9    0      \ reverse vertical thruster 2 - v7 - none  
+ 
+ 
+\  Guns 
+\ Position x,y,z,class
+
+ GUN01 mount_point    -1    -1   0.7    1 \ Cannon 1 - v8 - front center below. Type 1 
+ GUN02 mount_point    -0.3  -1   0.7    1 \ Cannon 2 - v9 - none
+ GUN03 mount_point    0.3   -1  0.7     1 \ Cannon 3 - v10 - none 
+ GUN04 mount_point    1     -1    0.7   1 \ Cannon 4 - v11 - none 
+
+\  Lasers 
+\ Position x,y,z,class
+
+ LAS01 mount_point    -0.3   -0.5    1     1 \ Laser 1 - v12 - left wing outer. Type 1 
+ LAS02 mount_point    0.3    -0.5    1     1 \ Laser 2 - v13 - right wing outer 
+ LAS03 mount_point    9   9   9      1 \ Laser 3 - v14 - not used 
+ LAS04 mount_point    9   9   9     1 \ Laser 4 - v15 - not used 
+
+\  Missiles - Zex has 3 Class 1 
+\ Position x,y,z,class
+
+ MIS01 mount_point    0    -0.8 0     1 \ Missile 1 - v16 - under belly 
+ MIS02 mount_point    -1   -0.8 -0.2  1 \ Missile 2 - v17 - left wing 
+ MIS03 mount_point    1    -0.8 -0.2  1 \ Missile 3 - v18 - right wing 
+
+\  Ejection point 
+ EJECT mount_point    0    -1   0     0 \ Ejection Point - v19 - below middle. 1=norm,2=indestructable
+ 
+  
+
+\ Rotational thrusters - a value of zero means not used
+\ Thrust in Newtons/Second
+ ROT_PITCH load_rot   460.0   \ float32s
+ ROT_ROLL  load_rot   460.0
+ ROT_YAW   load_rot   440.0
+
+
+
+
+\ common miscellaneous ship data
+
+ MASS  load_misc         1                 \ unloaded mass in tonnes - float32
+ FUEL  load_misc         15                \ fuel capacity in KG's - float32
+ CARGO load_misc         4                \ can carry 4 one tonne cargo containers - float32
+ HULL  load_misc         2                 \ hull class - float32
+
+\ Integral items with hull - all UInt8
+\                    can be fitted      class or count, 0=not fitted
+ SHIELDS1 load_ship_attrib  1           2     \ class - 1 to 5 
+ SHIELDS2 load_ship_attrib  0           1     \ class 1 - 5, 0 =not fittted   
+ SHIELDS3 load_ship_attrib  0           0     \ class 1 - 5, 0 =not fitted
+ APILOT   load_ship_attrib  1           3     \ autopilot class  1-4
+ RADAR    load_ship_attrib  1           2     \ radar class      1-2. 2 shows alignment
+ BATT     load_ship_attrib  1           1     \ DC battery class 1 - 3 
+ ORCS     load_ship_attrib  1           1     \ ORCS Fitted - class N/A
+ 
+\ Additional items -- any item not listed is marked as can not be fitted - all UInt8
+ REPAIR    load_ship_attrib 1           2     \ Repair systems class 1 - 5
+ SHOCK     load_ship_attrib 1           0     \ shockwave
+ ECM       load_ship_attrib 1           0     \ ECM
+ MISSFACT  load_ship_attrib 1           0     \ Missile Factory
+ FASTDOCK  load_ship_attrib 1           0	  \      
+ INSURANCE load_ship_attrib 1           1     \ New ship on eject
+ FUELMAX   load_ship_attrib 1           1     \ fuel maximiser
+ RETROROCKS load_ship_attrib 1          1     \ retro rockets - emergency stop
+ NAVCOMP   load_ship_attrib 1           0     \ radar vectors to motherships
+ TRADINGC  load_ship_attrib 1           1     \ Trading computer 1-5
+ HULLREP   load_ship_attrib 1           1     \ Auto Hull repair 1 - 5
+ LIFESUPP  load_ship_attrib 0           0     \ Cargo bay life support
+ TRAILHOOK load_ship_attrib 0           0     \ Accept Cargo bay extension
+ TELNET    load_ship_attrib 1           1     \ Hook into Galanet without 
+                                              \ docking needs to be local
+ IFF       load_ship_attrib 1           1     \ Identification Friend or Foe 
+ RADIOMON  load_ship_attrib 1           1     \ Monitor local communications 
+ CLOAK     load_ship_attrib 1           0     \ Invisibility 
+ FTL       load_ship_attrib 1           0     \ Intergalactic 
+ COOLING   load_ship_attrib 1           1     \ Laser cooling unit can be fitted 
+ SCOOP     load_ship_attrib 1           0     \ Fuel Scoop
+ FREEDOCK  load_ship_attrib 0           0     \ Clamp, drill hole and create entry
+                                              \ Used for pirating to suck out cargo from
+                                              \ abandoned ships
+ 
+ MINES     load_ship_attrib 1           0     \ Place mines in space
+
+ HTRAN     load_ship_attrib 1           4     \ Number of hypertransport shots 
+ HTMAX     load_ship_attrib 1           4     \ Number of hypertransport shots max
+ 
+ TEMPM    load_ship_attrib  1           4     \ tempmult class
+                                             
+
+ load_ship ( pass data to engine )
+
+
+
+
+
+
+\ -------- SHUTTLE -------- 
+
+ OBJID   SHT1	\ object ID - A small one man shuttle 
+\ layout of an entry is position x,y,z then integer control value - 29 unsigned bits 
+\ Thrust is specified in Newtons/second and can be a maximum of 2^29 = 536870912
+\ A thrust of 0 means not fitted
+
+
+\ main thrusters 
+ MTHR1 mount_point   0.35   -0.2  -0.65   2700  \ Main thrust 1  - v0 rear top left 
+
+ MTHR2 mount_point   -0.35  -0.2  -0.65   2700      \ Main thrust 2  - none 
+ MREV1 mount_point   0     0  -1   4000  \ Main reverse thrust 1 - v2 rear top left 
+ MREV2 mount_point   9     9    9    0      \ Main reverse thrust 2  - v3 rear top right 
+ VTHR1 mount_point   0     -1   0    200   \ vertical thruster 1 - v4  none
+ VTHR2 mount_point   9     9    9    0      \ vertical thruster 2 - v5  none 
+ RVTH1 mount_point   0     1    0    200   \ reverse vertical thruster 1 - v6 - none  
+ RVTH2 mount_point   9     9    9    0      \ reverse vertical thruster 2 - v7 - none  
+ 
+ 
+\  Guns 
+\ Position x,y,z,class
+
+ GUN01 mount_point    0    -1    1    1 \ Cannon 1 - v8 - front center below. Type 1 
+ GUN02 mount_point    9    9     9    0 \ Cannon 2 - v9 - none
+ GUN03 mount_point    9    9     9    0 \ Cannon 3 - v10 - none 
+ GUN04 mount_point    9    9     9    0 \ Cannon 4 - v11 - none 
+
+\  Lasers 
+\ Position x,y,z,class
+
+ LAS01 mount_point    -0.3   -0.1    0.8     1 \ Laser 1 - v12 - left wing outer. Type 1 
+ LAS02 mount_point    0.3    -0.1    0.8     1 \ Laser 2 - v13 - right wing outer 
+ LAS03 mount_point    9    9    9     0 \ Laser 3 - v14 - not used 
+ LAS04 mount_point    9    9    9     0 \ Laser 4 - v15 - not used 
+
+\  Missiles - Shuttle has none 
+\ Position x,y,z,class
+
+ MIS01 mount_point    9    9    9  0 \ Missile 1 - v16 -  
+ MIS02 mount_point    9    9    9  0 \ Missile 2 - v17 - 
+ MIS03 mount_point    9    9    9  0 \ Missile 3 - v18 -  
+
+\  Ejection point 
+ EJECT mount_point    0    -1   0     0 \ Ejection Point - v19 - below middle. 1=norm,2=indestructable
+ 
+  
+
+\ Rotational thrusters - a value of zero means not used
+\ Thrust in Newtons/Second
+ ROT_PITCH load_rot   840.0   \ float32s
+ ROT_ROLL  load_rot   840.0
+ ROT_YAW   load_rot   840.0
+
+
+
+
+\ common miscellaneous ship data
+
+ MASS  load_misc         1.0                 \ mass in tonnes - float32
+ FUEL  load_misc         40                \ fuel capacity in KG's - float32
+ CARGO load_misc         5                \ can carry 5 one tonne cargo containers - float32
+ HULL  load_misc         2                 \ hull class - float32
+
+
+\ Integral items with hull - all UInt8
+\                    can be fitted      class 0=not fitted
+ SHIELDS1 load_ship_attrib  1           2     \ class - 1 to 5 
+ SHIELDS2 load_ship_attrib  0           1     \ class 1 - 5, 0 =not fittted   
+ SHIELDS3 load_ship_attrib  0           0     \ class 1 - 5, 0 =not fitted
+ APILOT   load_ship_attrib  1           3     \ autopilot class  1-4
+ RADAR    load_ship_attrib  1           2     \ radar class      1-2. 2 shows alignment
+ BATT     load_ship_attrib  1           1     \ DC battery class 1 - 3 
+ ORCS     load_ship_attrib  1           1     \ ORCS Fitted - class N/A
+ 
+\ Additional items -- any item not listed is marked as can not be fitted - all UInt8
+ REPAIR    load_ship_attrib 1           2     \ Repair systems class 1 - 5
+ SHOCK     load_ship_attrib 1           0     \ shockwave
+ ECM       load_ship_attrib 1           0     \ ECM
+ MISSFACT  load_ship_attrib 1           0     \ Missile Factory
+ FASTDOCK  load_ship_attrib 1           0	  \      
+ INSURANCE load_ship_attrib 1           1     \ New ship on eject
+ FUELMAX   load_ship_attrib 1           1     \ fuel maximiser
+ RETROROCKS load_ship_attrib 1          1     \ retro rockets - emergency stop
+ NAVCOMP   load_ship_attrib 1           0     \ radar vectors to motherships
+ TRADINGC  load_ship_attrib 1           1     \ Trading computer 1-5
+ HULLREP   load_ship_attrib 1           1     \ Auto Hull repair 1 - 5
+ LIFESUPP  load_ship_attrib 0           0     \ Cargo bay life support
+ TRAILHOOK load_ship_attrib 0           0     \ Accept Cargo bay extension
+ TELNET    load_ship_attrib 1           1     \ Hook into Galanet without 
+                                              \ docking needs to be local
+ IFF       load_ship_attrib 1           1     \ Identification Friend or Foe 
+ RADIOMON  load_ship_attrib 1           1     \ Monitor local communications 
+ CLOAK     load_ship_attrib 1           0     \ Invisibility 
+ FTL       load_ship_attrib 1           0     \ Faster Than Light Drive inter-system 
+ COOLING   load_ship_attrib 1           1     \ Laser cooling unit can be fitted 
+ SCOOP     load_ship_attrib 1           0     \ Fuel Scoop
+ FREEDOCK  load_ship_attrib 0           0     \ Clamp, drill hole and create entry
+                                              \ Used for pirating to suck out cargo from
+                                              \ abandoned ships
+ MINES     load_ship_attrib 1           0     \ Place mines in space
+ 
+ HTRAN     load_ship_attrib 1           2     \ Number of hypertransport shots
+ HTMAX     load_ship_attrib 1           2     \ Number of hypertransport shots max
+                                            
+ TEMPM    load_ship_attrib  1           1     \ tempmult class
+
+ load_ship ( pass data to engine )
+
+
+
+
+
+
+\ -------- FALCON -------- 
+
+ OBJID   FALC	\ object ID 
+\ layout of an entry is position x,y,z then integer control value - 29 unsigned bits 
+\ Thrust is specified in Newtons/second and can be a maximum of 2^29 = 536870912
+\ A thrust of 0 means not fitted
+
+
+\ main thrusters 
+ MTHR1 mount_point   -0.16   0.15  -0.7   4900  \ Main thrust 1  - v0 rear top left 
+ MTHR2 mount_point    0.16   0.15  -0.7   4900  \ Main thrust 2  - v1 rear top right
+  
+ MREV1 mount_point   -0.16    0.15  0.7   3500  \ Main reverse thrust 1 - v2 rear top left 
+ MREV2 mount_point    0.16    0.15  0.7   3500      \ Main reverse thrust 2  - v3 rear top right 
+ 
+ VTHR1 mount_point   0     -1   0    300   \ vertical thruster 1 - v4  none
+ VTHR2 mount_point   9     9    9    0      \ vertical thruster 2 - v5  none 
+ RVTH1 mount_point   0     1    0    300   \ reverse vertical thruster 1 - v6 - none  
+ RVTH2 mount_point   9     9    9    0      \ reverse vertical thruster 2 - v7 - none  
+ 
+ 
+\  Guns 
+\ Position x,y,z,class
+
+ GUN01 mount_point    -0.6    0    0    1 \ Cannon 1 - v8 - front center below. Type 1 
+ GUN02 mount_point    -0.4    0     0    1 \ Cannon 2 - v9 - none
+ GUN03 mount_point    0.4    0     0    1 \ Cannon 3 - v10 - none 
+ GUN04 mount_point    0.6    0     0    1 \ Cannon 4 - v11 - none 
+
+\  Lasers 
+\ Position x,y,z,class
+
+ LAS01 mount_point    -1   0    0     1 \ Laser 1 - v12 - left wing outer. Type 1 
+ LAS02 mount_point    1    0    0     1 \ Laser 2 - v13 - right wing outer 
+ LAS03 mount_point    9    9    9     0 \ Laser 3 - v14 - not used 
+ LAS04 mount_point    9    9    9     0 \ Laser 4 - v15 - not used 
+
+\  Missiles - Zex has 3 Class 1 
+\ Position x,y,z,class
+
+ MIS01 mount_point    0    -0.8 0     1 \ Missile 1 - v16 - under belly 
+ MIS02 mount_point    -1   -0.8 -0.2  1 \ Missile 2 - v17 - left wing 
+ MIS03 mount_point    1    -0.8 -0.2  1 \ Missile 3 - v18 - right wing 
+
+\  Ejection point 
+ EJECT mount_point    0    -1   0     0 \ Ejection Point - v19 - below middle. 1=norm,2=indestructable
+ 
+  
+
+\ Rotational thrusters - a value of zero means not used
+\ Thrust in Newtons/Second
+ ROT_PITCH load_rot   370.0   \ float32s
+ ROT_ROLL  load_rot   360.0
+ ROT_YAW   load_rot   360.0
+
+
+
+
+\ common miscellaneous ship data
+
+ MASS  load_misc         1                 \ mass in tonnes - float32
+ FUEL  load_misc         10                \ fuel capacity in KG's - float32
+ CARGO load_misc         1                \ can carry 1 one tonne cargo containers - float32
+ HULL  load_misc         2                 \ hull class - float32
+
+
+\ Integral items with hull - all UInt8
+\                    can be fitted      class 0=not fitted
+ SHIELDS1 load_ship_attrib  1           2     \ class - 1 to 5 
+ SHIELDS2 load_ship_attrib  0           1     \ class 1 - 5, 0 =not fittted   
+ SHIELDS3 load_ship_attrib  0           0     \ class 1 - 5, 0 =not fitted
+ APILOT   load_ship_attrib  1           3     \ autopilot class  1-4
+ RADAR    load_ship_attrib  1           2     \ radar class      1-2. 2 shows alignment
+ BATT     load_ship_attrib  1           1     \ DC battery class 1 - 3 
+ ORCS     load_ship_attrib  1           1     \ ORCS Fitted - class N/A
+ 
+\ Additional items -- any item not listed is marked as can not be fitted - all UInt8
+ REPAIR    load_ship_attrib 1           2     \ Repair systems class 1 - 5
+ SHOCK     load_ship_attrib 1           0     \ shockwave
+ ECM       load_ship_attrib 1           0     \ ECM
+ MISSFACT  load_ship_attrib 1           0     \ Missile Factory
+ FASTDOCK  load_ship_attrib 1           0	  \      
+ INSURANCE load_ship_attrib 1           1     \ New ship on eject
+ FUELMAX   load_ship_attrib 1           1     \ fuel maximiser
+ RETROROCKS load_ship_attrib 1          1     \ retro rockets - emergency stop
+ NAVCOMP   load_ship_attrib 1           0     \ radar vectors to motherships
+ TRADINGC  load_ship_attrib 1           0     \ Trading computer 1-5
+ HULLREP   load_ship_attrib 1           1     \ Auto Hull repair 1 - 5
+ LIFESUPP  load_ship_attrib 0           0     \ Cargo bay life support
+ TRAILHOOK load_ship_attrib 0           0     \ Accept Cargo bay extension
+ TELNET    load_ship_attrib 1           1     \ Hook into Galanet without 
+                                              \ docking needs to be local
+ IFF       load_ship_attrib 1           1     \ Identification Friend or Foe 
+ RADIOMON  load_ship_attrib 1           1     \ Monitor local communications 
+ CLOAK     load_ship_attrib 1           0     \ Invisibility 
+ FTL       load_ship_attrib 1           0     \ Faster Than Light Drive inter-system 
+ COOLING   load_ship_attrib 1           1     \ Laser cooling unit can be fitted 
+ SCOOP     load_ship_attrib 1           0     \ Fuel Scoop
+ FREEDOCK  load_ship_attrib 0           0     \ Clamp, drill hole and create entry
+                                              \ Used for pirating to suck out cargo from
+                                              \ abandoned ships
+ MINES     load_ship_attrib 1           0     \ Place mines in space
+ 
+ HTRAN     load_ship_attrib 1           2     \ Number of hypertransport shots
+ HTMAX     load_ship_attrib 1           3     \ Number of hypertransport shots max
+                                             
+ TEMPM    load_ship_attrib 1            2     \ TempMult class
+
+ load_ship ( pass data to engine )
+
+
+
+ sds_update ( tell engine we are finished loading and to update any active objects )
+( ---------- END OF MOUNTINGS ----------- )

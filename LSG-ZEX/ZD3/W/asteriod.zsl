@@ -1,0 +1,18 @@
+\ asteriods.zsl
+
+\ these are two sample controllers - they are 
+: asteriod-controller ( object-id -- ) DROP 
+;
+
+
+\ this is run on a new game
+: asteriod-init 
+;
+
+
+\ this is run each frame to spawn new asteriods
+: asteriod-spawn
+;
+
+
+

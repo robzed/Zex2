@@ -1,0 +1,100 @@
+finder            ( go to the finder)
+( use the finder menu Hide Others )
+
+BYE -- exit the entire game (quickly!). No save.
+
+asteroids OFF -- Disable the lumps of rock
+asteroids ON  -- Enable lumps of rock
+
+instant_console OFF      -- turn off scrolling console
+instant_console ON       -- turn on the scrolling console
+
+
+macsbug           ( goes to a debugger if installed )
+include filename  ( include and process a forth file )
+FORGET word       ( FORGET back to a previous definition )
+display filename  ( display a file )
+help              ( this help system )
+menu              ( a menu system )
+dir               ( list all files )
+dir/w             ( wide listing of all files )
+dir< h	          ( files that start with h )
+dir> .zsl         ( files that end with .zsl )
+cls               ( clear the screen )
+20 console-colour ! ( console text colour )
+40 cursor-colour  ! ( cursor text colour )
+day               ( preset console text colour )
+night             ( preset console text colour )
+midnight
+midday
+yak
+-yak
+red-alert
+-red-alert
+amber
+green-screen
+.dic              ( show the dictionary space )
+word-stats        ( forth stats )
+edit filename     ( internal editor )
+WORDS             ( show all words )
+more-words        ( show all words page by page )
+cstring" text"    ( compile a c string )
+dm                ( addr -- ) ( display 16 bytes )
+dms               ( addr -- ) ( display 32 characters )
+( comment here )  ( a forth comment )
+/ comment         ( a forth to end of line comment )
+
+( n1 addr -- n2 n3 )    ( stack notation comments )
+This means address is on the top of the stack
+(first accessable), and n1 is underneath it, it
+returns n3 on the top of the stack, and n2 underneath
+it. n1 and addr are removed from the stack on calling
+this function, but other data underneath is unaffected.
+
+SWAP             ( n1 n2 -- n2 n1 )
+ROT              ( n1 n2 n3 -- n2 n3 n1 )
+-ROT             ( n2 n3 n1 -- n1 n2 n3 )
+TRUE		 ( -- -1 )
+FALSE            ( -- 0 )
+: word-name      ( defines a word )
+;                ( ends a word defintion )
+redefine: word-name ( defines a word previously defined
+as something else WITHOUT causing a redefintion warning. Notice
+: will still redefine the previous word, so it is always best to
+create words with : )
+RECURSE          ( call this word from inside this word )
+HEX -- change the interpret mode to hexidecimal
+DECIMAL -- change the interpret mode to decimal
+[HEX] -- all next data in word defintion is in hex
+[DEC] -- all next data in the word defintion is in decimal
+ABORT" -- ( flag -- ) throw an error if flag is true, and report message
+COMPARE -- compare two strings, as per ANS standard
+
+home -- home the cursor
+MOD -- get remainder
+
+halt-step  -- waits for a key press, unless 0 is pressed, then aborts, showing stack.
+.halt-step -- as above, but displays stack on each step
+.last-word -- show what the last word defined was, hidden (e.g. incomplete) or not.
+
+
+
+get_4_character_id ( "<spaces>name" -- value )
+
+parses, gets 4 character id, and converts 
+to 32 bit number
+
+
+
+convert_4id_to_int ( caddr -- id )
+
+passed an address, converts 4 character 
+id into 32 bit number
+
+show_header_memory	-- trivia about how 
+much memory is used by just headers. Small
+amount compared to game graphics!
+
+
+
+

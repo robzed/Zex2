@@ -1,0 +1,92 @@
+\ menu.zsl
+
+\ display
+\ =======
+\ Uses include buffers as a place to load file and display
+
+: (display-getname) ( "filename" -- caddr u )
+PARSE-WORD DUP 0= IF 2DROP ." No name given to display" ABORT THEN ;
+
+20 CONSTANT (display-scrolllines)
+
+: (display-newlinecheck) ( lines x -- lines x )
+SWAP 1- ?DUP 0= IF 
+  ." =======<MORE>======0=QUIT" KEY CR [CHAR] 0 = IF clear-includes ABORT THEN (display-scrolllines)
+THEN SWAP ;
+
+: (displaybuffer) ( scroll-lines addr size -- ) 
+0 ?DO COUNT DUP 31 > IF 
+  EMIT
+  ELSE DUP 13 = SWAP 10 = OR IF CR (display-newlinecheck) ELSE SPACE SPACE THEN
+  THEN 
+LOOP DROP DROP ;
+
+: display-faddr ( -- )
+PAD save-file-source
+(display-scrolllines)
+PAD get-file (displaybuffer)
+restore-file-source
+;
+
+: display ( "filename" -- ) 
+(display-getname) PAD convert-to-stored-string display-faddr
+;
+
+
+\ help
+\ ====
+
+: string-concat ( dest-caddr source-caddr source-u -- ) 
+
+DUP>R ROT DUP>R ( d s u -- s u d ) ( R: -- u d )
+COUNT + ( s u d -- s u dend ) \ now at destination address to concatenate
+SWAP CMOVE ( s u dend -- ) ( R: -- u d )
+R> R> ( -- d u )
+OVER C@ + ( -- d utotal)
+SWAP C!
+;
+
+: (help-changename) ( caddr -- caddr ) ( adds .hlp onto name )
+S" .hlp" string-concat ;
+
+: (help-getname) ( "helpname" -- caddr u )
+PARSE-WORD DUP 0= IF 2DROP S" help" THEN ;
+
+: help ( "helpname" -- )
+(help-getname) PAD convert-to-stored-string 
+PAD (help-changename) display-faddr
+;
+
+
+\ menu
+\ ====
+
+: (menu-getname)
+\ PARSE-WORD ?DUP 0= IF ." Hello" ABORT THEN
+\ TYPE CR
+S" main"
+;
+
+VARIABLE menu1$ 30 ALLOT
+VARIABLE menu2$ 30 ALLOT
+
+: (menu-store) ( caddr u -- )
+2DUP menu1$ convert-to-stored-string menu1$ S" .mn1" string-concat
+     menu2$ convert-to-stored-string menu2$ S" .mn2" string-concat ;
+
+: (menu)	( -- flag=0 | flag=1 )
+
+menu1$ save-file-source
+(display-scrolllines)
+menu1$ get-file (displaybuffer)
+restore-file-source
+
+CR ." ==PLEASE SELECT MENU NUMBER ABOVE==" KEY
+DUP [CHAR] 0 <> IF
+>R menu2$ save-file-source R> menu2$ interpret-file (menu-store) restore-file-source 0
+ELSE DROP 1
+THEN
+;
+
+: menu (menu-getname) (menu-store) BEGIN cls (menu) UNTIL cls ;
+

@@ -1,0 +1,33 @@
+backface_cull [ON | OFF]
+zbuffer       [ON | OFF]
+fuel          [ON | OFF]
+hud           [ON | OFF]
+dust          [ON | OFF]
+rendering     [ON | OFF]	-- turn 3d on or off
+laser         [ON | OFF] Note, will be cleared when 
+                         console dismissed
+collision     [ON | OFF] Collision detection
+radar_grat    [ON | OFF]
+
+
+
+set_main_camera_object ( dynamic slot -- error )
+Set which object the camera looks out from:
+(Note, the object holding the camera is made 
+invisible)
+
+
+
+depth_of_field		-- floating point (double) variable that defines 
+			the distance between the viewing plane and the 
+			camera center. Typically around 400-1000. This 
+			adjusts the focal length of the camera -
+			whether it is wide angle, etc. Currently 1000.
+
+			To read type: depth_of_field F@ F.
+			To write type: FIN 900 depth_of_field F!
+			
+ZMin			-- Where the clipping in Z occurs. Too close to the center
+			of the camera (z=0) and distortion effects can take place. Too
+			far away and you can see obvious clipping effects. Currently
+			depth_of_field-200, or 800. Floating point (double) variable.

@@ -1,0 +1,56 @@
+General purpose timer help
+
+
+\ find an unused timer
+timer_find_unused ( -- id | -1 )
+
+\ set a repeating timer
+timer_set_timer_repeating ( xt index -- ) ( F: time -- )
+
+\ set a one shot timer
+timer_set_timer_oneshot ( xt index -- ) ( F: time -- )
+
+\ delete a timer that you do not want any more
+timer_discard ( id -- )
+
+
+
+\ These two routines are not specific to timers...
+
+clear_bits ( address mask -- )
+set_bits ( address mask -- )
+
+
+
+\ Advanced Routines
+\
+\ These are when more precise control of the timers
+\ is required. Normally you do not need to use them
+\
+
+timer_make_active ( id -- ) 
+timer_make_inactive ( id -- )
+timer_is_active? ( id -- flag )
+
+timer_make_oneshot ( id -- )
+timer_make_repeating ( id -- )
+timer_is_timer_repeating? ( id -- flag )
+
+timer_set_expire_handler_address ( execution_address id -- )
+timer_remove_handler ( id -- )
+
+timer_has_expired? ( id -- )
+timer_make_expired ( id -- )
+timer_make_not_expired ( id -- )
+
+timer_fix_datum ( id -- )
+timer_floating_datum ( id -- )
+timer_fixed_datum? ( id -- )
+\ timers are usually floating datum, which measures the
+\ next time from the action time of the first.
+
+
+timer_set_time ( id -- ) ( F: time -- )
+
+
+

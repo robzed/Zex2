@@ -1,0 +1,292 @@
+\ debug_panes.zsl
+
+CREATE time_store 4 CELLS ALLOT
+
+: forth_pane
+
+cstring" FORTH_PANE " 0 print-debug
+print-debug-blank
+
+cstring" forth frames " numframes @ print-debug
+cstring" FPS" fps @ print-debug
+
+\ the time
+time_store get_real_time_struct
+cstring" Days" time_store @ print-debug
+cstring" Hours" time_store 1 CELLS + @ print-debug
+
+print-debug-blank
+cstring" FPS" fps @ print-debug
+;
+
+
+: basic_pane
+
+cstring" BASIC_PANE " 0 print-debug
+print-debug-blank
+
+
+cstring" PD" number_of_polys_displayed @ print-debug
+cstring" zbuffer ON" use_zbuffer_flag @ print-debug
+cstring" objs displayed" objs_displayed @ print-debug
+cstring" zbuff dist" zbuffer_divisor @ print-debug
+
+print-debug-blank
+
+cstring" Cos" cos_to_target F@ [FIN] 1000 F* F>I print-debug
+cstring" Rot" rot_to_target F@ [FIN] 1000 F* F>I print-debug
+cstring" S" s_to_target F@ [FIN] 1000 F* F>I print-debug
+
+print-debug-blank
+cstring" FPS" fps @ print-debug
+
+\ print_debug((*ocb_ptr).object_list[0].Dyn_OCB_control_data.fuel_tank_value_in_KGS*100000000,"Fuel");
+
+;
+
+
+: engine3d_pane
+
+cstring" ENGINE3D_PANE " 0 print-debug
+print-debug-blank
+
+cstring" Dynamic Objs" debug_dynamic_objects @ print-debug
+
+cstring" Radar Objs" debug_radar_objects @ print-debug
+
+cstring" Radius Objs" debug_radius_objects @ print-debug
+
+cstring" Frustum Objs" debug_in_frustum_objects @ print-debug
+
+cstring" Polys in" debug_polys_translated @ print-debug
+
+cstring" PD" number_of_polys_displayed @ print-debug
+cstring" OGLTexBinds" binds @ print-debug
+
+cstring" fov_fasts" view_fast_object @ print-debug
+cstring" fov_suns" view_sun_object @ print-debug
+cstring" fov_planets" view_planet_object @ print-debug
+cstring" fov_moons" view_moon_object @ print-debug
+cstring" fov_farstars" view_far_star_object @ print-debug
+cstring" fov_dust" view_dust_object @ print-debug
+cstring" fov_others" view_other_object @ print-debug
+
+cstring" fov_others" view_other_object @ print-debug
+cstring" fov_mships" view_mship_object @ print-debug
+
+cstring" FPS" fps @ print-debug
+
+;
+
+
+: object_info_pane
+
+cstring" OBJECT_PANE " 0 print-debug
+print-debug-blank
+
+\ print_debug(objs_displayed,"ACTIVE OBJS");
+\ print_debug(number_of_stars,"DUST");
+\ //print_debug(gen_dust_called,"GD called");
+\ //print_debug(kill_dust_called,"KD called");
+\ //print_debug(ship_buffet,"Buffet");
+\ 
+\ //print_debug(time_to_target_in_seconds, "TimetoT");
+\ //print_debug(time_to_stop, "TimetoS");
+\ //print_debug(hud_calc_velocity, "Vel");
+\ 
+\ 
+\ 
+\ //print_debug(test1,"test1");
+\ 
+\ 
+\ #endif
+
+;
+
+\ print_debug_blank();
+\ //
+\ 
+\ print_debug(total_fuel_consumption*100000000,"consumption");
+\ 
+
+: vector_pane
+
+cstring" VECTOR_PANE " 0 print-debug
+print-debug-blank
+
+\ //print_debug(vd.y,"vdy");
+\ //print_debug(vd.z,"vdz");
+\ //print_debug_blank();
+\ //print_debug((*ocb_ptr).object_list[0].Oworldy,"y");
+\ //print_debug((*ocb_ptr).object_list[0].Oworldz,"z");
+\ //print_debug_blank();
+\ //
+\ 
+;
+
+
+: fps_pane
+
+cstring" FPS" fps @ print-debug
+
+\ //print_debug(rob_test,"dest_ocb");
+\ //print_debug(get_distance_to_from_in_m(rob_test,0),"distance");
+\ //print_debug(velocity_error.x*1000,"verr.x");
+\ //print_debug(velocity_error.y*1000,"verr.y");
+\ //print_debug(velocity_error.z*1000,"verr.z");
+\ //print_debug_blank();
+\ //compiled option fps display
+;
+
+: sim_pane1
+cstring" SIM_PANE " 0 print-debug
+print-debug-blank
+ cstring" Fuel Cont e-8" camera_object_total_fuel @ print-debug
+ cstring" Fuel Use  e-8" camera_object_total_fuel_consumption @ print-debug
+ cstring" ORCS Pitch e3 " orcs_pitch @ print-debug
+ cstring" ORCS Roll  e3" orcs_roll @ print-debug
+ cstring" ORCS Yaw e3" orcs_yaw @ print-debug
+ cstring" SQuatx e-7" camera_object_quat_x @ print-debug
+ cstring" SQuaty e-7" camera_object_quat_y @ print-debug
+ cstring" SQuatz e-7" camera_object_quat_z @ print-debug
+ cstring" SQuatw e-7" camera_object_quat_w @ print-debug
+ cstring" camera_pan" camera_pan_force_debug @ print-debug
+\
+
+
+;
+
+: ap_pane1
+ cstring" AP_PANE " 0 print-debug
+ print-debug-blank
+ cstring" time to target" time_to_target @ print-debug
+ cstring" stop time" time_to_stop @ print-debug
+ cstring" dist to targ" dist_to_targ @ print-debug
+;
+
+\ ************************************************
+: debug_display_mothership ( gid -- )
+  DUP POBs_is_this_a_mothership IF
+     >R  cstring" Human Docked"  R@ 0 POBs_get_number_of_ships_docked print-debug
+         cstring" Alien Docked"  R@ 1 POBs_get_number_of_ships_docked print-debug
+         cstring" Neutl Docked"  R@ 2 POBs_get_number_of_ships_docked print-debug
+         cstring" Allegence"     R> POBs_get_allegiance             print-debug
+  ELSE
+     DROP
+  THEN
+;
+
+: debug_display_planet_moon_mothership ( gid -- )
+  DUP>R 
+  POBs_is_this_a_mothership  R@ POBs_is_this_a_planet_or_moon OR IF
+     R@ POBs_what_is_population [FIN] 9e6  F< IF
+        cstring" population"      R@ POBs_what_is_population F>I          print-debug
+     ELSE
+        cstring" popultn ^6"  R@ POBs_what_is_population [FIN] 1e6 F/ F>I  print-debug
+     THEN
+     cstring" is inhabited?"   R@ POBs_is_inhabited               print-debug
+     cstring" Supply Type"     R@ POBs_get_supply_type            print-debug
+     cstring" Supply Rating"   R@ POBs_get_supply_rating          print-debug
+  THEN
+  R>DROP
+;
+
+: debug_display_size_info ( gid -- )
+ >R
+  cstring" Mothership?"   R@ POBs_is_this_a_mothership             print-debug
+  cstring" Plnet/Moon?"   R@ POBs_is_this_a_planet_or_moon         print-debug
+  cstring" This a moon?"  R@ POBs_is_this_a_moon                   print-debug
+  cstring" Planet?"       R@ POBs_is_this_a_planet                 print-debug
+  cstring" This a sun?"   R@ POBs_is_this_a_sun                    print-debug
+  cstring" Rock Moon?"    R@ POBs_is_this_a_rock_moon              print-debug
+  cstring" Earth Size?"   R@ POBs_is_this_earthish_size            print-debug
+  cstring" Giant Plnt?"   R@ POBs_is_this_a_giant_planet           print-debug
+  cstring" Gas Giant?"    R@ POBs_is_this_a_gas_giant              print-debug
+  cstring" Big Gas Gt?"   R@ POBs_is_this_a_hypermassive_gas_giant print-debug
+  R>DROP
+;
+
+
+: debug_display_connection_data ( gid -- )
+ >R
+  cstring" Parent GID"   R@ POBs_object_parent       print-debug
+  cstring" Child GID"    R@ POBs_object_first_child  print-debug
+  cstring" Next GID"     R@ POBs_object_next         print-debug
+  cstring" Prev GID"     R@ POBs_object_previous     print-debug
+  R>DROP
+;
+
+
+\ ************************************************
+
+\ * Allows planet data from POBs to be displayed
+\ *
+: POBs_pane ( -- )
+
+  cstring" POBs_pane" 0 print-debug  
+  print-debug-blank
+
+cstring" main_cam_o" get_main_camera_object                      print-debug
+cstring" obj_targ"   get_main_camera_object get_object_targetted print-debug
+
+get_main_camera_object get_object_targetted 0 > IF	\ valid target ID
+
+  get_main_camera_object get_object_targetted get_galactic_id 
+  >R
+
+  cstring" target GID"      R@ print-debug
+
+  R@ 0 > IF   \ valid Galactic ID
+  
+     print-debug-blank
+     R@ debug_display_planet_moon_mothership
+     print-debug-blank
+     R@ debug_display_connection_data
+     print-debug-blank
+     R@ debug_display_size_info 
+     print-debug-blank
+     print-debug-blank
+
+     R@ get_POBs_diameter [FIN] 36e6  F< IF
+        cstring" diamtr km"  R@ get_POBs_diameter [FIN] 1e3  F/ F>I  print-debug
+     ELSE
+        cstring" earth-dia"  R@ get_POBs_diameter [FIN] 12e6 F/ F>I  print-debug
+     THEN
+
+     R@ get_POBs_rotation [FIN] 3600 F/ [FIN] 73  F< IF
+       cstring" rot (hrs)"     R@ get_POBs_rotation [FIN] 3600 F/ F>I print-debug
+     ELSE
+       cstring" rot (days)"    R@ get_POBs_rotation [FIN] 3600 [FIN] 24 F* F/ F>I print-debug
+     THEN
+
+     print-debug-blank
+     print-debug-blank
+     R@ debug_display_mothership
+
+
+  THEN
+  R>DROP
+
+THEN
+
+;
+
+\ ************************************************
+
+\ various accessor words
+: show_no_pane       0                    debug_pane_vector ! ;
+: show_forth_pane    ['] forth_pane       debug_pane_vector ! ;
+: show_basic_pane    ['] basic_pane       debug_pane_vector ! ;
+: show_object_pane   ['] object_info_pane debug_pane_vector ! ;
+: show_vector_pane   ['] vector_pane      debug_pane_vector ! ;
+: show_fps_pane     ['] fps_pane     debug_pane_vector ! ;
+: sim_pane  ['] sim_pane1     debug_pane_vector ! ;
+: ap_pane  ['] ap_pane1     debug_pane_vector ! ;
+: show_3d_pane ['] engine3d_pane debug_pane_vector ! ; 
+: show_POBs_pane ['] POBs_pane debug_pane_vector ! ;
+
+
+\ default debugging pane here - put user specific panes in coffee_config.zsl
+
+show_no_pane	\ OY! don't alter this -- read the line above!!!!!
+

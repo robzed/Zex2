@@ -1,0 +1,41 @@
+\ object_one_per_frame.zsl
+
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+
+create-controller-table one-per-frame-table
+
+
+BACKGROUND: object-one-per-frame
+BEGIN
+  \ all the controller words that need to run outside get from here
+  \ ... they tend to be objects that re-spawn
+
+\  asteroid-spawn
+  one-per-frame-table run-all-controllers
+
+  \ this is the thing that controls specific objects
+  object-control-loop
+  
+  \ this is the thing that decrements the timers
+  timer_update_all
+  
+  PAUSE
+
+AGAIN
+;
+
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::one-per-frame ( ref xt -- ) 
+one-per-frame-table install-controller ;
+
+: remove-controller::one-per-frame ( ref -- )
+one-per-frame-table remove-controller ;
+

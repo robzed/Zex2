@@ -1,0 +1,36 @@
+( root - loads up include structure )
+( 3456789012345678901234567890123456789012345678901234567890123)
+25000 CONSTANT max-file-length
+3 CONSTANT max-include-depth
+VARIABLE include-file-buffer max-file-length 48 ( overrun space) + max-include-depth * ALLOT
+VARIABLE #include-files  : clear-includes 0 #include-files ! ;
+
+: check-file ( c-addr -- size error-flag) coffee-get-file-size DUP max-file-length > ;
+: get-file-buffer ( -- include-addr ) include-file-buffer #include-files @ 1- max-file-length * + ;
+: load-file  ( c-addr size -- addr size)
+OVER get-file-buffer SWAP coffee-read-file ?DUP 
+IF ." error reading file - " . DROP SPACE COUNT TYPE clear-includes ABORT THEN
+NIP get-file-buffer SWAP ;
+
+: get-file ( c-addr -- addr size ) DUP check-file IF ." file too big, size=" . SPACE COUNT TYPE ABORT THEN load-file ;
+
+: interpret-file ( c-addr -- ) get-file ['] EVALUATE CATCH ?DUP IF clear-includes THROW THEN ;
+
+: save-file-source ( file-caddr -- [filespec-items]*x )
+  >R 1 #include-files +!  #include-files @ max-include-depth > 
+  IF ." include nested too deep - " R> COUNT TYPE clear-includes ABORT THEN 
+  R>DROP 1234 ;
+  
+: restore-file-source ( [filespec-items]*x -- ) -1 #include-files +! 
+1234 <> IF ." stack not balanced using include" clear-includes ABORT THEN ;
+
+: include ( "<spaces>filename" -- )
+  PARSE-WORD PAD convert-to-stored-string PAD save-file-source PAD interpret-file restore-file-source ;
+
+include basic.zsl
+include morecore.zsl
+include float_1.zsl
+include float_2.zsl
+include additional_std_words.zsl
+
+: end_of_root_marker ;

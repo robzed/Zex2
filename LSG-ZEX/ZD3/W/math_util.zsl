@@ -1,0 +1,11 @@
+( additional Maths functions )
+( Stu 120700 )
+
+
+\ : MOD  ( dividend divisor -- remainder // find the remainder when divided ) 
+\  2DUP    ( dividend divisor dividend divisor )
+\  /       ( dividend divisor result )
+\  *       ( dividend result )
+\  -       ( remainder )
+\ ;
+

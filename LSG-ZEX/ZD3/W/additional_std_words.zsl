@@ -1,0 +1,198 @@
+\ Additional Standard Words
+\
+\ Originally created to Support Joerg Plewe's Debugger for 
+\ ANSI Forth Programs
+\
+\ Implementation by Rob Probin July 2001
+
+\ ---------------------------------------------------------------
+\ MARKER - used instead of forget to mark a place in the 
+\ dictionary
+
+: MARKER 
+	HERE CREATE , 
+	DOES> @ DUP DSP! DUP WORD>LFA @ - LATEST-WORD! ;
+
+
+\ ---------------------------------------------------------------
+\ :NONAME - define function code without a named header
+\
+\ Since in our case the control stack is the data stack users 
+\ of :NONAME cannot access xt until after a definition finishes.
+
+: :NONAME ( C:  -- colon-sys )  ( S:  -- xt )
+
+HERE create-enter-code [COMPILE] ] ;
+
+
+\ ---------------------------------------------------------------
+\ 23456789abcedef0123456789abcdef0123456789abcdef0123456789abcdef
+\ ---------------------------------------------------------------
+\ REFILL
+\ Attempt to fill the input buffer from the input source, 
+\ returning a true flag if successful. 
+\
+\ Since we don't deal with either blocks or partially open text 
+\ files, REFILL is slightly simpler. If we are reading from the 
+\ command line, get another line of text, otherwise we are 
+\ including, and no more input is available this level
+\
+\ 
+
+: REFILL ( -- flag ) 
+  SOURCE-ID 0= IF \ if user input device
+     CR [CHAR] > EMIT
+     TIB 80 ACCEPT 
+     TIB SWAP 'SOURCE 2!
+     0 >IN !	\ new input buffer
+     TRUE
+  ELSE         \ else cannot refill string input
+     FALSE     \ ( include is an evaluate )
+  THEN 
+; 
+
+
+\ ---------------------------------------------------------------
+\ [IF] [ELSE] [THEN] from the ANS appendix
+\
+\ Currently, these cannot stretch outside of the include files 
+\ they are in (because of the definition of REFILL).
+\
+: [ELSE]  ( -- )
+    1 BEGIN                               \ level
+      BEGIN
+        BL WORD COUNT  DUP  WHILE         \ level adr len
+        2DUP  S" [IF]"  COMPARE 0=
+        IF                                \ level adr len
+          2DROP 1+                        \ level'
+        ELSE                              \ level adr len
+          2DUP  S" [ELSE]"
+          COMPARE 0= IF                   \ level adr len
+             2DROP 1- DUP IF 1+ THEN      \ level'
+          ELSE                            \ level adr len
+            S" [THEN]"  COMPARE 0= IF     \ level
+              1-                          \ level'
+            THEN
+          THEN
+        THEN ?DUP 0=  IF EXIT THEN        \ level'
+      REPEAT  2DROP                       \ level
+    REFILL 0= UNTIL                       \ level
+    DROP
+;  IMMEDIATE
+
+: [IF]  ( flag -- )
+0= IF POSTPONE [ELSE] THEN ;  IMMEDIATE
+
+: [THEN]  ( -- )  ;  IMMEDIATE
+
+\ ---------------------------------------------------------------
+\ I cannot believe we didn't have this standard word defined!
+\ 
+\ Find the definition named in the counted string at c-addr. If 
+\ the definition is not found, return c-addr and zero. If the 
+\ definition is found, return its execution token xt. If the 
+\ definition is immediate, also return one (1), otherwise also 
+\ return minus-one (-1). For a given string, the values returned 
+\ by FIND while compiling may differ from those returned while 
+\ not compiling. 
+
+\ ( c-addr -- c-addr 0  |  xt 1  |  xt -1 )
+: FIND DUP >R COUNT find-word DUP 0= IF DROP 2DROP R> 0 ELSE R> DROP THEN ; 
+
+
+\ ---------------------------------------------------------------
+\ If u is greater than zero, clear all bits in each of u 
+\ consecutive address units of memory beginning at addr . 
+: ERASE ( caddr u -- ) 0 FILL ;
+
+\ could be more efficent with a native dbtz instruction
+
+
+\ ---------------------------------------------------------------
+\ Our system currently doesn't accept double number entry at the 
+\ terminal.
+\ 
+\ In order that debugger_ans compiles without changes, I have included
+\ a word that mimics a double number entry of 0.
+
+: 0. 0 0 ;
+
+
+\ ---------------------------------------------------------------
+\ We don't have a >NUMBER either
+\
+\ This is a quick hack version.
+
+: convert_digit ( c -- n flag )
+	DUP [CHAR] 0 < IF
+	  FALSE EXIT		\ less than zero is bad
+	THEN
+	
+	DUP [CHAR] 9 <= IF
+	  [CHAR] 0 - TRUE EXIT	\ 0 to 9 is character
+	THEN
+
+	DUP [CHAR] A >=
+	OVER [CHAR] Z <= AND
+	IF
+	  [CHAR] A - 10 + TRUE EXIT
+	THEN
+
+	DUP [CHAR] a >=
+	OVER [CHAR] z <= AND
+	IF
+	  [CHAR] a - 10 + TRUE EXIT
+	THEN
+
+    FALSE
+;
+
+
+\ >NUMBER
+\        ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 )
+\
+\ ud2 is the unsigned result of converting the characters within the string 
+\ specified by c-addr1 u1 into digits, using the number in BASE, and adding each
+\ into ud1 after multiplying ud1 by the number in BASE. Conversion continues 
+\ left-to-right until a character that is not convertible, including any + or -, is
+\ encountered or the string is entirely converted. c-addr2 is the location of the 
+\ first unconverted character or the first character past the end of the string if the
+\ string was entirely converted. u2 is the number of unconverted characters in the 
+\ string. An ambiguous condition exists if ud2 overflows during the
+\ conversion. 
+
+
+: >NUMBER ( d1 addr1 n1 -- d1 addr2 n2 )
+
+  BEGIN
+    DUP
+  WHILE
+    OVER C@ -ROT
+    1 /STRING >R >R
+    convert_digit 
+      IF 
+        >R ( hack ) D>S BASE @ M* R> M+ R> R> ( d1 -- d2 addr2 n2 )
+      ELSE
+        DROP R> R> EXIT
+      THEN   
+  REPEAT
+;
+
+
+\ ---------------------------------------------------------------
+\ 2LITERAL 
+\ two-literal DOUBLE literal
+\
+\        Interpretation: Interpretation semantics for this word are undefined.
+\
+\        Compilation: ( x1 x2 -- )
+\
+\ Append the run-time semantics below to the current definition. 
+\
+\        Run-time: ( -- x1 x2 )
+\
+\ Place cell pair x1 x2 on the stack. 
+\
+
+: 2LITERAL SWAP POSTPONE LITERAL POSTPONE LITERAL ; IMMEDIATE
+

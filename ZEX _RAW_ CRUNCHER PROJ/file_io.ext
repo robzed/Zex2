@@ -1,0 +1,5 @@
+//prototypes
+Handle read_file (FSSpec the_file);
+get_zex_fsspec();
+write_file(char * the_data, int data_length, FSSpec the_file);
+

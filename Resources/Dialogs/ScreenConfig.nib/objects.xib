@@ -1,0 +1,226 @@
+<?xml version="1.0" standalone="yes"?>
+<object class="NSIBObjectData">
+  <string name="targetFramework">IBCarbonFramework</string>
+  <object name="rootObject" class="NSCustomObject" id="1">
+    <string name="customClass">NSApplication</string>
+  </object>
+  <array count="20" name="allObjects">
+    <object class="IBCarbonWindow" id="166">
+      <string name="windowRect">44 523 405 1123 </string>
+      <string name="title">Zex Screen Select</string>
+      <object name="rootControl" class="IBCarbonRootControl" id="167">
+        <string name="bounds">0 0 361 600 </string>
+        <array count="5" name="subviews">
+          <object class="IBCarbonButton" id="180">
+            <string name="bounds">321 428 341 498 </string>
+            <ostype name="controlSignature">LsZx</ostype>
+            <int name="controlID">100</int>
+            <string name="title">Quit</string>
+            <ostype name="command">quit</ostype>
+            <string name="helpTagText">Click to leave Zex</string>
+            <int name="buttonType">2</int>
+          </object>
+          <object class="IBCarbonButton" id="181">
+            <string name="bounds">321 510 341 580 </string>
+            <ostype name="controlSignature">LsZx</ostype>
+            <int name="controlID">101</int>
+            <string name="title">OK</string>
+            <ostype name="command">ok  </ostype>
+            <string name="helpTagText">Click here after selecting with keys</string>
+            <int name="buttonType">1</int>
+          </object>
+          <object class="IBCarbonStaticText" id="182">
+            <string name="bounds">44 156 60 445 </string>
+            <string name="title">Please select which screen you wish to use...</string>
+          </object>
+          <object class="IBCarbonStaticText" id="217">
+            <string name="bounds">285 42 301 558 </string>
+            <string name="title">A cross (X) in any screen means Zex may run with accelerated 3D on that display</string>
+          </object>
+          <object class="IBCarbonStaticText" id="218">
+            <string name="bounds">20 249 36 352 </string>
+            <string name="title">Welcome to Zex</string>
+          </object>
+        </array>
+      </object>
+      <boolean name="hasCloseBox">FALSE</boolean>
+      <boolean name="hasCollapseBox">FALSE</boolean>
+      <boolean name="hasHorizontalZoom">FALSE</boolean>
+      <boolean name="isResizable">FALSE</boolean>
+      <boolean name="hasVerticalZoom">FALSE</boolean>
+      <int name="carbonWindowClass">4</int>
+      <int name="themeBrush">1</int>
+      <int name="windowPosition">1</int>
+      <string name="helpTagText">Click on a screen box</string>
+    </object>
+    <reference idRef="167"/>
+    <reference idRef="180"/>
+    <reference idRef="181"/>
+    <reference idRef="182"/>
+    <object class="IBCarbonStaticText" id="204">
+      <string name="bounds">410 37 432 435 </string>
+      <string name="title">(hold shift when starting Zex to override this setting)</string>
+    </object>
+    <object class="IBCarbonStaticText" id="205">
+      <string name="bounds">72 302 88 421 </string>
+      <string name="title">Game Resolution</string>
+    </object>
+    <object class="IBCarbonCheckBox" id="206">
+      <string name="bounds">386 35 404 303 </string>
+      <ostype name="controlSignature">LsZx</ostype>
+      <int name="controlID">203</int>
+      <string name="title">Don&apos;t show this again</string>
+      <string name="helpTagText">Hide this screen next time?</string>
+    </object>
+    <object class="IBCarbonButton" id="207">
+      <string name="bounds">348 426 368 506 </string>
+      <ostype name="controlSignature">LsZx</ostype>
+      <int name="controlID">201</int>
+      <string name="title">Play Zex</string>
+      <ostype name="command">ok  </ostype>
+      <string name="helpTagText">Click to continue</string>
+      <int name="buttonType">1</int>
+    </object>
+    <object class="IBCarbonRootControl" id="208">
+      <string name="bounds">0 0 452 546 </string>
+      <array count="11" name="subviews">
+        <object class="IBCarbonButton" id="213">
+          <string name="bounds">348 344 368 414 </string>
+          <ostype name="controlSignature">LsZx</ostype>
+          <int name="controlID">200</int>
+          <string name="title">Quit</string>
+          <ostype name="command">quit</ostype>
+          <string name="helpTagText">Click to leave Zex</string>
+          <int name="buttonType">2</int>
+        </object>
+        <reference idRef="207"/>
+        <reference idRef="206"/>
+        <reference idRef="204"/>
+        <object class="IBCarbonDBListView" id="214">
+          <string name="bounds">93 299 266 491 </string>
+          <ostype name="controlSignature">LsZx</ostype>
+          <int name="controlID">205</int>
+          <string name="helpTagText">Can be smaller than the screen</string>
+          <int name="hiliteStyle">1</int>
+          <boolean name="variableWidthColumns">FALSE</boolean>
+          <boolean name="horzScrollBar">FALSE</boolean>
+          <int name="selectionFlags">2</int>
+          <int name="listViewHeaderBtnHeight">0</int>
+          <array count="1" name="listViewColumns">
+            <object class="IBCarbonDBListViewColumn">
+              <ostype name="propertyID">wres</ostype>
+              <int name="maxWidth">300</int>
+            </object>
+          </array>
+        </object>
+        <reference idRef="205"/>
+        <object class="IBCarbonStaticText" id="212">
+          <string name="bounds">72 58 88 208 </string>
+          <string name="title">Screen Resolution</string>
+        </object>
+        <object class="IBCarbonStaticText" id="209">
+          <string name="bounds">20 73 52 473 </string>
+          <string name="title">Please select the resolution that you wish to play Zex. Smaller resolutions have faster framerates, but you will see less detail.</string>
+        </object>
+        <object class="IBCarbonButton" id="216">
+          <string name="bounds">348 37 368 107 </string>
+          <ostype name="controlSignature">LsZx</ostype>
+          <int name="controlID">202</int>
+          <boolean name="hidden">TRUE</boolean>
+          <string name="title">Back</string>
+          <ostype name="command">Back</ostype>
+          <string name="helpTagText">Go back to screen selection</string>
+        </object>
+        <object class="IBCarbonDBListView" id="211">
+          <string name="bounds">93 55 266 247 </string>
+          <ostype name="controlSignature">LsZx</ostype>
+          <int name="controlID">204</int>
+          <string name="helpTagText">The screen resolution when playing Zex</string>
+          <int name="hiliteStyle">1</int>
+          <boolean name="variableWidthColumns">FALSE</boolean>
+          <boolean name="horzScrollBar">FALSE</boolean>
+          <int name="selectionFlags">2</int>
+          <int name="listViewHeaderBtnHeight">0</int>
+          <array count="1" name="listViewColumns">
+            <object class="IBCarbonDBListViewColumn">
+              <ostype name="propertyID">sres</ostype>
+              <int name="maxWidth">300</int>
+              <int name="textAlignment">-2</int>
+            </object>
+          </array>
+        </object>
+        <object class="IBCarbonRadioGroup" id="221">
+          <string name="bounds">279 56 317 245 </string>
+          <ostype name="controlSignature">LsZx</ostype>
+          <int name="controlID">206</int>
+          <string name="helpTagText">Select the screen depth to play at</string>
+          <array count="2" name="radioTitles">
+            <array count="1">
+              <string>32000 colours (16 bit)</string>
+            </array>
+            <array count="1">
+              <string>16 million colours (32 bit)</string>
+            </array>
+          </array>
+        </object>
+      </array>
+    </object>
+    <reference idRef="209"/>
+    <reference idRef="211"/>
+    <reference idRef="212"/>
+    <reference idRef="213"/>
+    <reference idRef="214"/>
+    <object class="IBCarbonWindow" id="215">
+      <string name="windowRect">125 31 577 577 </string>
+      <string name="title">Zex Screen Preferences</string>
+      <reference name="rootControl" idRef="208"/>
+      <boolean name="hasCloseBox">FALSE</boolean>
+      <boolean name="hasCollapseBox">FALSE</boolean>
+      <boolean name="hasHorizontalZoom">FALSE</boolean>
+      <boolean name="isResizable">FALSE</boolean>
+      <boolean name="hasVerticalZoom">FALSE</boolean>
+      <int name="carbonWindowClass">4</int>
+      <int name="themeBrush">1</int>
+      <int name="windowPosition">1</int>
+    </object>
+    <reference idRef="216"/>
+    <reference idRef="217"/>
+    <reference idRef="218"/>
+    <reference idRef="221"/>
+  </array>
+  <array count="20" name="allParents">
+    <reference idRef="1"/>
+    <reference idRef="166"/>
+    <reference idRef="167"/>
+    <reference idRef="167"/>
+    <reference idRef="167"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="215"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="208"/>
+    <reference idRef="1"/>
+    <reference idRef="208"/>
+    <reference idRef="167"/>
+    <reference idRef="167"/>
+    <reference idRef="208"/>
+  </array>
+  <dictionary count="5" name="nameTable">
+    <string>File&apos;s Owner</string>
+    <reference idRef="1"/>
+    <string>ListView1</string>
+    <reference idRef="214"/>
+    <string>ListView21</string>
+    <reference idRef="211"/>
+    <string>ScrnPrefs</string>
+    <reference idRef="215"/>
+    <string>ScrnSelect</string>
+    <reference idRef="166"/>
+  </dictionary>
+  <unsigned_int name="nextObjectID">224</unsigned_int>
+</object>

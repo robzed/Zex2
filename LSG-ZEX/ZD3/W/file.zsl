@@ -1,0 +1,88 @@
+68 CONSTANT coffee-file-spec-size
+
+( coffee-get-file-size     counted-name-addr -- size-of-file-in-byte )
+( coffee-read-file       space-ptr counted-name-addr -- error )         
+( coffee-write-file		 length data-ptr counted-name-addr -- error )
+( coffee-get-file-spec   index -- coffee-file-spec-ptr )
+( coffee-get-file-name  index -- name-addr )
+
+: coffee-get-file-name ( index target -- ) 
+SWAP coffee-get-file-spec DUP @ 
+IF DROP 0 SWAP C! ELSE 
+( target fsspec -- ) CELL+ DUP C@ 1+ 
+( target name-addr u -- ) ROT SWAP CMOVE 
+THEN 
+;
+
+: dir 1 BEGIN DUP PAD coffee-get-file-name PAD COUNT DUP WHILE TYPE CR 1+ REPEAT 2DROP DROP ; 
+
+: dir/w 1 BEGIN DUP PAD coffee-get-file-name PAD COUNT DUP WHILE TYPE SPACE 1+ REPEAT 2DROP DROP ;
+
+: (dir<compare) ( file-addr file-u test-addr test-u -- TRUE|FALSE)
+ROT 2DUP ( file-addr test-addr test-u file-u test-u file-u)
+> IF ( file-u smaller than test-u )
+   2DROP 2DROP 0
+ELSE
+   ( file-u equal or larger than test-u )
+   DROP TUCK ( only use test-u )
+   COMPARE 0=
+THEN
+;
+
+: dir< ( "<chars>" -- ) ( displays files starting with... )
+PARSE-WORD DUP IF >R >R
+1 BEGIN DUP PAD coffee-get-file-name PAD COUNT DUP 
+WHILE 2DUP R> R@ OVER >R
+  (dir<compare) IF
+    TYPE CR 
+  ELSE
+    2DROP
+  THEN 
+1+ REPEAT R> R>
+THEN 2DROP 2DROP DROP ; 
+
+ : (dir>compare) ( file-addr file-u test-addr test-u -- TRUE|FALSE)
+ ROT 2DUP ( file-addr test-addr test-u file-u test-u file-u)
+ > IF ( file-u smaller than test-u )
+    2DROP 2DROP 0
+ ELSE
+    ( file-u equal or larger than test-u )
+    OVER - SWAP >R SWAP >R ( file-addr f-offset ) ( R: test-u test-addr -- )
+    + R> R> TUCK ( only use test-u )
+    COMPARE 0=
+ THEN
+ ;
+
+ : dir> ( "<chars>" -- ) ( displays files ending with... )
+ PARSE-WORD DUP IF >R >R
+ 1 BEGIN DUP PAD coffee-get-file-name PAD COUNT DUP 
+ WHILE 2DUP R> R@ OVER >R
+   (dir>compare) IF
+     TYPE CR
+   ELSE
+     2DROP
+   THEN 
+ 1+ REPEAT R> R>
+ THEN 2DROP 2DROP DROP ; 
+
+
+\ ==== stuff for more-words ======
+
+: get-previous-word ( waddr -- waddr ) DUP WORD>LFA @ DUP IF - ELSE 0 THEN ;
+
+: print-word-name ( waddr -- ) WORD>NFA COUNT TYPE ; 
+
+: more-words  ( -- )
+LATEST-WORD
+BEGIN
+  CR CR
+  20 0 ?DO
+    DUP print-word-name CR get-previous-word
+    ?DUP 0= IF UNLOOP EXIT THEN
+  LOOP
+  ."    ----Press RETURN to continue, or any other key to quit"
+  KEY 13 <>
+UNTIL 
+DROP ;
+
+

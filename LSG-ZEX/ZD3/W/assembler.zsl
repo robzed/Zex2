@@ -1,0 +1,196 @@
+\ crude assembler
+\ (crude since no error checking and no label support)
+
+DECIMAL
+\ define the registers as numbers
+: defreg DUP 1+ SWAP POSTPONE CONSTANT ;
+0 defreg r0  defreg r1  defreg r2  defreg r3  defreg r4  defreg r5  defreg r6  defreg r7 
+  defreg r8  defreg r9  defreg r10 defreg r11 defreg r12 defreg r13 defreg r14 defreg r15 
+  defreg r16 defreg r17 defreg r18 defreg r19 defreg r20 defreg r21 defreg r22 defreg r23 
+  defreg r24 defreg r25 defreg r26 defreg r27 defreg r28 defreg r29 defreg r30 defreg r31 DROP
+13 CONSTANT rTOS 14 CONSTANT rPSP 21 CONSTANT rFPSP
+0 defreg fr0  defreg fr1  defreg fr2  defreg fr3  defreg fr4  defreg fr5  defreg fr6  defreg fr7 
+  defreg fr8  defreg fr9  defreg fr10 defreg fr11 defreg fr12 defreg fr13 defreg fr14 defreg fr15 
+  defreg fr16 defreg fr17 defreg fr18 defreg fr19 defreg fr20 defreg fr21 defreg fr22 defreg fr23 
+  defreg fr24 defreg fr25 defreg fr26 defreg fr27 defreg fr28 defreg fr29 defreg fr30 defreg fr31 DROP
+14 CONSTANT fTOS
+\ ========================================================================
+\ the assember helper words - see The PowerPC Architecture: xxxxxxxx by IBM.
+: shift-to-bit 31 SWAP - LSHIFT ;
+: primary-op ( opbase -- op ) 5 shift-to-bit ; \ get primary op code into bit 0 to 5
+: make-mask ( hi-bit lo-bit -- ) 2DUP < IF DUP>R SWAP - 1+ -1 SWAP LSHIFT INVERT R> shift-to-bit THEN ;
+: AA+ ( op -- op+AAbit) 2 + ;
+: LK+ ( op -- op+LKbit) 1+  ;
+: aLI+ ( branch-addr op -- op+offset ) SWAP 0 5 make-mask 3 OR INVERT AND + ;
+: aBD+ ( branch-addr op -- op+offset ) SWAP 0 15 make-mask 3 OR INVERT AND + ;
+: LI+ ( branch-addr op -- op+offset ) SWAP HERE - SWAP aLI+ ;
+: BD+ ( branch-addr op -- op+offset ) SWAP HERE - SWAP aBD+ ;
+: BI+ ( bi op -- op+ ) SWAP 15 shift-to-bit + ;
+: BO+ ( bo op -- op+ ) SWAP 10 shift-to-bit + ;
+
+\ for fixed point instructions
+: SI+ ( value op -- op+ ) SWAP 65535 AND + ;
+: D+ SI+ ;
+: RA+ ( reg_val op -- op+ ) SWAP 15 shift-to-bit + ;
+: RT+ ( reg_val op -- op+ ) SWAP 10 shift-to-bit + ;
+: RS+ ( reg_val op -- op+ ) SWAP 10 shift-to-bit + ;
+: RB+ ( reg-val op -- op+ ) SWAP 20 shift-to-bit + ;
+: Rc+ ( op -- op+ ) 1+ ;
+: OE+ ( op -- op+ ) 1 21 shift-to-bit + ;
+: op30+ ( sec-op op -- op+ ) 30 shift-to-bit + ;
+\ ========================================================================
+\ the actual instructions
+: b,   18 primary-op  LI+         , ; ( targ-addr -- )
+: ba,  18 primary-op  aLI+ AA+     , ;
+: bl,  18 primary-op  LI+     LK+ , ;
+: bla, 18 primary-op  aLI+ AA+ LK+ , ;
+
+: bc,   16 primary-op BD+ BI+ BO+         , ;
+: bca,  16 primary-op aBD+ BI+ BO+ AA+     , ;
+: bcl,  16 primary-op BD+ BI+ BO+     LK+ , ;
+: bcla, 16 primary-op aBD+ BI+ BO+ AA+ LK+ , ;  ( bo bi target-addr -- )
+
+: bclr,  19 primary-op 16 op30+ BI+ BO+     , ;
+: bclrl, 19 primary-op 16 op30+ BI+ BO+ LK+ , ;
+
+\ branched based extended forms
+: bne,   4 2 ROT bc, ;
+: beq,  12 2 ROT bc, ;
+
+: blr,  20 0 bclr,   ;
+
+
+\ fixed load instructions
+: lbz,  34 primary-op RA+ D+ RT+ , ; ( rt displacement ra -- )
+: lhz,  40 primary-op RA+ D+ RT+ , ; ( rt displacemt ra -- )
+: lwz,  32 primary-op RA+ D+ RT+ , ; ( rt displmt ra -- )
+
+\ fixed point instructions
+: addi,  14 primary-op SI+ RA+ RT+               , ;
+: addis, 15 primary-op SI+ RA+ RT+               , ; ( rt ra int16 -- )
+: add,   31 primary-op RB+ RA+ RT+ 266 op30+     , ; ( rt ra rb -- )
+: add.,  31 primary-op RB+ RA+ RT+ 266 op30+ Rc+ , ;
+
+: neg,   31 primary-op RA+ RT+     104 op30+     , ;
+
+\ fixed point logical instructions
+: ori,   24 primary-op SI+ RS+ RA+               , ;
+
+: or,    31 primary-op RB+ RS+ RA+ 444 op30+     , ;
+: or.,   31 primary-op RB+ RS+ RA+ 444 op30+     , ;
+: nor,   31 primary-op RB+ RS+ RA+ 124 op30+     , ;
+: nor.,  31 primary-op RB+ RS+ RA+ 124 op30+     , ;
+
+
+\ logical based extended forms
+: nop,  r0 r0 r0 ori, ; ( -- )
+: mr,   DUP or, ;    ( rt rs -- )
+: not,  DUP nor, ; ( rt rs -- )
+: not., DUP nor., ;  ( rt rs -- )
+: subi, NEGATE addi, ; ( rt rs imm -- )
+: li, r0 SWAP addi, ; ( rt imm -- )
+: lis, r0 SWAP addis, ; ( rt imm -- )
+
+
+\ floating load instructions
+: lfs,   48 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+: lfsu,  49 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+: lfd,   50 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+: lfdu,  51 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+
+: stfs,  52 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+: stfsu, 53 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+: stfd,  54 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+: stfdu, 55 primary-op RA+ D+ RT+ ,                ; ( frt displacement ra -- )
+
+\ floating arithmetic instructions
+: fadd,   63 primary-op RB+ RA+ RT+ 21 op30+     , ; ( frt fra frb -- )
+: fadd.,  63 primary-op RB+ RA+ RT+ 21 op30+ Rc+ , ;
+: fadds,  59 primary-op RB+ RA+ RT+ 21 op30+     , ; ( frt fra frb -- )
+: fadds., 59 primary-op RB+ RA+ RT+ 21 op30+ Rc+ , ;
+
+
+\ ========================================================================
+\ Assembler directive words
+
+\ CODE is similar to : except no enter code and doesn't put into compile mode.
+: CODE ( "..<chars>" -- )
+ PARSE-WORD ?DUP 0=
+ IF .end-of-input
+ ELSE
+   2DUP find-word IF
+     CR ." Warning: word defined already - " DROP 2DUP TYPE CR
+   ELSE
+ 	 2DROP
+   THEN
+     create-header
+ THEN
+;
+
+\ END-CODE is very similar to ; except no exit code created, and no compile mode to turn off.
+: END-CODE ( -- ) HERE LATEST-WORD flush-caches REVEAL ;
+
+
+\ ========================================================================
+\ additional high-level construct assembler directives
+\
+\ helper words
+1555 CONSTANT (cond-branch)
+2999 CONSTANT (simple-branch)
+1122 CONSTANT (branch-target)
+
+\ : check_address  ( addr numBits -- addr )
+\ 	OVER 3 AND ABORT" INVALID ADDRESS - NOT MULTIPLE OF 4"
+\ 	1 SWAP 1- scale DUP NEGATE SWAP 1- 
+\ 	range NOT ABORT" INVALID ADDRESS - OUT OF RANGE" ;
+
+: (bc-patch)  ( targ-addr addr )
+	OVER - \ 13 check-address 
+	[HEX] 0000FFFC AND OVER @ FFFF0003 [DEC] AND OR SWAP ! ;
+
+: (br-patch)  ( targ-addr addr -- )
+	OVER - \ 24 check-address 
+	[HEX] 03FFFFFC AND OVER @ FC000003 [DEC] AND OR SWAP ! ;
+
+: (set-branch) ( targ-address marker -- )
+ DUP (cond-branch) = IF DROP HERE (bc-patch) EXIT THEN
+   (simple-branch) = IF      HERE (br-patch) EXIT THEN
+   ." Unmatched assembler directives" ABORT ;
+
+\ actual high level constructs - first if statements
+: ifeq,  ( -- addr marker ) HERE DUP bne, (cond-branch) ;
+: ifne,  ( -- addr marker ) HERE DUP beq, (cond-branch) ;
+
+: else, ( addr marker -- addr2 marker ) 
+HERE DUP>R b, (set-branch) R> (simple-branch) ;
+
+: then,  ( addr marker -- ) (set-branch) ;
+
+\
+\ now loop constructs
+\
+
+: begin,  ( -- addr marker ) HERE (branch-target) ;
+
+: while,  ( addr marker -- addr marker addr maker ) ifne, 2SWAP ;
+
+
+\ : bcBackwhiles  ( [addr\4]* -- )
+\	begin
+\		dup 4 =
+\	while
+\		drop codehere 4+ bcPatch
+\	repeat ;
+\
+\ : again,  ( addr\1[\addr\4]* -- )
+\	bcBackwhiles
+\	1 ?pairs
+\	b, ;
+\	
+\ : repeat,  ( addr\1[\addr\4]* -- )
+\	again, ;
+\
+\ : until,  ( addr\1[\addr\4]*\condition -- )
+\	>R bcBackwhiles
+\	1 ?pairs
+\	R> invertCondition bc, ;

@@ -1,0 +1,307 @@
+
+( EDDIE )
+
+
+( --------------------END VARS------------------- )
+
+
+
+
+( --------------------------------------------------------- )
+
+: init-editor ( -- )  
+  cls set-edit-text-colours set-edit-cursor-colour ;
+  1 mode ! ( set overwrite )
+  0 ed-print-start-column !
+  
+
+
+: process-arrow-down  
+
+   ( check if we're on the last line )
+   ed-top-line @ cursor-char-y @ + 1+ 
+  find-line SWAP DROP  ( dont want actal buffer, just hte flag )
+   IF  ( no we're not )
+   cursor-char-y @ console-rows 2 -  = ( NOTE that console_rows is a constant and so 
+                                        doesn't need to be fetched !! )                                                                               
+      IF
+       1 ed-top-line +!
+       ed-top-line @ ed-line !	  ( line to print from  ) 
+  
+       print-page  ( nope ) 
+  
+      ELSE
+       1 cursor-char-y +!
+      THEN
+      ed-top-line @ cursor-char-y @ + 1+ 
+
+       IF 
+      0 cursor-char-x !
+      0 ed-print-start-column !
+       ed-top-line @ ed-line !	  ( line to print from  ) 
+      print-page
+       
+       THEN  ( nope )
+
+   THEN
+
+;
+
+: process-arrow-up
+  ( check caret line so we dont run off start of file )
+	 
+   ed-top-line @ cursor-char-y @ OR 0 <> ( if not ed-top-line==0 and cursor-char-y==0 )
+   IF
+     
+
+     cursor-char-y @ 0 = ( check if we need to scroll down )
+     IF       
+        -1 ed-top-line +!
+        ed-top-line @ ed-line !	( line to print from  ) 
+   
+        print-page
+     ELSE  ( no need to scroll )
+        -1 cursor-char-y +!     
+     THEN ( not scroll )
+      0 cursor-char-x !
+      0 ed-print-start-column !
+       ed-top-line @ ed-line !	  ( line to print from  ) 
+      print-page
+     
+    THEN ( not top line )
+;
+
+
+: process-arrow-left
+   ( check if off of screen )
+   cursor-char-x @  0
+
+   <> ( if cursor pos x is not 0 )
+   IF
+     -1 cursor-char-x +!
+   ELSE   ( cursor is at left of con )
+    ( find out if ed-print-start-column == 0 )
+    ed-print-start-column @
+    0 =
+    IF
+      
+     cursor-char-y @ 0
+     = 
+     ed-top-line @ 0
+     = AND
+     ( if cursor pos y is not 0 )
+      IF
+      ELSE  ( not top of con and top of file )           
+       process-arrow-up  ( -- length )
+	   ( macsbug )
+	   scan-right-to-cr-file
+	   safe-print-page
+     THEN
+    ELSE  ( end of ed-print-start-column==0 )
+    ( in this case we have to scroll left one position )
+     
+      -1 ed-print-start-column +!
+      safe-print-page
+    THEN
+   THEN
+
+;
+
+: process-arrow-right 
+   ( check if off of screen )
+   
+   get-file-caret-address  ( address of character under caret )
+   ( get-console-caret-location ) ( -- console-buffer-addr )
+   peekb 13 <> ( if char under cursor+1 is not CR )
+   IF
+     ( check if we're at far right and scroll left if so )
+     cursor-char-x @
+     62 =
+     IF
+      1 ed-print-start-column +!
+      safe-print-page
+     ELSE
+       1 cursor-char-x +!
+     THEN
+   ELSE
+   ( move to start of next line )
+
+     process-arrow-down
+     ( ARROW_DOWN process-key ) ( Recursive. Naughty but nice... )
+     0 cursor-char-x !
+     ed-print-start-column @
+     0 <>  ( if start column not 0 then )
+     IF
+     0 ed-print-start-column !  ( set to 0 )
+     safe-print-page
+     THEN
+   THEN
+;
+
+: redraw
+    ed-print-x @ ed-print-y @
+    ed-top-line @ ed-line !	( line to print from  ) 
+    print-page 
+    ed-print-y ! ed-print-x !
+;
+( --------------------------------------------------------- )
+: insert-key ( char -- )
+
+ ( check for backspace )
+ DUP
+ 8 = 
+ IF 
+    DROP ( the char )
+    calc-caret-address   
+    DUP
+    delete-char  
+	1 -
+     set-caret-given-address  ( from caret address )   
+    redraw
+ ELSE ( not backspace )
+  mode @ 0 =
+  IF ( overwrite mode )
+    calc-caret-address C!
+  ELSE
+  ( Insert mode )
+    calc-caret-address  insert-char
+  THEN
+  process-arrow-right  redraw
+ THEN
+; ( of insert-key )
+
+( --------------------------------------------------------- )
+
+( set ed-quit to !0 to quit editor )
+
+: process-key  ( key -- )
+  
+  DUP
+  ARROW_DOWN =
+  IF    DROP process-arrow-down   ELSE
+  DUP
+  ARROW_UP =
+  IF   DROP process-arrow-up  ELSE 
+  DUP
+  ARROW_RIGHT =
+  IF  DROP process-arrow-right  ELSE
+  DUP
+  ARROW_LEFT =
+  IF  DROP  process-arrow-left ELSE
+  ( ctrl X to quit )
+  DUP
+  24 =
+  IF  1 ed-quit !  ELSE
+  insert-key
+  THEN
+  THEN
+  THEN
+  THEN
+  THEN
+ 
+  draw-status-line
+
+; ( of handle-key )
+
+
+
+: ed-process-key
+    KEY process-key
+    
+; ( of ed-process-key )
+
+
+
+( --------------------------------------------------------- )
+
+: quit-no-save
+CR ." Eddie terminated; File not saved."
+;
+( --------------------------------------------------------- )
+
+: quit-save
+ed-length @ 1+
+ed-file-ptr @
+PAD ( get name )
+write-file
+CR ." Eddie terminated; File saved."
+;
+
+( --------------------------------------------------------- )
+
+: do-edit-quit
+63 0 ?DO 1 I 31 poke-attrib LOOP
+63 0 ?DO 32 I 31 poke-con LOOP
+
+  0 cursor-char-x !
+  console-rows 1 - cursor-char-y ! ( position on bottom line )
+  ." [Q]uit [S]ave ?"
+  BEGIN
+     KEY
+     DUP
+     81 = IF ( Q )
+       quit-no-save
+       ETRUE
+     ELSE
+       DUP
+       83 = IF ( S )
+         quit-save
+         ETRUE
+       ELSE
+         FALSE
+       THEN  ( end of S )
+     THEN  ( end of Q )
+  
+  UNTIL
+;
+( --------------------------------------------------------- )
+
+: run-editor ( -- )
+
+  init-editor  
+
+  ed-top-line @ ed-line !	( line to print from ) 
+  print-page
+
+  home
+  0 ed-quit !	( our quit flag ) 
+  BEGIN
+  ed-process-key
+  PAUSE
+  ed-quit @
+  0 <> 
+  UNTIL
+  do-edit-quit
+;
+
+( --------------------------------------------------------- )
+
+ 
+: edit ( filename -- )
+ 
+  PARSE-WORD PAD convert-to-stored-string PAD read-file  ( addr count )
+  ( store current base addr of text and current index )
+   ed-length ! 
+   ed-file-ptr ! 
+   0 ed-top-line !
+   ed-file-ptr @
+   ed-length @
+   +
+   ed-file-end-ptr !
+   
+   
+   run-editor 
+  
+  day 
+;	( set colours back )  
+
+
+( /EDDIE )
+
+( --------------------------------------------------------- )
+
+: ed edit ;	( just a shortcut for edit )
+
+( ------------------------------------------------------------------------------ )
+BACKGROUND: task-test BEGIN 1000 0 ?DO I . SPACE PAUSE LOOP STOP AGAIN ;
+

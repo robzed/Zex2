@@ -1,0 +1,63 @@
+3DMetafile ( 1 6 Normal tableofcontents0> )
+	displaygroup2:
+	BeginGroup (
+		DisplayGroup ( )
+		DisplayGroupState ( Inline 
+		)
+		DisplayGroupBBox (
+			-56 -56 -56 56 56 56 )
+	)
+	trimesh3:
+	Container (
+		TriMesh (
+			12 1 0 0 8 1 # numTriangles numTriangleAttributeTypes numEdges numEdgeAttributeTypes numPoints numVertexAttributeTypes
+			0 1 2 
+			0 2 3 
+			4 5 6 
+			4 6 7 
+			1 4 7 
+			1 7 2 
+			5 0 3 
+			5 3 6 
+			2 7 6 
+			2 6 3 
+			4 1 0 
+			4 0 5 
+			-56 -56 -56 56 -56 -56 56 -56 56 
+			-56 -56 56 56 56 -56 -56 56 -56 
+			-56 56 56 56 56 56 
+			-56 -56 -56 56 56 56 False )
+		AttributeArray (
+			3 0 0 0 0 
+			0 -1 0 
+			0 -1 0 
+			0 1 0 
+			0 1 0 
+			1 0 0 
+			1 0 0 
+			-1 0 0 
+			-1 0 0 
+			0 0 1 
+			0 0 1 
+			0 0 -1 
+			0 0 -1 
+		)
+		AttributeArray (
+			3 0 2 0 0 
+			-0.270598 -0.270598 -0.9238796 
+			0.6532815 -0.2705981 -0.7071068 
+			0.270598 -0.270598 0.9238796 
+			-0.6532815 -0.2705981 0.7071068 
+			0.270598 0.270598 -0.9238796 
+			-0.6532815 0.2705981 -0.7071068 
+			-0.270598 0.270598 0.9238796 
+			0.6532815 0.2705981 0.7071068 
+		)
+		attributeset4:
+		Container (
+			AttributeSet ( )
+			DiffuseColor ( 1 1 1 )
+		)
+	)
+	EndGroup ( )
+	

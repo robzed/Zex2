@@ -1,0 +1,85 @@
+ \ read_keys.zsl
+ \ SB Oct 2001
+ 
+  0 CONSTANT MTHR	 \ controls offsets
+ 1 CONSTANT REVT
+ 2 CONSTANT VTHR 
+ 3 CONSTANT IVTH 
+ 4 CONSTANT ROLL 
+ 5 CONSTANT ROLR 
+ 6 CONSTANT PITD 
+ 7 CONSTANT PITU 
+ 8 CONSTANT YAWL 
+ 9 CONSTANT YAWR 
+ 10 CONSTANT CANN
+ 11 CONSTANT MISS   
+ 12 CONSTANT LASR
+ 13 CONSTANT EJCT
+ 14 CONSTANT ENDG
+ 15 CONSTANT MUSU
+ 16 CONSTANT MUSD
+ 17 CONSTANT SONU
+ 18 CONSTANT SOND
+ 19 CONSTANT RRUP
+ 20 CONSTANT RRDN
+ 21 CONSTANT SHOI
+ 22 CONSTANT DOCK
+ 23 CONSTANT DAMP
+ 24 CONSTANT COMK
+ 25 CONSTANT SOLM
+ 26 CONSTANT CONN
+ 27 CONSTANT TARG
+ 28 CONSTANT TIMU
+ 29 CONSTANT TIMD
+ 30 CONSTANT APUP
+ 31 CONSTANT APDN
+ 32 CONSTANT GALM
+ 33 CONSTANT KSET 
+ 34 CONSTANT RTAR
+ 
+ 35 CONSTANT FVIW
+ 36 CONSTANT LVIW
+ 37 CONSTANT RVIW
+ 38 CONSTANT BVIW
+ 39 CONSTANT PANE
+ 
+CREATE key_codes 60 4 * ALLOT	( int32's key codes storage space )
+
+: load_key  ( expects control offset and keycode on stack -- see above )
+  SWAP 4 * \ get offset on top
+  key_codes + \ make correct adddress in keycodes for controller
+  !   \ store the keycode
+;
+
+
+: reset_key_data ( does nothing )
+;
+
+
+: load_keys
+  key_codes    \ get address of the codes array
+  load_key_def \ pass to engine
+;
+
+\ finally, read the keys
+ include keytrans.zsl \ extended keyboard keys consts
+\ switch to init folder
+ init-directory
+\ read the file
+ .( Reading keys data ... ) CR
+ include keys.def
+\ switch back to w folder
+ w-directory
+ 
+
+VARIABLE keyfile_length
+CREATE keyfile_buffer 10000 ALLOT ( -- addr )
+
+: write_keys_to_disk ( -- error )
+init-directory
+keyfile_length @ keyfile_buffer C" keys.def" coffee-write-file
+w-directory
+;
+
+
+

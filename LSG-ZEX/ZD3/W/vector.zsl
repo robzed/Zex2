@@ -1,0 +1,74 @@
+\ Vector Stuff
+
+\ define structure access to vectors
+START_STRUCT_DEF
+double MEMBER_ .vx _MEMBER
+double MEMBER_ .vy _MEMBER
+double MEMBER_ .vz _MEMBER
+END_STRUCT_DEF SIZEOF(vector) END_DEF
+
+\ create a temporary vector
+: VCREATE CREATE SIZEOF(vector) ALLOT ;
+
+\ now create a general purpose temporary
+VCREATE vtemp
+VCREATE vworking
+
+\ copy a vector
+: Vcopy ( vsource-addr starget-addr -- ) SIZEOF(vector) MOVE ;
+
+
+: FmultiplyBy ( targ-addr --) ( F: constant -- ) DUP F@ F* F! ;
+
+\ multiply a vector by a constant
+: VmultiplyBy ( targ-vector -- ) ( F: constant -- ) 
+DUP .vx FDUP FmultiplyBy
+DUP .vy FDUP FmultiplyBy
+    .vz      FmultiplyBy
+;
+
+
+: Fsubfrom ( v1-addr v2-addr -- ) ( mem: -- v1-=v2 ) F@ FNEGATE F+! ;
+
+\ subtract one vector from another
+: Vsubfrom ( tar src -- ) ( target becomes tar-src )
+2DUP .vx SWAP .vx SWAP Fsubfrom
+2DUP .vy SWAP .vy SWAP Fsubfrom
+     .vz SWAP .vz SWAP Fsubfrom
+;
+
+
+: V+ ( tar src -- )
+2DUP .vx F@ .vx F+!
+2DUP .vy F@ .vy F+!
+     .vz F@ .vz F+!
+;
+
+\ VECTOR DEBUGGING TOOLS
+\
+\ These perform vector manipulation on the stack. Now, normally these 3d points appear
+\ in memory, with just the address on the stack. However, it is useful to view, 
+\ set and maybe even fetch these onto the floating point stack for manipulation
+\ when debugging.
+\
+\ There is a question about the order. Perhaps the order of ( z y x -- ) is strictly
+\ more logical, but for vector entry, the order chosen is easier. Hence, we use the
+\ more readible method for entry, if perhaps slightly more difficult to work on.
+
+\ fetch a vector
+: V@ ( addr -- ) ( F: -- x y z ) DUP .vx F@ DUP .vy F@ .vz F@ ;
+
+\ set a vector 
+: V! ( addr -- ) ( F: x y z -- ) DUP .vz F! DUP .vy F! .vx F! ;
+
+
+\ fetch a vector (reversed on stack)
+: V@rev ( addr -- ) ( F: -- z y x ) DUP .vz F@ DUP .vy F@ .vx F@ ;
+
+\ set a vector (reversed on stack)
+: V!rev ( addr -- ) ( F: z y x -- ) DUP .vx F! DUP .vy F! .vz F! ;
+
+
+\ display a vector when supplied a target address
+: V. ( addr -- ) V@ FROT F. FSWAP F. F. ;
+

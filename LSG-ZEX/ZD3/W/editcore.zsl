@@ -1,0 +1,269 @@
+
+( --------------------------------------------------------- )
+
+: pokeb C! ; ( char addr -- )
+: peekb C@ ; ( char addr -- )
+
+( --------------------------------------------------------- )
+
+: set-edit-text-colours 201  console-colour ! ;
+: set-edit-cursor-colour 120  cursor-colour ! ;
+
+( --------------------------------------------------------- )
+
+
+: view-x
+  cursor-char-x @ 
+  ( if cursor x is > 62 then set )
+  ( ed-print-start-column to cursor-x/63 and cursor-x to the remainder )
+  62 >  
+  IF 
+    cursor-char-x @   63 MOD  ed-print-start-column ! cursor-char-x @ 
+    63 / 63 * cursor-char-x !
+  THEN
+    
+;
+
+: view-y
+  cursor-char-y @  0 <
+  IF   
+   ed-top-line @ 0 >
+    IF
+     -1 ed-top-line @ +! 
+    THEN
+  0 cursor-char-y !
+  THEN
+
+;
+
+
+: find-line  ( line number -- buffer addr flag )
+  DUP 0 =
+  IF
+  DROP
+  ed-file-ptr @ ( start of buffer )
+  ETRUE
+  ELSE
+  wanted-line !
+  0          ( line-number buffer counter )
+  temp-line !
+  ed-file-ptr @ ( start of buffer )
+   
+  BEGIN
+    DUP C@    ( buffer char )
+    13 =       
+    IF
+     temp-line @ 1 + temp-line ! 
+    THEN 
+    ( inc addr )
+    1+ 
+    ( check we haven't run off end of data )
+    DUP  ed-file-end-ptr @
+    = IF 
+        FALSE EXIT
+    THEN
+    ( check line count )
+
+    temp-line @ wanted-line @ =
+  UNTIL
+  ETRUE
+  THEN
+;
+
+VARIABLE craddr
+
+( given an address, calculate the line and x offset)
+: find-line-from-addr  ( buffer-addr -- line xoff flag )
+
+ed-file-ptr @ ( wantedaddr startofbuffer )
+DUP
+craddr !
+0             ( wantedaddr startofbuffer line0 )
+SWAP          ( wantedaddr line1 startofbuffer )
+ROT           ( line1 startofbuffer wantedaddr )
+SWAP          ( line1 wantedaddr currentaddr)
+        
+
+BEGIN
+( have we hit eof? )
+    DUP  ed-file-end-ptr @
+    = IF 
+        -1 FALSE EXIT
+    THEN
+( have we an addr match )
+    2DUP = IF
+       ( calc x offset )
+        craddr @ -  ( line wanted xoffset )
+        1 -
+        SWAP
+        DROP         ( line xoff )
+        ETRUE EXIT  ( return line, xoff and true )
+    THEN
+( get char from current addr )
+    DUP C@
+    13 = IF
+    ( save current addr to calc xoff )
+    DUP
+    craddr !
+    ( inc line count )
+    ROT  ( wantedaddr currentaddr line )
+    1+
+    ( -ROT ) ROT ROT ( line wantedaddr currentaddr )
+    THEN
+    1+
+    FALSE
+UNTIL
+;
+
+: set-caret-given-address ( caret-address -- )
+find-line-from-addr 
+ IF 
+ cursor-char-x ! ( store xoff )
+ ed-top-line @ -  ( line ofset for con y )
+ cursor-char-y !
+ ELSE
+ DROP  ( drop the line numbmer )
+ THEN
+ 
+ ( now update window to refelct new caret position )
+ view-x 
+ view-y
+;
+
+( --------------------------------------------------------- )
+
+: calc-caret-address ( -- buffer address of caret)
+( returns the buffer address of the caret )
+( from ed-top-line plus cursor-char-y is line number )
+( find that line number in buffer then add cursor-char-x )
+
+ed-top-line @ cursor-char-y @ +
+find-line IF cursor-char-x @ + ed-print-start-column @ + THEN
+;
+
+( --------------------------------------------------------- )
+: get-file-caret-address ( -- address of caret in file )
+   cursor-char-y @ ed-top-line @ + find-line ( address in file buffer of start of line)
+   DROP  ( the flag )
+  ( add caret x and printing start x )
+  ed-print-start-column @ +
+  cursor-char-x @ +
+;
+( --------------------------------------------------------- )
+
+
+: get-console-caret-location ( -- address of console buffer under caret )
+cursor-char-y @ console-columns * cursor-char-x @ + console-buffer +
+;
+
+
+
+
+( --------------------------------------------------------- )
+
+: scan-right-to-cr ( -- )
+  BEGIN
+  get-console-caret-location
+  1+ C@ 13 <>
+  IF
+   1  cursor-char-x +!
+   FALSE
+  ELSE
+   ETRUE
+  THEN
+  UNTIL
+;
+
+
+
+: scan-right-to-cr-file ( -- )
+
+  cursor-char-y @ ed-top-line @ + find-line ( address in file buffer )
+  DROP  ( the flag )
+  BEGIN
+  DUP    ( the address )
+  C@ 13 <>
+  IF
+   1  cursor-char-x +!
+   FALSE
+  ELSE
+   ETRUE
+  THEN
+  SWAP ( addr flag -- flag addr )
+  1+ ( inc file address ) 
+  SWAP
+  UNTIL
+    
+  DROP  ( the address )
+  view-x
+;
+
+
+( --------------------------------------------------------- )
+VARIABLE cursor-char-x-store
+
+
+
+( --------------------------------------------------------- )
+: insert-char ( char addr -- )
+( find out how many bytes to move up )
+ DUP    ( char addr addr )
+ ROT    ( addr addr char )
+ SWAP   ( addr char addr )
+ DUP    ( addr char addr addr )
+
+ ed-file-end-ptr @  ( addr char addr addr endaddr )
+ SWAP 
+
+ -   ( addr char addr sizetomove )
+
+ OVER ( addr char addr1 sizetomove addr1 )
+ 1+   ( addr char addr1 sizetomove addr2 )
+ SWAP ( addr char addr1 addr2 sizetomove )
+
+ CMOVE>   ( addr char )
+ SWAP C!
+ 1  ed-file-end-ptr +!
+ 1  ed-length +!
+ 
+;
+
+
+( --------------------------------------------------------- )
+: delete-char ( addr -- )
+ DUP  ( check if at start of file )
+ ed-file-ptr @ =
+ IF
+   DROP
+ ELSE
+   ( find out how many bytes to move up )
+   1 -    ( addr - 1 )
+   DUP    ( addrto  addrto )
+   1+     ( addrto addrfrom )
+   DUP    ( addrto addrfrom addrfrom )
+   ed-file-end-ptr @ ( addrto addrfrom addrfrom addrend )
+   SWAP  -   ( addrto addrfrom sizetomove )
+   ROT ROT SWAP ROT
+ 
+   CMOVE   ( addr char )
+   -1  ed-file-end-ptr +!
+   -1  ed-length +!
+ THEN
+;
+
+
+
+( --------------------------------------------------------- )
+
+: read-file  ( c-addr -- addr size )
+DUP check-file IF ." file too big, size=" . SPACE COUNT TYPE ABORT THEN
+OVER ed-file-buffer SWAP coffee-read-file ?DUP 
+IF ." error reading file - " . DROP SPACE COUNT TYPE ABORT THEN
+NIP ed-file-buffer SWAP 
+;
+( --------------------------------------------------------- )
+: write-file  ( c-addr length data*  c-addr)
+coffee-write-file ( ptr to data length name )
+?DUP 
+IF ." error writing file - " . THEN
+;

@@ -1,0 +1,68 @@
+: is_cr_or_lf? ( char -- flag)
+DUP 10 = SWAP 13 = OR
+;
+
+: \ ( -- ) ( \ comment to end of line )
+
+BEGIN
+  SOURCE >IN @ /STRING  ( -- addr len )
+
+( check for already terminated string - parsing skipped CR or LF )
+  OVER
+  2 - C@ [CHAR] \ = IF
+    OVER DUP>R 1-  C@ is_cr_or_lf?
+    R>     C@ is_cr_or_lf? 0= AND
+      IF
+        2DROP EXIT
+      THEN
+  THEN
+( now parse this line )
+  SWAP C@	            ( -- len addr first-char )
+  DUP>R 0<>             ( zero terminator? )
+  R@ 13 <> AND  		( cr? )
+  R@ 10 <> AND          ( lf? )
+  R> 26 <> AND 		    ( ctrl-z? )
+  0<> AND               ( length end?)
+WHILE
+  1 >IN +!
+REPEAT
+; IMMEDIATE
+
+
+: -ROT ROT ROT ; 
+
+-1 CONSTANT TRUE
+0 CONSTANT FALSE
+
+\ words to set a variable on and off
+: ON ( addr -- ) TRUE SWAP ! ;
+: OFF ( addr -- ) FALSE SWAP ! ;
+
+redefine: ; STATE @ 0= IF ." Cannot use ; outside word definition!" ABORT THEN POSTPONE ; ; IMMEDIATE
+
+: RECURSE LATEST-WORD WORD>XT COMPILE, ; IMMEDIATE
+
+: [HEX] HEX ; IMMEDIATE
+: [DEC] DECIMAL ; IMMEDIATE
+
+: (ABORT") ROT IF CATCH? 0= IF TYPE THEN -2 THROW ELSE 2DROP THEN ;
+
+: ABORT" POSTPONE S" ['] (ABORT") COMPILE, ; IMMEDIATE
+
+
+: string, ( caddr u -- )
+   DUP C,		           \ put the length at the begining of the string
+   DUP>R HERE SWAP MOVE    \ store string
+   R> ALLOT ALIGN		       \ allot space for string
+;
+
+\ c-literal string literal compilation ... compilation ( caddr u -- ) , runtime ( -- caddr )
+: (c-literal)
+   HERE 0 , HERE
+   >R >R string, R> R>
+   SWAP
+   HERE SWAP make-branch
+   POSTPONE LITERAL
+; IMMEDIATE
+
+: C" [CHAR] " PARSE POSTPONE (c-literal) ; IMMEDIATE

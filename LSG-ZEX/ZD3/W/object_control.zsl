@@ -1,0 +1,56 @@
+\ object_control.zsl
+\
+\ Object control does the basic controller - that is every frame each object gets
+\ a specific controller called for that particular type of object. Unlike various
+\ some other controller types, this is per object.
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+\ this is a table listing all of the controllers
+create-controller-table run-object-table
+
+
+\ this is a dispatcher from object_control_top.c
+: dispatch-run-controller ( id -- ) 
+run-object-table dispatch-controller-id
+;
+
+
+\ if were dispatching from c, but since the below object parser is ok, ignore.
+\ : dispatch-controller-from-c ( [r4=id] -- )
+\ get-param2 \ the id number 
+\ dispatch-basic-controller
+\ ;
+
+
+\ Object control contain a loop to parse all objects
+: object-control-loop
+0 0 { active-object-counter object-counter -- }
+
+BEGIN
+active-object-counter dynamic-object-index @ <
+WHILE
+   object-counter get-object-in-use IF
+      object-counter dispatch-run-controller
+      active-object-counter 1+ TO active-object-counter
+   THEN
+
+   object-counter 1+ TO object-counter
+REPEAT
+
+;
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::run-object ( ref xt -- )
+run-object-table install-controller
+;
+
+: remove-controller::run-object ( ref -- )
+run-object-table remove-controller
+;
+

@@ -1,0 +1,24 @@
+VARIABLE variable-name
+123 CONSTANT constant-name
+
+123 VALUE value-name
+333 TO value-name
+
+CREATE create-name
+
+Stack manipulation words....
+
+DUP  DROP  2DUP  2DROP  ROT 
+>R  R>  DUP>R  R>DROP
+NIP  TUCK  OVER
+
+
+@ fetch an address (e.g. a VARIABLE)
+onto the stack. 
+
+! write VARIABLE with value 
+underneath.
+
+? same as @ .
+
+help locals     -- information about locals

@@ -1,0 +1,26 @@
+\ object_deleted.zsl
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+create-controller-table delete-object-table
+
+: object-deleted ( id -- )
+delete-object-table dispatch-controller-id ;
+
+
+: object-deleted-c ( -- ) get-param2 object-deleted ;
+
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::delete-object ( ref xt -- ) 
+delete-object-table install-controller ;
+
+: remove-controller::delete-object ( ref -- )
+delete-object-table remove-controller ;
+
+

@@ -1,0 +1,88 @@
+*Zex level 1 loader file.
+*©Lightsoft (Games) 12Jan99
+*See "Making Zex levels" handbook for details
+*SB 180199
+*Upd 260199
+*Final: 240399
+****These level files are keyword based, so lines can appear anywhere.
+****All lines not starting with white space or **** are interpreted. The first 4 characters after <cr> are
+****assumed to be the keyword. This is followed by a space and then a list of comma delimited parameters.
+****Some keywords, like LAMN have large parameter lists. You would be advised to print out 3d Engine Design
+****for reference. 
+
+****Into text for player telling what mission is about, what they have to do and how it ends.
+LTXT                         TUTORIAL
+LTXT  
+LTXT	WELCOME TO ZEX! THIS TUTORIAL WILL GUIDE YOU THROUGH SOME
+LTXT	ESSENTIAL SKILLS YOU'LL NEED TO PLAY ZEX.
+LTXT	
+LTXT 
+LTXT	                Press 'Fire' to continue.
+
+**Difficulty rating - not used yet
+DIFF 1
+**Monsters can fire? 1=yes, 0=no (Default is yes)
+**This is a debugging aid - animation and sounds of firing will continue!
+MONF 1
+
+**SCRD zex x,zex y, zex z - Zex start coord
+****SCRD -140000,10
+****SCRD 2500,0
+SCRD 0,0,-300000
+****SCRD 250000,-160000
+**TARG - target vector for radar display - this generally points to 'about the right area" - you may want it to point 
+***exactly to the target. Your level is responsible for detecting when zex reaches these points, or does the right thing.
+**DEST - destination nav vector after target is displayed
+**in this case pointing to mother ship
+DEST 0,0
+
+
+****FUEL top,left,bottom,right - specify a refueling rectangle. You can have up to 10 of these fuelling rectangles.
+****In this case it's under one of the guns. Zex handles this internally.
+****FUEL 5000,17000,4500,17500
+
+
+**** Now read the objects from their files into the static OCBs
+****Not that slots 0-19 are reserved. your objects must be loaded starting at slot 20. they do not have to be loaded
+****sequentially.
+**** RFIL filename,4 char id,object slot,coll det flag (0=no),4 char texture code (first 4 chars of texture file)
+****Zex always reads all the textures present so we don't have to load them manually. Use 0000 for no texture, just 0 won't do.
+****Earth mother ship for end of level - fly here to end. Best to have coldet flag off for this as it has a tractor beam(param4=0)
+****Note that MS02 must have colldet off
+****RFIL MS01.z,MS01,40,0,LC01	    
+****RFIL MS02.z,MS02,41,1,TMSA
+
+****Alien mothership
+****RFIL MS10.z,MS10,42,1,TP02
+****RFIL MS11.z,MS11,43,1,0000
+
+**Me test cube
+RFIL test_cube.z,CUBE,44,1,LSRK
+
+**A large disc used for suns
+****RFIL BDSC.z,STR&,45,1,SUN1
+**Planet
+****RFIL PNT1.z,PNT&,46,0,0000
+
+****Now load the monsters from static to dynamic blocks - See "3D Engine Design" for more details and correct params.
+****The objects are moved from static to dynamic storage and assigned the parameters you set here.
+****The objects are found by the ID (first param) you assigned in RFIL (second param).
+****LMON id,x,y,z,dx,dy,dz,drx,dry,drz,c1,c2,c3,controller ref, shields,mass,class,
+****active when not in view flag,number of missiles,laser,has_roll
+*****wingman
+****LMON MS01,10000,0,-2000,0,0,0,24,0,0,0,0,0,0,11170,35000,0,1,0,3,0,0,0
+****LMON MS01,15100,0,-2000,0,0,0,-24,0,0,0,0,0,0,11170,35000,0,1,0,3,0,0,0
+****LMON MS02,12500,0,-2000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,0,3,0,0,0
+
+****LMON MS11,-100500,0,-2000,0,0,0,0,54,0,0,0,0,0,11170,35000,2,1,0,3,0,0,0
+****LMON MS10,-100500,0,-2000,0,0,0,0,15,0,0,0,0,29,11170,35000,1,1,0,3,0,0,0
+
+LMON CUBE,40000,0,40000,0,0,0,2,2,127,0,0,0,29,11170,90,1,1,0,3,0,0,0
+
+****End of file marker
+ZEOF
+
+****End of file
+
+
+

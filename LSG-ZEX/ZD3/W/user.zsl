@@ -1,0 +1,7 @@
+\ user.zsl 
+\
+\ Which user is set,effects user_config.zsl
+
+USER_STU CONSTANT user#
+
+\ ===========================

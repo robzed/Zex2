@@ -1,0 +1,55 @@
+DEBUGGING HELP
+
+You have several options. 
+
+Using Standard Words
+====================
+
+macsbug     -- if you have it installed this will drop you in.
+.S	        -- prints out the current data stack.
+halt-step   -- waits until a keypress, or 0 to abort.
+.halt-step  -- as above, but with stack display.
+." string"  -- inside a definition can tell you when you 
+              reached a place.
+DUP .       -- print a value a certain point
+print-debug -- for problems that occur on a frame basis, 
+              print-debug can be useful. The format is:-
+
+              cstring" some text" my_variable @ print-debug
+
+
+
+Debugger
+========
+
+The words for you are:
+  +DEBUG -DEBUG    to switch debugging on/off globally
+  [DBG   DBG]      to envoke and terminate generation
+                   of debugging code at compiletime
+  :WATCH ;WATCH    Define a watch function returning a flag
+  0!WATCHES        to remove all watch functions
+  [+I]   [-I]      Interactive mode on/off
+  [+S]   [-S]      Silent mode on/off
+  [+V]   [-V]      Verbose mode on/off
+  [>L]   [Y]       level targeting control
+  [DEF]            DEFault settings
+  DSEE             Decompile words compiled with debugger
+  0!DBG            Reset the debugger when something goes wrong
+
+
+For more info on this debugger see the front of 
+debugger_ans.zsl (use display debugger_ans.zsl or an editor).
+
+
+OTHER NOTES
+===========
+Always include filename.zsl from the command line and ensure 
+it works before including it into main.zsl (or a sub-file of 
+it), since it is very difficult currently to debug once fully 
+included. You _can_ use the macsbug word, although you have to 
+get used to looking at compiled forth code... If it is 
+compiling problem, then that is very difficult. Again, the 
+command line is your friend.
+
+Test in small bits. Write small words.
+

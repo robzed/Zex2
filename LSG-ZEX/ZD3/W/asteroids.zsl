@@ -1,0 +1,139 @@
+\ asteroids.zsl
+
+
+\ ------------------- private words ----------------------
+0 VALUE asteriod-controller-ref
+
+VARIABLE ast_called_count 
+VARIABLE ast_alive_count
+
+\ original from asteriod.c
+\ : init_ast_called_count ( -- ) 2300 8600 RangedRdm ast_called_count ! ;
+\ gen immediately? - robs test case
+\ : init_ast_called_count ( -- ) -1 ast_called_count ! ;
+: init_ast_called_count ( -- ) 30 860 RangedRdm ast_called_count ! ;
+
+
+: is_it_time_to_gen_asteroids ( -- flag )
+  ast_called_count @ 0< IF
+    ast_alive_count @ 0= IF
+      init_ast_called_count TRUE EXIT
+    ELSE FALSE EXIT
+    THEN
+  ELSE
+    -1 ast_called_count +!
+    FALSE EXIT
+  THEN
+;
+
+: inc_asteroids_loaded ( -- )  1 ast_alive_count +! ;
+: dec_asteroids_loaded ( -- ) ast_alive_count @ IF -1 ast_alive_count +! THEN ;
+
+
+: gen_asteroid ( -- )
+    find_vacant_dynamic_object_slot DUP -1 =
+    IF
+      DROP \ not valid dynamic slot
+    ELSE
+      the_params clear_pb
+      
+       the_params world_x 0 get_raw_position	\ zex's position
+\       20000 0 RangedRdm 10000 - 1000 * I>F the_params world_x F+!
+\       20000 0 RangedRdm 10000 - 1000 * I>F the_params world_y F+!
+\       20000 0 RangedRdm 10000 - 1000 * I>F the_params world_z F+!
+       20000 0 RangedRdm 10000 - 10 * I>F the_params world_x F+!
+       20000 0 RangedRdm 10000 - 10 * I>F the_params world_y F+!
+       20000 0 RangedRdm 10000 - 10 * I>F the_params world_z F+!
+
+       140 1 RangedRdm 70 - I>F the_params delta_rot_x SF!
+       140 1 RangedRdm 70 - I>F the_params delta_rot_y SF!
+       140 1 RangedRdm 70 - I>F the_params delta_rot_z SF!
+      
+      asteriod-controller-ref the_params controller_ref !
+      
+      31170 the_params shield_value h!
+       11000 I>F the_params mass SF!
+      0 the_params dq h!
+      1 the_params no_trivial_rejection C!
+      SCENARY the_params object_category C!
+      
+      S" AST1" DROP @ get_static_object_slot
+        DUP -1 = IF 10001 C" " cstring" f-ASTEROIDS: get_static_object_slot failed."
+        	     report_error ABORT
+        	 THEN
+             
+      -1 the_params who_spawned_this_object !
+            
+
+      OVER ( static dynamic ) SWAP >R >R NOT_DUST_BIT -1 20 1 RangedRdm I>F ( scale ) -1 the_params R> R>
+        load_dyn_object DROP ( in reality nothing is returned ) 
+
+ \ zex's absolute velocity vector
+      0 vworking get_object_abs_vel_vector            \ ." get zex vel " vworking  V. CR F.S CR .halt-step
+      vworking vtemp ( src targ) Vcopy                \ ." post copy " vtemp  V. CR F.S CR .halt-step
+      vtemp [ FIN 1 FIN 500 F/ ] FLITERAL VmultiplyBy \ ." fraction of " vtemp V. CR F.S CR .halt-step
+      
+      vworking vtemp Vsubfrom                         \ ." subtract " vworking V. CR F.S CR .halt-step
+
+\ set asteroid to match, minus a little bit (better effect on screen)     
+     ( dynamic ocb slot ) >R vworking V@rev R> set_object_abs_vel_vector
+
+
+\ Rob's notes: The asteriods really need to be put IN FRONT of the player. The current provides micro-clumps
+\ every so often, which, depending on the effect required is ok. Also, we might need to take gravity into
+\ consideration.
+
+      inc_asteroids_loaded
+    THEN
+; \ of gen asteroid
+
+\ =====================================
+
+: gen_multiple_asteroids ( -- )
+   8 3 RangedRdm 0 ?DO
+\   100 60 RangedRdm 0 ?DO        \ rob's test case = many
+     gen_asteroid
+   LOOP
+;
+
+
+\ -------------------- public words -------------------
+
+\ this is run on each object to see whether it is still near enough to be in the game
+: asteroid-controller ( object-id -- )
+\    DUP 0 SWAP ( 0 it -- ) get_distance_to_from_in_m [FIN] 1e6 F> IF 
+    DUP 0 SWAP ( 0 it -- ) get_distance_to_from_in_m [FIN] 1e4 F> IF 
+      add_to_kill_list DROP ( drop error )
+      mesgRED mesg" EXEC f-ASTEROID KILLED"
+      dec_asteroids_loaded
+    ELSE 
+       DROP
+    THEN
+; 
+
+
+VARIABLE asteroid_master  
+asteroid_master ON	\ will it on for a new game
+
+\ this is run on a new game
+: asteroid-init ( -- )
+  init_ast_called_count 0 ast_alive_count ! asteroid_master @ asteroids !
+;
+
+
+
+\ this is run each frame to spawn new asteroids
+: asteroid-spawn ( -- )
+  is_it_time_to_gen_asteroids asteroids @ 0<> AND IF
+    gen_multiple_asteroids THEN ;
+
+
+\ --------------- load the controller into the game --------------
+
+ new-controller-ref
+ DUP TO asteriod-controller-ref
+ DUP ' asteroid-init install-controller::new-game
+ DUP ' asteroid-spawn install-controller::one-per-frame
+     ' asteroid-controller install-controller::run-object
+
+

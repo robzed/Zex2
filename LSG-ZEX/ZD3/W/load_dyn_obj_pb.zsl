@@ -1,0 +1,81 @@
+\ load_dyn_obj_pb.zsl
+
+\ this is the forth version of load_dyn_object_pb in 3d_structures.def
+
+\ REMEMBER - if you modify this, you will need to copy
+\ it over to the C version in 3d_structures_def.h
+START_STRUCT_DEF
+
+double MEMBER_ world_x _MEMBER
+double MEMBER_ world_y _MEMBER
+double MEMBER_ world_z _MEMBER	// the position of the object
+float  MEMBER_ delta_rot_x _MEMBER
+float  MEMBER_ delta_rot_y _MEMBER
+float  MEMBER_ delta_rot_z _MEMBER
+
+int    MEMBER_ rot_x _MEMBER
+int    MEMBER_ rot_y _MEMBER
+int    MEMBER_ rot_z _MEMBER
+int    MEMBER_ controller_ref _MEMBER
+int    MEMBER_ control_use_1 _MEMBER
+int    MEMBER_ control_use_2 _MEMBER
+int    MEMBER_ control_use_3 _MEMBER
+int    MEMBER_ control_use_4 _MEMBER
+int    MEMBER_ control_use_7 _MEMBER
+
+int    MEMBER_ attack_mode _MEMBER
+int    MEMBER_ who_spawned_this_object _MEMBER
+
+float MEMBER_ mass _MEMBER
+short MEMBER_ shield_value _MEMBER
+short MEMBER_ max_vel _MEMBER
+short MEMBER_ min_vel _MEMBER	 // maximum and minimum velocities
+
+UInt16  MEMBER_ dq _MEMBER	// how much damage this thing does when hit - 080499
+UInt8 MEMBER_ no_trivial_rejection _MEMBER
+UInt8 MEMBER_ object_category _MEMBER
+
+UInt8 MEMBER_ aggressive _MEMBER
+UInt8 MEMBER_ _class _MEMBER          // fighter, traveller, guard
+UInt8 MEMBER_ shields_class _MEMBER   // 0 not rechargeable, >0 recharge rate per frame
+
+// following 4 added 160199
+UInt8 MEMBER_ laser_cat _MEMBER
+UInt8 MEMBER_ cannon_cat _MEMBER
+UInt8 MEMBER_ missile_cat _MEMBER
+UInt8 MEMBER_ number_of_missiles _MEMBER
+
+UInt8 MEMBER_ has_kill_method _MEMBER
+UInt8 MEMBER_ invisible_flag _MEMBER
+
+_3D MEMBER_ normal _MEMBER
+int MEMBER_ anim_frame_rate _MEMBER	// how often objects are switched.
+int MEMBER_ anim_max_object _MEMBER	// slot number of next object in sequence
+int MEMBER_ unique_id _MEMBER	// an id from the level file; generally zero but set for doors that need to be found by switches 
+
+anim_obj_bits MEMBER_ the_anim_ptrs ARRAY_ 3 _ARRAY _MEMBER
+
+int MEMBER_ init_check _MEMBER
+
+END_STRUCT_DEF load_dyn_object_pb END_DEF
+\ REMEMBER - if you modify this, you will need to copy
+\ it over to the C version in 3d_structures_def.h
+
+
+
+
+\ NOW DEFINE A STANDARD ARRAY
+
+
+CREATE the_params load_dyn_object_pb ALLOT
+
+
+1 CONSTANT ALIEN
+0 CONSTANT HUMAN
+2 CONSTANT SCENARY
+3 CONSTANT MASSIVE_SCENARY
+
+
+
+32 CONSTANT DUST_BIT
+0 CONSTANT NOT_DUST_BIT

@@ -1,0 +1,180 @@
+*aZex level 1 loader file.
+*©Lightsoft (Games) 12Jan99
+*See "Making Zex levels" handbook for details
+*SB 180199
+*Upd 260199
+*Final: 240399
+****These level files are keyword based, so lines can appear anywhere.
+****All lines not starting with white space or **** are interpreted. The first 4 characters after <cr> are
+****assumed to be the keyword. This is followed by a space and then a list of comma delimited parameters.
+****Some keywords, like LAMN have large parameter lists. You would be advised to print out 3d Engine Design
+****for reference. 
+
+****Into text for player telling what mission is about, what they have to do and how it ends.
+LTXT                ZEX II DEVELOPMENT VERSION
+LTXT  
+LTXT  
+LTXT  
+LTXT  
+LTXT  
+LTXT	                    WELCOME TO ZEX! 
+LTXT	
+LTXT  
+LTXT  
+LTXT  
+LTXT  
+LTXT 
+LTXT	                Press 'Fire' to continue.
+
+**Difficulty rating - not used yet
+DIFF 1
+**Monsters can fire? 1=yes, 0=no (Default is yes)
+**This is a debugging aid - animation and sounds of firing will continue!
+MONF 1
+
+
+DEST 0,0
+
+
+****FUEL top,left,bottom,right - specify a refueling rectangle. You can have up to 10 of these fuelling rectangles.
+****In this case it's under one of the guns. Zex handles this internally.
+****FUEL 5000,17000,4500,17500
+
+
+**** Now read the objects from their files into the static OCBs
+****Not that slots 0-19 are reserved. your objects must be loaded starting at slot 20. they do not have to be loaded
+****sequentially.
+**** RFIL filename,4 char id,object slot,coll det flag (0=no),4 char texture code (first 4 chars of texture file)
+****Zex always reads all the textures present so we don't have to load them manually. Use 0000 for no texture, just 0 won't do.
+****Earth mother ship for end of level - fly here to end. Best to have coldet flag off for this as it has a tractor beam(param4=0)
+****Note that MS02 must have colldet off
+*RFIL MS01.z,MS01,40,0,LC01	 
+*RFIL MS02.z,MS02,41,1,TMSA
+*
+*****Alien mothership
+*RFIL MS10.z,MS10,42,1,TP02
+*RFIL MS11.z,MS11,43,1,0000
+*
+***Me test cube
+*RFIL test_cube.z,CUBE,44,1,LSRK
+*RFIL MS32.z,MS32,48,1,0000
+*
+***A large disc used for suns
+*RFIL BDSC.z,STR&,45,1,SUN1
+***Planet
+*RFIL PNT1.z,PNT&,46,0,0000
+*
+*****Rene Test
+*RFIL rene.z,RENE,47,0,0000
+*
+*RFIL cube1texBT.3dmf,CUB2,48,0,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL cube1texAT.3dmf,CUB1,49,0,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL cube2texT.3dmf,CUB3,50,0,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL cubes_2texT.3dmf,CUB4,51,0,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL xwingV4.3dmf,XWNG,52,0,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*
+*RFIL MS01.z,MS01,53,0,LC01	 
+*RFIL MS02.z,MS02,54,1,TMSA
+*
+*****Alien mothership
+*RFIL MS10.z,MS10,55,1,TP02
+*RFIL MS11.z,MS11,56,1,0000
+*
+*****LArge earth mothership
+*RFIL MS30.z,MS30,57,1,0000
+*RFIL MS31.z,MS31,58,1,0000
+*RFIL MS32.z,MS32,59,1,0000
+*
+*RFIL jaegerV1.3dmf,JAEG,60,1,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL carboBox32BitTex.3DMF,CBOX,61,0,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL JaegerV1bTXT.3DMF,JAGT,62,1,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+*RFIL ColorCubeTXT.3DMF,CCUB,63,1,0000	 ****3dmf's should NOT be assigned a static meshworks texture!
+RFIL UVWCubeTXT.3DMF,UCUB,64,1,0000	****3dmf's should NOT be assigned a static meshworks texture!
+
+**** make the solar system appear
+
+****SOLR 
+
+****Now load the monsters from static to dynamic blocks - See "3D Engine Design" for more details and correct params.
+****The objects are moved from static to dynamic storage and assigned the parameters you set here.
+****The objects are found by the ID (first param) you assigned in RFIL (second param).
+****LMON id,x,y,z, dx,dy,dz, drx,dry,drz,  c1,c2,c3,controller ref,  shields,mass,class,
+****active when not in view flag,scale,bolt id
+*****wingman
+****LMON MS01,10000,0,-200000,0,0,0,24,0,0,0,0,0,0,11170,35000,0,1,0,3,0,0,0
+****LMON MS01,15100,0,-200000,0,0,0,-24,0,0,0,0,0,0,11170,35000,0,1,0,3,0,0,0
+****LMON MS02,12500,0,-200000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,0,3,0,0,0
+
+****LMON MS11,2100000000,0,-250000,0,0,0,0,54,0,0,0,0,0,11170,35000,2,1,0,3,0,0,0
+****LMON MS10,2100000000,0,-250000,0,0,0,0,15,0,0,0,0,29,11170,35000,1,1,0,3,0,0,0
+
+***LMON CUBE,0,0,-29900000,0,0,0,2,2,127,0,0,0,29,11170,90,1,1,0,3,0,0,0
+****LEFT CUBE
+****LMON CUB1,1000,0,4000,0,0,0,10,20,30,0,0,0,29,11170,90,1,1,1,1
+****LMON CUB2,500,0,4000,0,0,0,10,20,-30,0,0,0,29,11170,90,1,1,1,2
+****LMON CUB3,0,0,4000,0,0,0,10,-20,30,0,0,0,29,11170,90,1,1,1,3
+****LMON CUB4,-500,0,4000,0,0,0,-10,20,30,0,0,0,29,11170,90,1,1,1,4
+*LMON CCUB,2500,0,4000,0,0,0,-8,8,16,0,0,0,29,100,1,1,1,8,5
+LMON UCUB,2500,0,4000,0,0,0,-1,1,2,0,0,0,29,100,1,1,1,8,5
+
+*LMON XWNG,-1500,0,4000,0,0,0,-1,1,2,0,0,0,29,100,1,1,1,8,5
+*LMON JAEG,2500,0,4000,0,0,0,1,2,1,0,0,0,29,100,1,1,1,8,5
+*LMON CBOX,7500,0,4000,0,0,0,-8,8,8,0,0,0,29,100,1,1,1,8,5
+*LMON JAGT,12500,0,4000,0,0,0,4,2,4,0,0,0,29,100,1,1,1,8,5
+
+**Small earth mothership
+*LMON MS02,12500,0,-200000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,1
+*LMON MS01,10000,0,-200000,0,0,0,24,0,0,0,0,0,0,11170,35000,0,1,1,2
+*LMON MS01,15100,0,-200000,0,0,0,-24,0,0,0,0,0,0,11170,35000,0,1,1,3
+***Small alien mothership
+*LMON MS11,20000,0,-150000,0,0,0,0,54,0,0,0,0,0,11170,35000,2,1,1,4
+*LMON MS10,20000,0,-150000,0,0,0,0,15,0,0,0,0,29,11170,35000,1,1,1,5
+*
+
+****Large earth mothership
+*LMON MS30,80000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,6
+*
+*LMON MS31,60000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,7
+*LMON MS31,60000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,8
+*LMON MS31,60000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,9
+*LMON MS31,60000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,10
+*
+*LMON MS32,20000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,11
+*LMON MS32,20000,0,-175000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,1,12
+*
+*
+*****4 central fwd poles
+*BOLT 7,6,-95000,-10000,-10000	 
+*BOLT 8,6,-95000,-10000,10000
+*BOLT 9,6,-95000,10000,-10000
+*BOLT 10,6,-95000,10000,10000
+*
+***back cylinder section
+*BOLT 11,9,-127500,-12000,-1000
+*BOLT 12,10,-127500,-12000,1000
+****LEFT CUBE
+****LMON CUBE,-4000,0,14000,0,0,0,0,0,100,0,0,0,29,11170,90,1,1,0,3,0,0,0
+****CENTRE CUBE
+****LMON CUBE,0,0,14000,0,0,0,1,1,128,0,0,0,29,11170,90,1,1,0,3,0,0,0
+
+****RIGHT CUBE
+****LMON CUBE,4000,0,14000,0,0,0,0,0,150,0,0,0,29,11170,90,1,1,0,3,0,0,0
+****LMON RENE,-4000,0,34000,0,0,0,0,0,100,0,0,0,29,11170,90,1,1,0,3,0,0,0
+
+****LMON MS32,-4000,0,16000,0,0,0,0,0,0,0,0,0,29,11170,35000,0,1,0,3,0,7,0
+
+
+****LMON PAR1,-2000,0,5000,0,0,0,0,0,-150,0,0,0,29,11170,35000,0,1,0,3,0,7,0
+
+****LMON CUBE,400,0,400,0,0,0,2,2,127,0,0,0,29,11170,90,1,1,0,3,0,0,0
+**SCRD zex x,zex y, zex z - Zex start coord
+****SCRD -140000,10
+****SCRD 2500,0
+SCRD 0,0,0
+****End of file marker
+ZEOF
+
+****End of file
+
+
+
