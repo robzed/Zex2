@@ -1764,12 +1764,13 @@ MOT32( &MDriver->header->MAD);
 MOT16( &MDriver->header->speed);
 MOT16( &MDriver->header->tempo);
 
-if( MDriver->header->MAD != 'MADK' || MDriver->header->numInstru > MAXINSTRU)
+if( MDriver->header->MAD != 'MADK' )
 {
 	DisposePtr( (Ptr) MDriver->header);
 	DisposePtr( (Ptr) MDriver);
 	return MADIncompatibleFile;
 }
+
 
 if( MDriver->header->MultiChanNo == 0) MDriver->header->MultiChanNo = 48;
 
