@@ -93,6 +93,7 @@ TYPICAL BEHAVIOURS
 	   DOCK_BEHAVIOUR,
 	   DEFENSIVE_BEHAVIOUR,
 	   AGGRESIVE_BEHAVIOUR,
+           GUARD_BEHAVIOUR,
 	   LOW_FUEL_BEHAVIOUR,
 	   
 */
@@ -257,6 +258,10 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object]; //ptr to mothership;
 
   case AGGRESIVE_BEHAVIOUR:
 	  behaviour_aggressive(the_object);
+	  return TRUE;
+
+  case GUARD_BEHAVIOUR:
+	  behaviour_guard(the_object);
 	  return TRUE;
 	   
   default:
