@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.cpp,v $
+// Revision 1.11  2003/10/08 20:15:42  robp
+// Altered picture load based on new file load.
+//
 // Revision 1.10  2003/09/30 21:26:32  robp
 // Changes to force the sound sub-system to build - maybe not work. No effect on build code unless PORTABLE_FILESYSTEM is enabled.
 //
@@ -808,7 +811,7 @@ int handle_mouse(LSRAW* button_down, LSRAW* button_up,
 extern int button_y_array[7];
 extern int music_volume;
 extern int sound_volume, Use_SpeedLimit;
-//extern int Use_VBL, Change_res;
+extern int Use_VBL; // Change_res;
 
 int button_state;
 Point mouse_xy;
@@ -835,12 +838,12 @@ extern int gMusicPlaying;
     print_crunched_trans_pict(checkbox_on,off_640_x+415,off_480_y+456);
     
 //draw vbl checkbox
-    #if OGL==0
     if (Use_VBL==0)
     print_crunched_trans_pict(checkbox_off,off_640_x+380,off_480_y+456);
     else
     print_crunched_trans_pict(checkbox_on,off_640_x+380,off_480_y+456);
 
+    #if OGL==0
 //draw change res checkbox
     if (Change_res==0)
     print_crunched_trans_pict(checkbox_off,off_640_x+380,436);
