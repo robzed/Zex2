@@ -1,6 +1,9 @@
 //insert object
 /*
  * $Log: insert\040object.c,v $
+ * Revision 1.3  2003/09/27 20:41:40  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:04  robp
  * Removed nested comments
  *
@@ -168,8 +171,8 @@ object_poly_list_ptr=Spoly_list_ptr;
 material_count=0;
 points_count=0;
 
-  if (Spoly_list_ptr<Spoly_list_ptr_reset) report_error_id ("insert_object: Static poly ptr too low!!!!",-1);
-  if (connection_list_ptr<connection_list_ptr_reset) report_error_id ("insert_object: static connections ptr too low!!!!",-1);
+  if (Spoly_list_ptr<Spoly_list_ptr_reset) report_error_id ("insert_object: Static poly ptr too low!!!!",0);
+  if (connection_list_ptr<connection_list_ptr_reset) report_error_id ("insert_object: static connections ptr too low!!!!",0);
 
 
 for (i=0;i<object_number_of_polys;i++)
@@ -187,11 +190,11 @@ for (i=0;i<object_number_of_polys;i++)
   test_poly.poly_connections_ptr = connection_list_ptr;
   test_poly.draw_code=translucent;	//not translucent
   connection_list_ptr+=3;	//6 ints make up a triag
-  if (connection_list_ptr>connection_list_top) report_error_id ("insert_object: Too many static connections!!!!",-1);
+  if (connection_list_ptr>connection_list_top) report_error_id ("insert_object: Too many static connections!!!!",0);
   
   BlockMoveData	(&test_poly,Spoly_list_ptr,sizeof(test_poly));
   Spoly_list_ptr+=1;	//another poly in the static list
-  if (Spoly_list_ptr>Spoly_list_top) report_error_id ("insert_object: Too many static polys!!!!",-1);
+  if (Spoly_list_ptr>Spoly_list_top) report_error_id ("insert_object: Too many static polys!!!!",0);
   points_count++;
 }
 //create the poly normals - this is calculated from three points on the poly
@@ -515,8 +518,8 @@ object_poly_list_ptr=Spoly_list_ptr;
 //set up ptrs to connections
 material_count=0;
 
-  if (Spoly_list_ptr<Spoly_list_ptr_reset) report_error_id ("insert_object: Static poly ptr too low!!!!",-1);
-  if (connection_list_ptr<connection_list_ptr_reset) report_error_id ("insert_object: static connections ptr too low!!!!",-1);
+  if (Spoly_list_ptr<Spoly_list_ptr_reset) report_error_id ("insert_object: Static poly ptr too low!!!!",0);
+  if (connection_list_ptr<connection_list_ptr_reset) report_error_id ("insert_object: static connections ptr too low!!!!",0);
 
 //walk the connections getting attributes for each poly
 for (i=0;i<number_of_connections;i++)
@@ -536,11 +539,11 @@ int temp_red, temp_green, temp_blue;
   i+=2;
   
   connection_list_ptr+=3;	//6 ints make up a triag
-  if (connection_list_ptr>connection_list_top) report_error_id ("insert_object: Too many static connections!!!!",-1);
+  if (connection_list_ptr>connection_list_top) report_error_id ("insert_object: Too many static connections!!!!",0);
   
   BlockMoveData	(&test_poly,Spoly_list_ptr,sizeof(test_poly));
   Spoly_list_ptr+=1;	//another poly in the static list
-  if (Spoly_list_ptr>Spoly_list_top) report_error_id ("insert_object: Too many static polys!!!!",-1);
+  if (Spoly_list_ptr>Spoly_list_top) report_error_id ("insert_object: Too many static polys!!!!",0);
 }
 //create the poly normals - this is calculated from three points on the poly
 

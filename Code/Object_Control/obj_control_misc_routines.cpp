@@ -1,5 +1,8 @@
 /*
  * $Log: object_control_misc_routines.c,v $
+ * Revision 1.3  2003/09/27 20:41:42  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:06  robp
  * Removed nested comments
  *
@@ -119,6 +122,7 @@ Added accessor in access_ocbs which returns a pointer to type ZObjectControl
 #include "dlp_explosions.h"
 #include "angular_stuff.h"
 #include "obj_control_misc_routines.h"
+#include "behaviour.h"
 
 extern kit_desc ship_items[ITEMS_COUNT];
 extern int hull_strength,credits,score;
@@ -394,7 +398,7 @@ void clear_pb(load_dyn_object_pb* the_pb)
  the_pb->normal.x=1;
  
  the_pb->aggressive=1;
- the_pb->NPC_class=-1;
+ the_pb->NPC_class=NPC_CLASS_UNINTIALISED;
  the_pb->shields_class=1;
  the_pb->max_vel=0;
  the_pb->min_vel=0;

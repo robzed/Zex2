@@ -1,6 +1,9 @@
 //3d_top.c
 /*
 $Log: 3d_top.c,v $
+Revision 1.2  2003/09/27 20:41:52  robp
+Fixed float->int warnings.
+
 Revision 1.1.1.1  2003/09/05 22:35:09  stu_c
 First Imported.
 
@@ -197,9 +200,9 @@ _3D camera_pos_delta;	//change to enable auto camera movement - dont do it anymo
 //
 
 textured_connections fixed_triag_connection [3] = 
-{  { { 0, -1,-1,}, {0,0,0} ,0,0,0,0,0,0 },
-   { { 1, -1,-1,}, {0,0,0} ,0,0,0,0,0,0 },
-   { { 2, -1,-1,}, {0,0,0} ,0,0,0,0,0,0 } }; //used to create polys in explode
+{  { { 0, 0xffff,0xffff,}, {0,0,0} ,0,0,0,0,0,0 },
+   { { 1, 0xffff,0xffff,}, {0,0,0} ,0,0,0,0,0,0 },
+   { { 2, 0xffff,0xffff,}, {0,0,0} ,0,0,0,0,0,0 } }; //used to create polys in explode
 _3D fixed_triag_points[3] = { { 0,50,0, },
                              { -50,-50,0, },
                             { 50,-50,0 } };

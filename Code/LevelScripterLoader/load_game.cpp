@@ -3,6 +3,9 @@
 //See 3D engine design for notes
 /*
  * $Log: load_game.c,v $
+ * Revision 1.7  2003/09/27 20:41:41  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.6  2003/09/27 08:58:30  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *
@@ -865,7 +868,7 @@ while (stop==0)
 	      
 	      dest_ocb=find_vacant_dynamic_object_slot();	//get us a slot to put it in
 
-      if (dest_ocb==-1) report_error_id ("load_level: Cant get dynamic slot for LMON",-2);
+      if (dest_ocb==-1) report_error_id ("load_level: Cant get dynamic slot for LMON", 0);
 
           the_params.parent=-1;
  	  load_dyn_object(static_slot,dest_ocb,&the_params,-1,scale,-1,!DUST_BIT);	//load it
@@ -941,12 +944,12 @@ while (stop==0)
        case 'LAMN':	//insert animated object to dyn ocbs
           {
            frames_counter=0;
-           anim.object_id[0]=-1;	//we allow up to 6 frames
-           anim.object_id[1]=-1;
-           anim.object_id[2]=-1;
-           anim.object_id[3]=-1;
-           anim.object_id[4]=-1;
-           anim.object_id[5]=-1;
+           anim.object_id[0]=0xffffffff;	//we allow up to 6 frames
+           anim.object_id[1]=0xffffffff;
+           anim.object_id[2]=0xffffffff;
+           anim.object_id[3]=0xffffffff;
+           anim.object_id[4]=0xffffffff;
+           anim.object_id[5]=0xffffffff;
           //read object ids - '0000'=null
            for (i=0;i<6;i++)
            {

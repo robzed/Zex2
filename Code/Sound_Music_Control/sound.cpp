@@ -5,6 +5,9 @@ Owner: SB
 Started: 29/10/98
 ©Lightsoft 98
 $Log: sound.c,v $
+Revision 1.3  2003/09/27 20:41:46  robp
+Fixed float->int warnings.
+
 Revision 1.2  2003/09/24 21:39:38  robp
 More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
 
@@ -128,7 +131,7 @@ struct SCStatus chan_status;
 //extern SndChannelPtr sound_chan [12];
 //extern	SndListHandle the_sounds[max_sounds];	//array of handles for sounds
 
-#define Async	-1
+#define Async	true
 
 
 #define NO_EXTERNAL_PLAYER 0

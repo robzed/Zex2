@@ -1,6 +1,9 @@
 /*
-$Header: /home/ls_cvs/ZEX2.2/Code/Screen\040Splat\040Control/Splat_control.c,v 1.35 2002/09/08 02:06:42 stu_c Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.c,v 1.1.1.1 2003/09/05 22:36:18 stu_c Exp $
 $Log: Splat_control.c,v $
+Revision 1.1.1.1  2003/09/05 22:36:18  stu_c
+First Imported.
+
 Revision 1.35  2002/09/08 02:06:42  stu_c
 Precompiled header adjustments
 
@@ -645,8 +648,8 @@ wanted_height=monitor_h;	//zex native resolution
 	mDisplayAttributes.displayWidth		            	= wanted_width; //640;
 	mDisplayAttributes.displayHeight		= wanted_height; //480;
 	mDisplayAttributes.colorNeeds		            	= kDSpColorNeeds_Require;
-	mDisplayAttributes.backBufferDepthMask	      = kDSpDepthMask_All;
-	mDisplayAttributes.displayDepthMask		    = kDSpDepthMask_All;
+	mDisplayAttributes.backBufferDepthMask	      = STATIC_CAST_TO_UNSIGNED(kDSpDepthMask_All);
+	mDisplayAttributes.displayDepthMask		    = STATIC_CAST_TO_UNSIGNED(kDSpDepthMask_All);
 	mDisplayAttributes.backBufferBestDepth	      = ogl_depth;
 	mDisplayAttributes.displayBestDepth		    = ogl_depth;
 	mDisplayAttributes.pageCount			= 1;	//not used any more....

@@ -382,7 +382,7 @@ int MEMBER_ bstack [BSTACK_FRAME_SIZE_IN_INTS*BSTACK_SIZE] _MEMBER	//stack for p
 
 unsigned char MEMBER_ name_str ARRAY_ 12 _ARRAY _MEMBER	//planet name etc as pascal string
 int MEMBER_ galactic_id _MEMBER	// unique id from map so we can tell if an object is already present when we try to load it
-unsigned long MEMBER_ docked_object_slot _MEMBER	// motherships slot number, -1 if not docked
+long MEMBER_ docked_object_slot _MEMBER	// motherships slot number, -1 if not docked
 int MEMBER_ shield_value _MEMBER	// when zero if collision then die (unless ZEX which has hull protection as well)
 int MEMBER_ hull_value _MEMBER	      // when zero if collision (or damage) then die 
 int MEMBER_ dq _MEMBER	  // how much damage this thing does when hit - used for weapons (not ships!)
@@ -723,7 +723,7 @@ _3D MEMBER_ eject_translated _MEMBER
 
 int MEMBER_ invincible_count _MEMBER	// if not zero, object is invincible
 float MEMBER_ mass _MEMBER	  // in Tonnes
-unsigned long MEMBER_ hit_by_slot _MEMBER	 // dynamic slot of object that hit this object else -1, so we can find info about what hit this object
+long MEMBER_ hit_by_slot _MEMBER	 // dynamic slot of object that hit this object else -1, so we can find info about what hit this object
 
 UInt8 MEMBER_ crashable _MEMBER // if 1 then object is collidable
 UInt8 MEMBER_ colltype _MEMBER	 // collision detection type. 3=default (sphere and box 1=sphere, 2=box

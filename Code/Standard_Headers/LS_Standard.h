@@ -48,15 +48,19 @@ typedef char BOOL;
   #define STATIC_CAST_TO_INT(x) static_cast<int>(x)
   #define STATIC_CAST_TO_UINT(x) static_cast<unsigned int>(x)
   #define STATIC_CAST_TO_LONG(x) static_cast<long>(x)
+  #define STATIC_CAST_TO_UNSIGNED(x) static_cast<unsigned>(x)
 
 // for testing - remove the casts
 //  #define STATIC_CAST_TO_INT(x) (x)
 //  #define STATIC_CAST_TO_UINT(x) (x)
 //  #define STATIC_CAST_TO_LONG(x) (x)
+//  #define STATIC_CAST_TO_UNSIGNED(x) (x)
+
 #else
   #define STATIC_CAST_TO_INT(x) (int)(x)
   #define STATIC_CAST_TO_UINT(x) (unsigned int)(x)
   #define STATIC_CAST_TO_LONG(x) (long)(x)
+  #define STATIC_CAST_TO_UNSIGNED(x) (unsigned)(x)
 #endif
 
 
@@ -65,4 +69,6 @@ typedef char BOOL;
 
 #define DEBUG_GENERAL_STATUS	1	// general debug info to console
 
+
+#define FLUSH_ALL_EVENTS 0xffff		// mac specific constant ... what's it doing here? dunno.
 

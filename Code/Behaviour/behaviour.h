@@ -21,6 +21,9 @@ enum { //Character classes
 	   NPC_CLASS_TRADER, 
 	   NPC_CLASS_GUARD, 
 	   NPC_CLASS_PIRATE, 
+           
+// this one is what they start as. NPC_control will throw an error if it doesn't change from this.
+           NPC_CLASS_UNINTIALISED,
 	};
 	
 

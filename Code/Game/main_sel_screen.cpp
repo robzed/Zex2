@@ -995,7 +995,7 @@ HideCursor();
      fade_main_screen();
 
 //GraphicsPaused();
-FlushEvents(-1,0);	//flush all
+FlushEvents(FLUSH_ALL_EVENTS,0);	//flush all
 
 
 ///GraphicsActive();

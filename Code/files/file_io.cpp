@@ -2,6 +2,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.c,v $
+Revision 1.4  2003/09/27 09:00:31  robp
+Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+
 Revision 1.3  2003/09/24 21:39:40  robp
 More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
 
@@ -519,7 +522,7 @@ char my_pname[64];	//as pascal
 
    gCheckWatchDog=0;	//disable the watchdog
 GraphicsPaused();
-FlushEvents(-1,0);	//flush all
+FlushEvents(FLUSH_ALL_EVENTS,0);	//flush all
 //get memory for saved game. bout 200K at last check
 saved_file_data_ptr=(saved_file_structure*) NewPtr(sizeof(saved_file_structure));
 if (saved_file_data_ptr==0) 
@@ -579,7 +582,7 @@ CToPascal(my_name,my_pname);
 
 	FSClose( fileRefNum );
     
-FlushEvents(-1,0);	//flush all
+FlushEvents(FLUSH_ALL_EVENTS,0);	//flush all
 GraphicsActive();
    DisposePtr((Ptr)saved_file_data_ptr);
    
@@ -622,7 +625,7 @@ unsigned long callsign;
 
    gCheckWatchDog=0;	//disable the watchdog
 GraphicsPaused();
-FlushEvents(-1,0);	//flush all
+FlushEvents(FLUSH_ALL_EVENTS,0);	//flush all
 //get memory for file
 
 saved_file_data_ptr=(saved_file_structure*) NewPtr(sizeof(saved_file_structure));
@@ -733,7 +736,7 @@ else
 abort_load: return_value=0;	//cancel
 
     
-end_load: FlushEvents(-1,0);	//flush all
+end_load: FlushEvents(FLUSH_ALL_EVENTS,0);	//flush all
 GraphicsActive();
    gCheckWatchDog=1;	//enable the watchdog
 
