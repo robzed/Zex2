@@ -1,5 +1,8 @@
 /*
 // $Log: inventory.c,v $
+// Revision 1.2  2003/09/20 12:57:14  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:37:13  stu_c
 // First Imported.
 //
@@ -78,8 +81,6 @@ Coffee fixes after changes for X.
 #include "olg_text.h"
 #include "keyboard.h"
 
-extern const RGBColor	rgbGrey;
-extern const RGBColor	rgbDarkGrey;
 
 void draw_items();
 void draw_hold_items(LSRAW * up_pict, LSRAW * down_pict, LSRAW * cursor, LSRAW * armed);

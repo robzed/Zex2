@@ -2,6 +2,9 @@
 // SB 190199
 
 // $Log: game_pause.c,v $
+// Revision 1.2  2003/09/20 12:57:09  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:35:44  stu_c
 // First Imported.
 //
@@ -113,7 +116,6 @@ extern int zex_alive,death_frame_counter;
 extern _3D light_normal;
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 //extern int thrust;
 extern int freeze;
 //extern int ask_for_load
@@ -216,7 +218,6 @@ int do_game_restore()
 extern _3D light_normal;
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 //extern int thrust;
 extern int freeze;
 //extern int ask_for_load,done_load_flag,user_abort;
@@ -316,7 +317,6 @@ void do_game_dead()
 extern _3D light_normal;
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 //extern int thrust;
 extern int freeze,showing_stats;
 extern	DynObjectsFixedSize *ocb_ptr;
@@ -395,7 +395,6 @@ void do_game_alert(char * the_string)
 extern _3D light_normal;
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 //extern int thrust;
 extern int freeze;
 //extern int ask_for_load,done_load_flag,user_abort;
@@ -537,7 +536,6 @@ int handle_pause_mouse(LSRAW* button_down, LSRAW* button_up)
 extern int button_y1_array[3];
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 
 //CGrafPtr the_drawing_buffer;
 
@@ -606,7 +604,6 @@ int handle_pause_mouseQS(LSRAW* button_down, LSRAW* button_up)
 extern int button_y1_array[3];
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 
 //CGrafPtr the_drawing_buffer;
 
@@ -673,7 +670,6 @@ int handle_message_mouse(LSRAW* button_down, LSRAW* button_up)
 //extern int button_y1_array[3];
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 #define button_x 74
 #define button_y 100
 
@@ -969,7 +965,6 @@ int handle_diff_mouse(LSRAW* button_down, LSRAW* button_up)
 //extern int button_y1_array[3];
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 
 //CGrafPtr the_drawing_buffer;
 
@@ -1023,7 +1018,6 @@ int handle_train_mouse(LSRAW* button_down, LSRAW* button_up)
 //extern int button_y1_array[3];
 //extern Ptr screenaddr;
 //extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 
 //CGrafPtr the_drawing_buffer;
 

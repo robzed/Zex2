@@ -1,6 +1,9 @@
 /* docked.c
 // SB 300199
 // $Log: docked.c,v $
+// Revision 1.2  2003/09/20 12:57:14  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:35:43  stu_c
 // First Imported.
 //
@@ -823,7 +826,6 @@ int button_y2_array[6] =
 void setup_docked_screen(LSRAW* the_picture, LSRAW* the_button, LSRAW* the_button_off)
 {
 extern int button_y2_array[6];
-//extern const RGBColor	rgbBlack;
 //extern Ptr screenaddr;
 //extern int screenwidth;
 //extern GDHandle				mZexGDH;

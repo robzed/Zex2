@@ -1,6 +1,9 @@
 /*
-$Header: /home/ls_cvs/ZEX2.2/Code/static\040stuff/buy.c,v 1.20 2002/09/08 02:18:18 stu_c Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.1.1.1 2003/09/05 22:37:10 stu_c Exp $
 $Log: buy.c,v $
+Revision 1.1.1.1  2003/09/05 22:37:10  stu_c
+First Imported.
+
 Revision 1.20  2002/09/08 02:18:18  stu_c
 Precompiled header adjustments
 
@@ -105,7 +108,6 @@ First Imported.
 #include "sds.h"
 
 
-extern const RGBColor	rgbLightBlue;
 extern int training_mission;
 extern	DynObjectsFixedSize *ocb_ptr;
 //extern galactic_map *GM_ptr;	  //ptr to the galactic map

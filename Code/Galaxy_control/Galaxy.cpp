@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: Galaxy.c,v $
+ * Revision 1.2  2003/09/20 12:56:58  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:28  stu_c
  * First Imported.
  *
@@ -286,18 +289,6 @@ int global_show_target_vector;
 
 //galactic_map *GM_ptr;	//ptr to the galactic map
 
-extern const RGBColor	rgbBlack;
-extern const RGBColor	rgbWhite;
-extern const RGBColor	rgbRed;
-extern const RGBColor	rgbOrange;
-extern const RGBColor	rgbBlue		;
-extern const RGBColor	rgbDarkBlue;
-extern const RGBColor	rgbYellow;
-extern const RGBColor	rgbPurple;
-extern const RGBColor	rgbGreen;
-extern const RGBColor	rgbLightBlue;
-extern const RGBColor	rgbGrey;
-extern const RGBColor	rgbDarkGrey;
 
 extern kit_desc ship_items[ITEMS_COUNT];
 extern int difficulty;
@@ -926,7 +917,6 @@ float structures_colour=215;
 //GDHandle	  saveGDH;
 //GrafPtr		  savePort;
 //extern GDHandle		  	  	  mZexGDH;
-//extern const RGBColor	rgbDarkBlue;
 //extern	DynObjectsFixedSize *ocb_ptr;
 //RGBColor my_rgb;
 //int my_red,my_green,my_blue;	  //colour conversion

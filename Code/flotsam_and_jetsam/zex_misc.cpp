@@ -2,6 +2,9 @@
 
 /*
 $Log: zex_misc.c,v $
+Revision 1.1.1.1  2003/09/05 22:35:26  stu_c
+First Imported.
+
 Revision 1.17  2002/09/08 02:03:37  stu_c
 Precompiled header adjustments
 
@@ -478,9 +481,6 @@ WindowPtr our_window=0;
 
 void show_loading_screen()
 {
-//extern const RGBColor	rgbRed;
-extern const RGBColor	rgbGreen;
-//extern const RGBColor	rgbWhite;
 
 
 

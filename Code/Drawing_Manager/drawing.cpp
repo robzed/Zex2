@@ -2,6 +2,9 @@
 //drawing.c
 /*
  * $Log: drawing.c,v $
+ * Revision 1.3  2003/09/22 21:44:22  robp
+ * Box of Curios 1: Code tidy up things, which weren't strictly incorrect, just weird. No functional changes. Examples include a block of variables that were declared twice. These things were all thrown up by the C++ compiler.
+ *
  * Revision 1.2  2003/09/20 12:56:56  robp
  * Removed nested comments
  *
@@ -176,7 +179,6 @@ void Draw_it(int width, int height)
 //extern Ptr screenaddr;
 //extern int screenwidth;
 //extern GDHandle displaydevice;
-//extern const RGBColor	rgbBlack;
 //extern LSRAW *bpic_ptr;
 //extern int have_bpic;
 extern int flash_screen;
@@ -273,7 +275,6 @@ void Draw_it_no_erase(int width, int height)
 //extern Ptr screenaddr;
 //extern int screenwidth;
 //extern GDHandle displaydevice;
-//extern const RGBColor	rgbBlack;
 //extern LSRAW *bpic_ptr;
 //extern int have_bpic;
 
@@ -294,7 +295,6 @@ void Draw_it_colour_bg(int width,int height, int colour)
 //extern Ptr screenaddr;
 //extern int screenwidth;
 //extern GDHandle displaydevice;
-//extern const RGBColor	rgbBlack;
 //extern LSRAW *bpic_ptr;
 //extern int have_bpic;
 

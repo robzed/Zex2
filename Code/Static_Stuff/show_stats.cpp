@@ -15,6 +15,9 @@
 // *
 /* ***********************************************************************************
 // $Log: show_stats.c,v $
+// Revision 1.2  2003/09/20 12:57:15  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:37:13  stu_c
 // First Imported.
 //
@@ -193,7 +196,6 @@ static int epilogue_colour,epilogue_colour_delta;
 extern int real_frame_counter;
 
 extern int user_abort;
-extern const RGBColor	rgbBlack;
 extern int docked_at;
 extern int score,credits,start_time;
 extern int do_launch;
@@ -227,7 +229,6 @@ LSRAW *logo;
 //extern Ptr screenaddr;
 //extern int screenwidth;
 
-//extern const RGBColor	rgbBlack;
 //extern int zex_alive;
 extern	DynObjectsFixedSize *ocb_ptr;
 extern int thrust;

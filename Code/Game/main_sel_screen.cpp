@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.c,v $
+// Revision 1.4  2003/09/24 21:39:39  robp
+// More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
+//
 // Revision 1.3  2003/09/22 21:04:34  stu_c
 // Zex: Weapons: Adjustments to temp rise and fall in laser bay. Rebuild required.
 //
@@ -1279,7 +1282,6 @@ void show_story_text()
 
 extern Ptr screenaddr;
 extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 
 
 

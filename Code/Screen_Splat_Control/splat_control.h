@@ -29,6 +29,10 @@ extern const RGBColor	rgbBlue;
 extern const RGBColor	rgbYellow;
 extern const RGBColor	rgbPurple;
 extern const RGBColor	rgbGreen;
+extern const RGBColor	rgbLightBlue;
+extern const RGBColor	rgbDarkBlue;
+extern const RGBColor	rgbGrey;
+extern const RGBColor	rgbDarkGrey;
 
 int init_screen();
 int init_screen();

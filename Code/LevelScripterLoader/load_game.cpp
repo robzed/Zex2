@@ -3,6 +3,9 @@
 //See 3D engine design for notes
 /*
  * $Log: load_game.c,v $
+ * Revision 1.4  2003/09/22 20:52:02  stu_c
+ * Zex:Weapons:Laser Bay temperature and overheat (in progress)
+ *
  * Revision 1.3  2003/09/20 12:56:58  robp
  * Removed nested comments
  *
@@ -1261,7 +1264,6 @@ extern char level_text[2048];	//level description goes here
 
 extern Ptr screenaddr;
 extern int screenwidth;
-//extern const RGBColor	rgbBlack;
 
 
 //CGrafPtr the_drawing_buffer;
