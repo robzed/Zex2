@@ -28,8 +28,6 @@
 			<real>1.300000e+01</real>
 		</dict>
 		<dict>
-			<key>Alignment</key>
-			<string>Right</string>
 			<key>Identifier</key>
 			<string>00ecbd9c3fb2a3d60290011f</string>
 			<key>MaximumWidth</key>
@@ -41,7 +39,7 @@
 			<key>Title</key>
 			<string>Item</string>
 			<key>Width</key>
-			<real>4.570000e+02</real>
+			<real>5.310000e+02</real>
 		</dict>
 		<dict>
 			<key>Formatter</key>
@@ -74,13 +72,44 @@
 			<key>Width</key>
 			<real>1.000000e+02</real>
 		</dict>
+		<dict>
+			<key>Formatter</key>
+			<dict>
+				<key>Class</key>
+				<string>OFTimeSpanFormatter</string>
+				<key>hoursPerDay</key>
+				<integer>8</integer>
+				<key>hoursPerMonth</key>
+				<integer>160</integer>
+				<key>hoursPerWeek</key>
+				<integer>40</integer>
+				<key>verbose</key>
+				<false/>
+			</dict>
+			<key>Identifier</key>
+			<string>388e45dd3fb6d2e50320011f</string>
+			<key>MaximumWidth</key>
+			<real>1.000000e+06</real>
+			<key>MinimumWidth</key>
+			<real>1.300000e+01</real>
+			<key>OOPlainTextExportWidthKey</key>
+			<integer>40</integer>
+			<key>SummaryType</key>
+			<string>Calculated</string>
+			<key>Title</key>
+			<string>Actual Time</string>
+			<key>Type</key>
+			<string>duration</string>
+			<key>Width</key>
+			<real>1.000000e+02</real>
+		</dict>
 	</array>
 	<key>IsNoteExpanded</key>
 	<true/>
 	<key>NoteColumn</key>
 	<string>158abd9b3fb2a3d60290011f</string>
 	<key>NoteHeight</key>
-	<integer>35</integer>
+	<integer>89</integer>
 	<key>Other Information</key>
 	<dict>
 		<key>Page Layout</key>
@@ -122,10 +151,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Draw Tractor Beam from MS to dockee}</string>
 									<string>24</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -138,10 +168,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Add ships status screen (same as 1.3.7.1)}</string>
 									<string>16</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -154,10 +185,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Mothership state. Process current damage. Affects network connection to GalaNet and facilities available.}</string>
 									<string>32</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -170,10 +202,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Damage affects initial connection to GalaNet}</string>
 									<string>1</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -186,10 +219,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Damage effect all GalaNet connections (all screens can drop at random times, increasing as per damage) Displays alert.}</string>
 									<string>16</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -205,10 +239,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Track attack time on per mothership basis}</string>
 											<string>8</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -221,10 +256,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 if attack on-going longer than 1 game day, decrease stock}</string>
 											<string>4</string>
+											<string></string>
 										</array>
 									</dict>
 								</array>
@@ -237,10 +273,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Long term attack affects trade (i.e. longer than 1 day continuous attack)}</string>
 									<string>12</string>
+									<string>0</string>
 								</array>
 							</dict>
 							<dict>
@@ -253,10 +290,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Damage can affect external connections - affects Mission BB, external connection not available if damage &gt; X}</string>
 									<string>4</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -269,10 +307,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Under attack (sounds whilst docked).}</string>
 									<string>16</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -285,10 +324,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Mothership repair. Non linear repair rate, more damage=slower. More population=faster.}</string>
 									<string>16</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -304,10 +344,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Player state}</string>
 											<string>24</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -320,10 +361,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 World state}</string>
 											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -336,10 +378,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Misc state}</string>
 											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 								</array>
@@ -352,10 +395,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Save Game}</string>
 									<string>56</string>
+									<string>0</string>
 								</array>
 							</dict>
 							<dict>
@@ -371,10 +415,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Game Reinit}</string>
 											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -387,10 +432,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Player state}</string>
 											<string>24</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -403,10 +449,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 World state}</string>
 											<string>24</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -419,10 +466,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Misc state}</string>
 											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 								</array>
@@ -435,10 +483,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Load game}</string>
 									<string>80</string>
+									<string>0</string>
 								</array>
 							</dict>
 							<dict>
@@ -454,10 +503,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0  Routine to change MS state in fast sleep time; update number of ships docked. Update MS stock. Update MS ships items for sale. Depends on stock and items for sale data.}</string>
 											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 								</array>
@@ -470,10 +520,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Sleep}</string>
 									<string>16</string>
+									<string>0</string>
 								</array>
 							</dict>
 							<dict>
@@ -486,9 +537,10 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Check for game events during sleep. Depends on missions and game logic.}</string>
+									<string></string>
 									<string></string>
 								</array>
 							</dict>
@@ -508,10 +560,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Connection troubles as per mothership state. Depends on mothership state. }</string>
 													<string>8</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -524,10 +577,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Modification of front screen for BB Link }</string>
 													<string>4</string>
+													<string></string>
 												</array>
 											</dict>
 										</array>
@@ -540,10 +594,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Front Screen (Terminal)}</string>
 											<string>12</string>
+											<string>0</string>
 										</array>
 										<key>Expanded</key>
 										<true/>
@@ -558,10 +613,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Bulletin Board. Depends on missions}</string>
 											<string>120</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -574,10 +630,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Complete buy/sell goods. Depends on goods and economy}</string>
 											<string>80</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -590,10 +647,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Complete buy/sell ships items. Depends on ships items }</string>
 											<string>80</string>
+											<string></string>
 										</array>
 									</dict>
 								</array>
@@ -606,11 +664,51 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 GalaNet}</string>
 									<string>292</string>
+									<string>0</string>
 								</array>
+							</dict>
+							<dict>
+								<key>Children</key>
+								<array>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+
+\f0\fs20 \cf2 Fix badly mutated auto generated motherships (for example, Earth MS with 14 arms!)}</string>
+											<string>8</string>
+											<string></string>
+										</array>
+									</dict>
+								</array>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+
+\f0\fs24 \cf2 Mothership bugs}</string>
+									<string>8</string>
+									<string>0</string>
+								</array>
+								<key>Expanded</key>
+								<true/>
 							</dict>
 						</array>
 						<key>Cols</key>
@@ -622,11 +720,14 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Motherships}</string>
-							<string>581</string>
+							<string>589</string>
+							<string>0</string>
 						</array>
+						<key>Expanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -641,10 +742,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Need 10 to 15 ship types (Rough development versions) inc SDS data}</string>
 									<string>240</string>
+									<string></string>
 								</array>
 								<key>Style</key>
 								<dict>
@@ -676,10 +778,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf0 Need 10 to 15 ship types (Release versions) Outsourced? SDS data already generated from 1.2.1}</string>
+\f0\fs24 \cf0 Need 10 to 15 ship types (Release versions) Outsourced? SDS data already generated from 2.2.1}</string>
 									<string>0</string>
+									<string></string>
 								</array>
 								<key>Style</key>
 								<dict>
@@ -717,493 +820,10 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Remove combat mode}</string>
 													<string>4</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-										</array>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Autopilot}</string>
-											<string>4</string>
-										</array>
-										<key>Style</key>
-										<dict>
-											<key>TextColor</key>
-											<dict>
-												<key>b</key>
-												<string>0</string>
-												<key>g</key>
-												<string>0</string>
-												<key>r</key>
-												<string>0</string>
-											</dict>
-											<key>TextFont</key>
-											<dict>
-												<key>name</key>
-												<string>Helvetica</string>
-												<key>size</key>
-												<real>1.000000e+01</real>
-											</dict>
-										</dict>
-									</dict>
-									<dict>
-										<key>Children</key>
-										<array>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Define levels 1-5 (see design doc)}</string>
-													<string>8</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
-													<string>32</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Children</key>
-												<array>
-													<dict>
-														<key>Cols</key>
-														<array>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Graphics for buy/sell}</string>
-															<string>8</string>
-														</array>
-														<key>Style</key>
-														<dict>
-															<key>TextColor</key>
-															<dict>
-																<key>b</key>
-																<string>0</string>
-																<key>g</key>
-																<string>0</string>
-																<key>r</key>
-																<string>0</string>
-															</dict>
-															<key>TextFont</key>
-															<dict>
-																<key>name</key>
-																<string>Helvetica</string>
-																<key>size</key>
-																<real>1.000000e+01</real>
-															</dict>
-														</dict>
-													</dict>
-													<dict>
-														<key>Cols</key>
-														<array>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Code for buy/sell}</string>
-															<string>8</string>
-														</array>
-													</dict>
-												</array>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Integrate with motherships (Buy/sell)}</string>
-													<string>16</string>
-												</array>
-												<key>Expanded</key>
-												<true/>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Graphics for ECM action}</string>
-													<string>32</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-										</array>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 ECM}</string>
-											<string>88</string>
-										</array>
-										<key>Style</key>
-										<dict>
-											<key>TextColor</key>
-											<dict>
-												<key>b</key>
-												<string>0</string>
-												<key>g</key>
-												<string>0</string>
-												<key>r</key>
-												<string>0</string>
-											</dict>
-											<key>TextFont</key>
-											<dict>
-												<key>name</key>
-												<string>Helvetica</string>
-												<key>size</key>
-												<real>1.000000e+01</real>
-											</dict>
-										</dict>
-									</dict>
-									<dict>
-										<key>Children</key>
-										<array>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Define Levels 1-4}</string>
-													<string>8</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
-													<string>80</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Children</key>
-												<array>
-													<dict>
-														<key>Cols</key>
-														<array>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Graphics for buy/sell}</string>
-															<string>8</string>
-														</array>
-													</dict>
-													<dict>
-														<key>Cols</key>
-														<array>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-															<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Code for buy/sell}</string>
-															<string>24</string>
-														</array>
-													</dict>
-												</array>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Integrate with motherships (Buy/sell)}</string>
-													<string>32</string>
-												</array>
-												<key>Expanded</key>
-												<true/>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Graphics/models/exhausts for missiles (Rough development versions 4 types)}</string>
-													<string>16</string>
-												</array>
-												<key>Style</key>
-												<dict>
-													<key>TextColor</key>
-													<dict>
-														<key>b</key>
-														<string>0</string>
-														<key>g</key>
-														<string>0</string>
-														<key>r</key>
-														<string>0</string>
-													</dict>
-													<key>TextFont</key>
-													<dict>
-														<key>name</key>
-														<string>Helvetica</string>
-														<key>size</key>
-														<real>1.000000e+01</real>
-													</dict>
-												</dict>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Graphics/models/exhausts for missiles (Release versions 4 types) Outsourced?}</string>
 													<string></string>
 												</array>
 												<key>Style</key>
@@ -1236,10 +856,510 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Autopilot}</string>
+											<string>4</string>
+											<string>0</string>
+										</array>
+										<key>Style</key>
+										<dict>
+											<key>TextColor</key>
+											<dict>
+												<key>b</key>
+												<string>0</string>
+												<key>g</key>
+												<string>0</string>
+												<key>r</key>
+												<string>0</string>
+											</dict>
+											<key>TextFont</key>
+											<dict>
+												<key>name</key>
+												<string>Helvetica</string>
+												<key>size</key>
+												<real>1.000000e+01</real>
+											</dict>
+										</dict>
+									</dict>
+									<dict>
+										<key>Children</key>
+										<array>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Define levels 1-5 (see design doc)}</string>
+													<string>8</string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
+													<string>32</string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Children</key>
+												<array>
+													<dict>
+														<key>Cols</key>
+														<array>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Graphics for buy/sell}</string>
+															<string>8</string>
+															<string></string>
+														</array>
+														<key>Style</key>
+														<dict>
+															<key>TextColor</key>
+															<dict>
+																<key>b</key>
+																<string>0</string>
+																<key>g</key>
+																<string>0</string>
+																<key>r</key>
+																<string>0</string>
+															</dict>
+															<key>TextFont</key>
+															<dict>
+																<key>name</key>
+																<string>Helvetica</string>
+																<key>size</key>
+																<real>1.000000e+01</real>
+															</dict>
+														</dict>
+													</dict>
+													<dict>
+														<key>Cols</key>
+														<array>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Code for buy/sell}</string>
+															<string>8</string>
+															<string></string>
+														</array>
+													</dict>
+												</array>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Integrate with motherships (Buy/sell)}</string>
+													<string>16</string>
+													<string>0</string>
+												</array>
+												<key>Expanded</key>
+												<true/>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Graphics for ECM action}</string>
+													<string>32</string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+										</array>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 ECM}</string>
+											<string>88</string>
+											<string>0</string>
+										</array>
+										<key>Style</key>
+										<dict>
+											<key>TextColor</key>
+											<dict>
+												<key>b</key>
+												<string>0</string>
+												<key>g</key>
+												<string>0</string>
+												<key>r</key>
+												<string>0</string>
+											</dict>
+											<key>TextFont</key>
+											<dict>
+												<key>name</key>
+												<string>Helvetica</string>
+												<key>size</key>
+												<real>1.000000e+01</real>
+											</dict>
+										</dict>
+									</dict>
+									<dict>
+										<key>Children</key>
+										<array>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Define Levels 1-4}</string>
+													<string>8</string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
+													<string>80</string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Children</key>
+												<array>
+													<dict>
+														<key>Cols</key>
+														<array>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Graphics for buy/sell}</string>
+															<string>8</string>
+															<string></string>
+														</array>
+													</dict>
+													<dict>
+														<key>Cols</key>
+														<array>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+															<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Code for buy/sell}</string>
+															<string>24</string>
+															<string></string>
+														</array>
+													</dict>
+												</array>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Integrate with motherships (Buy/sell)}</string>
+													<string>32</string>
+													<string>0</string>
+												</array>
+												<key>Expanded</key>
+												<true/>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Graphics/models/exhausts for missiles (Rough development versions 4 types)}</string>
+													<string>16</string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Graphics/models/exhausts for missiles (Release versions 4 types) Outsourced?}</string>
+													<string></string>
+													<string></string>
+												</array>
+												<key>Style</key>
+												<dict>
+													<key>TextColor</key>
+													<dict>
+														<key>b</key>
+														<string>0</string>
+														<key>g</key>
+														<string>0</string>
+														<key>r</key>
+														<string>0</string>
+													</dict>
+													<key>TextFont</key>
+													<dict>
+														<key>name</key>
+														<string>Helvetica</string>
+														<key>size</key>
+														<real>1.000000e+01</real>
+													</dict>
+												</dict>
+											</dict>
+										</array>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Missiles}</string>
 											<string>136</string>
+											<string>0</string>
 										</array>
 										<key>Style</key>
 										<dict>
@@ -1274,10 +1394,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Define levels 1-4}</string>
 													<string>8</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -1290,10 +1411,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
 													<string>40</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -1309,10 +1431,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for buy/sell}</string>
 															<string>32</string>
+															<string></string>
 														</array>
 													</dict>
 													<dict>
@@ -1325,10 +1448,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Code for buy/sell}</string>
 															<string>8</string>
+															<string></string>
 														</array>
 													</dict>
 												</array>
@@ -1341,10 +1465,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Buy/sell)}</string>
 													<string>40</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -1359,10 +1484,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for guns}</string>
 													<string>48</string>
+													<string></string>
 												</array>
 											</dict>
 										</array>
@@ -1375,10 +1501,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Guns}</string>
 											<string>136</string>
+											<string>0</string>
 										</array>
 									</dict>
 									<dict>
@@ -1394,10 +1521,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
 													<string>40</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -1413,10 +1541,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for buy/sell}</string>
 															<string>16</string>
+															<string></string>
 														</array>
 													</dict>
 													<dict>
@@ -1429,10 +1558,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Code for buy/sell}</string>
 															<string>4</string>
+															<string></string>
 														</array>
 													</dict>
 												</array>
@@ -1445,10 +1575,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Buy/Sell)}</string>
 													<string>20</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -1463,10 +1594,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for chaff pod}</string>
 													<string>24</string>
+													<string></string>
 												</array>
 											</dict>
 										</array>
@@ -1479,10 +1611,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Chaff Pod}</string>
 											<string>84</string>
+											<string>0</string>
 										</array>
 									</dict>
 									<dict>
@@ -1498,10 +1631,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Define levels 1-3}</string>
 													<string>8</string>
+													<string></string>
 												</array>
 												<key>Style</key>
 												<dict>
@@ -1533,10 +1667,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Implement usage (Player and NPC), needs chaff pod}</string>
 													<string>40</string>
+													<string></string>
 												</array>
 												<key>Style</key>
 												<dict>
@@ -1571,10 +1706,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for buy/sell}</string>
 															<string>16</string>
+															<string></string>
 														</array>
 														<key>Style</key>
 														<dict>
@@ -1606,10 +1742,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Code for buy/sell}</string>
 															<string>4</string>
+															<string></string>
 														</array>
 														<key>Style</key>
 														<dict>
@@ -1641,10 +1778,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Buy/Sell)}</string>
 													<string>20</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -1678,10 +1816,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for chaff}</string>
 													<string>24</string>
+													<string></string>
 												</array>
 												<key>Style</key>
 												<dict>
@@ -1713,10 +1852,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Chaff}</string>
 											<string>92</string>
+											<string>0</string>
 										</array>
 										<key>Style</key>
 										<dict>
@@ -1751,10 +1891,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Data for laser types (15 of them, see design doc)}</string>
 													<string>4</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -1767,10 +1908,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Implement usage (player and NPC)}</string>
 													<string>40</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -1786,10 +1928,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for buy/sell (1 graphic)}</string>
 															<string>8</string>
+															<string></string>
 														</array>
 													</dict>
 													<dict>
@@ -1802,10 +1945,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Code for buy/sell}</string>
 															<string>4</string>
+															<string></string>
 														</array>
 													</dict>
 												</array>
@@ -1818,10 +1962,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Buy/Sell)}</string>
 													<string>12</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -1836,10 +1981,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for lasers}</string>
 													<string>160</string>
+													<string></string>
 												</array>
 											</dict>
 										</array>
@@ -1852,10 +1998,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Lasers}</string>
 											<string>216</string>
+											<string>0</string>
 										</array>
 									</dict>
 									<dict>
@@ -1871,10 +2018,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Data for shield types (12 of them, see design doc)}</string>
 													<string>4</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -1890,10 +2038,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 graphics  and graphics control}</string>
 															<string>120</string>
+															<string></string>
 														</array>
 													</dict>
 													<dict>
@@ -1906,10 +2055,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Recharge rate and fuel usage}</string>
 															<string>16</string>
+															<string></string>
 														</array>
 													</dict>
 													<dict>
@@ -1922,10 +2072,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Damage}</string>
 															<string>16</string>
+															<string></string>
 														</array>
 													</dict>
 												</array>
@@ -1938,10 +2089,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Implement usage (Player and NPC)}</string>
 													<string>152</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -1959,10 +2111,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for buy/sell (1 graphic)}</string>
 															<string>8</string>
+															<string></string>
 														</array>
 													</dict>
 													<dict>
@@ -1975,10 +2128,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 code for buy/sell}</string>
 															<string>4</string>
+															<string></string>
 														</array>
 													</dict>
 												</array>
@@ -1991,10 +2145,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Buy/Sell)}</string>
 													<string>12</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -2009,10 +2164,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Shields}</string>
 											<string>168</string>
+											<string>0</string>
 										</array>
 									</dict>
 									<dict>
@@ -2028,10 +2184,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Data for fuel}</string>
 													<string>4</string>
+													<string></string>
 												</array>
 												<key>Style</key>
 												<dict>
@@ -2066,10 +2223,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for buy/sell (1 graphic)}</string>
 															<string>8</string>
+															<string></string>
 														</array>
 														<key>Style</key>
 														<dict>
@@ -2101,10 +2259,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 code for buy/sell}</string>
 															<string>4</string>
+															<string></string>
 														</array>
 														<key>Style</key>
 														<dict>
@@ -2136,10 +2295,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Buy/Sell)}</string>
 													<string>12</string>
+													<string>0</string>
 												</array>
 												<key>Style</key>
 												<dict>
@@ -2171,10 +2331,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Fuel}</string>
 											<string>16</string>
+											<string>0</string>
 										</array>
 										<key>Style</key>
 										<dict>
@@ -2209,10 +2370,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Data for hull repair}</string>
 													<string>4</string>
+													<string></string>
 												</array>
 												<key>Style</key>
 												<dict>
@@ -2247,10 +2409,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Graphics for purchase (1 graphic)}</string>
 															<string>8</string>
+															<string></string>
 														</array>
 														<key>Style</key>
 														<dict>
@@ -2282,10 +2445,11 @@
 															<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 code for purchase}</string>
 															<string>4</string>
+															<string></string>
 														</array>
 														<key>Style</key>
 														<dict>
@@ -2317,10 +2481,11 @@
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Integrate with Motherships (Purchase)}</string>
 													<string>12</string>
+													<string>0</string>
 												</array>
 												<key>Expanded</key>
 												<true/>
@@ -2354,13 +2519,12 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Hull Repair (Docked)}</string>
 											<string>16</string>
+											<string>0</string>
 										</array>
-										<key>Expanded</key>
-										<true/>
 										<key>Style</key>
 										<dict>
 											<key>TextColor</key>
@@ -2391,10 +2555,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Define and use all ships items (ties into Motherships)}</string>
 									<string>956</string>
+									<string>0</string>
 								</array>
 								<key>Expanded</key>
 								<true/>
@@ -2418,6 +2583,23 @@
 									</dict>
 								</dict>
 							</dict>
+							<dict>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+
+\f0\fs24 \cf2 Bugs}</string>
+									<string>0</string>
+									<string>0</string>
+								</array>
+							</dict>
 						</array>
 						<key>Cols</key>
 						<array>
@@ -2428,10 +2610,11 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Ships}</string>
 							<string>1196</string>
+							<string>0</string>
 						</array>
 						<key>Style</key>
 						<dict>
@@ -2466,10 +2649,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 'Random' attacks based on cargo/stats}</string>
 									<string>40</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -2482,10 +2666,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Asteroid fields (parameters for placement?)}</string>
 									<string>16</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -2498,10 +2683,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Herds of space cows (parameters for placement? Large gas planets?)}</string>
 									<string>16</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -2514,10 +2700,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Bounty payment}</string>
 									<string>24</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -2530,10 +2717,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Promotion points, experience and rank}</string>
 									<string>120</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -2549,360 +2737,10 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 NPC Control during combat}</string>
 											<string>240</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Damage and auto repair}</string>
-											<string>16</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Cargo spilage and scooping}</string>
-											<string>16</string>
-										</array>
-									</dict>
-								</array>
-								<key>Cols</key>
-								<array>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs24 \cf0 Combat}</string>
-									<string>272</string>
-								</array>
-							</dict>
-							<dict>
-								<key>Children</key>
-								<array>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Ship status screen}</string>
-											<string>80</string>
-										</array>
-									</dict>
-								</array>
-								<key>Cols</key>
-								<array>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs24 \cf0 Ship controls}</string>
-									<string>80</string>
-								</array>
-							</dict>
-							<dict>
-								<key>Children</key>
-								<array>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Create galactic map from seed}</string>
-											<string>80</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 UI for galactic map}</string>
-											<string>120</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Hyperspace to new system}</string>
-											<string>120</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Children</key>
-										<array>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 if wormhole, then object for wormhole}</string>
-													<string>40</string>
-												</array>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 if wormhole, then animation for wormhole (see Zex 1)}</string>
-													<string>80</string>
-												</array>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 If bought item, the integration with shop on Galanet and actuation}</string>
-													<string>24</string>
-												</array>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 If bought item then animation for solar 'leap' - can use the same as 1.3.8.4.2?}</string>
-													<string>80</string>
-												</array>
-											</dict>
-										</array>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 item to enable hyperspace - wormholes as per zex 1 or bought item?}</string>
-											<string>224</string>
-										</array>
-									</dict>
-								</array>
-								<key>Cols</key>
-								<array>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs24 \cf0 Galactic Navigation}</string>
-									<string>544</string>
-								</array>
-							</dict>
-							<dict>
-								<key>Children</key>
-								<array>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Create total list of possible options from all ships}</string>
-											<string>80</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Design interface to display all}</string>
-											<string>80</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Interface to SDS to draw available items, possibly compiled for speed}</string>
-											<string>40</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Draw interface}</string>
-											<string>240</string>
-										</array>
-									</dict>
-								</array>
-								<key>Cols</key>
-								<array>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-									<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs24 \cf0 Virtual cockpit}</string>
-									<string>440</string>
-								</array>
-							</dict>
-							<dict>
-								<key>Children</key>
-								<array>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Create list of  mission types (see design doc. for some ideas)}</string>
-											<string>24</string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf0 Mission handler (Coffee or  C - need not be complicated)}</string>
 											<string></string>
 										</array>
 									</dict>
@@ -2916,10 +2754,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf0 Mission generator (See BB on Motherships)}</string>
-											<string>400</string>
+\f0\fs20 \cf0 Damage and auto repair}</string>
+											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -2932,10 +2771,11 @@
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf0 Mission processing (Check mission parameters for important events)}</string>
-											<string>400</string>
+\f0\fs20 \cf0 Cargo spilage and scooping}</string>
+											<string>16</string>
+											<string></string>
 										</array>
 									</dict>
 								</array>
@@ -2948,10 +2788,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf0 Missions}</string>
-									<string>824</string>
+\f0\fs24 \cf0 Combat}</string>
+									<string>272</string>
+									<string>0</string>
 								</array>
 							</dict>
 							<dict>
@@ -2966,11 +2807,83 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Hire/Fire dialog and processing (as per Zex 1)}</string>
-											<string>40</string>
+\f0\fs20 \cf0 Ship status screen}</string>
+											<string>80</string>
+											<string></string>
+										</array>
+									</dict>
+								</array>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 Ship controls}</string>
+									<string>80</string>
+									<string>0</string>
+								</array>
+							</dict>
+							<dict>
+								<key>Children</key>
+								<array>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Create galactic map from seed}</string>
+											<string>80</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 UI for galactic map}</string>
+											<string>120</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Hyperspace to new system}</string>
+											<string>120</string>
+											<string></string>
 										</array>
 									</dict>
 									<dict>
@@ -2985,11 +2898,12 @@
 }</string>
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Interface}</string>
+\f0\fs20 \cf0 if wormhole, then object for wormhole}</string>
 													<string>40</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -3001,27 +2915,12 @@
 }</string>
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
-
-\f0\fs20 \cf2 Wingmen command processing}</string>
-													<string>120</string>
-												</array>
-											</dict>
-											<dict>
-												<key>Cols</key>
-												<array>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
 {\colortbl;\red255\green255\blue255;}
-}</string>
-													<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Wingmen 'banter'}</string>
+\f0\fs20 \cf0 if wormhole, then animation for wormhole (see Zex 1)}</string>
 													<string>80</string>
+													<string></string>
 												</array>
 											</dict>
 											<dict>
@@ -3033,11 +2932,29 @@
 }</string>
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Wingmen payment and misc control (i.e. when docked etc)}</string>
+\f0\fs20 \cf0 If bought item, the integration with shop on Galanet and actuation}</string>
+													<string>24</string>
+													<string></string>
+												</array>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 If bought item then animation for solar 'leap' - can use the same as 1.3.8.4.2?}</string>
 													<string>80</string>
+													<string></string>
 												</array>
 											</dict>
 										</array>
@@ -3049,11 +2966,12 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Command and control}</string>
-											<string>320</string>
+\f0\fs20 \cf0 item to enable hyperspace - wormholes as per zex 1 or bought item?}</string>
+											<string>224</string>
+											<string>0</string>
 										</array>
 									</dict>
 								</array>
@@ -3065,11 +2983,313 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Wingmen}</string>
+\f0\fs24 \cf0 Galactic Navigation}</string>
+									<string>544</string>
+									<string>0</string>
+								</array>
+							</dict>
+							<dict>
+								<key>Children</key>
+								<array>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Create total list of possible options from all ships}</string>
+											<string>80</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Design interface to display all}</string>
+											<string>80</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Interface to SDS to draw available items, possibly compiled for speed}</string>
+											<string>40</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Draw interface}</string>
+											<string>240</string>
+											<string></string>
+										</array>
+									</dict>
+								</array>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 Virtual cockpit}</string>
+									<string>440</string>
+									<string>0</string>
+								</array>
+							</dict>
+							<dict>
+								<key>Children</key>
+								<array>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Create list of  mission types (see design doc. for some ideas)}</string>
+											<string>24</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Mission handler (Coffee or  C - need not be complicated)}</string>
+											<string></string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Mission generator (See BB on Motherships)}</string>
+											<string>400</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Mission processing (Check mission parameters for important events)}</string>
+											<string>400</string>
+											<string></string>
+										</array>
+									</dict>
+								</array>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 Missions}</string>
+									<string>824</string>
+									<string>0</string>
+								</array>
+							</dict>
+							<dict>
+								<key>Children</key>
+								<array>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Hire/Fire dialog and processing (as per Zex 1)}</string>
+											<string>40</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Children</key>
+										<array>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Interface}</string>
+													<string>40</string>
+													<string></string>
+												</array>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Wingmen command processing}</string>
+													<string>120</string>
+													<string></string>
+												</array>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Wingmen 'banter'}</string>
+													<string>80</string>
+													<string></string>
+												</array>
+											</dict>
+											<dict>
+												<key>Cols</key>
+												<array>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+													<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Wingmen payment and misc control (i.e. when docked etc)}</string>
+													<string>80</string>
+													<string></string>
+												</array>
+											</dict>
+										</array>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Command and control}</string>
+											<string>320</string>
+											<string>0</string>
+										</array>
+									</dict>
+								</array>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf0 Wingmen}</string>
 									<string>360</string>
+									<string>0</string>
 								</array>
 							</dict>
 						</array>
@@ -3082,11 +3302,14 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Flight/Player/Missions}</string>
 							<string>2736</string>
+							<string>0</string>
 						</array>
+						<key>Expanded</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -3101,10 +3324,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Galactic create}</string>
 									<string>80</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3117,10 +3341,28 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 System load}</string>
 									<string>80</string>
+									<string></string>
+								</array>
+							</dict>
+							<dict>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red22\green22\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs24 \cf2 Gravity? Local objects only?}</string>
+									<string>80</string>
+									<string></string>
 								</array>
 							</dict>
 						</array>
@@ -3133,10 +3375,11 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Game Play Area}</string>
-							<string>160</string>
+							<string>240</string>
+							<string>0</string>
 						</array>
 					</dict>
 					<dict>
@@ -3152,10 +3395,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Restart game}</string>
 									<string>8</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3168,10 +3412,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 XPLAT display}</string>
 									<string>120</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3184,10 +3429,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 XPLAT sound and music}</string>
 									<string>240</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3200,10 +3446,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 XPLAT control (keys/usb pads etc)}</string>
 									<string>240</string>
+									<string></string>
 								</array>
 							</dict>
 						</array>
@@ -3216,10 +3463,11 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Game Mechanics}</string>
 							<string>608</string>
+							<string>0</string>
 						</array>
 					</dict>
 					<dict>
@@ -3235,10 +3483,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Sound effects}</string>
 									<string>240</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3251,10 +3500,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Manual}</string>
 									<string>80</string>
+									<string></string>
 								</array>
 							</dict>
 						</array>
@@ -3267,10 +3517,11 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Data/Misc}</string>
 							<string>320</string>
+							<string>0</string>
 						</array>
 					</dict>
 					<dict>
@@ -3286,10 +3537,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Lens flare (Occulted)}</string>
 									<string>120</string>
+									<string></string>
 								</array>
 							</dict>
 						</array>
@@ -3302,10 +3554,11 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Misc graphics}</string>
 							<string>120</string>
+							<string>0</string>
 						</array>
 					</dict>
 					<dict>
@@ -3321,10 +3574,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Gameplay tuning}</string>
 									<string>160</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3337,10 +3591,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Mission tweaking (and coding if necessary) and testing}</string>
 									<string>320</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3353,10 +3608,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Internal Alpha test and bug fix}</string>
 									<string>160</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3369,10 +3625,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Beta1 test}</string>
 									<string>80</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3385,10 +3642,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Bug fix}</string>
 									<string>40</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3401,10 +3659,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Beta2 test}</string>
 									<string>80</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3417,10 +3676,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Bug fix}</string>
 									<string>24</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3433,10 +3693,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Final candidates and bug fix}</string>
 									<string>80</string>
+									<string></string>
 								</array>
 							</dict>
 							<dict>
@@ -3449,10 +3710,11 @@
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Release}</string>
 									<string>40</string>
+									<string></string>
 								</array>
 							</dict>
 						</array>
@@ -3465,11 +3727,14 @@
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Tuning/Polish}</string>
 							<string>984</string>
+							<string>0</string>
 						</array>
+						<key>Expanded</key>
+						<true/>
 					</dict>
 				</array>
 				<key>Cols</key>
@@ -3481,10 +3746,11 @@
 					<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 Zapfino;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\qr
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs48 \cf0 Zex ToDo and Timings}</string>
-					<string>6705</string>
+					<string>6793</string>
+					<string>0</string>
 				</array>
 				<key>Expanded</key>
 				<true/>
@@ -3500,7 +3766,8 @@
 {\fonttbl}
 {\colortbl;\red255\green255\blue255;}
 }</string>
-			<string>6705</string>
+			<string>6793</string>
+			<string>0</string>
 		</array>
 		<key>Expanded</key>
 		<true/>
