@@ -1,6 +1,9 @@
 //object_control_top.cpp
 /*
 $Log: object_control_top.cpp,v $
+Revision 1.5  2003/09/28 17:29:44  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.4  2003/09/27 20:41:49  robp
 Fixed float->int warnings.
 
@@ -250,7 +253,7 @@ reset_kill_list();	//as it says
 //this routine should only be called if main loop is not running
 //because dynamic_object_index will get out of sync otherwise 
 //it also overrides the checking of an already killed object!
-public void i_know_what_im_doing_kill( int the_object, int kill_textures)
+zex_public void i_know_what_im_doing_kill( int the_object, int kill_textures)
 {
 //extern	DynObjectsFixedSize *ocb_ptr;
 

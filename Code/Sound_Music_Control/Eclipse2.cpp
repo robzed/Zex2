@@ -96,7 +96,7 @@ SndCallBackUPP gCarbonSndPlayDoubleBufferCallBackUPP;
 // Init Eclipse
 // --------------------------------------------------------
 
-public eclipse_err eclipse_init(void)
+zex_public eclipse_err eclipse_init(void)
 {
   int i;
   int err=0;
@@ -131,7 +131,7 @@ public eclipse_err eclipse_init(void)
 // Insert a new one-shot sound
 // Returns 0 if sound could be inserted else ECLIPSE_NO_SLOT_ERR
 // --------------------------------------------------------
-public eclipse_err eclipse_play_one_shot_sound(SndListHandle the_sound)
+zex_public eclipse_err eclipse_play_one_shot_sound(SndListHandle the_sound)
 {
 int chan_index,err;
 SndChannelPtr the_chan;
@@ -225,7 +225,7 @@ extern int sound_volume;
 // --------------------------------------------------------
 
 
-public eclipse_sound_ref  eclipse_play_looped_sound(SndListHandle the_sound, int the_object)
+zex_public eclipse_sound_ref  eclipse_play_looped_sound(SndListHandle the_sound, int the_object)
 {
 eclipse_sound_ref sound_ref;
 int chan_index,err;
@@ -348,7 +348,7 @@ SoundHeaderPtr		mySndHeader;
 // ----------------------------------------------------------------------
 // Looped sound modifier functions
 
-public eclipse_err eclipse_set_looped_chan_volume (eclipse_sound_ref the_ref, int volume_percent)
+zex_public eclipse_err eclipse_set_looped_chan_volume (eclipse_sound_ref the_ref, int volume_percent)
 {
 
 
@@ -371,7 +371,7 @@ looped_sound_volumes_percent[the_ref]=volume_percent;
 // ----------------------------------------------------------------------
 // Kill functions
 
-public void eclipse_kill_all_looped_sounds(void)
+zex_public void eclipse_kill_all_looped_sounds(void)
 {
 int n;
  for(n=LOOPED_CHANS_START; n<LOOPED_CHANS_END; n++)
@@ -382,7 +382,7 @@ int n;
 
 
 //eclipse_kill_looped_sound, eclipse_kill_all_looped_sounds, eclipse_kill_one_shot_sounds, eclipse_kill_all_sounds.
-public eclipse_err eclipse_kill_looped_sound(eclipse_sound_ref the_ref)
+zex_public eclipse_err eclipse_kill_looped_sound(eclipse_sound_ref the_ref)
 {
 struct SCStatus chan_status;
 int object;
@@ -494,7 +494,7 @@ SndCommand mySndCmd;
 
 
 //set position and amplitude for each continuous sound
-public void eclipse_update_sounds(void)
+zex_public void eclipse_update_sounds(void)
 {
 float float_vol;
 short int_vol;

@@ -158,7 +158,7 @@ int points_start;
 
 
 #define module_private static
-#define public 
+#define zex_public 
 
 
 typedef struct

@@ -197,7 +197,7 @@ Fdynamic_object_index=0;
 //because Fdynamic_object_index will get out of sync otherwise 
 //it also overrides the checking of an already killed object!
 //It is called from above to kill all the old fast objects.
-public void Fi_know_what_im_doing_kill( int the_object, int kill_textures)
+zex_public void Fi_know_what_im_doing_kill( int the_object, int kill_textures)
 {
 
 	FZkill(the_object,kill_textures);

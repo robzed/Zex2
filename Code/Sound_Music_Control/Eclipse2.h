@@ -9,15 +9,15 @@
 typedef signed int eclipse_sound_ref ;
 typedef signed int eclipse_err;
 
-public eclipse_err eclipse_init(void);
-public eclipse_err eclipse_play_one_shot_sound(SndListHandle the_sound);
-public eclipse_sound_ref  eclipse_play_looped_sound(SndListHandle the_sound, int the_object);
-public eclipse_err eclipse_set_looped_chan_volume (eclipse_sound_ref the_ref, int volume_percent);
+zex_public eclipse_err eclipse_init(void);
+zex_public eclipse_err eclipse_play_one_shot_sound(SndListHandle the_sound);
+zex_public eclipse_sound_ref  eclipse_play_looped_sound(SndListHandle the_sound, int the_object);
+zex_public eclipse_err eclipse_set_looped_chan_volume (eclipse_sound_ref the_ref, int volume_percent);
 
-public void eclipse_kill_all_looped_sounds(void);
-public int eclipse_kill_looped_sound(eclipse_sound_ref the_ref);
+zex_public void eclipse_kill_all_looped_sounds(void);
+zex_public int eclipse_kill_looped_sound(eclipse_sound_ref the_ref);
 
-public void eclipse_update_sounds(void);
+zex_public void eclipse_update_sounds(void);
 
 
 
