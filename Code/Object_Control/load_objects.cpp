@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: load_objects.c,v $
+ * Revision 1.2  2003/09/20 12:57:04  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:03  stu_c
  * First Imported.
  *
@@ -232,6 +235,9 @@ char *taddr;
 //SB 14/1198
 /*
  * $Log: load_objects.c,v $
+ * Revision 1.2  2003/09/20 12:57:04  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:03  stu_c
  * First Imported.
  *
@@ -827,6 +833,7 @@ if (dest_ocb!=-1)
 	    current_object_ptr->Dyn_OCB_control_data.eng_temperature_in_C=20;
 
 	    current_object_ptr->Dyn_OCB_control_data.hull_temperature_in_C=-76;
+	    current_object_ptr->Dyn_OCB_control_data.laser_bay_temperature_in_C=1000;
 
 //	current_object_ptr->swerve_direction=0;
 	current_object_ptr->invincible_count=0;

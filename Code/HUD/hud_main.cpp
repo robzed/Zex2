@@ -46,6 +46,7 @@
 #include "camera_control.h"
 #include "draw_radar_and_cwp.h"
 #include "hud2.h"
+#include "game_defs.h"
 
 
 extern ship_power_status_type ship_power_status;
@@ -351,10 +352,8 @@ if(gHideTheScreen==1) return;
         
 	draw_bar_multi((*ocb_ptr).object_list[0].Dyn_OCB_control_data.shield_value/5,screen_cent_x+74,monitor_h-97,3);	//shields
 
-	laser_bay_temperature=get_hull_temperature_in_C(get_main_camera_object());
-	if (laser_bay_temperature<0) laser_bay_temperature=0;
-	//max temperature is 5000
-	laser_bay_temperature=laser_bay_temperature/(5000/20);	//max temperature of 5000 by 20 bars
+        laser_bay_temperature=get_laser_bay_temperature_in_C(get_main_camera_object());
+	laser_bay_temperature=laser_bay_temperature/(MAX_LASER_TEMP/20);	//max temperature of 5000 by 20 bars
 	
 	if(laser_bay_temperature>20) laser_bay_temperature=20;
 	

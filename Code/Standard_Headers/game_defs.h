@@ -24,6 +24,11 @@
 #define VADM 6
 #define ADM 7
 #define FADM 8
+//level 1 laser bay temeprature rise and fall rate
+#define LASER_TEMP_RISE_RATE 300
+#define LASER_TEMP_COOL_RATE 500
+#define MAX_LASER_TEMP 1500
+
 
 // Zex file location
 
@@ -47,3 +52,4 @@
     #define DirStr "\pZD3"	//what folder we are running from
 
 #endif
+

@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: engines.c,v $
+Revision 1.1.1.1  2003/09/05 22:36:21  stu_c
+First Imported.
+
 Revision 1.19  2002/09/08 02:10:34  stu_c
 Precompiled header adjustments
 
@@ -123,7 +126,7 @@ Initial issue
 #include "sds.h"
 #include "physics.h"
 #include "game_constants.h"
-
+#include "game_defs.h"
 #include "engines.h"
 #include "Zsound.h"
 #include "camera_control.h"
@@ -161,6 +164,8 @@ module_private void set_all_thrusters_to_zero(int object);
 module_private double run_ORCS(int object);
 module_private void run_engine_temperature(int the_object);
 module_private void run_hull_temperature(int the_object);
+void run_laser_bay_temperature(int the_object);
+
 float calc_temperature(_3D* position1, _3D* sun_pos_in_m);
 void set_wanted_temperature_in_C(int the_object,float wanted_temperature);
 
@@ -213,6 +218,7 @@ double orcs_cons;
 
 run_engine_temperature(the_object);
 run_hull_temperature(the_object);
+run_laser_bay_temperature(the_object);
 
 source_object=&(*ocb_ptr).object_list[the_object];
 
@@ -932,6 +938,38 @@ void run_engine_temperature(int the_object)
  }
 }
 
+
+void run_laser_bay_temperature(int the_object)
+{
+ float current_temp,current_flow;
+ float onepc;
+ ZObject *source_object;
+ extern	DynObjectsFixedSize *ocb_ptr;
+
+
+  //engine gains temperature at rate of 30C per max thrust/sec
+  //laser loses heat at a rate of 1% per 15 C, so max temp is roughly 1500C
+  current_flow=get_total_fuel_consumption(the_object);
+  
+    source_object=&(*ocb_ptr).object_list[the_object];
+    current_temp=get_laser_bay_temperature_in_C(the_object);
+
+    //add on 
+    if (source_object->Dyn_OCB_control_data.laser_trigger_slot!=-1)
+    {
+      current_temp+=LASER_TEMP_RISE_RATE*time_in_secs;
+    }
+    else
+    {
+      current_temp-=LASER_TEMP_COOL_RATE*time_in_secs;
+    }
+   //lose
+    //current_temp-=(current_temp/33.0)*(current_temp/1500.0);
+    
+    if (current_temp<20.0) current_temp=20.0;
+    if (current_temp>MAX_LASER_TEMP) current_temp=MAX_LASER_TEMP;
+    set_laser_bay_temperature_in_C(the_object,current_temp);
+}
 
 void run_hull_temperature(int the_object)
 {

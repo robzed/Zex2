@@ -284,6 +284,14 @@ check_slot(object_slot_number);
 ocb_ptr->object_list[object_slot_number].Dyn_OCB_control_data.hull_temperature_in_C=the_temperature_in_C;
 }
 
+void set_laser_bay_temperature_in_C(int object_slot_number, float the_temperature_in_C)
+{
+#if ACCESSORS_DEBUG 
+check_slot(object_slot_number); 
+#endif
+ocb_ptr->object_list[object_slot_number].Dyn_OCB_control_data.laser_bay_temperature_in_C=the_temperature_in_C;
+}
+
 
 float get_hull_temperature_in_C(int object_slot_number)
 {
@@ -292,6 +300,16 @@ double return_val;
 check_slot(object_slot_number); 
 #endif
 return_val = ocb_ptr->object_list[object_slot_number].Dyn_OCB_control_data.hull_temperature_in_C;
+return return_val;
+}
+
+float get_laser_bay_temperature_in_C(int object_slot_number)
+{
+double return_val;
+#if ACCESSORS_DEBUG 
+check_slot(object_slot_number); 
+#endif
+return_val = ocb_ptr->object_list[object_slot_number].Dyn_OCB_control_data.laser_bay_temperature_in_C;
 return return_val;
 }
 
