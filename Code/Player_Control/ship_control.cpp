@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
 // $Log: ship_control.cpp,v $
+// Revision 1.6  2003/09/28 17:29:38  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.5  2003/09/28 10:36:08  robp
 // Signed/Unsigned comparison fixes from last night, plus collision fix.
 //
@@ -293,7 +296,7 @@ module_private void dz1(void);
 module_private void run_buffet(int object);
 module_private void kill_player_laser(void);
 void do_player_cannon();
-
+void control_targetted_object_for_test(int object);
 //¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥y
 
 
@@ -547,53 +550,37 @@ static float zex_roll, zex_pitch, zex_yaw;
 
 void apply_control_inputs()
 {
-
-//new routine 14/1298
-//SB
-//sds_attrib_data_type the_sds_attrib;
-//sds_mount_data_type the_mount_info;
-//float fvalue;
-//_3D reverse_thrust_vector;
-
-//extern _3D ship_normal;	//Start pointing out of screen
-//extern _3D ship_rotated_normal; //from engine
-//extern float g_radar_range;
 extern int game_pause;	//1=pause, 0 = run
-
-//extern	int ship_y_ang,ship_x_ang,ship_z_ang;
-//extern int thrust,zero_crossed,retro;
-//extern float turn;
-//extern float ORCS_thrust_up,ORCS_thrust_down;
-
 
 extern int music_volume;
 extern int sound_volume;
 
-//extern int real_frame_counter;
-//extern int quit;
-//extern int missile_flip;
 extern int global_show_status;
-//extern int camera_mode;
 extern int added_nav;
 extern int pilot_asleep;
-
-//extern UInt32 CAMyawr;
-//extern UInt32 CAMyawl;
-//extern UInt32 CAMrollr;
-//extern UInt32 CAMrolll;
 
 extern kit_desc ship_items[ITEMS_COUNT];
 extern float gradar_range;
 
+#if TEST_SYSTEM==1
+if(get_object_targetted(get_main_camera_object())!=-1)
+{
+  //we have targetted an object, so we can control it with the mouse
+  control_targetted_object_for_test(get_object_targetted(get_main_camera_object()));
+//lets make sure we can get out of this mode
+    if (gTarget && ZexTickCount()>last_target_toggle_frame)	//toggle radar range
+    {
+    play_zsound(sclick, sound_high_pri, c1_chan1, sound_vol_7);
+    
+    do_target(0);	//in HUD
+    last_target_toggle_frame=ZexTickCount()+10;
+    }
 
-//float dx,dy;	//thrust components
-//SInt32 signed_turn;
-//float fturn,fmoment;
 
-//int thrust_roll_input;
-//int tacc,mint,maxt;
-//vector p,d;
-
+  object_systems_sim(0);	//handle all ships systems/engines/fuel etc
+  return;
+}
+#endif
 
 //get_ship_mount_data (0, VTHR1V, &the_mount_info);
 
@@ -1137,7 +1124,106 @@ void do_ejection()
 }
 
 
+void control_targetted_object_for_test(int object)
+{
+ vector p,d;
 
+/*
+if (gThrustDown)
+  {
+  set_ship_thruster (0, MREV1V, 190);
+  set_ship_thruster (0, MREV2V, 190);
+  }
+  
+
+if (gThrustUp)
+    {
+  set_ship_thruster (0, MTHR1V, 230);
+  set_ship_thruster (0, MTHR2V, 230);
+    }
+    
+
+if (gVertUpThrust)
+  {
+    set_ship_thruster (0, VTHR1V, 255);
+    set_ship_thruster (0, VTHR2V, 255);
+  }
+  
+  
+if (gVertDownThrust)
+  {
+    set_ship_thruster (0, RVTH1V, 255);
+    set_ship_thruster (0, RVTH2V, 255);
+  }
+*/
+
+   if (gYawl)	//left arrow
+   {
+   p.x=0; p.y=0; p.z=1;	//position of force
+   d.x=1; d.y=0; d.z=0;	//direction of force
+   apply_a_force(object, 10, p /*oint*/ , d /*irection*/);   
+
+   p.x=0; p.y=0; p.z=-1;	//position of force
+   d.x=-1; d.y=0; d.z=0;	//direction of force
+   apply_a_force(object, 10, p /*oint*/ , d /*irection*/);   
+   }
+   else //no left input
+   if (gYawr)	//right arrow
+   {  
+   p.x=0; p.y=0; p.z=1;	//position of force
+   d.x=1; d.y=0; d.z=0;	//direction of force
+   apply_a_force(object, -10, p /*oint*/ , d /*irection*/);   
+
+   p.x=0; p.y=0; p.z=-1;	//position of force
+   d.x=-1; d.y=0; d.z=0;	//direction of force
+   apply_a_force(object, -10, p /*oint*/ , d /*irection*/);   
+   }
+
+
+   if (gRolll)	
+   {
+   p.x=1; p.y=0; p.z=0;	//position of force
+   d.x=0; d.y=1; d.z=0;	//direction of force
+   apply_a_force(object,10 /*newton*/,  p   /*point*/ , d /*direction*/);
+
+   p.x=-1; p.y=0; p.z=0;	//position of force
+   d.x=0; d.y=-1; d.z=0;	//direction of force
+   apply_a_force(object,10 /*newton*/ , p   /*point*/ , d /*direction*/);
+   }
+   else //no left input
+   if (gRollr)	
+   {
+   p.x=1; p.y=0; p.z=0;	//position of force
+   d.x=0; d.y=1; d.z=0;	//direction of force
+   apply_a_force(object,-10 /*newton*/,  p   /*point*/ , d /*direction*/);
+
+   p.x=-1; p.y=0; p.z=0;	//position of force
+   d.x=0; d.y=-1; d.z=0;	//direction of force
+   apply_a_force(object,-10 /*newton*/ , p   /*point*/ , d /*direction*/);
+   }
+
+   if (gPitchu )	
+   {
+   p.x=0; p.y=0; p.z=1;	//position of force
+   d.x=0; d.y=-1; d.z=0;	//direction of force
+   apply_a_force(object, 10,p /*oint*/ , d /*irection*/);   
+
+   p.x=0; p.y=0; p.z=-1;	//position of force
+   d.x=0; d.y=1; d.z=0;	//direction of force
+   apply_a_force(object, 10, p /*oint*/ , d /*irection*/);   
+   }
+   else //no left input
+   if (gPitchd)	
+   {
+   p.x=0; p.y=0; p.z=1;	//position of force
+   d.x=0; d.y=-1; d.z=0;	//direction of force
+   apply_a_force(object, -10,p /*oint*/ , d /*irection*/);   
+
+   p.x=0; p.y=0; p.z=-1;	//position of force
+   d.x=0; d.y=1; d.z=0;	//direction of force
+   apply_a_force(object, -10, p /*oint*/ , d /*irection*/);   
+   }
+}
 
 
 
@@ -1261,32 +1347,6 @@ time_since_last_cannon_shot=ZexTickCount();
 
 NPC_fire_cannon(0);
 
-/*
-clear_pb(&the_params);
-dest_ocb=find_vacant_dynamic_object_slot();
-
-    if (dest_ocb!=-1)
-    {   
-        (*ocb_ptr).object_list[0].Dyn_OCB_control_data.cannon_trigger_slot=dest_ocb;
-
-	the_params.world_x=0;
-	the_params.world_y=0;
-	the_params.world_z=0;
-
-	the_params.controller_ref=PARTICLE_GENERATOR_CANNON;
-
-	the_params.normal.x =  1;	//objects are ALWAYS defined facing right
-	the_params.normal.y =  0;	//objects are ALWAYS defined facing right
-	the_params.normal.z =  0;	//objects are ALWAYS defined facing right
-	the_params.shield_value=0;
-	the_params.mass=1;
-	the_params.object_category=NO_RADAR;
-         the_params.invisible_flag=1;
-	 the_params.unique_id=0;
-     the_params.parent=0;	//Zex owns this object
-	load_dyn_object(26,dest_ocb,&the_params,-1,1,-1,DUST_BIT);	//the object, the position (-1=next free)	 
-    }
-    */
 
 }	//end of zex fires its cannon
 

@@ -1,7 +1,10 @@
 // hud_main.cpp
 //
 /*
- * $Log$
+ * $Log: hud_main.cpp,v $
+ * Revision 1.5  2003/09/28 17:29:52  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  *
  */
 
@@ -1192,11 +1195,11 @@ if (got_target==0)
  play_zsound_always(select_unknown, sound_high_pri, c1_chan1, sound_vol_7);
  old_target=0; target_distance=0;
 
- set_object_targetted(0,-1);
- if(get_object_targetted(0)!=-1)
- ocb_ptr->object_list[get_object_targetted(0)].targetted=0;	//clear out old targetted
+ set_object_targetted(the_object,-1);
+ if(get_object_targetted(the_object)!=-1)
+ ocb_ptr->object_list[get_object_targetted(the_object)].targetted=0;	//clear out old targetted
  
- (*ocb_ptr).object_list[0].Dyn_OCB_control_data.command_autopilot_engaged=AP_OFF;	//disengage autopilot
+ (*ocb_ptr).object_list[the_object].Dyn_OCB_control_data.command_autopilot_engaged=AP_OFF;	//disengage autopilot
 }
 else 
 {
@@ -1205,16 +1208,16 @@ play_zsound_always(select_planet, sound_high_pri, c1_chan1, sound_vol_7);
 add_to_text_display("HUD> Targetting...",DLP_GREEN);
 targetting_in_progress_flag=1;
 
-if(get_object_targetted(0)!=-1)
-ocb_ptr->object_list[get_object_targetted(0)].targetted=0;	//clear out old targetted
+if(get_object_targetted(the_object)!=-1)
+ocb_ptr->object_list[get_object_targetted(the_object)].targetted=0;	//clear out old targetted
 
 
  ocb_ptr->object_list[object_counter].targetted=1;
- set_object_targetted(0,got_target);
+ set_object_targetted(the_object,got_target);
 
 }
 
-calc_target_name(0);
+calc_target_name(the_object);
 
 }	//end of ac power
 }

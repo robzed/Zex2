@@ -4,6 +4,9 @@
  
 /*
  * $Log: texture_management.cpp,v $
+ * Revision 1.4  2003/09/28 17:29:37  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.3  2003/09/27 09:00:30  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *
@@ -649,7 +652,7 @@ void unload_textures()
 {
 int ti=textures_index;
 
-while (ti>=0)
+while (ti>0)
   {
   ti--;
   
