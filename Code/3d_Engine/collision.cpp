@@ -17,6 +17,9 @@
 // ***********************************************************************************
 
 /* $Log: collision.c,v $
+/* Revision 1.1.1.1  2003/09/05 22:35:10  stu_c
+/* First Imported.
+/*
 /* Revision 1.10  2002/09/14 02:39:34  stu_c
 /* Some tidy up work and shells now killed on collision
 /*
@@ -355,15 +358,16 @@ handle_collision_velocities(&pos_vector1, &the_object_ptr->abs_velocity_vector, 
 
 
 // ===================
+          if(the_object_ptr->Oid=='ZEXS')
+          {
+             play_zsound(large_shield_sound, sound_low_pri, stereo1_chan, sound_vol_7);
+          }
+
           Cdamage_object(the_object_ptr,damage_each);
           
           run_collision_processing(the_object_ptr, compare_object_ptr); //check for bullets, shields explosions etc
 
 //if it is us that has hit the object then play a sound
-          if(the_object_ptr->Oid=='ZEXS')
-          {
-             play_zsound(large_shield_sound, sound_low_pri, stereo1_chan, sound_vol_7);
-          }
        } // end of if(damage_each > 0)
        
    } // end of if(radii_distance>distance)
@@ -613,7 +617,7 @@ void run_collision_processing(ZObject* object_1_ptr, ZObject* object_2_ptr)
     //control_1 contains the parent object (VT)
     //control_2 contains trigger ref
     //control_4 contains the parent of the vt
-    kill_gun_particles(object_1_ptr->Dyn_OCB_control_data.control_use_1, object_1_ptr->Dyn_OCB_control_data.control_use_4, object_1_ptr->Dyn_OCB_control_data.control_use_2);
+    kill_gun_particles(object_2_ptr->Dyn_OCB_control_data.control_use_1, object_2_ptr->Dyn_OCB_control_data.control_use_4, object_2_ptr->Dyn_OCB_control_data.control_use_2);
   }
 
   //check for death
