@@ -2528,8 +2528,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = Zsound.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Sound_Music_Control/Zsound.h;
-			refType = 0;
+			path = ../../Code/Sound_Music_Control/Zsound.h;
+			refType = 2;
 		};
 		F57B84EB017A362301989F14 = {
 			fileRef = F57B84EA017A362301989F14;
@@ -2828,8 +2828,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = draw_radar_and_cwp.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Drawing_Manager/draw_radar_and_cwp.h;
-			refType = 0;
+			path = ../../Code/Drawing_Manager/draw_radar_and_cwp.h;
+			refType = 2;
 		};
 		F5A610160179226A01AE21E1 = {
 			fileRef = F5A610150179226A01AE21E1;
@@ -3138,8 +3138,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = dlp_explosions.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Drawing_Primitives/dlp_explosions.h;
-			refType = 0;
+			path = ../../Code/Drawing_Primitives/dlp_explosions.h;
+			refType = 2;
 		};
 		F5BF246E01792BDF01A9CF59 = {
 			fileEncoding = 30;
@@ -3209,8 +3209,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = Galaxy.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Galaxy_control/Galaxy.h;
-			refType = 0;
+			path = ../../Code/Galaxy_control/Galaxy.h;
+			refType = 2;
 		};
 		F5BF247B01792C8601A9CF59 = {
 			fileEncoding = 30;
@@ -3352,8 +3352,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = static_object_support.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/LevelScripterLoader/static_object_support.h;
-			refType = 0;
+			path = ../../Code/LevelScripterLoader/static_object_support.h;
+			refType = 2;
 		};
 		F5BF249301792DEC01A9CF59 = {
 			fileRef = F5BF249201792DEB01A9CF59;
@@ -3365,8 +3365,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = cargo.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Object_Control/cargo.h;
-			refType = 0;
+			path = ../../Code/Object_Control/cargo.h;
+			refType = 2;
 		};
 		F5BF249501792E4301A9CF59 = {
 			fileEncoding = 30;
@@ -3457,8 +3457,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = objects_controls.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Object_Control/objects_controls.h;
-			refType = 0;
+			path = ../../Code/Object_Control/objects_controls.h;
+			refType = 2;
 		};
 		F5BF24A301792E7201A9CF59 = {
 			fileRef = F5BF24A001792E7101A9CF59;
@@ -3515,8 +3515,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = ship_control.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Player_Control/ship_control.h;
-			refType = 0;
+			path = ../../Code/Player_Control/ship_control.h;
+			refType = 2;
 		};
 		F5BF24AC01792EA101A9CF59 = {
 			fileRef = F5BF24AA01792EA001A9CF59;
@@ -3534,15 +3534,15 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = screen_splats.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Screen_Splat_Control/screen_splats.h;
-			refType = 0;
+			path = ../../Code/Screen_Splat_Control/screen_splats.h;
+			refType = 2;
 		};
 		F5BF24AF01792EB701A9CF59 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = splat_control.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Screen_Splat_Control/splat_control.h;
-			refType = 0;
+			path = ../../Code/Screen_Splat_Control/splat_control.h;
+			refType = 2;
 		};
 		F5BF24B001792EB801A9CF59 = {
 			fileRef = F5BF24AE01792EB701A9CF59;
@@ -3606,15 +3606,15 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = fpoly4.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Software_3d_Renderer/fpoly4.h;
-			refType = 0;
+			path = ../../Code/Software_3d_Renderer/fpoly4.h;
+			refType = 2;
 		};
 		F5BF24BA01792F0A01A9CF59 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = genpoly.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Software_3d_Renderer/genpoly.h;
-			refType = 0;
+			path = ../../Code/Software_3d_Renderer/genpoly.h;
+			refType = 2;
 		};
 		F5BF24BB01792F0A01A9CF59 = {
 			fileEncoding = 30;
@@ -3671,8 +3671,8 @@
 			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = show_stats.h;
-			path = /Users/stu/Stu_Cocoa/ZEX2.3/Code/Static_Stuff/show_stats.h;
-			refType = 0;
+			path = ../../Code/Static_Stuff/show_stats.h;
+			refType = 2;
 		};
 		F5BF24C601792F4101A9CF59 = {
 			fileRef = F5BF24C401792F4101A9CF59;
