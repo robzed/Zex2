@@ -1,0 +1,29 @@
+--Help is available on:-
+
+help help        -- This help file
+help intro       -- Coffee introduction and background
+help forth       -- Summary to forth
+help variables   -- Stacks, variables, value and locals
+
+help floats      -- Floating point operations
+help vectors     -- Vector operations
+help useful      -- Useful words
+help misc        -- Misc commands
+help engine      -- Zex Engine variables
+help display     -- Display commands
+
+--Zex Specific
+
+help time        -- Zex words to manipulate time
+help controllers -- Building zex controllers
+help position    -- Moving the position of zex
+
+help multitasking -- That wonderful world of tasks
+
+
+-- Zex Other
+
+When calling a Zex C function, the parameters appear
+the reverse order to the C function when written
+(variable parameter requirement).
+

@@ -1,0 +1,85 @@
+\ object_timers.zsl
+
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+create-controller-table object_timer_table
+
+
+: otimer_empty? ( address -- flag )
+    @ 0=	\ if it equals 0 it is empty
+;
+
+: otimer_addr ( ref -- address flag )
+  FORTH-CONTROLLERS-START -
+  DUP CELLS object_timer_table + 
+  SWAP forth_controller_ref?
+;
+
+: otimer_gettimer ( address -- timer# flag )
+    DUP otimer_empty? 
+    IF  \ is empty - try to generate new
+      timer_find_unused DUP -1 =
+      IF
+        DROP ( x -- ) FALSE EXIT	\ return if none available
+      THEN
+      TUCK 1+ SWAP !	\ store timer number locally
+    ELSE  \ not empty - use that timer reference
+      @ 1- \ get timer number (1- for zeros indexes)
+    THEN 
+    
+    TRUE
+    \ we now have a timer number   
+;
+
+: otimer_getoldtimer ( address -- timer# flag )
+    DUP otimer_empty? 
+    IF  \ is empty - don't generate new
+      ( junk ) FALSE
+    ELSE  \ not empty - use that timer reference
+      @ 1- TRUE \ get timer number (1- for zeros indexes)
+    THEN 
+;
+
+\ 23456789abdef0123456789abdef0123456789abdef0123456789abdef
+
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::recurring-object-timer ( ref xt -- success-flag )  ( F: timeinsecs -- )
+  SWAP otimer_addr ( ref -- addr flag )
+  IF
+    otimer_gettimer ( addr -- index flag )
+    IF timer_set_timer_repeating TRUE ELSE FDROP 2DROP FALSE THEN
+  ELSE
+    FDROP 2DROP FALSE
+  THEN
+;
+
+: install-controller::one-shot-object-timer ( ref xt -- success-flag )  ( F: timeinsecs -- )
+  SWAP otimer_addr ( ref -- addr flag )
+  IF
+    otimer_gettimer ( addr -- index flag )
+    IF timer_set_timer_oneshot TRUE ELSE FDROP 2DROP FALSE THEN
+  ELSE
+    FDROP 2DROP FALSE
+  THEN
+;
+
+
+: remove-controller::object-timer ( ref -- )
+  otimer_addr ( ref -- addr flag )
+  IF
+    DUP otimer_getoldtimer ( addr -- index flag )
+    IF 
+      timer_discard 
+      0 SWAP ! 		\ delete entry
+    ELSE 2DROP THEN
+  ELSE
+    DROP
+  THEN
+;

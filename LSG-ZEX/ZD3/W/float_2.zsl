@@ -1,0 +1,32 @@
+( floating point additional words - Stu 020101)
+
+ ( I: faddr --  )
+ ( Given the address of a float var on the stack, inc the float var ) 
+
+ : FINC
+ DUP F@ f1.0 F+ F!
+ ;
+
+ ( I: faddr --  )
+ ( Given the address of a float var on the stack, dec the float var ) 
+
+ : FDEC
+ DUP F@ f1.0 F- F!
+ ;
+
+
+ ( I: faddr --   F: v -- )
+ ( Given the address of a float var on the stack and a float var on the float stack ) 
+ ( add and store )
+ : FADD
+ DUP F@  F+ F!
+ ;
+
+ ( I: faddr --   F: v -- )
+ ( Given the address of a float var on the stack and a float var on the float stack ) 
+ ( sub from variable contents and store )
+ : FSUB
+ DUP F@  FSWAP F- F!
+ ;
+
+

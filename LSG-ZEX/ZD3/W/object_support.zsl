@@ -1,0 +1,105 @@
+\ Object Support
+\
+\
+\ Provides various object support for loading object
+
+
+: view_pb  ( addr -- )
+
+  ." world x=" DUP world_x F@ F. 
+  ."  y="       DUP world_y F@ F. 
+  ."  z="       DUP world_z F@ F. CR
+
+  ." delta rot x=" DUP delta_rot_x SF@ F. 
+  ."  y="           DUP delta_rot_y SF@ F. 
+  ."  z="           DUP delta_rot_z SF@ F. CR
+
+  ." rot x=" DUP rot_x @ . 
+  ."  y="     DUP rot_y @ . 
+  ."  z="     DUP rot_z @ . CR
+
+  ." controller ref=" DUP controller_ref @ . 
+  ."  attack mode="    DUP attack_mode @ . 
+  ."  who spawned this object=" DUP who_spawned_this_object @ . CR
+
+  ." mass=" DUP mass SF@ F. 
+  ."  shield_value=" DUP shield_value h@ . 
+  ."  max_vel=" DUP max_vel h@ . 
+  ."  min_vel=" DUP min_vel h@ . CR
+
+  ." damage q=" DUP dq hu@ . 
+  ."  no triv rej=" DUP no_trivial_rejection C@ . 
+  ."  object cat=" DUP object_category C@ . CR
+
+  ." agressive=" DUP aggressive C@ . 
+  ."  class=" DUP _class C@ . CR
+
+  ." shields class=" DUP shields_class C@ . 
+  ."  laser cat=" DUP laser_cat C@ . 
+  ."  cannon cat=" DUP cannon_cat C@ . CR
+  
+  ." missile cat=" DUP missile_cat C@ . 
+  ."  num missiles=" DUP number_of_missiles C@ . CR
+
+  ." no normal info " CR
+
+  ." anim frame rate=" DUP anim_frame_rate @ . 
+  ."  anim max obect=" DUP anim_max_object @ . 
+  ."  unique id=" DUP unique_id @ . CR
+
+  ." no animation info " CR
+
+  DROP
+  
+;
+
+
+
+VARIABLE convert-id
+
+: show-active-objects ( -- )
+
+0 0 { active-object-counter object-counter -- }
+
+BEGIN
+active-object-counter dynamic-object-index @ <
+WHILE
+   object-counter get-object-in-use IF
+      object-counter . ." = " object-counter get_object_Oid convert-id ! convert-id 4 TYPE ."   "
+      active-object-counter 1+ TO active-object-counter
+   THEN
+
+   object-counter 1+ TO object-counter
+REPEAT
+
+;
+
+
+: show-active-controllers ( -- )
+
+0 0 { active-object-counter object-counter -- }
+
+BEGIN
+active-object-counter dynamic-object-index @ <
+WHILE
+   object-counter get-object-in-use IF
+      object-counter . ." = " object-counter get-object-controller . ."   "
+      active-object-counter 1+ TO active-object-counter
+   THEN
+
+   object-counter 1+ TO object-counter
+REPEAT
+
+;
+
+
+
+: show-static-objects ( -- )
+MAX_NUMBER_OF_STAT_OBJECTS 0 ?DO 
+   I STATIC_get_object_in_use IF
+      I . ." = " I STATIC_get_object_Oid convert-id ! convert-id 4 TYPE ."   "
+   THEN
+LOOP
+;
+
+

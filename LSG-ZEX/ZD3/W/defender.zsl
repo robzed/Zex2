@@ -1,0 +1,295 @@
+\ defender 
+\ 
+\
+
+
+lsgf-core-ver 10 < [IF] .( Core too old to run defender!) ABORT [THEN]
+
+MARKER **defender**
+DECIMAL
+
+\ ==========================================
+\
+\
+VARIABLE def_score 0 def_score !
+
+: def_init_game ( -- flag )
+  cls
+  rendering OFF
+  hud OFF
+  radar_grat OFF
+  fr
+
+."              Welcome to Defender" CR
+CR
+CR
+." Keys:" CR
+CR
+."   Q = Up" CR
+."   A = Down" CR
+."   P = Fire" CR
+CR
+CR
+."   0 = Quit" CR
+CR
+CR
+." Press <SPACE> to play " KEY [CHAR] 0 =
+
+;
+
+\ ==========================================
+\ 
+\
+: def_clean_up
+  -fr
+  radar_grat ON
+  hud ON
+  rendering ON
+  cls
+;
+
+\ ==========================================
+\
+\
+VARIABLE mx -1 mx !
+VARIABLE my -1 my !
+
+: def_erase_monster
+  mx @ cursor-char-x !
+  my @ cursor-char-y !
+  SPACE
+;
+
+\ ==========================================
+\
+\
+: def_print_monster
+  mx @ cursor-char-x !
+  my @ cursor-char-y !
+  [CHAR] M EMIT SPACE
+;
+
+\ ==========================================
+\
+\
+VARIABLE def_wrapper 0 def_wrapper !
+
+: def_wind_back ( I -- x-pos )
+def_wrapper @ + 88 MOD
+DUP 44 > IF 89 SWAP - THEN
+;
+
+: end_game_screen
+  home 
+  console-rows 1- 0 DO 
+    I def_wind_back SPACES ." GAME OVER!!!  " CR 
+  LOOP
+  1 def_wrapper +!
+;
+
+\ ==========================================
+\
+\
+VARIABLE def_game_over FALSE def_game_over !
+
+: def_mov_monster
+  my @ -1 = IF random console-rows 1- MOD my ! console-columns 2 - mx ! THEN
+  -1 mx +!
+  mx @ 0= IF end_game_screen TRUE def_game_over ! THEN
+;
+
+\ ==========================================
+\
+\
+VARIABLE by -1 by !
+VARIABLE bx -1 bx !
+
+: def_display_bullet
+  bx @ cursor-char-x !
+  by @ cursor-char-y !
+  SPACE [CHAR] - EMIT
+;
+
+\ ==========================================
+\
+\
+
+: def_erase_bullet
+  bx @ cursor-char-x !
+  by @ cursor-char-y !
+  SPACE
+;
+
+\ ==========================================
+\
+\
+: def_bullet_active ( -- flag ) bx @ 0 >=  ;
+
+\ ==========================================
+\
+\
+: def_test_bullet_hit
+
+  by @ my @ = IF 
+  
+    bx @ mx @ = IF
+      10 def_score +!
+      -1 my !	\ kill monster
+      def_erase_bullet SPACE
+      -2 bx !   \ turn off bullet
+    THEN
+  THEN
+;
+
+\ ==========================================
+\
+\
+: def_update_bullet
+
+  def_bullet_active IF
+    def_display_bullet
+    
+    def_test_bullet_hit
+    1 bx +!
+    def_test_bullet_hit
+
+    bx @ console-columns 4 - > IF def_erase_bullet -1 bx ! THEN
+  THEN
+  
+  
+;
+
+
+\ ==========================================
+\
+\
+: set_bullet ( x y -- ) 
+
+  def_bullet_active IF
+    def_erase_bullet
+  THEN  
+  
+  by ! 1+ bx ! 
+;
+
+\ ==========================================
+\
+\ 
+: upper ( char -- CHAR )
+  DUP DUP [CHAR] a >= SWAP [CHAR] z <= AND IF
+    [ CHAR A CHAR a - ] LITERAL + 
+  THEN
+;
+
+\ ==========================================
+\
+\
+VARIABLE px 2 px !
+VARIABLE py 10 py !
+VARIABLE oldpx px @ oldpx !
+VARIABLE oldpy py @ oldpy !
+
+: def_erase_player
+  oldpx @ cursor-char-x !
+  oldpy @ cursor-char-y !
+  SPACE
+  px @ oldpx !
+  py @ oldpy !
+;
+
+\ ==========================================
+\
+\
+: def_print_player
+  def_erase_player
+  px @ cursor-char-x !
+  py @ cursor-char-y !
+  [CHAR] > EMIT
+;
+
+\ ==========================================
+\
+\
+: def_player_control
+  PAUSE KEY? IF
+    KEY upper 
+    DUP [CHAR] A = IF  py @ console-rows 1- < IF  1 py +! THEN THEN
+    DUP [CHAR] Q = IF  py @               0 > IF -1 py +! THEN THEN
+    DUP [CHAR] P = IF  px @ py @ set_bullet THEN
+        [CHAR] 0 =
+  ELSE
+    0
+  THEN
+;
+
+
+\ ==========================================
+\
+\
+: def_print_score
+  console-rows 1- cursor-char-y !
+  console-columns 20 - cursor-char-x !
+  ." SCORE: " def_score @ .
+;
+
+\ ==========================================
+\
+\
+: def_deblank_screen
+  console-rows 0 ?DO 
+    CR 62 SPACES
+  LOOP 
+;
+
+\ ==========================================
+\
+\
+: any_key? ( -- flag )
+  PAUSE KEY? IF KEY DROP TRUE ELSE FALSE THEN
+;
+
+\ ==========================================
+\
+\
+: defender
+
+  def_init_game
+
+  0= IF
+    cls
+    def_deblank_screen
+  
+    BEGIN
+  
+      def_game_over @ 0= IF
+        def_print_player
+        def_print_monster
+        def_update_bullet
+        def_mov_monster
+        def_print_score
+        def_player_control
+      ELSE
+        end_game_screen
+        def_print_score
+        any_key?
+      THEN
+    UNTIL
+
+  THEN
+  def_clean_up
+;
+
+\ ==========================================
+\
+\ Things that would be cool to add:-
+\
+\   Multiple attackers
+\   Multiple bullets
+\   Multiple aliens
+\   People pickup
+\   Two way scroll
+\   Different phases/levels
+\   
+defender
+**defender**
+

@@ -1,0 +1,192 @@
+( -------------------------------------------------------- )
+
+
+
+: blank-out-non-print-chars ( addr char -- addr modified char )
+( space if char is tab LF 0 )
+  DUP 13 = 
+  IF ELSE  DUP 31
+  < IF ( cr ) DROP 32 
+  THEN
+  THEN
+; 
+
+( --------------------------------------------------------- )
+
+: poke-con ( char x-pos y-pos -- address poked )
+ console-columns * ( ypos * width ) 
+ +              ( plus x offset )
+ console-buffer
+ +              ( plus base addr )
+ ( do not display CR's! )
+ SWAP blank-out-non-print-chars SWAP C!  ( poke char )
+;
+
+( --------------------------------------------------------- )
+
+: poke-attrib ( code x-pos y-pos -- address poked )
+ console-columns * ( ypos * width ) 
+ +              ( plus x offset )
+ console-attrib-buffer
+ +              ( plus base addr )
+ ( do not display CR's! )
+ C!  ( poke char )
+;
+
+
+( --------------------------------------------------------- )
+: draw-status-line
+63 0 ?DO 1 I 31 poke-attrib LOOP
+63 0 ?DO 32 I 31 poke-con LOOP
+ 
+( print line number )
+
+cursor-char-x @
+cursor-char-y @
+
+2DUP
+
+0 cursor-char-x !
+31 cursor-char-y !
+." LINE:"  ed-top-line @ + 1+ .
+."  COLUMN:" ed-print-start-column @ + 1+ .
+."  MEM:" ed-length @ .
+."  Ver 1.00 16July00"
+cursor-char-y !
+cursor-char-x !
+;
+
+
+: get-cr-column ( -- line number column )
+
+  find-line DROP
+  ( find the CR )
+  0  ( addr buffer column )
+  BEGIN
+  SWAP
+    DUP ( col addr addr )
+    C@  ( col addr char)
+    13 <> ( col addr flag ) 
+    IF  ( col addr )
+      1+ SWAP 1+  ( addr+1 col+1 )
+      FALSE 
+    ELSE 
+      ETRUE 
+    THEN
+  UNTIL
+  DROP ( the addr )
+;
+( --------------------------------------------------------- )
+: zero-rest-of-line
+
+ed-print-x @ 63 <>
+IF
+  BEGIN
+  0 ed-print-x @ ed-print-y @ poke-con
+  1 ed-print-x +!
+  ed-print-x @ 63 <>
+  UNTIL
+THEN
+
+;
+
+
+: print-line ( line number -- ) ( also uses ed-print-start-column )
+  
+   ( find the CR column on this line; if >= ed-print-start-column )
+   ( then bugger off...)
+ 
+   ( quick optimisation; if ed-print-start-column is 0 then don't do a bunch )
+   ( of processing to see if the line is visible )
+   ed-print-start-column @ 0 <>
+   IF
+     DUP 
+     get-cr-column
+     ed-print-start-column @ <
+     IF
+       DROP
+       1 ed-print-y +! 
+
+       0    
+       EXIT
+     THEN 
+    THEN
+    0 ed-print-x !  
+
+    ( if line 0 then buffer addr else get buffer add )
+    DUP 0 <> 
+    IF 
+      find-line  DROP ( line-number -- buffer addr flag ) 
+      ed-print-start-column @ +
+    ELSE
+      DROP ( the line number )
+      ed-file-ptr @ ( start of buffer )
+      ed-print-start-column @ +
+    THEN
+
+  
+    ( if addr is < end-address )
+    DUP
+    ed-file-end-ptr @
+    < IF
+    
+     BEGIN 
+      DUP  ( buffer-addr buffer-addr ) 
+      C@    ( buffer-addr char )
+      DUP  ed-print-x @ ed-print-y @ poke-con  ( buffer-addr char )
+  
+      1 ed-print-x +!  SWAP 1+ DUP
+      ed-file-end-ptr @
+      = IF 
+        DROP DROP 1 EXIT 
+      THEN
+       
+      
+    SWAP       ( buffer addr+1 )
+    13 =  ed-print-x @ 63 = OR UNTIL
+    
+     ( zero-rest-of-line )
+     
+     DROP   ( buffer addr ) 
+    ELSE
+    DROP    ( buffer addr )
+    THEN
+    
+  ( update printing pos)
+   1 ed-print-y +! 
+   0    ( return OK )
+; ( of print-line )
+
+( --------------------------------------------------------- )
+
+
+: print-page
+  clear-con
+  0 ed-print-x ! 0 ed-print-y !
+  console-rows 1 -  ( lines to print ) 0 
+  ?DO 
+  ed-line @ print-line  ( returns FALSE=OK, ETRUE=EOF ) 
+  IF
+    UNLOOP EXIT
+  THEN
+  
+  1 ed-line +! LOOP
+
+;  ( of print-page )
+
+
+
+: safe-print-page
+cursor-char-x @
+cursor-char-y @
+( ed-print-x @
+ed-print-y @ )
+ed-top-line @ ed-line !	( line to print from  ) 
+ 4321
+ print-page 
+ DROP
+cursor-char-y !
+cursor-char-x !
+;  ( of print-page )
+( --------------------------------------------------------- )
+

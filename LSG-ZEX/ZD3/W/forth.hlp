@@ -1,0 +1,16 @@
+1 2 + .
+  displays 3
+
+: hello ." hello" ;
+  defines a word to display hello
+  (do not use ." outside a definition)
+
+: star [CHAR] * EMIT ;
+  prints a star
+  
+CR
+  makes printing appear on a new line
+  
+Other useful words
+TYPE
+SPACE

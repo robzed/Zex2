@@ -1,0 +1,8 @@
+Commands to control time
+
+fr       -- freeze game time
+-fr      -- restart game time
+1frame   -- go one frame forward
+5 frames -- go a number of frames forward (5 in this case)
+5 skip-frames -- pause every 5 frames, then play one.
+              You can undo this by -fr

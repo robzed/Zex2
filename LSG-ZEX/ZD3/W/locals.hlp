@@ -1,0 +1,17 @@
+Zex locals operate like this...
+
+: my-word { a b -- b a } a DUP * b ;
+
+This takes two parameters, and put them in 'a' and 'b'. Anything 
+after the '--' is a comment. If you need other local variables do 
+this...
+
+: another-word 0 0 { a b c d -- b a } d 1+ TO c b a ;
+
+This creates two temporary variables c and d. Locals operate 
+identically to VALUE variables, therefore the TO command sets it.
+
+You can have up to 8 integer locals at any one time. 
+
+LOCAL| is an alternative to '{' and operates as per the ANS 
+standard. 

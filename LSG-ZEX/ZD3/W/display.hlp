@@ -1,0 +1,4 @@
+.S          -- display entries on the data stack
+.           -- display top entry (and remove)
+WORDS       -- display all words in the system
+word-stats  -- display various information about the environment

@@ -1,0 +1,63 @@
+\ object_control_other.zsl
+\
+\ (c) Copyright 2001 Lightsoft
+\
+\ Written by Rob Probin 27/5/01
+\
+\
+\ These routines provide global (across all controller type) control.
+
+
+
+\ tidy up both of these calls so that they don't need to know about what types of 
+\ controller have been created.
+
+
+: remove-all-controllers ( ref -- )
+DUP remove-controller::new-game
+DUP remove-controller::end-game
+DUP remove-controller::new-object
+DUP remove-controller::delete-object
+DUP remove-controller::run-object
+DUP remove-controller::object-timer
+    remove-controller::one-per-frame
+;
+
+
+\ this deletes all of the controllers in the system
+: reset_controller_system ( -- )
+
+#FCs 0 ?DO
+   I remove-all-controllers
+LOOP
+
+0 TO #FCs
+;
+
+
+
+
+\ support for display-controllers
+: (.controller) @ IF ." Yes " ELSE ." No  " THEN ;
+
+\
+\ Show which controllers are active for each id
+: display-controllers ( -- )
+." Number   Run  End  New  New-obj  Del-obj  1/frame  Timer" CR
+
+#FCs 0= IF ." No Controllers Present" CR THEN
+
+#FCs 0 ?DO
+   I FORTH-CONTROLLERS-START + .                3 SPACES 
+   run-object-table I CELLS + (.controller)     1 SPACES
+   end-game-table I CELLS + (.controller)       1 SPACES
+   new-game-table I CELLS + (.controller)       3 SPACES
+   new-object-table I CELLS + (.controller)     6 SPACES
+   delete-object-table I CELLS + (.controller)  5 SPACES
+   one-per-frame-table I CELLS + (.controller)  3 SPACES
+   object_timer_table I CELLS + (.controller)
+   CR
+LOOP
+;
+
+

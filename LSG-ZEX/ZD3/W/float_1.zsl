@@ -1,0 +1,140 @@
+( floating point Input/Output words - Stu 171200)
+
+( Calls low level words in float_primitives ) 
+
+PI f1.0 F+
+
+  ( marker so we can forget these )
+ : float-marker ;
+ 
+\ no need? - stack is always double precision 
+ ( F: F32 -- )
+ ( prints a single float )
+  : SF. numeric-output-scratch print_single_mac 
+        numeric-output-scratch COUNT TYPE SPACE
+  ;
+        
+ ( F: F64 -- )
+ ( prints a double float )
+  : F.  numeric-output-scratch print_double_mac 
+ 	     numeric-output-scratch COUNT TYPE SPACE 
+  ;
+ 
+ 
+ ( F: F64 -- )
+ ( prints a double float  - alias for F.)
+  : DF.  F. ; 
+ 
+ 
+ 
+ ( caddr u -- F: F32 I: success-flag )
+  : >SFLOAT 
+    >FLOAT_MAC_SINGLE 0=  	  ( convert string to float on f  )
+     	             ( >FLOAT_MAC_SINGLE returns an error )
+  ; 
+    
+ ( Convert the string following to double float )	 
+ ( caddr u -- F: F64 I: success-flag )
+  : >FLOAT 
+    >FLOAT_MAC 0= 	  ( convert string to float on fstack )
+  ;
+ 
+ ( Convert the string following to single float )
+ ( -- F: F32 )
+  : SFIN  PARSE-WORD 	 ( returns ptr to string, count )
+    >FLOAT_MAC_SINGLE   	( convert string to float on fstack )
+    DROP 	             ( FLOAT_MAC returns an error we drop here )
+  ; 
+    
+ ( Convert the string following to double float )	 
+ ( -- F: F64 )
+  : FIN 
+    PARSE-WORD 	( returns ptr to string, count )
+    >FLOAT_MAC  	( convert string to float on fstack )
+    DROP  	 	  ( >DFLOAT_MAC returns an error we drop here )
+  ;
+   
+ ( -- +n )
+ ( return size of floating stack in float sized cells ) 
+ : FDEPTH FPSP0 @ FPSP@ - 8 / ;
+  
+ 
+ ( Address Management )
+ ( FLOAT+ now in float_primitives.inc )
+ 
+ ( n1 -- n2 )
+ ( returns size in bytes of n1 floating point numbers) 
+ ( : FLOATS - now defined in float_primitives.inc )
+ 
+ 
+ 
+ ( F: f1 -- ) 
+ : F,
+ HERE FALIGNED DUP FLOAT+ DSP! F!
+ ;
+ 
+ ( F: f1 --  )
+ ( Create a floating point constant ) 
+ ( Use create to store the float in the dictionary, use does for run-time extraction )
+ : FCONSTANT  
+   CREATE F,        ( Store the float in aligned distionary space )
+   DOES> F@         ( fetch from dict address on stack )  
+  ;
+
+
+ ( F: f1 --  )
+ ( Create a floating point variable ) 
+ ( Use create to store the float in the dictionary, use does for run-time extraction )
+ : FVARIABLE  
+   CREATE HERE FALIGNED FLOAT+ DSP!  ( make aligned dictionary space )
+   DOES> FALIGNED        ( dict address of var on stack )  
+  ;
+
+
+ ( F: f1 --  )
+ ( Create a floating point literal ) 
+ ( Use create to store the float in the dictionary, use does for run-time extraction )
+
+ : FLITERAL  
+   ['] float-lit COMPILE, F,
+  ; IMMEDIATE
+
+
+: [FIN] FIN POSTPONE FLITERAL ; IMMEDIATE
+
+
+
+: FLIT-TEST [FIN] 3.6 ;
+
+\ : FLIT-TEST2 [ FIN 3.6  FLITERAL ] ;
+
+: TEST
+PI f1.0 F+ F- F0= 0= IF ." floating stack not balanced using include" clear-includes ABORT THEN ;
+
+\ TEST
+
+
+: FPICK
+  ( n -- ) ( F: rn .. r2 r1 -- rn .. r2 r1 rx )
+PI FLOATS FPSP@ + FDROP F@ ( we have to push FTOS onto real memory stack hence PI )
+;
+
+
+( -- ) 
+( Display floating point stack - same as .S )
+: F.S
+ FDEPTH 0>
+ IF
+   ." ( F: "
+   FDEPTH
+   BEGIN
+      DUP 0>
+   WHILE
+      DUP 1- FPICK F. SPACE 1-
+   REPEAT
+   ."  -- )"
+   DROP
+ ELSE
+   ." ( F: Stack empty -- )"
+ THEN
+ ;

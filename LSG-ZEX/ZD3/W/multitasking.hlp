@@ -1,0 +1,27 @@
+Multitasking - based on FPC's. See Chaper 16 of "Real Time Forth", Tim Hendtless. 
+(free on Net)  
+
+Supported words include:-
+
+MULTI 
+SINGLE 
+BACKGROUND:
+STOP
+PAUSE
+'s
+SLEEP
+WAKE
+
+Not yet implemented ACTIVATE: 
+
+Do not use KILL. It is not tested
+ - just sleep the task for now!
+ 
+ 
+ Notice: You cannot FORGET a section of code contain a 
+ BACKGROUND: definition in, since this automatically creates a 
+ sleeping task in the task list, which is linked in to the
+ tasking chain. You should just re-include the section of 
+ code if you are testing it, rather than forgetting it.
+ 
+ 

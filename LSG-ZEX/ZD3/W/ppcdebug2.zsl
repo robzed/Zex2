@@ -1,0 +1,62 @@
+\ PowerPC Specific Debugger - Part 2
+
+: check-for-literal ( xt -- xt flag )
+debugger-address ! [HEX]
+debugger-address @ @ 95AEFFFC =
+debugger-address @ CELL+ @ FFFF0000 AND 39A00000 = AND
+IF 
+  debugger-address @ CELL+ @ FFFF AND DUP 7FFF > IF FFFF0000 OR THEN
+  debugger-address @ CELL+ CELL+ debugger-address !
+ELSE
+  debugger-address @ @ 95AEFFFC =
+  debugger-address @ CELL+ @ FFFF0000 AND 3DA00000 = AND
+  IF
+    debugger-address @ CELL+ CELL+ @ FFFF0000 AND 61AD0000 =
+    IF
+    debugger-address @ CELL+ @ FFFF AND 10 LSHIFT       \ remember 10 is in hex!
+    debugger-address @ CELL+ CELL+ @ FFFF AND +
+    debugger-address @ CELL+ CELL+ CELL+ debugger-address !
+    ELSE
+    debugger-address @ CELL+ @ FFFF AND 10 LSHIFT       \ remember 10 is in hex!
+    debugger-address @ CELL+ CELL+ debugger-address !    
+    THEN
+  ELSE
+  debugger-address @ 0 EXIT
+  THEN
+THEN
+[DEC] CR ." Load Literal " DUP . >R debug-user R>
+debugger-address @ -1
+;
+
+\ literal op-codes
+\ stw = 95AEFFFC
+\ li = 39A00000
+\ lis = 3DA00000
+\ ori = 61AD0000
+\ 
+\ literal sequences
+\ stw + li
+\ stw + lis
+\ stw + lis + ori
+\ 
+
+VARIABLE MAX.S 
+8 MAX.S !
+
+\ debug.S ( -- )  only prints MAX.S levels of the stack
+: debug.S
+DEPTH 0>
+IF
+  ." ( "
+  DEPTH MAX.S MIN
+  BEGIN
+  DUP 0>
+  WHILE
+  DUP PICK . SPACE 1-
+  REPEAT
+  ."  -- )"
+  DROP
+ELSE
+  ." ( -- )"
+THEN
+; 

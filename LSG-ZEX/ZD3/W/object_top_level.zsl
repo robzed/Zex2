@@ -1,0 +1,27 @@
+\ object_top_level.zsl
+
+
+\ variables core to the game
+0 VALUE game-running
+
+\ include the timer functions
+include timers.zsl
+
+\ object controller support
+include load_dyn_obj_pb.zsl
+include vector.zsl
+include object_support.zsl
+
+\ these are the overall control functions
+include object_control_management.zsl
+include object_control.zsl			\ vectors to specific object controllers
+include object_one_per_frame.zsl		\ used to spawn new objects
+include start_new_game.zsl			\ used to re-init object on a new game
+include end_game.zsl				\ used to sleep the game
+include object_created.zsl			\ gets called when an object is created
+include object_deleted.zsl			\ gets called when an object is deleted
+include object_timers.zsl		      	        \ gets called on time basis
+include object_control_other.zsl		\ general utilities
+
+
+

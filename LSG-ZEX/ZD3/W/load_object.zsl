@@ -1,0 +1,160 @@
+\ load_object.zsl
+\
+\ (c) 2001 Lightsoft.
+\ (c) 2001 Rob Probin and Stuart Ball
+\
+\ Load object models into zex
+\ 
+
+
+0 CONSTANT IS_NOT_TRANSLUCENT
+0 CONSTANT NO_COLLISION_DETECT
+0 CONSTANT NO_OBJ_TEXTURE
+
+
+: convert_4id_to_int ( caddr -- id )
+COUNT 24 LSHIFT SWAP 
+COUNT 16 LSHIFT SWAP 
+COUNT 8 LSHIFT SWAP 
+C@ + + +
+;
+
+
+: get_4_character_id ( "<spaces>name" -- value )
+PARSE-WORD 4 <> ABORT" Need 4 characters ID"
+convert_4id_to_int
+;
+
+
+: static_ID	( "<spaces>name" -- static-id)
+get_4_character_id 
+get_static_object_slot
+DUP -1 = ABORT" get_static_object_slot failed - unknown identifier"
+; IMMEDIATE
+
+
+\
+\ load_object
+\
+\ This is word to use in immediate mode (either at the command line, or outside
+\ a definition in a .zsl file
+\
+: load_object ( "filename ID" static-id -- )
+
+DUP 0 < OVER MAX_NUMBER_OF_STAT_OBJECTS >= OR ABORT" Static ID out of range"
+
+>R IS_NOT_TRANSLUCENT NO_OBJ_TEXTURE NO_COLLISION_DETECT
+
+PARSE-WORD DUP 0= ABORT" Couldn't find object filename!"
+PAD convert-to-stored-string
+
+get_4_character_id	\ get a 4 character identifier from the command line
+
+FILE_LOAD_ERROR_QUITS OFF
+R> PAD raw_c_load_object	\ ( transparent textureid colldet id staticslot filename -- error )
+FILE_LOAD_ERROR_QUITS OFF
+
+?DUP IF ." Problem loading object, Error = " . ABORT THEN
+;
+
+
+\ *************************************************************
+
+
+: load_dynamic ( velocity-vec-addr static-id position-vec-addr -- success )
+    find_vacant_dynamic_object_slot DUP -1 =
+    IF
+      2DROP 2DROP FALSE \ no valid dynamic slots
+    ELSE
+      SWAP
+      the_params clear_pb
+       DUP .vx F@ ZEX_UNIT_SIZE_IN_METERS F/ the_params world_x F!
+       DUP .vy F@ ZEX_UNIT_SIZE_IN_METERS F/ the_params world_y F!
+           .vz F@ ZEX_UNIT_SIZE_IN_METERS F/ the_params world_z F!
+
+      0 I>F the_params delta_rot_x SF!
+      0 I>F the_params delta_rot_y SF!
+      0 I>F the_params delta_rot_z SF!
+      
+      0 the_params controller_ref !
+      
+      100 the_params shield_value h!
+      100 I>F the_params mass SF!
+      
+      0 the_params dq h!
+      1 the_params no_trivial_rejection C!
+      SCENARY the_params object_category C!
+
+\ already a slot      
+\      S" AST1" DROP @ get_static_object_slot
+\        DUP -1 = IF 10001 C" " cstring" f-ASTEROIDS: get_static_object_slot failed."
+\        	      report_error ABORT
+\        	  THEN
+
+      -1 the_params who_spawned_this_object !
+            
+      TUCK ( dyn static dynamic ) SWAP >R >R NOT_DUST_BIT -1 1 I>F ( scale ) -1 the_params R> R>
+        load_dyn_object DROP ( in reality nothing is returned ) 
+
+      ( vector-ptr dynamic ) SWAP V@rev set_velocity_in_mps
+
+      TRUE	\ return TRUE if did it
+    THEN
+;
+
+
+\ summon_object
+\
+\ View a previously loaded object model.
+\
+VCREATE summon_posvec
+VCREATE summon_velvec
+
+: summon_object ( static-slot -- dynamic-slot)
+
+>R 
+
+get_main_camera_object			\ get dynamic slot of camera object
+summon_posvec OVER get_position_in_m    \ get camera's world x y z
+summon_velvec OVER get_velocity_in_mps	\ mirror camera's velocity
+vtemp SWAP get_translated_normal   	\ get the camera's translated normal vector
+
+R@ STATIC_get_object_radius_in_metres	\ get the object radius
+[FIN] 2 F*  	 	 	        \ radius * 2
+ZMin F@ ZEX_UNIT_SIZE_IN_METERS F* F+   \ lets put it away from the clipping plane
+vtemp VmultiplyBy			\ n_translated-vector * radius * 2
+summon_posvec vtemp V+			\ add the forward pointing vector onto the position
+
+summon_velvec R> summon_posvec load_dynamic \ load dyn object (as per asteriods)
+DROP
+;
+
+
+
+\ dismiss_object
+\
+\ Kill a previously summoned object.
+\
+: dismiss_object ( dynamic-slot -- )
+DUP get-object-in-use IF
+  add_to_kill_list DROP
+  ELSE
+  DROP ." Object is not in use"
+  THEN
+;
+
+
+
+\ alias for above
+\ : unsummon_object dismiss_object ;
+\
+\ could have a build version of load_object
+\ : [load_object]
+\ ; IMMEDIATE
+\
+\ or an easier way of loading an object
+\ easy_load_object
+\ : easy_load_object ( "filename ID" -- ) magic_up_slot_number load_object ;
+
+
+

@@ -1,0 +1,217 @@
+\ cli.zsl
+\
+\ (c) 2001 Lightsoft.
+\ (c) 2001 Rob Probin and Stuart Ball
+\
+\ Modification to command line for easier environment
+\ 
+
+: decrement-cursor 
+cursor-char-x @ ?DUP IF 1- 
+ELSE -1 cursor-char-y +! console-columns 2 -
+THEN cursor-char-x ! 
+;
+
+: new-accept-do-del ( caddr1 u1 caddr2 u2 -- caddr1 u1 caddr3 u3 char )
+DROP
+( start-addr start-len-avail cur-addr cur-len-left --)
+2SWAP THIRD OVER SWAP - >R 2SWAP R> ( num chars)
+IF remove-char-from-string
+decrement-cursor SPACE decrement-cursor THEN
+;
+
+' new-accept-do-del ' accept-do-del patch-word
+
+
+\ ===============================================
+\ Unix style up-arrow history
+\ 
+
+80 CONSTANT history_line_length
+16 CONSTANT number_of_history_buffers
+history_line_length 1+ number_of_history_buffers * CONSTANT history_buffer_size
+
+CREATE history_buffers history_buffer_size ALLOT
+history_buffers history_buffer_size 0 FILL
+
+: history_address ( index -- address ) history_line_length 1+ * history_buffers + ;
+
+0 VALUE history_fetch_index
+1 VALUE history_add_index
+
+: bounds_history_fetch
+history_fetch_index 0< IF number_of_history_buffers 1- TO history_fetch_index THEN
+history_fetch_index number_of_history_buffers 1- > IF 0 TO history_fetch_index THEN
+;
+
+: bounds_history_add
+history_add_index 0< IF number_of_history_buffers 1- TO history_add_index THEN
+history_add_index number_of_history_buffers 1- > IF 0 TO history_add_index THEN
+;
+
+: add_line_to_current_history ( caddr u -- )
+history_line_length MIN DUP history_add_index history_address C!
+history_add_index history_address 1+ SWAP MOVE
+;
+
+
+-1 VALUE existing_line_flag
+
+
+: add_line_to_history ( caddr u -- )
+DUP IF
+  -1 TO existing_line_flag
+
+  add_line_to_current_history
+  history_add_index 1+ DUP TO history_add_index
+  TO history_fetch_index  ( reset read position )
+  bounds_history_fetch 
+  bounds_history_add
+ELSE
+  2DROP
+THEN
+;
+
+
+: store_old_line ( st-addr st-len curr-addr curr-left -- st-addr st-len curr-addr curr-left )
+2OVER 2OVER
+NIP - existing_line_flag
+IF 				\ add only if not blank and first scroll
+  add_line_to_current_history 
+ELSE
+  2DROP
+THEN
+0 TO existing_line_flag
+;
+
+: fetch_one_up ( -- caddr )
+history_fetch_index 1- TO history_fetch_index
+bounds_history_fetch
+history_fetch_index history_address
+;
+
+
+: fetch_one_down ( -- caddr )
+history_fetch_index 1+ TO history_fetch_index 
+bounds_history_fetch
+history_fetch_index history_address
+;
+
+
+
+\ -----------------------------------------------------
+
+: delete-line ( st-addr st-len curr-addr curr-left -- st-addr st-len st-addr st-len )
+ THIRD OVER - ( -- chars-present )
+ 0 ?DO 8 new-accept-do-del LOOP
+;
+
+
+\         /-----<
+\  |===> 3 o-:
+\         \_____<
+
+
+: insert-line ( st-addr st-len ins-caddr -- cur-addr curr-left )
+COUNT { my-addr my-len -- } 
+
+( st-addr st-len )
+
+BEGIN
+  DUP 0<> my-len 0<> AND 
+WHILE
+  OVER my-addr COUNT SWAP TO my-addr DUP EMIT SWAP C!
+  SWAP 1+ SWAP 1-
+  my-len 1- TO my-len
+REPEAT
+;
+
+
+
+
+\ accept-do-aux checks for other key combinations we want to trap, otherwise returns
+\ the key for normal adding to the command line.
+\
+: new-accept-do-aux ( z*j -- z*j key TRUE | z*j FALSE )
+\ z*j is start-addr start-len  curr-add curr-left
+DUP
+
+CASE
+  28 OF ( ." left" )  DROP FALSE ENDOF
+  29 OF ( ." right" ) DROP FALSE ENDOF
+  30 OF ( ." up"   )  DROP store_old_line delete-line fetch_one_up insert-line FALSE ENDOF
+  31 OF ( ." down" )  DROP store_old_line delete-line fetch_one_down insert-line FALSE ENDOF
+  TRUE                                ( key not one of ours )
+ENDCASE
+;
+
+
+' new-accept-do-aux IS accept-do-aux
+
+
+
+\ check for end of buffer, and doesn't add if so.
+: new-accept-do-tab 
+DROP DUP 2 >= IF 
+SPACE SPACE BL add-char-to-string BL add-char-to-string
+THEN 
+;
+
+
+\ checks for end of buffer, and doesn't add if so.
+: new-accept-do-normal 
+SWAP DUP IF 
+  SWAP DUP EMIT add-char-to-string 
+ELSE
+  SWAP DROP
+THEN 
+;
+
+
+\ Two advantages:
+\   Can be more easily replaced
+\   Does not terminate at end of line
+: advanced-ACCEPT  ( caddr u -- numchars )
+ DUP IF
+ 2DUP
+   BEGIN
+     KEY DUP 13 <>
+   WHILE		\ while not the return key
+     DUP 8 = IF	\ if delete key
+       accept-do-del
+     ELSE
+       DUP 9 = IF      \ tab key
+         new-accept-do-tab
+       ELSE
+         new-accept-do-aux
+         IF new-accept-do-normal THEN
+       THEN
+
+     THEN
+   REPEAT
+ DROP 
+ CR NIP -	
+ THEN
+ 2DUP add_line_to_history
+ NIP
+;
+	
+' advanced-ACCEPT IS ACCEPT
+
+
+
+\ we want to replace INTERPRET with our own version that can 
+\ modify the was case sensitivity is handled.
+\
+\ Rather than modifying find-word (which would require re-writing, and
+\ since we do not know the structure of the header (it is core private)
+\ we should use a higher-level approach
+\
+\ This will also effect evaluate and interpret_c_string as well, which is probably
+\ what we want.
+\
+\ The alternative is to just make another command line interpreter....????
+
+0 VALUE case-insensitivity-mode
+
+

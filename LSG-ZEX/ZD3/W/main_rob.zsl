@@ -1,0 +1,51 @@
+\ main.zsl Zex main defintions
+
+4 CONSTANT MIN-REQUIRED-CORE-VER
+: lsgf-core-check lsgf-core-ver MIN-REQUIRED-CORE-VER < IF CR ." I suggest you upgrade to a later LSGF" CR THEN ;
+lsgf-core-check
+
+( SYSTEM FILES )
+include cls.zsl
+include utils.zsl
+include math_util.zsl  ( additional maths functions )
+include file.zsl
+include locals.zsl
+include cli.zsl
+include trivia.zsl
+\ include ppcdebug.zsl  ( old debugger specific to implementation)
+\ include ppcdebug2.zsl
+\ include ppcdebug3.zsl
+redefinition_warning OFF
+include debugger_ans.zsl ( debugger NOT specific to implementation )
+redefinition_warning ON
+\ include assembler.zsl  ( part written ppc assembler )
+
+( APP FILES follow )
+include edit.zsl
+include advice.zsl
+include game.zsl
+include make_struct.zsl
+include ocbstruct.zsl
+
+( Programmer Utilies follow )
+include zexctrls.zsl
+include menu.zsl
+
+
+( Zex Specific control functions )
+include object_top_level.zsl
+
+( Specific object controllers )
+include asteroids.zsl
+
+( object manipulators )
+include load_object.zsl
+
+\ read ship data 
+ include sds.zsl 
+
+
+: last-zex-definition ;	\ C engine knows we have all definitions if we get here
+
+.( Welcome to Zex Coffee v0.10 12Aug2001, LSGF Core Version: ) lsgf-core-ver .
+

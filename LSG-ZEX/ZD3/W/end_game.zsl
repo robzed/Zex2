@@ -1,0 +1,33 @@
+\ end_game.zsl
+
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+create-controller-table end-game-table
+
+: end-game
+
+0 TO game-running			\ change the game running flag back to not
+
+object-one-per-frame SLEEP	\ put the object controllers back to sleep
+
+
+\ controller kill routines get run from here
+end-game-table run-all-controllers
+
+;
+
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::end-game ( ref xt -- ) 
+end-game-table install-controller ;
+
+: remove-controller::end-game ( ref -- )
+end-game-table remove-controller ;
+
+

@@ -1,0 +1,235 @@
+--Doc Rev 0.01 12/12/00 SB.
+Coffee's floating point words default to double (64 bit) size.
+The floating point stack always stores doubles. A single if 
+pushed on the stack is converted to a double first.
+
+
+Terms used in this document:
+FPS -- Floating Point Stack
+PS  -- Parameter Stack
+
+
+Getting Numbers Into Coffee
+---------------------------
+PI ( F:  -- r )
+Store PI as a double on the FPS.
+
+f1.0 ( F:  -- r )
+Store 1.0 as a double on the FPS.
+
+f0.0 ( F:  -- r )
+Store 0.0 as a double on the FPS.
+
+f-1.0 ( F:  -- r )
+Store -1.0 as a double on the FPS.
+
+
+>FLOAT ( caddr u -- F: F64  I: success-flag )
+Convert string on the stackto a double float and store on the floating 
+point stack.
+Will convert most notations including NAN and INF etc.
+
+
+>SFLOAT ( caddr u -- F: F32  I: success-flag )
+Convert string to a single precision float and store on the
+floating point stack.
+Will convert most notations including NAN and INF etc.
+
+FIN ( -- F: F64 )
+Convert string that follows to a double float and store on the floating 
+point stack.
+Will convert most notations including NAN and INF etc.
+E.G. FIN 32.0
+
+Printing Numbers
+----------------
+F. ( F: r -- )
+Prints the floating point double on top of the stack. 
+
+DF.  ( F: r -- )
+An alias for F.
+
+SF.  ( F: r -- )
+Takes the floating point double on top of the stack, converts 
+it to a single then prints it as a string.
+
+
+Print Formatting
+----------------
+SET-PRECISION ( u -- )
+Takes the topmost integer stack item as a value between 1 
+and 60 and sets the printing precision for F. FD. and FS.
+
+For example (assuming default conversion mode):
+PI 6 SET-PRECISION F.
+Prints 3.141593
+PI 4 SET-PRECISION F.
+Prints 3.1416
+The default printing precision is 20.
+
+
+SET-FLOAT-PRINTING-MODE ( mode -- )
+If mode is 0 then printing conversion mode is floating.
+If mode is 1 then printing conversion mode is fixed.
+Default is 1. If an invalid value is passed the mode
+is unchanged.
+
+For example, assuming precision is set to 4:
+PI 0 SET-FLOAT-PRINTING-MODE F.
+Prints: 3.142e0
+PI 1 SET-FLOAT-PRINTING-MODE F.
+Prints: 3.1416
+
+
+
+Primitive Floating Point Stack Operations
+-----------------------------------------
+FDUP  ( F: r1 -- r1 r2 )
+Duplicate r1.
+
+FDROP  ( F: r1 --  )
+Remove r1 from the FPS.
+
+FOVER  ( F: r1 r2 -- r1 r2 r1 )
+Copy second item on stack to top.
+
+FDUP  ( F: r1 -- r1 r2 )
+Duplicate r1.
+
+FROT  ( F: r1 r2 r3 -- r2 r3 r1)
+Rotate top three items left.
+
+FSWAP  ( F: r1 r2 -- r2 r1 )
+Swap top two items.
+
+FDEPTH ( -- n+ )
+Return the number of values on the FPS.
+
+FALIGNED ( n1 -- n2 )
+Align n1 to float
+
+FALIGN ( --  )
+Aligns dictionary pointer to float.
+
+
+
+
+
+Primitive Floating Point Memory Operations
+------------------------------------------
+
+F! ( addr -- ) ( F: r --  )
+Store the double on the FPS at the address on the PS.
+
+F@ ( addr -- ) ( F:  -- f  )
+Fetch the double on the FPS from the address on the PS.
+
+F+! ( addr -- ) ( F: f -- )
+Add the double on the stack to the double at address addr.
+
+
+Primitive Floating Point Arithmetic Operations
+----------------------------------------------
+
+F+ ( F: r1 r2 -- r3 )
+Add r1 to r2 and store the result on the top of 
+the FPS
+
+
+F- ( F: r1 r2 -- r3 )
+Subtract r2 from r1 and store the result on the top 
+of the FPS
+
+
+F*  ( F: r1 r2 -- r3 )
+Multiply r1 by r2 and store the result on the top 
+of the FPS
+
+
+F/  ( F: r1 r2 -- r3 )
+Divide r1 by r2 and store the result on the top of 
+the FPS
+
+FABS  ( F: r1 -- r2 )
+Return the absolute value of r1.
+
+FLOOR  ( F: r1 -- r2 )
+Round r1 to nearest integer. Rounds towards negative infinity.
+
+FROUND  ( F: r1 -- r2 )
+Round r1 to nearest integer.
+
+FSQRT  ( F: r1 -- r2 )
+Returns the square root of r1.
+
+F**  ( F: r1 r2 -- r3 )
+Raise r1 to the power of r2.
+
+FMAX  ( F: r1 r2 -- r3 )
+Return the greater of r1 and r2.
+
+FMIN  ( F: r1 r2 -- r3 )
+Return the lesser of r1 and r2.
+
+
+Floating Point Trigonometric Operations
+---------------------------------------
+
+FSIN  ( F: r1 -- r2 )
+Returns the sine of the radian angle in r1.
+
+FCOS  ( F: r1 -- r2 )
+Returns the cosine of the radian angle in r1.
+
+FTAN  ( F: r1 -- r2 )
+Returns the tangent of the radian angle in r1.
+
+FASIN  ( F: r1 -- r2 )
+Returns the arcsine of the radian angle in r1.
+
+FACOS  ( F: r1 -- r2 )
+Returns the arcsine of the radian angle in r1.
+
+FATAN  ( F: r1 -- r2 )
+Returns the arctan of the radian angle in r1.
+
+
+
+Floating Point Conditionals
+---------------------------
+F0< ( -- u ) (F: r -- )
+Set a flag on the PS if the topmost double on the FPS
+is less than zero.
+
+
+F0= ( -- u ) (F: r -- )
+Set a flag on the PS if the topmost double on the FPS
+is equal to zero.
+
+
+F0> ( -- u ) (F: r -- )
+Set a flag on the PS if the topmost double on the FPS
+is greater than zero.
+
+
+F< ( -- u ) (F: r1 r2 -- )
+Return true on PS if r1 is less than r2 else return false.
+
+
+F> ( -- u ) (F: r1 r2 -- )
+Return true on PS if r1 is greater than r2 else return false.
+
+
+Single Sized Floats
+-------------------
+
+SF! ( addr --  )  ( F: r --  )
+Store the real value on the top of the FS as a single.
+
+SF@ ( addr --  )  ( F: r --  )
+Fetch on to the FS the single sized float at addr.
+
+
+
+
+<EOF>

@@ -1,0 +1,61 @@
+: advisor
+        CR ." Hello!  My name is Creating Computer."
+        CR ." Hi there!"
+        CR ." Are you enjoying yourself here?"
+        KEY DUP 32 = SWAP 89 = OR
+        IF      CR ." I am glad to hear that."
+        ELSE    CR ." I am sorry about that."
+                CR ." maybe we can brighten your visit a bit."
+        THEN
+        CR ." Say!"
+        CR ." I can solve all kinds of problems except those dealing"
+        CR ." with Greece.  What kind of problems do you have"
+        CR ." ( sex, health, money or job )?"
+        CR
+        ;
+
+: question
+        CR ." Any more problems you want to solve?"
+        CR ." What kind ( sex, job, money, health ) ?"
+        CR
+        ;
+
+: sex   CR ." Is your problem TOO MUCH or TOO LITTLE?"
+        CR
+        ;
+
+: too  ;                                ( noop for syntax smoothness )
+
+: much  CR ." You call that a problem?!!  I SHOULD have that problem."
+        CR ." If it reall y bothers you, take a cold shower."
+        question
+        ;
+
+: little
+        CR ." Why are you here!"
+        CR ." You should be in Tokyo or New York of Amsterdam or"
+        CR ." some place with some action."
+        question
+        ;
+
+: health
+        CR ." My advise to you is:"
+        CR ."      1. Take two tablets of aspirin."
+        CR ."      2. Drink plenty of fluids."
+        CR ."      3. Go to bed (along) ."
+        question
+        ;
+
+: job   CR ." I can sympathize with you."
+        CR ." I have to work very long every day with no pay."
+        CR ." My advise to you, is to open a rental computer store."
+        question
+        ;
+
+: money
+        CR ." Sorry!  I am broke too."
+        CR ." Why don't you sell encyclopedias of marry"
+        CR ." someone rich or stop eating, so you won't "
+        CR ." need so much money?"
+        question
+        ;

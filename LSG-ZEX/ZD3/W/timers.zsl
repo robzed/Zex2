@@ -1,0 +1,209 @@
+\ --- T - I - M - E - R - S ---
+\
+\ timer control routines
+\ used for executing various things at specified intervals
+
+DECIMAL
+
+\ FRIENDS utility routines
+
+: stack-check-start ( -- key )
+DEPTH
+;
+
+: stack-check-end ( key depth-change -- )
+DEPTH 2 - + 2DUP <> IF 
+macsbug 
+( 1 ABORT" controller aborted - stack unbalanced" **more code to remove controller** ) 
+THEN 2DROP
+;
+
+
+
+\ how many timers? (PRIVATE)
+20 CONSTANT #timers
+
+\ create the control arrays  (PRIVATE - make no assumptions about these)
+CREATE timer_control_array #timers 1 CELLS * ALLOT
+CREATE timer_timing_array #timers 1 FLOATS * ALLOT
+CREATE timer_reload_array #timers 1 FLOATS * ALLOT
+CREATE timer_execution_array #timers 1 CELLS * ALLOT
+
+\ (PRIVATE)
+: timer_default_control ( id -- ) CELLS timer_control_array + 0 SWAP ! ;
+
+\ reset all timers. (FRIENDS ONLY)
+: timer_clear_all ( -- )  
+    #timers 0 ?DO 
+      0 timer_execution_array I CELLS + ! 
+      I timer_default_control
+    LOOP 
+;
+
+timer_clear_all		\ lets initialise the initial arrays
+
+\ various control constants (PRIVATE - make no assumptions about these)
+HEX
+
+01 CONSTANT timer_repeating_mask			\ is the timer repeating, or one shot?
+02 CONSTANT timer_active_mask				\ is the timer active currently?
+20 CONSTANT timer_owned_mask				\ is it owned by someone?
+40 CONSTANT fixed_datum_on_reload_mask		\ does the timer reload at the expiry or at the check?
+80 CONSTANT timer_expired_mask				\ has the timer expired? (really only useful for one-shot)
+
+DECIMAL 
+
+\ bit manipulators (PUBLIC)
+: clear_bits ( address mask -- ) INVERT OVER @ AND SWAP ! ;
+: set_bits ( address mask -- ) OVER @ OR SWAP ! ;
+
+\ timer access routines (PRIVATE - do not use)
+: timer_floating_datum_reload ( id -- ) FLOATS DUP timer_reload_array + F@ timer_timing_array + F! ;
+: timer_fixed_datum_reload ( id -- ) FLOATS DUP timer_reload_array + F@ timer_timing_array + DUP F@ F+ F! ;
+
+: set_timer_flags ( id mask -- ) SWAP CELLS timer_control_array + SWAP set_bits ;
+: clear_timer_flags ( id mask -- ) SWAP CELLS timer_control_array + SWAP clear_bits ;
+: query_timer_flags ( id mask -- flag ) SWAP CELLS timer_control_array + @ AND ;
+
+
+\ access different parts of the timers (PUBLIC)
+: timer_make_active ( id -- ) timer_active_mask set_timer_flags ;
+: timer_make_inactive ( id -- ) timer_active_mask clear_timer_flags ;
+: timer_is_active? ( id -- flag ) timer_active_mask query_timer_flags ;
+
+: timer_make_oneshot ( id -- ) timer_repeating_mask clear_timer_flags ;
+: timer_make_repeating ( id -- ) timer_repeating_mask set_timer_flags ;
+: timer_is_timer_repeating? ( id -- flag ) timer_repeating_mask query_timer_flags ;
+
+: timer_set_expire_handler_address ( execution_address id -- ) CELLS timer_execution_array + ! ;
+: timer_remove_handler ( id -- ) CELLS timer_execution_array + 0 SWAP ! ;
+
+: timer_has_expired? ( id -- ) timer_expired_mask query_timer_flags ;
+: timer_make_expired ( id -- ) timer_expired_mask set_timer_flags ;
+: timer_make_not_expired ( id -- ) timer_expired_mask clear_timer_flags ;
+
+: timer_fix_datum ( id -- ) fixed_datum_on_reload_mask set_timer_flags ;
+: timer_floating_datum ( id -- ) fixed_datum_on_reload_mask clear_timer_flags ;
+: timer_fixed_datum? ( id -- ) fixed_datum_on_reload_mask query_timer_flags ;
+
+: timer_set_time ( id -- ) ( F: time -- ) FDUP FLOATS DUP timer_reload_array + F! timer_timing_array + F! ;
+
+\ timer access routines (PRIVATE - do not use)
+: timer_is_used? ( id -- flag ) timer_owned_mask query_timer_flags ;
+: timer_make_owned ( id -- ) timer_owned_mask set_timer_flags ;
+: timer_make_unowned ( id -- ) timer_owned_mask clear_timer_flags ;
+
+: timer_reload ( id -- ) DUP timer_fixed_datum? IF timer_fixed_datum_reload ELSE timer_floating_datum_reload THEN ;
+
+: timer_is_id_invalid? ( id -- flag )
+DUP 0< SWAP #timers >= OR ( ABORT" Invalid timer number!" 0 ) ;
+
+: timer_time_expired? ( id -- flag ) FLOATS timer_timing_array + F@ [FIN] 0 F< ;
+: timer_subtract ( id -- ) ( F: time -- ) FLOATS timer_timing_array + DUP F@ FSWAP F- F! ;
+
+\ these are tests for too big an execution address
+\ : etest DUP [HEX] 70000000 > IF macsbug THEN ;
+\ : @etest DUP @ etest DROP ;
+
+: timer_execute ( id -- ) 
+
+stack-check-start >R
+
+CELLS timer_execution_array + ( @etest ) @EXECUTE 
+
+R> 1 stack-check-end
+
+;
+
+: timer_on_expiry ( id -- )
+    DUP timer_make_expired
+    DUP timer_reload
+    DUP timer_is_timer_repeating?
+    0= IF
+       DUP timer_make_inactive	\ must be one shot, so disable timer
+    THEN
+    timer_execute
+;
+
+
+
+\ timer update routine (FRIENDS ONLY)
+: timer_update_all ( -- )
+    #timers 0 ?DO 
+      I timer_is_active? 
+      IF
+        I DUP
+        time_in_secs F@ timer_subtract
+        timer_time_expired?
+        IF
+          I timer_on_expiry
+        THEN
+      THEN
+    LOOP 
+;
+
+
+\ set a timer as repeating (PUBLIC ROUTINE)
+: timer_set_timer_repeating ( xt index -- ) ( F: time -- )
+      DUP timer_set_time
+      DUP timer_make_repeating
+      2DUP timer_set_expire_handler_address
+      DUP timer_make_not_expired
+      DUP timer_make_active
+      2DROP
+;
+
+\ set a timer as one shot (PUBLIC ROUTINE)
+: timer_set_timer_oneshot ( xt index -- ) ( F: time -- )
+      DUP timer_set_time
+      DUP timer_make_oneshot
+      2DUP timer_set_expire_handler_address
+      DUP timer_make_not_expired
+      DUP timer_make_active
+      2DROP
+;
+
+
+\ find an unused timer (PUBLIC ROUTINE)
+: timer_find_unused ( -- id | -1 )
+    #timers 0 ?DO 
+      I timer_is_used? 0=
+      IF
+		I timer_default_control
+        I timer_make_owned
+        I UNLOOP EXIT
+      THEN
+    LOOP 
+-1
+;
+
+
+\ delete a timer that user does not want any more (PUBLIC ROUTINE)
+: timer_discard ( id -- )
+    DUP timer_is_id_invalid?
+    0= IF
+      DUP timer_make_inactive
+      DUP timer_make_unowned
+          timer_remove_handler
+    THEN
+;
+
+
+\ Two options for expiring timers:- 
+\
+\ 1. subtract from value
+\
+\ Pros: (a) 
+\
+\ Cons: (a) need to subtract from all timers
+\       (b) repeating requires original value store
+\       (c) may suffer with accuracy problems over long periods
+\       (d) on very slow frame rates accurate reloading overflow may accumulate!
+\
+\ 2. Increment master timers, and compare.
+\
+\  Pros: (a) Do not need to store 
+\        (b) Do not
+\ Cons: (b)  When we have overrun, in order to con
+
+

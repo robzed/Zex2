@@ -1,0 +1,31 @@
+// genpoly.int
+
+extern int screen_x_min, screen_x_max, screen_y_min, screen_y_max;	//module vars for width and height - sb 181298
+
+#define FLOAT_TEXTURE_MAP 0		// gourand can't use float yet
+
+
+#if FLOAT_TEXTURE_MAP
+  #define F_TO_I(x) ((int)(x))
+  #define I_TO_F(x) ((float)(x))
+  #define FLOAT_TYPE float
+#else
+  #define I_TO_F(x) ((x)<<16)
+  #define F_TO_I(x) ((x)>>16)
+  #define FLOAT_TYPE int
+#endif
+
+typedef struct {
+		int linex; 
+	    FLOAT_TYPE bmpx; 
+	    FLOAT_TYPE bmpy;
+
+		} border_type;
+
+//protos
+void tex_draw2(border_type *start_dest, border_type *end_dest, int x1,int y1,int x2,int y2, int from_a, int from_b, int to_a, int to_b);
+//void tex_draw_rev(border_type *data_dest,int x1,int y1,int x2,int y2, int from_a, int from_b, int to_a, int to_b);
+void scanoneline(char *screen_line_address, int line_startx, int line_endx,
+	  char *bmp_address, FLOAT_TYPE bmp_startx, FLOAT_TYPE bmp_starty, FLOAT_TYPE bmp_endx, FLOAT_TYPE bmp_endy, int bmp_width, char *light_colour_address);
+int convert_to_palette(int r, int g, int b);
+

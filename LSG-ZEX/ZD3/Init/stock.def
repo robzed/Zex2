@@ -1,0 +1,11 @@
+/*
+ *  stock.def
+ *  
+ *
+ *  Created by Stuart Ball on Sat Jun 21 2003.
+ *  Copyright (c) 2003 Lightsoft. All rights reserved.
+ *
+ */
+
+#include "stock.h"
+

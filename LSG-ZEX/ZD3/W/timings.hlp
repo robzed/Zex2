@@ -1,0 +1,56 @@
+game_timing ON		-- turn the game timing totally on
+game_timing OFF		-- turn the game timing totally off (saving a tiny amount of time)
+
+total_frames @ .    -- print the total number of frames (assuming game timing on)
+
+timed_frames @ .	-- print the number of frames timed so far in this cycle
+
+600 frames_to_reset_after ! -- reset the timings every 600 frames
+-1 frames_to_reset_after ! -- never reset the timings
+
+T_MIN	   -- constant that is the minimum index for timings taken. Usually 0. 
+T_MAX      -- constant that is the maximum index for timings taken
+
+T_MATRIX   -- index for matrix timings
+T_CULLING  -- index for culling timings
+T_PERS     -- index for perspective timings
+T_POLYDRAW -- index for polygon drawing timings
+
+T_DLP      -- index for dlp timings
+T_MISC     -- index for all the timings nt fitting into other categories
+T_SWAP     -- index for the screen swap timings
+T_COFFEE   -- index for the coffee timings
+
+
+There are several timings arrays, all storing floats:
+
+timemin
+timemax
+timetotal
+timeav
+timepercent
+
+
+With timings.zsl the following are also available...
+
+show_percentage_timings
+show_average_timings
+show_all_timings
+
+show_animated_timings
+show_animated_%
+show_animated_av
+show_end_timings
+
+
+WARNING
+=======
+
+Timings are approximate at best. Timings 
+(especially the maximum figure) are subject to
+variance cause by interrupts, etc. 
+
+Also ensure optimisation of the C section is 
+on before real game timings are taken.
+
+ 

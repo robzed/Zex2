@@ -1,0 +1,63 @@
+\ PowerPC Specific Forth Debugger
+
+: debug-get-word ( -- xt )
+PARSE-WORD ?DUP 0= 
+IF 
+  ." Normal usage - debug wordname" ABORT
+ELSE 
+  find-word 0=
+  IF ." Cannot find " TYPE ABORT THEN
+THEN
+;
+
+: debug-user
+  ."   <q = quit>"
+  KEY [CHAR] q =
+   -9 cursor-char-x +! 
+     ."          " 
+  IF QUIT THEN
+;
+
+
+( very worrying word! )
+: JUMP_TO_THEN HERE 0 , if-magic ; IMMEDIATE
+
+VARIABLE debugger-address
+
+
+: debug-do-enter ( xt -- xt-after-enter )
+DUP DUP @ [HEX] 7C0802A6 [DEC] <> 
+SWAP CELL+ @ [HEX] 940FFFFC [DEC] <> OR
+IF CR ." Unexpected missing ENTER Code" ABORT THEN
+CR ." ENTER  " CELL+ CELL+
+;
+
+: decode-branch-offset ( instruction -- offset )
+[HEX] 03FFFFFC AND DUP 02000000 AND IF FC000000 OR THEN [DEC]
+;
+
+: check-for-exit ( xt -- xt )
+debugger-address !
+debugger-address @ @ [HEX] 800F0000 [DEC] =
+debugger-address @ CELL+ @ [HEX] 7C0803A6 [DEC] = AND
+debugger-address @ CELL+ CELL+ @ [HEX] 39EF0004 [DEC] = AND
+debugger-address @ CELL+ CELL+ CELL+ @ [HEX] 4E800020 [DEC] = AND
+IF CR ." EXIT" QUIT THEN
+debugger-address @
+;
+
+: check-for-branch ( xt -- xt flag )
+DUP @ DUP ( -- xt xt data data )
+[HEX] FC000003 AND 48000000 = ( -- xt xt data flag )
+IF decode-branch-offset DUP 0> CR 
+IF ." branch forward" ELSE ." branch backward" THEN
++ debugger-address !
+       debug-user
+debugger-address @ -1
+
+ELSE
+DROP 0  ( -- xt 0 )
+THEN
+[DEC]
+;
+

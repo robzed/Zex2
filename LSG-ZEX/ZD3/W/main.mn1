@@ -1,0 +1,1 @@
+1 -- freeze game (same as fr command)2 -- unfreeze game (same as -fr command)3 -- go for 1 frame ( same as 1frame command)4 -- go for 5 frames (same as 5 frames command)9 -- up a menu level [INACTIVE - TOP OF MENU SYSTEM]0 -- exit menu system

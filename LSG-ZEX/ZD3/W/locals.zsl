@@ -1,0 +1,303 @@
+\ locals.zsl defines ... local variables for use in forth
+
+
+
+CREATE locals-marker
+
+\ **************************************************************
+\ LOWEST SECTION - RUN TIME LEVEL
+\ **************************************************************
+\ locals kernal  --  based on tinylocals by NAB. Thanks Neil.
+\ Current locals (i.e. the ones that the current routine is using)
+\ are really VALUEs. This means we dont need to patch TO in some wierd
+\ and wonderful way (Thankfully). It also means that when locals are
+\ used we must take case to preserve the previous set of locals.
+0 VALUE local0--0123456789012345678901234567890123456789
+0 VALUE local1--0123456789012345678901234567890123456789
+0 VALUE local2--0123456789012345678901234567890123456789
+0 VALUE local3--0123456789012345678901234567890123456789
+0 VALUE local4--0123456789012345678901234567890123456789
+0 VALUE local5--0123456789012345678901234567890123456789
+0 VALUE local6--0123456789012345678901234567890123456789
+0 VALUE local7--0123456789012345678901234567890123456789
+\ making more locals slows all locals down (? I'm not sure if this is totally true any longer?)
+8 CONSTANT (max-locals)
+
+\ **************************************************************
+\ MIDDLE SECTION - COMPILE TIME LEVEL
+\ **************************************************************
+\
+\ We rename the locals as they are used
+CREATE (list-of-locals)
+' local0--0123456789012345678901234567890123456789 XT>WORD ,
+' local1--0123456789012345678901234567890123456789 XT>WORD ,
+' local2--0123456789012345678901234567890123456789 XT>WORD ,
+' local3--0123456789012345678901234567890123456789 XT>WORD ,
+' local4--0123456789012345678901234567890123456789 XT>WORD ,
+' local5--0123456789012345678901234567890123456789 XT>WORD ,
+' local6--0123456789012345678901234567890123456789 XT>WORD ,
+' local7--0123456789012345678901234567890123456789 XT>WORD ,
+
+0 VALUE #local-count
+
+: clear-locals 0 TO #local-count ;
+
+: (max-chars-in-word) ( wa -- n )
+WORD>MAX-NFA C@
+;
+
+: (word-too-long-check) ( u wa -- )
+(max-chars-in-word) > 
+IF 
+0 TO #local-count
+." Local name too long" ABORT 
+THEN
+;
+
+: (actual-rename-word) ( caddr u wa -- )
+WORD>NFA 2DUP C! 1+ ( src u dest -- ) SWAP MOVE
+;
+
+: rename-word ( c-addr u wa -- )
+2DUP (word-too-long-check)
+OVER 0= IF 0 TO #local-count ." No name for local" ABORT THEN
+(actual-rename-word)
+;
+
+: rename-local ( c-addr u local# -- )
+CELLS (list-of-locals) + @ rename-word
+;
+
+: reveal-local ( local# -- )
+CELLS (list-of-locals) + @ REVEAL-WORD
+;
+
+\ lets make the locals something more managable for the rest of the file
+: (default-locals)
+S" local0" 0 rename-local  S" local1" 1 rename-local
+S" local2" 2 rename-local  S" local3" 3 rename-local
+S" local4" 4 rename-local  S" local5" 5 rename-local
+S" local6" 6 rename-local  S" local7" 7 rename-local
+;
+
+(default-locals)
+
+\ **************************************************************
+\ REST OF LOWEST SECTION - RUN TIME LEVEL
+\ **************************************************************
+0 VALUE local-return-val
+\ (unnest-8locals) causes the current set of locals to be dumped, and 
+\ the old ones (up a level) to be re-instated.
+: (unnest-8locals)
+R> TO local7  R> TO local6  R> TO local5  R> TO local4 
+R> TO local3  R> TO local2  R> TO local1  R> TO local0
+;
+\ (use-locals) causes the current set to be stored, and a new set created
+: (use-8locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+local2 >R TO local2  local3 >R TO local3
+local4 >R TO local4  local5 >R TO local5
+local6 >R TO local6  local7 >R TO local7
+[ ' (unnest-8locals) XT>CFA LITERAL ] \ NOTE: the XT>CFA skips the powerpc specific stack entry code. The 
+									  \ alternative was to use R>DROP in the above code for unnest.
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-7locals)
+R> TO local6  R> TO local5  R> TO local4  R> TO local3
+R> TO local2  R> TO local1  R> TO local0
+;
+
+: (use-7locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+local2 >R TO local2  local3 >R TO local3
+local4 >R TO local4  local5 >R TO local5
+local6 >R TO local6
+[ ' (unnest-7locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-6locals)
+R> TO local5  R> TO local4  R> TO local3  R> TO local2  
+R> TO local1  R> TO local0
+;
+
+: (use-6locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+local2 >R TO local2  local3 >R TO local3
+local4 >R TO local4  local5 >R TO local5
+[ ' (unnest-6locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-5locals)
+R> TO local4  R> TO local3  R> TO local2  R> TO local1  R> TO local0
+;
+
+: (use-5locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+local2 >R TO local2  local3 >R TO local3
+local4 >R TO local4
+[ ' (unnest-5locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-4locals)
+R> TO local3  R> TO local2  R> TO local1  R> TO local0
+;
+
+: (use-4locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+local2 >R TO local2  local3 >R TO local3
+[ ' (unnest-4locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-3locals)
+R> TO local2  R> TO local1  R> TO local0
+;
+
+: (use-3locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+local2 >R TO local2
+[ ' (unnest-3locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-2locals)
+R> TO local1  R> TO local0
+;
+
+: (use-2locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0  local1 >R TO local1
+[ ' (unnest-2locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+\ ----------------------------------------------------------------------
+: (unnest-1locals)
+R> TO local0
+;
+
+: (use-1locals)
+R> TO local-return-val	\ fetch our return address, and one below
+local0 >R TO local0
+[ ' (unnest-1locals) XT>CFA LITERAL ]
+>R local-return-val >R	\ put our return address on last, and the unnest
+;					    \ unnest address below that
+
+
+
+\ **************************************************************
+\ REST OF MIDDLE LAYER
+\ **************************************************************
+
+\ (LOCAL) is the ANS word, as described in section 13 of the ANS standard
+: (LOCAL) ( c-addr u -- )
+DUP IF
+     #local-count 1+ DUP (max-locals) >= IF
+      0 TO #local-count ." Too many locals defined" ABORT
+     THEN
+     TO #local-count
+      #local-count 1- rename-local 
+      #local-count 1- reveal-local
+ELSE
+    2DROP		  \ compile local creation save routine into source
+      #local-count 
+      DUP 8 = IF ['] (use-8locals) COMPILE, THEN
+      DUP 7 = IF ['] (use-7locals) COMPILE, THEN
+      DUP 6 = IF ['] (use-6locals) COMPILE, THEN
+      DUP 5 = IF ['] (use-5locals) COMPILE, THEN
+      DUP 4 = IF ['] (use-4locals) COMPILE, THEN
+      DUP 3 = IF ['] (use-3locals) COMPILE, THEN
+      DUP 2 = IF ['] (use-2locals) COMPILE, THEN
+          1 = IF ['] (use-1locals) COMPILE, THEN
+THEN
+;
+
+
+\ hide the locals that exist
+: (hide-locals) ( -- )
+(list-of-locals)
+#local-count 0 ?DO 
+  DUP @ HIDE-WORD CELL+ 
+LOOP DROP 
+0 TO #local-count		\ we want no more locals to exist after this
+;
+
+
+
+\ we need to clear up after we have used the locals
+redefine: ;
+(hide-locals)
+POSTPONE ;
+; IMMEDIATE
+
+redefine: DOES> (hide-locals) POSTPONE DOES> ; IMMEDIATE
+
+redefine: include ['] include CATCH ?DUP IF (hide-locals) THROW THEN ;
+
+redefine: : 0 TO #local-count : ;
+
+redefine: :NONAME 0 TO #local-count POSTPONE :NONAME ; 
+
+\ 
+\ This is the ANSI locals word, exactly as per Section A13 of the standard.
+\ I prefer the method following this one for defining my locals...
+: LOCALS| ( "name...name |" -- )
+     BEGIN
+         BL WORD COUNT OVER C@
+         [CHAR] | - OVER 1 - OR WHILE
+         (LOCAL)
+     REPEAT 2DROP 0 0 (LOCAL)
+; IMMEDIATE
+
+\ This implements a subset of the gforth locals syntax in pure ANS Forth
+
+\ [The rest of...] this file is in the public domain. NO WARRANTY.
+
+\ This implementation technique has been described by John Hayes in
+\ the SigForth Newsletter 4(2), Fall '92. He did not do the complete
+\ job, but left some more mundane parts as an exercise to the reader.
+
+\ I don't implement the "|" part, because 1) gforth does not implement
+\ it and 2) it's unnecessary; just put a 0 before the "{" for every
+\ additional local you want to declare.
+
+\ This program uses PARSE from the core ext and COMPARE from the
+\ string wordsets
+
+ : LOCAL ( "name" -- )
+     BL WORD COUNT (LOCAL) ;
+ 
+ : {helper ( -- final-offset )
+     >IN @
+     BL WORD COUNT
+     2DUP S" --" COMPARE 0= IF
+         2DROP [CHAR] } PARSE 2DROP TRUE
+     ELSE
+         S" }" COMPARE 0=
+     THEN
+     IF
+         DROP >IN @
+     ELSE
+         RECURSE
+         SWAP >IN ! LOCAL
+     THEN ;
+
+ : { ( -- )
+     {helper >IN ! 0 0 (LOCAL) ; IMMEDIATE
+
+\ : test-swap { a b -- b a } ." xxx"
+\    b a ;
+\
+\ 1 2 test-swap . . .S CR
+
+
+ 

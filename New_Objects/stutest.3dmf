@@ -1,0 +1,50 @@
+3DMetafile ( 1 6 Normal tableofcontents7> )
+	OrientationStyle ( CounterClockwise )
+	FillStyle ( Filled )
+	InterpolationStyle ( Vertex )
+	BackfacingStyle ( Both )
+	ReceiveShadowsStyle ( False )
+	SubdivisionStyle ( Constant 20 20 )
+	phongillumination9:
+	PhongIllumination ( )
+	displaygroup10:
+	BeginGroup ( 
+		DisplayGroup ( )
+		DisplayGroupState ( NoBoundingBox 
+		)
+	)
+	displaygroup11:
+	BeginGroup ( 
+		DisplayGroup ( )
+		DisplayGroupState ( NoBoundingBox 
+		)
+	)
+	matrix12:
+	Matrix (
+		1 0 0 0 
+		0 -4.371139e-08 -1 0 
+		0 1 -4.371139e-08 0 
+		55.792 126.1485 38.82238 1 )
+	displaygroup13:
+	BeginGroup ( 
+		DisplayGroup ( )
+		DisplayGroupState ( NoBoundingBox 
+		)
+	)
+	matrix14:
+	Matrix (
+		155.7413 0 0 0 
+		0 96.55569 0 0 
+		0 0 126.1485 0 
+		0 0 0 1 )
+	box15:
+	Box (
+		0 0 2 # orientation
+		2 0 0 # majorAxis
+		0 2 0 # minorAxis
+		-1 -1 -1 # origin
+	)
+	EndGroup ( )
+	EndGroup ( )
+	EndGroup ( )
+	

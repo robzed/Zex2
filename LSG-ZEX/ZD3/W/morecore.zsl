@@ -1,0 +1,128 @@
+\ more core words
+
+CREATE -word-space 257 ALLOT
+
+\ worker word for WORD
+: skip-a-char 		\ ( c-addr1 len1 char -- c-addr2 len2 )
+>R
+BEGIN     				\ skip whitespace
+  DUP 0<> THIRD C@ DUP 0<> SWAP R@ = AND AND
+WHILE
+  inc-string 
+REPEAT    				\ ( -- c-addr len )
+R>DROP ;
+
+\ worker word for WORD
+: (WORD) ( char "<chars>ccc<chars>" -- caddr u )
+	>R
+    SOURCE >IN @ /STRING	\ get source pointers ( -- addr len )
+	TUCK 					\ save length
+	R@ skip-a-char	
+	NIP - >IN +! 		\ update input ( old-u newaddr new-u -- )
+	R> PARSE		   \ call already existing word
+; \ end of (WORD)
+
+\ Classic Forth parsing word. In our case it is simulated
+\ by using other parsing words.
+: WORD ( char "<chars>ccc<chars>" -- caddr)
+  DUP BL = IF
+    DROP PARSE-WORD
+  ELSE
+    (WORD)
+  THEN
+    -word-space C!
+    -word-space COUNT MOVE
+    -word-space
+;
+
+
+\ ==================================================
+\ COMPARE
+\
+\ Compares two strings, 
+\ n=0 if two strings are identical
+\
+\ if the two string are identical up to the length of the shorter string
+\
+\ n=-1 if u1 is less than u2
+\ n=1 if u2 is less than u1
+\
+\ if the two string are not identical up to the length of the shorter string
+\ n=-1 if string 1 non-matching character is lower numeric value than string 2 non-match char
+\ n=1 if string 2 non-matching character is lower numeric value than string 1 non-m char
+\
+
+\ (compare) returns 0=same -1=string1 lower numeric non-matching 1=string2 lower numberic
+: (compare) ( caddr1 c-addr2 u -- n )
+0 ?DO
+   COUNT ( caddr1 caddr2 n2 )
+   ROT COUNT ( -- a2 n2 a1 n1 ) ROT 2DUP ( caddr2 caddr1 n1 n2 n1 n2 )
+   < IF 2DROP 2DROP UNLOOP -1 ( string 1 is lower) EXIT THEN
+   > IF 2DROP UNLOOP 1 ( string 2 is lower ) EXIT THEN
+   SWAP
+LOOP
+2DROP 0		\ they are the same
+;
+
+: COMPARE ( c-addr1 u1 c-addr2 u2 -- n )
+ROT 2DUP = IF	( strings are same length )
+   DROP (compare)
+ELSE	( strings are not same length )
+   2DUP > IF  ( string 2 longer than string 1, take the shorter, string1 )
+     NIP (compare) DUP 0= IF DROP -1 THEN
+   ELSE       ( string 1 longer than string 2, take the shorter, string2 )
+     DROP (compare) DUP 0= IF DROP 1 THEN
+   THEN
+      
+THEN
+;
+
+\
+\ Display n spaces
+\
+
+: SPACES ( n -- ) 0 ?DO SPACE LOOP ;
+
+
+
+\ ? is fetch from address and display, from tools ext wordset
+: ? @ . ;
+
+
+\ : test1 S" larger" S" tiny" COMPARE 
+\ ." Larger non-matching first string <-1> " . CR ;
+\ 
+\ : test2 S" tiny" S" larger" COMPARE
+\ ." smaller non-matching first string <1> " . CR ;
+\ 
+\ : test3 S" one" S" one" COMPARE
+\ ." identical strings <0> " . CR ;
+\
+\ : test4 S" one1" S" one2" COMPARE 
+\ ." two same length strings, first lower than the second in value <-1> " . CR ;
+\ 
+\ : test5 S" two2" S" two1" COMPARE
+\ ." two same length strings, second lower than the first in value <1> " . CR ;
+\ 
+\ : test6 S" three3" S" th " COMPARE
+\ ." different length strings, smaller 2nd, second lower than the first in value <1> " . CR ;
+\ 
+\ : test7 S" three3" S" thz" COMPARE 
+\ ." different length strings, smaller 2nd, first lower than the second in value <-1> " . CR ;
+\ 
+\ : test8 S" th " S" three3" COMPARE
+\ ." different length strings, smaller 1st, first lower than the second in value <-1> " . CR ;
+\ 
+\ : test9 S" thz"  S" three3" COMPARE 
+\ ." different length strings, smaller 1st, second lower than the first in value <1> " . CR ;
+\ 
+\ : test10 S" xxx" S" xxxx" COMPARE
+\ ." same string, 1st shorter <-1> " . CR ;
+\ 
+\ : test11 S" xxxx" S" xxx" COMPARE
+\ ." same string, 2nd shorter <1> " . CR ;
+\
+\ : test-compare test1 test2 test3 test4 test5 test6 test7 test8 test9 test10 test11 ;
+\
+\ test-compare
+

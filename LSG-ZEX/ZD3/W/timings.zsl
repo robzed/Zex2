@@ -1,0 +1,84 @@
+\ timings.zsl
+
+: access_average FLOATS timeav + F@ [FIN] 1000000 F/ ;
+: access_percent FLOATS timepercent + F@ ;
+: access_min FLOATS timemin + F@ [FIN] 1000000 F/ ;
+: access_max FLOATS timemax + F@ [FIN] 1000000 F/ ;
+: access_total FLOATS timetotal + F@ [FIN] 1000000 F/ ;
+
+: show_average_timings
+
+4 SET-PRECISION
+
+." matrix   "   T_MATRIX access_average F. CR
+." culling  "  T_CULLING access_average F. CR
+." pers     "     T_PERS access_average F. CR
+." polydraw " T_POLYDRAW access_average F. CR
+." dlp      "      T_DLP access_average F. CR
+." misc     "     T_MISC access_average F. CR
+." swap     "     T_SWAP access_average F. CR
+." coffee   "   T_COFFEE access_average F. CR
+;
+
+
+: show_percentage_timings
+
+4 SET-PRECISION
+
+." matrix   "   T_MATRIX access_percent F. CR
+." culling  "  T_CULLING access_percent F. CR
+." pers     "     T_PERS access_percent F. CR
+." polydraw " T_POLYDRAW access_percent F. CR
+." dlp      "      T_DLP access_percent F. CR
+." misc     "     T_MISC access_percent F. CR
+." swap     "     T_SWAP access_percent F. CR
+." coffee   "   T_COFFEE access_percent F. CR
+;
+
+
+
+: display_complete_line
+DUP access_percent F. 2 SPACES
+DUP access_average F. 2 SPACES
+DUP access_min F.     2 SPACES
+DUP access_max F.     2 SPACES
+    access_total F.   2 SPACES
+;
+
+
+: show_all_timings
+
+4 SET-PRECISION
+
+."            percent  average   min   max   total" CR
+." matrix   "   T_MATRIX display_complete_line CR
+." culling  "  T_CULLING display_complete_line CR
+." pers     "     T_PERS display_complete_line CR
+." polydraw " T_POLYDRAW display_complete_line CR
+." dlp      "      T_DLP display_complete_line CR
+." misc     "     T_MISC display_complete_line CR
+." swap     "     T_SWAP display_complete_line CR
+." coffee   "   T_COFFEE display_complete_line CR
+;
+
+
+
+\ ================================================================
+
+: (show_all_timings) timed_frames @ . CR show_all_timings PAUSE ;
+
+: show_animated_timings BEGIN cls (show_all_timings) KEY? UNTIL KEY DROP ;
+
+: show_end_timings BEGIN cls (show_all_timings) timed_frames @ 0= UNTIL ;
+
+
+\ ================================================================
+: (show_%_timings) timed_frames @ . CR show_percentage_timings PAUSE ;
+
+: show_animated_% BEGIN cls (show_%_timings) KEY? UNTIL KEY DROP ;
+
+
+\ ================================================================
+: (show_av_timings) timed_frames @ . CR show_average_timings PAUSE ;
+
+: show_animated_av BEGIN cls (show_av_timings) KEY? UNTIL KEY DROP ;

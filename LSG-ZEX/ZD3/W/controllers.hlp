@@ -1,0 +1,238 @@
+Some basic rules for writing controllers.
+
+To start
+--------
+
+Always test a controller off-line, by running the
+sections of the controller via typing their name
+into the command line.
+
+Break the controller into small pieces.
+
+Test the lower level pieces by hand first.
+
+When writing a controller test often as
+it is developed.
+
+Try to ensure, via use of .S that the stack level
+of a complete controller is correct. Controllers
+that take an object id should not leave that on
+the stack, but otherwise controllers need to 
+be balanced.
+
+Use "include whatever.zsl" to include your code.
+
+
+
+Once you are happy with the basic operation
+-------------------------------------------
+
+Still use "include whatever.zsl"
+
+Manually install specific controllers.
+
+As you become happy with sections, you can add
+these controller installs at the bottom of the file.
+
+If necessary define a word to de-install all the
+controllers at the bottom for ease of testing.
+
+When something is running every frame, it can
+be quite hard to see what the controller is doing.
+You can use...
+
+cstring" some text" my_variable @ print-debug
+
+...inside the controller that is running every
+frame to print the variable on the screen so 
+that you can see what variables are doing 
+dynamically.
+
+
+Finally
+-------
+
+Once you are happy that the controller works fully, 
+you can add it to the controller definitions below
+asteriod.zsl in main.zsl. 
+
+If there is still a problem then it is possible
+the controller will stop Zex booting fully, or 
+even crash Zex randomly! Testing is everything!
+
+
+
+
+
+The Basic Words
+===============
+
+new-controller-ref 
+
+Produces a new Forth controller ref. You will probably 
+need to store this away so that when you generate an
+object you know what controller reference to associate
+with the object.
+
+You should not assume anything about the sequence or
+value of this returned reference, as it may change. 
+There is also internal management of used slots with
+this call, so there might be other unforseen side 
+effects if you ignore this warning.
+
+A return value of zero means a controller reference 
+could not be allocated (out of controller slots). You
+may safely ignore the error, and continue to pass it
+to both Forth and C routines as a valid control number
+and it will be ignored. It means "no controller" to 
+the whole engine.
+
+
+
+There follows a set of controller install words. You may 
+re-install over a previous controller without issue, to 
+replace a specific controller, without removing the
+controller.
+
+
+install-controller::object-frame  ( ref controller-address -- )
+
+This installs what is usually the main controller for an object.
+A controller is called each frame with the id of the specific
+object on the stack.
+
+
+install-controller::once-per-frame  ( ref controller-address -- )
+
+This installs a controller for that specific type of controller
+that is called just once per frame, no matter how
+
+No parameters.
+
+
+install-controller::new-game ( ref controller-address -- )
+
+This installs a controller so when a new game is started this
+controller is called. Every controller type has a seperate
+new game controller associated with it.
+
+No parameters.
+
+
+install-controller::end-game  ( ref controller-address -- )
+
+Installs a controller specific to this controller type
+that gets actived when a game ends.
+
+No parameters.
+
+
+install-controller::new-object  ( ref controller-address -- )
+
+When a new object generation is completed, the controller will
+be called, with the id of the object generated on the stack.
+
+
+install-controller::delete-object  ( ref controller-address -- )
+
+When a object is finally deleted (sometime after "add to kill
+list' is called), a delete object controller for this type
+of controller, with the id of the specific object on the stack.
+
+
+: install-controller::recurring-object-timer 
+( ref xt -- success-flag )  ( F: timeinsecs -- )
+
+: install-controller::one-shot-object-timer 
+( ref xt -- success-flag )  ( F: timeinsecs -- )
+
+These will allocate a timer from the general timer pool,
+and keep it allocated for this specific type of 
+controller until the controller is removed. The advantage,
+apart from the fact that the interface is very similar to
+the other controller tools, is that a 
+remove-all-controllers will delete this as well.
+
+
+
+remove-controller::object-frame  ( ref -- )
+remove-controller::once-per-frame  ( ref -- )
+remove-controller::end-game  ( ref -- )
+remove-controller::new-game  ( ref -- )
+remove-controller::new-object  ( ref -- )
+remove-controller::delete-object  ( ref -- )
+remove-controller::object-timer ( ref -- )
+
+With each of these you can remove a specific controller 
+associated with a controller ref number.
+
+
+
+remove-all-controllers  ( ref -- )
+
+removes all the controllers associated with a specific
+reference.
+
+
+
+display-controllers ( -- )
+
+Whether each type of controller is installed for each
+reference number.
+
+Works well in conjunction with show-active-ocbs and
+show-active-controllers.
+
+
+
+
+Other Notes
+===========
+
+Don't forget if you create an object you must use the 
+correct controller reference, otherwise your object won't 
+respond under the controller!
+
+
+Controller stack overrun
+========================
+
+All the routines which run controllers check for stack 
+unbalance. Because of the possible quick overrun of stack 
+when developing controllers, it was decided to put a stack 
+check in to stop crashing the stack on one of the tasks. 
+Currently this will drop into macsbug. The eventual plan
+is to clean up the stack and remove the entire offending 
+controller.
+
+
+Other Controller Errors
+=======================
+
+The routines which run controllers do not call the 
+controllers with the standard CATCH exception mechanism. 
+This is because controllers need to handle problems 
+themselves - there is no user to tidy up. 
+
+
+Do not FORGET a controller, or part of a controller
+that is currently in use. It will crash as soon as the
+memory is re-used. ALWAYS ensure that it has been 
+removed before re-use. 
+
+If you are unsure, just reload without forgetting, 
+and ignore the re-definition warnings. Most likely you 
+will have minimal problems with a well written 
+controller.
+
+
+Partial C, Partial Forth Controllers
+====================================
+
+It is technically possible to have controllers that are partly
+created in Forth, and partly created in C. The controller needs
+to have a FREE forth reference - generated by the Forth command
+new-controller-ref, and then object can be generated by the C
+side and specific controllers will be called by the forth engine,
+if installed.
+

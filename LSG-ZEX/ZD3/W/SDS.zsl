@@ -1,0 +1,180 @@
+ \ Ship Data System
+ \ LSG 2001
+ \ 310701 SB
+ 
+ \ words to interpret a .def file 
+ 4 FLOATS CONSTANT sizeof_mount \ 3 for vector, 1 for value
+
+ 4 sizeof_mount 20 * + CONSTANT sizeof_mount_pb_mounts \ 4 bytes for objid and 20 x,y,z's as floats 
+
+ sizeof_mount_pb_mounts 200 + CONSTANT sizeof_mount_pb \ 4 bytes for objid and 20 x,y,z's as floats 
+
+ ( mount_pb structure -- duplicated in mount.h)
+ 0 CONSTANT mount_id
+ 0 CONSTANT MTHR1	 ( main thrust 1 )
+ 1 CONSTANT MTHR2	 ( main thrust 2 )
+ 2 CONSTANT MREV1   ( main reverse thrust )
+ 3 CONSTANT MREV2   ( main reverse thrust 2 )
+ 4 CONSTANT VTHR1   ( vertical thruster 1 )
+ 5 CONSTANT VTHR2   ( vertical thrust 2 )
+ 6 CONSTANT RVTH1   ( inverse vertical thrust 1 )
+ 7 CONSTANT RVTH2   ( inverse vertical thrust 2 )
+ 8 CONSTANT GUN01   ( gun 1 )
+ 9 CONSTANT GUN02   ( gun 2 )
+ 10 CONSTANT GUN03   ( gun 3 )
+ 11 CONSTANT GUN04   
+ 12 CONSTANT LAS01  ( laser 1 )
+ 13 CONSTANT LAS02
+ 14 CONSTANT LAS03
+ 15 CONSTANT LAS04
+ 16 CONSTANT MIS01	 ( missile pylons )
+ 17 CONSTANT MIS02	 ( missile pylons )
+ 18 CONSTANT MIS03	 ( missile pylons )
+ 19 CONSTANT EJECT  ( ejection point )
+ \ end of mounts
+ sizeof_mount_pb_mounts CONSTANT MASS	\ float32
+ sizeof_mount_pb_mounts 4 + CONSTANT FUEL \ float32
+ sizeof_mount_pb_mounts 8 + CONSTANT ROT_PITCH \ float32
+ sizeof_mount_pb_mounts 12 + CONSTANT ROT_ROLL	\ float32
+ sizeof_mount_pb_mounts 16 + CONSTANT ROT_YAW \ float32
+ sizeof_mount_pb_mounts 20 + CONSTANT CARGO   \ float32
+ sizeof_mount_pb_mounts 24 + CONSTANT HULL \ float32
+ 
+ sizeof_mount_pb_mounts 28 + CONSTANT SHIELDS1
+ sizeof_mount_pb_mounts 32 + CONSTANT SHIELDS2
+ sizeof_mount_pb_mounts 36 + CONSTANT SHIELDS3
+ 
+ sizeof_mount_pb_mounts 40 + CONSTANT APILOT
+ sizeof_mount_pb_mounts 44 + CONSTANT RADAR
+ sizeof_mount_pb_mounts 48 + CONSTANT BATT
+ sizeof_mount_pb_mounts 52 + CONSTANT ORCS
+ sizeof_mount_pb_mounts 56 + CONSTANT REPAIR
+ sizeof_mount_pb_mounts 60 + CONSTANT SHOCK
+ sizeof_mount_pb_mounts 64 + CONSTANT ECM
+ sizeof_mount_pb_mounts 68 + CONSTANT MISSFACT
+ sizeof_mount_pb_mounts 72 + CONSTANT FASTDOCK
+ sizeof_mount_pb_mounts 76 + CONSTANT INSURANCE
+ sizeof_mount_pb_mounts 80 + CONSTANT FUELMAX
+ sizeof_mount_pb_mounts 84 + CONSTANT RETROROCKS
+ sizeof_mount_pb_mounts 88 + CONSTANT NAVCOMP
+ sizeof_mount_pb_mounts 92 + CONSTANT EJECTIONP
+ sizeof_mount_pb_mounts 96 + CONSTANT TRADINGC
+ sizeof_mount_pb_mounts 100 + CONSTANT HULLREP
+ sizeof_mount_pb_mounts 104 + CONSTANT LIFESUPP
+ sizeof_mount_pb_mounts 108 + CONSTANT TRAILHOOK
+ sizeof_mount_pb_mounts 112 + CONSTANT TELNET
+ 
+ sizeof_mount_pb_mounts 116 + CONSTANT IFF
+ sizeof_mount_pb_mounts 120 + CONSTANT RADIOMON
+ sizeof_mount_pb_mounts 124 + CONSTANT CLOAK
+ sizeof_mount_pb_mounts 128 + CONSTANT FTL
+ sizeof_mount_pb_mounts 132 + CONSTANT COOLING
+ sizeof_mount_pb_mounts 136 + CONSTANT SCOOP
+ sizeof_mount_pb_mounts 140 + CONSTANT FREEDOCK
+ sizeof_mount_pb_mounts 144 + CONSTANT MINES
+ sizeof_mount_pb_mounts 148 + CONSTANT HTRAN
+ sizeof_mount_pb_mounts 152 + CONSTANT HTMAX
+ sizeof_mount_pb_mounts 156 + CONSTANT TEMPM
+
+
+
+
+
+ CREATE mount_pb sizeof_mount_pb ALLOT	 ( mount_pb storage )
+
+ : clear_mount_pb 
+  mount_pb sizeof_mount_pb 0 FILL
+ ;
+
+ ( first call from .mnt file should be this... )
+ : reset_ship_data init_ship_data ;
+
+ ( then we get OBJID so convert to unsigned long and store )
+ : OBJID 
+  clear_mount_pb
+  get_4_character_id
+  mount_pb !
+ ;
+
+\ this is needed further down
+: getint 
+  PARSE-WORD DUP 
+  IF 
+    ?NUMBER 0= 
+    IF
+      ." Bad value given for mount "
+      ABORT 
+    THEN 
+  ELSE 
+      ." No value given for mount "
+    ABORT 
+  THEN 
+;
+
+
+ ( mount point expects there to be a constant offset on the stack such as LAS01 )
+ \ mount_point fx,fy,fz,ivalue
+ : mount_point 
+   sizeof_mount *	 ( make offset correct )
+   mount_pb 4 + + ( skip over id point to right place in pb, read 3 floats and 1 float )
+   FIN FIN FIN FIN   ( get x,y and z onto Float stack )
+   DUP 3 FLOATS + F!	\ store value after vector
+   DUP 2 FLOATS + F!  ( store z component )
+   DUP 1 FLOATS + F! ( store y component )
+   F!	( store x component )  
+ ;
+
+\ load_rot reads a float and stores it as a float32
+\ the correct offset to store at is on the stack
+: load_rot
+    mount_pb +
+	FIN	\ get the rotational value for this rot thruster
+	SF!	\ store it as a single
+;
+
+
+\ load in misc items as float32's
+: load_misc
+  load_rot
+;
+
+
+
+\ load_ship_attrib reads two int32's
+\ The first is the lower bit - 1=can be fitted
+\ the second fills the upper 31 bits
+\ the correct offset to store at is on the stack
+: load_ship_attrib
+    mount_pb +
+	getint	\ get the can be fitted bit
+	getint 8 *	\ get the value and shift left 3
+
+\ if the fitted bit is not 0 then add 1 to the value (to set the fitted and serviceable bits - 110)
+	SWAP 0<>
+	IF
+      6 +
+    ELSE
+      DROP 0	\ clear the value, it can't be fitted!
+	THEN
+	
+	SWAP !		\ store it as a UInt32
+;
+
+ ( pass pb to engine ) 
+ : load_ship
+ mount_pb load_ship_data
+ ;
+ 
+
+ 
+\ finally, read the mountings
+\ switch to init folder
+ init-directory
+\ read the file
+ .( Reading ship data ... ) CR
+ include ships.def
+\ switch back to w folder
+ w-directory
+ 
+
+

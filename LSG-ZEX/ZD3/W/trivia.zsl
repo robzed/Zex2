@@ -1,0 +1,51 @@
+( trivia.zsl )
+
+: amber ( -- ) 10 console-colour ! 10 cursor-colour ! ; ( standard colours )
+: green-screen ( -- ) 225 console-colour ! 225 cursor-colour ! ; 
+: night ( -- ) 60 console-colour ! 5 cursor-colour ! ;
+: day ( -- ) 108 console-colour ! 119 cursor-colour ! ;
+: midday ( -- ) 0 console-colour ! 119 cursor-colour ! ;
+: midnight ( -- ) 255 console-colour ! 5 cursor-colour ! ;
+
+256 VALUE top-cc-colour 0 VALUE bot-cc-colour 1 VALUE cc-direction
+BACKGROUND: cc-yak 
+BEGIN 
+    console-colour @ cc-direction + 255 AND  
+    DUP top-cc-colour = IF -1 TO cc-direction THEN
+    DUP bot-cc-colour = IF 1 TO cc-direction THEN
+    console-colour !
+PAUSE AGAIN ;
+: yak 257 TO top-cc-colour 257 TO bot-cc-colour 1 TO cc-direction cc-yak WAKE ;
+: -yak cc-yak SLEEP day ;
+
+: red-alert 224 TO top-cc-colour 215 TO bot-cc-colour 220 console-colour ! cc-yak WAKE ;
+: -red-alert -yak ;
+
+: hello ." Hello!" ;
+: cheat ." That's not how you do it!" ;
+
+: inc include ;
+: .dic UNUSED . ;
+
+
+VARIABLE header_total
+
+: .word_name ( word-addr -- ) WORD>NFA COUNT TYPE ;
+
+: get_header_size ( word-addr -- size ) DUP WORD>XT SWAP - ;
+
+: get_previous_word ( word-addr -- previous-word-addr | 0 ) 
+DUP WORD>LFA @ ?DUP IF - ELSE DROP 0 THEN ;
+
+: show_header_memory (  -- )
+
+0 header_total ! 
+LATEST-WORD
+
+BEGIN
+  DUP get_header_size header_total +!
+  get_previous_word ?DUP 0= 
+UNTIL
+  header_total @ . ." bytes used just in headers"
+;
+

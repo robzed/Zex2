@@ -1,0 +1,52 @@
+
+( ---------------------UTILS--------------------- )
+: dm ( addr -- ) ( display 16 bytes as hex from addr )
+  16 0 ?DO DUP I + C@ .hex SPACE LOOP DROP
+;
+
+: dms ( addr -- ) ( display 32 bytes as chars from addr )
+  32 0 ?DO DUP I + C@ EMIT LOOP DROP  
+;
+
+
+
+\ cstring-literal ... compilation ( caddr u -- ) , runtime ( -- caddr )
+\ low level routine
+: cstring-literal
+HERE >R DUP>R		\ save where to put branch ( R: -- braddr u )
+0 ,                     \ branch target
+HERE DUP>R SWAP MOVE R> \ ( caddr u -- string-start ) store string
+R> ALLOT 0 C, ALIGN	\ allot space for string and put zero at end.
+R> HERE SWAP		\ ( R: braddr -- ) ( -- targetaddr braddr )
+make-branch  		        \ ( string-start branch_target_addr addr-branch-at -- string-start )
+POSTPONE LITERAL	\ return address ( string-start -- )
+; IMMEDIATE
+
+
+\  cstring" text" cstring string quote
+: cstring" [CHAR] " PARSE POSTPONE cstring-literal ; IMMEDIATE
+
+0 CONSTANT mesgGREEN
+1 CONSTANT mesgRED
+2 CONSTANT mesgWHITE
+
+: mesg" [CHAR] " PARSE POSTPONE cstring-literal POSTPONE add_to_text_display ; IMMEDIATE
+
+
+\ example of usage.....
+VARIABLE numframes 0 numframes !
+
+
+VARIABLE debug_pane_vector 0 debug_pane_vector !
+
+BACKGROUND: forth_debugprint_task BEGIN 1 numframes +! debug_pane_vector @EXECUTE PAUSE AGAIN ; 
+
+forth_debugprint_task WAKE
+
+
+: halt-step ." +(0=ABORT)+" KEY [CHAR] 0 = IF .S ABORT THEN ;
+: .halt-step .S CR halt-step ;
+
+: .last-word LATEST-WORD DUP WORD>NFA COUNT TYPE WORD-HIDDEN? IF ."  [HIDDEN]" THEN ;
+
+

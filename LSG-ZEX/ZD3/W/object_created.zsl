@@ -1,0 +1,26 @@
+\ object_created.zsl
+
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+create-controller-table new-object-table
+
+
+: object-created ( id -- ) 
+new-object-table dispatch-controller-id ;
+
+: object-created-c ( -- ) get-param2 object-created ;
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::new-object ( ref xt -- ) 
+new-object-table install-controller ;
+
+: remove-controller::new-object ( ref -- )
+new-object-table remove-controller ;
+
+

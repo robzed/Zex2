@@ -1,0 +1,79 @@
+Object Support Help
+
+
+show-active-objects     -- show active object id's plus their object id names
+
+show-active-controllers -- display active object controller reference numbers
+
+
+
+show-static-objects		-- display all the static objects (i.e. loaded models) in the
+							game currently available.
+
+
+
+load_object ( "filename ID" static-id -- )
+
+Loads an object model into the game
+as a static object. Static objects
+are brought into the game via
+summon_object. The static object is
+like a specific class/model of object, 
+rather than an actual flying around
+object.
+
+The ID must be 4 characters.
+
+For example:
+
+100 load-object model.3dmf MODL
+
+load_object should be used in immediate 
+mode (either at the command line, or outside
+a definition in a .zsl file
+
+
+
+
+
+summon_object ( static-slot -- dynamic-slot)
+
+View a previously loaded object model.
+Note that it leaves the dynamic slot
+number on the stack. DROP if you don't
+want it, but remember, without knowning
+the dynamic slot of an object you have
+no direct control over it.
+
+
+
+dismiss_object ( dynamic-slot -- )
+
+Kill a previously summoned object. Also
+works for other object in the game, if you
+know the dynamic slot number. If it doesn't
+disappear, then the kill list was full for that
+frame. Try again. If you require to know whether
+an object has been killed (e.g. game code) you
+can call add_to_kill_list directly which returns
+an error on the stack. dismiss_object is more
+useful for command line use.
+
+
+
+view_pb ( addr -- )
+
+Useful for poor souls trying to get
+load_dyn_object to work. Shows a
+specific load_dyn_object parameter block.
+
+
+
+static_ID	( "<spaces>name" -- static-id)
+
+Returns the numerical static slot number for
+when followed by a 4 character identifier of
+an already loaded object model. Can be used 
+both on the command line, and inside 
+definitions.  
+

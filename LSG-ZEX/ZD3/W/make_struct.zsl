@@ -1,0 +1,49 @@
+\ make_struct.zsl
+\
+\ This file helps create structures that match C structures. In fact, using
+\ various "#define"s in C, the actual structure can be read by either C or Forth.
+\ The alignment is as per the current MrC compiler, and can be adjusted where
+\ necessary with the type definitions at the end of the file.
+\
+\ It s not really intended as a general purpose structure definition language for
+\ Forth, and is rather unwieldy due to the requirements both pre-tokens (for Forth)
+\ and post-tokens (for C).
+
+
+: // ( -- ) \ define c to end of line comments
+POSTPONE \
+; IMMEDIATE
+
+
+: END_STRUCT_DEF DROP CONSTANT ;
+: END_DEF ;
+
+: ARRAY_ ;
+: _ARRAY 2DUP * >R 1- * + R> ;
+
+: MEMBER_  OVER CREATE , TUCK + SWAP DOES> ( o -- o+n) @ + ;
+\ : MEMBER_  OVER CONSTANT TUCK + SWAP ;
+
+: _MEMBER DROP 4 ;
+: START_STRUCT_DEF 0 ( total size ) 4 ( current identifier size ) ;
+
+\ zex types
+: unsigned ;
+: signed ;
+: char DROP 1 ;
+: UInt8 DROP 1 ;
+: int DROP ALIGNED 4 ;
+: PTR DROP ALIGNED 4 ;
+: float DROP ALIGNED 4 ;
+: double DROP ALIGNED 8 ;	\ these are quad aligned in MrC
+: OSType DROP ALIGNED 4 ;
+: _3D DROP ALIGNED 12 ;
+: long DROP ALIGNED 4 ;
+: _quat float 4 * ;
+: vector float 3 * ;
+: anim_obj_bits int 3 * ;
+: dynamic_texture DROP ALIGNED 128 128 * 40 + 4 + 4 + ;
+: mothership_block DROP ALIGNED 0 ;
+: _ZPoly DROP ALIGNED 0 ;
+: short DROP hALIGNED 2 ;
+: UInt16 short ;

@@ -1,0 +1,64 @@
+\  Default Key mappings for Zex
+\  ©LSG 2002 
+\  SB 140901, RP240202 
+
+
+reset_key_data \ Tell engine to initialise the key data 
+
+\ thrusters
+\ code             key
+MTHR     .KEY load_key          \ q - main thrust
+REVT     ,KEY load_key          \ a - reverse thrust
+
+VTHR     LEFTSHIFTKEY load_key          \ l - vertical thrust
+IVTH     TABKEY load_key          \ NUMENTER - inverse vertical thrust
+
+ROLL     LEFTOPTIONKEY load_key          \ LEFT APPLE - roll left
+ROLR     LEFTAPPLEKEY load_key          \ LEFT OPTION - roll right
+
+PITD     UPARROWKEY load_key  \ down - pitch down
+PITU     DOWNARROWKEY load_key    \ up - pitch up
+
+YAWL     LEFTARROWKEY load_key  \ left - yaw left
+YAWR     RIGHTARROWKEY load_key \ right - yaw right
+
+
+\ other stuff
+CANN     SPACEKEY load_key      \ space - cannon
+MISS     MKEY load_key          \ m - missile
+LASR     LKEY load_key          \ l - laser
+EJCT     EKEY load_key          \ e - eject
+ENDG     `KEY load_key          \ esc - end game
+MUSU     ]KEY load_key          \ ] - music volume up
+MUSD     [KEY load_key          \ [ - music volume down
+SONU     =KEY load_key          \ = - sound volume up
+SOND     -KEY load_key          \ - - sound volume down
+RRUP     KKEY load_key          \ k - scanner range increase
+RRDN     JKEY load_key          \ j - scanner range decrease
+
+SHOI     IKEY load_key          \ i - show inventory
+DOCK     DKEY load_key          \  d - ask for docking permission
+DAMP     VKEY load_key          \ v - damper control
+COMK     HKEY load_key          \ h - command and control dialog
+SOLM     GKEY load_key          \ g - solar system map
+CONN     ESCKEY load_key        \ ESC - console
+TARG     TKEY load_key          \ t - target an item
+TIMU     2KEY load_key          \ 2 - time accel up
+TIMD     1KEY load_key          \ 1 - time accel down
+APUP     SKEY load_key          \ S - auto pilot mode up
+APDN     AKEY load_key          \ A - autopilot mode down
+\ GALM     9KEY load_key 	\ 9 - galactic map
+KSET     8KEY load_key		\ 8 - select keys
+
+RTAR  RKEY  load_key		\ R - radar targetting key
+
+FVIW  3KEY load_key             \ 3 - Foward View
+BVIW  4KEY load_key             \ 4 - rear view
+LVIW  5KEY load_key             \ 5 - left view
+RVIW  6KEY load_key             \ 6 - right view
+
+PANE  PKEY load_key             \ p - MFD Pane toggle 
+load_keys \ in read_keys.zsl
+
+ \ END OF FILE
+ 

@@ -1,0 +1,34 @@
+\ start_new_game.zsl
+
+
+\ 
+\ PRIVATE ROUTINES
+\ 
+
+create-controller-table new-game-table
+
+: start-new-game ( -- )
+
+1 TO game-running			\ change the game running flag back to go
+
+object-one-per-frame WAKE	\ wake up the object controllers - the games on!
+
+
+\ controller inits here get run from here
+\ asteroid-init
+new-game-table run-all-controllers
+
+;
+
+
+\ 
+\ PUBLIC ROUTINES
+\ 
+
+: install-controller::new-game ( ref xt -- ) 
+new-game-table install-controller ;
+
+: remove-controller::new-game ( ref -- )
+new-game-table remove-controller ;
+
+

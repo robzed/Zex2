@@ -1,0 +1,90 @@
+: refresh-directory 1 coffee-get-file-spec DROP ;
+: w-directory C" W" directory ! refresh-directory ;
+: init-directory C" Init" directory ! refresh-directory ;
+: does-file-exist? ( caddr -- bool ) coffee-get-file-size 0 > ;
+: file_exists? ( "space<chars>" -- bool ) PARSE-WORD PAD convert-to-stored-string PAD does-file-exist? ;
+
+
+CREATE 'sres-table 640 ,  480 , ( 1 )
+\                   720 ,  480 , ( ti powerbook )
+                   800 ,  600 , ( 2 )
+                   832 ,  624 , ( 3 )
+\                   896 ,  600 , (  ti powerbook )
+                  1024 ,  768 , ( 4 )
+\                  1152 ,  768 , (  ti powerbook )
+                  1152 ,  870 , ( 5 )
+                  1280 ,  960 , ( 6 )
+                  1280 , 1024 , ( 7 )
+                  1600 , 1024 , ( 8 )
+                  1600 , 1200 , ( 9 )
+                  1792 , 1344 , ( 10 )
+                  1856 , 1392 , ( 11 )
+                  1920 , 1080 , ( 12 )
+                  1920 , 1200 , ( 13 )
+                  1920 , 1440 , ( 14 )
+
+14 CONSTANT sres_entries
+
+: SRES ( screen-res -- ) 1- DUP 0 sres_entries 1- WITHIN IF CELLS 1 LSHIFT 'sres-table + 
+   DUP @ monitor-w ! CELL+ @ monitor-h ! THEN ;
+
+: SRES2 ( screen-width screen-height -- ) monitor-h ! monitor-w ! ;
+
+CREATE 'wres-table 0 ,  512 ,  384 ,
+                   1 ,  640 ,  480 ,
+                   2 ,  800 ,  600 ,
+                   3 ,  832 ,  624 ,
+                   4 , 1024 ,  768 ,
+                   5 , 1152 ,  870 ,
+                   6 , 1280 , 1024 ,
+                   11 , 640 ,  400 ,
+                   12 , 800 ,  500 ,
+                   99 , 640 ,  480 ,
+
+: WRES ( window-res -- ) >R 'wres-table BEGIN DUP @ DUP 99 <> SWAP R@ <> AND WHILE 3 CELLS + REPEAT 
+   R>DROP CELL+ DUP @ window-w ! CELL+ @ window-h ! ;
+
+: WRES2 ( window-width window-height -- ) window-h ! window-w ! ;
+
+: SDEPTH ( screen-depth -- ) DUP DUP 8 = SWAP DUP 16 = SWAP 32 = OR OR IF ogl-depth ! ELSE DROP THEN ;
+
+: ZDEPTH ( zdepth -- ) DUP DUP 16 = SWAP 32 = OR IF zbuffer-depth ! ELSE DROP THEN ;
+
+FIN 0.01 FCONSTANT ZEX_UNIT_SIZE_IN_METERS
+
+: ZRANGE ( "<chars>zrange" -- ) PARSE-WORD >FLOAT IF ZEX_UNIT_SIZE_IN_METERS F* zbuffer-range SF! THEN ;
+
+\
+\ These functions are used for the screen preferences file management
+\
+: HIDE_SCRN_PREFS 1 hide_screen_preferences ! ;
+
+VARIABLE screen_prefs_length
+CREATE screen_prefs_buffer 10000 ALLOT ( -- addr )
+
+VARIABLE screen_prefs_buffer_ptr 
+  screen_prefs_buffer screen_prefs_buffer_ptr !
+
+: write_screen_prefs_to_disk ( -- error )
+init-directory
+screen_prefs_length @ screen_prefs_buffer_ptr @ C" screen_prefs.ini" coffee-write-file
+w-directory
+;
+
+: PREVIOUS_SCREENS number_of_previous_screens ! ;
+: SELECTED_SCREEN selected_screen ! ;
+
+\ this is to override the internal screen check code for testing only
+\ 1 force_screen_select_dialog !
+
+init-directory
+
+include Zex.ini
+
+
+file_exists? screen_prefs.ini [IF]
+  include screen_prefs.ini
+[THEN]
+
+w-directory
+
