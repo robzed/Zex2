@@ -3,6 +3,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.cpp,v $
+Revision 1.7  2003/09/30 21:32:38  robp
+Removed C++ temporary transition code (static type cast.)
+
 Revision 1.6  2003/09/28 17:29:50  robp
 Changed files from .c to .cpp and removed spaces out of a couple of filenames.
 
@@ -286,11 +289,12 @@ void *data_storage;
 int actual_bytes_read;
 long file_size;
 
+
 if(!make_filename(path_filename, filename, directory, "read_file_into_memory()"))	// make path first
     { report_error("read_file_into_memory(filename) had an error on path create.","\p",1100); }
   
 my_file = lsf_open_file(path_filename, "rb");
-if(my_file == NULL) { report_error("read_file_into_memory(filename) had an error on Open.","\p",1101); }
+if(my_file == NULL) { return NULL; } // should not be an error strictly... { report_error("read_file_into_memory(filename) had an error on Open.","\p",1101); }
 
 file_size = lsf_get_file_size(my_file);		//find size
 if(file_size == -1) { report_error("read_file_into_memory(filename) had an error on get file size.","\p",1101); }
@@ -786,6 +790,27 @@ Handle ZGetResource(unsigned int Type, short ID)
 #if PORTABLE_FILESYSTEM
 char filename[FILENAME_LENGTH];
 unsigned char numberstr[FILENAME_LENGTH];
+
+//create filename
+ ZNumToString(ID,numberstr);	//convert the resource ID to 5 digit number as ascii
+ filename[0]=Type>>24;			//store resource type - 4 chars
+ filename[1]=Type>>16;
+ filename[2]=Type>>8;
+ filename[3]=Type;
+ filename[4]=numberstr[0];		//store resource ID as five ascii digits representing the number
+ filename[5]=numberstr[1];
+ filename[6]=numberstr[2];
+ filename[7]=numberstr[3];
+ filename[8]=numberstr[4];
+ filename[9]=0;					//it's a C string of length 9
+
+
+//  1. im working here adding the allocate/open/read/close... (need to decide what size buffer to allocate)
+//  2. also rest of program wants me to return a handle? Do we do this or do we return a pointer and alter
+//     the rest of the program. Also do they ever de-allocate this space? With what call?
+     
+  return read_file_into_memory(RESOURCE_DIRECTORY,filename, loaded_size);
+
 #else
 Str255 filename;
 FSSpec the_fsspec;
@@ -803,8 +828,6 @@ int return_value;
 int get_file_err = 0;
 //short file_index=1;
 unsigned char resource_directory[] = "\pR";
-#endif
-
 
 //create filename
 //make the filename
@@ -820,15 +843,6 @@ unsigned char resource_directory[] = "\pR";
  filename[8]=numberstr[3];
  filename[9]=numberstr[4];
 
-
-#if PORTABLE_FILESYSTEM
-
-//  1. im working here adding the allocate/open/read/close... (need to decide what size buffer to allocate)
-//  2. also rest of program wants me to return a handle? Do we do this or do we return a pointer and alter
-//     the rest of the program. Also do they ever de-allocate this space? With what call?
-     
-  return read_file_into_memory(RESOURCE_DIRECTORY,filename, loaded_size);
-#else
 //get the objects' folder
 // If osx build then we need to climb out of the bundle to get to the zd3 folder
 // We know the directory ID that holds Zex, so if we get info on that, we should get the parent directory

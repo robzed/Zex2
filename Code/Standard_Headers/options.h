@@ -43,7 +43,12 @@
 // Flags for protecting existing code, whilst porting it over to a more portable system.
 //
 #define PORTABLE_ZEX 0
-
+// Note: Currently Zex runs with this turned on, but not when double-clicked from the finder.
+// This is because the current directory is set to the root directory of the hard drive. If you
+// put a ZD3 folder there Zex will boot. Zex is fine when run (or debugged) from Xcode / Project 
+// builder. To solve the problem we either need the boot code for SDL (in SDL_main.m) or something
+// that does the same thing. I suggest we leave this until we SDL the rest of the application.
+//
 #if PORTABLE_ZEX
     #define PORTABLE_RUNNING_FROM_SDL 0		// not currently running from SDL
     #define PORTABLE_FILESYSTEM	1		// these labels (and all the #if code) can disappear as they become the "defacto" Zex sub-systems

@@ -35,18 +35,18 @@
 //
 #if PORTABLE_FILESYSTEM				// remain until each subsystem is fully up and running
 
-    #if PORTABLE_RUNNING_FROM_SDL
+//    #if PORTABLE_RUNNING_FROM_SDL
         #define BASE_DIRECTORY "ZD3/"		// The top level directory of the data files
-    #else
-        #define BASE_DIRECTORY "../../ZD3/"	// when we are running from SDL this won't need the ../../
-    #endif
+//    #else
+//        #define BASE_DIRECTORY "../../ZD3/"	// when we are running from SDL this won't need the ../../
+//    #endif
 
-    #define RESOURCE_DIRECTORY "R/"
-    #define SCRIPT_DIRECTORY "W/"
-    #define OBJECT_DIRECTORY "O/"
-    #define TEXTURE_DIRECTORY "T/"
-    #define LEVEL_DIRECTORY "L/"
-    #define INIT_DIRECTORY "Init/"
+    #define RESOURCE_DIRECTORY	BASE_DIRECTORY "R/"
+    #define SCRIPT_DIRECTORY	BASE_DIRECTORY "W/"
+    #define OBJECT_DIRECTORY	BASE_DIRECTORY "O/"
+    #define TEXTURE_DIRECTORY	BASE_DIRECTORY "T/"
+    #define LEVEL_DIRECTORY	BASE_DIRECTORY "L/"
+    #define INIT_DIRECTORY	BASE_DIRECTORY "Init/"
 
 #else	// remove after all file system is portable
 #endif
