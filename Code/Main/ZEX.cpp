@@ -1,10 +1,14 @@
-/*©Lightsoft 1998/9/0
+/*©Lightsoft 1998/9/0-03
 060599 - Zex 1
 030300 - Zex 2
+060903 - Zex 2.3 in CVS
 
 Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.2/Code/\040Main/ZEX.c,v 1.55 2002/09/08 02:18:53 stu_c Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.c,v 1.1.1.1 2003/09/05 22:35:58 stu_c Exp $
 $Log: ZEX.c,v $
+Revision 1.1.1.1  2003/09/05 22:35:58  stu_c
+First Imported.
+
 Revision 1.55  2002/09/08 02:18:53  stu_c
 Precompiled header adjustments
 
