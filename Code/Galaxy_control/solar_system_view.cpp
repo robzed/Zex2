@@ -979,10 +979,6 @@ static unsigned char type_str[64]=  "      Type: ";
 static unsigned char rot_str[64]=   "  Rotation: ";
 static unsigned char dist_str[64]=  "  Distance: ";
 
-if ((*ocb_ptr).object_list[the_object].Dyn_OCB_control_data.controller== MOTHERSHIP_CONTROL)
-{
- int a=5;
-}
 if (the_object<0) return;
 
 //show planet name

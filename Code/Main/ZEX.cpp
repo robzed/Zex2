@@ -4,8 +4,11 @@
 060903 - Zex 2.3 in CVS
 
 Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.c,v 1.1.1.1 2003/09/05 22:35:58 stu_c Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.c,v 1.2 2003/09/06 17:32:22 stu_c Exp $
 $Log: ZEX.c,v $
+Revision 1.2  2003/09/06 17:32:22  stu_c
+Just a test change.
+
 Revision 1.1.1.1  2003/09/05 22:35:58  stu_c
 First Imported.
 
@@ -982,7 +985,7 @@ game_running=1; Goutside=1;  //If we are in this loop then we are outside
 //¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥END GAME
 
 
-end_game: show_text_in_loading_screen("Exec: Clean up for quit\n");
+/* end_game: */ show_text_in_loading_screen("Exec: Clean up for quit\n");
 
 
      fade_out_music();

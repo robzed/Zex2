@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: 3dmf_import.c,v $
+Revision 1.1.1.1  2003/09/05 22:35:51  stu_c
+First Imported.
+
 Revision 1.11  2002/09/08 02:14:31  stu_c
 Precompiled header adjustments
 
@@ -1349,9 +1352,6 @@ char the_word[512];	//max length of a word from a line
 
 float str_to_num(char* string)
 {
-decimal my_dec;
-short ix;
-short vp;
 //float dectof_result;
 return      Zconvert_to_float(string);
 }
