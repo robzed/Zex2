@@ -91,7 +91,104 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object];
  case 1:
        {
         double distance=get_distance_to_from_in_m(the_object,object_ptr->object_targetted);
-        object_ptr->Dyn_OCB_control_data.command_autopilot_engaged=AP_COMBAT;
+        object_ptr->Dyn_OCB_control_data.command_autopilot_engaged=AP_TRANSPORT;
+        //if we're more than 15KM's away go to combat else transport
+       // object_ptr->Dyn_OCB_control_data.command_autopilot_engaged=AP_COMBAT;
+       // if (distance<15000)
+       // {
+       //  object_ptr->Dyn_OCB_control_data.command_autopilot_engaged=AP_TRANSPORT;
+	//}
+        
+        //is target alive?
+        if (get_object_in_use(object_ptr->object_targetted))   
+	{
+          //are we aligned?
+          if (is_AP_aligned(the_object))
+          {
+           //we can fire
+           object_ptr->Dyn_OCB_control_data.control_use_1_float+=time_in_secs;
+           if (object_ptr->Dyn_OCB_control_data.control_use_1_float>0.8)
+           { 
+             
+             if(distance<4000) //close enough for guns?
+             {
+              object_ptr->Dyn_OCB_control_data.control_use_1_float=0.0;
+              NPC_fire_cannon(the_object);
+             }
+
+           }
+          }
+        }
+        else
+        {
+         object_ptr->Dyn_OCB_control_data.control_use_1=0; //reset
+        }
+        
+        
+        break;
+       }
+
+
+ }
+
+
+}
+
+
+
+void behaviour_guard(int the_object)
+{
+extern	DynObjectsFixedSize *ocb_ptr;
+ZObject * object_ptr=&ocb_ptr->object_list[the_object];
+
+
+ switch (  object_ptr->Dyn_OCB_control_data.control_use_1)
+ {
+
+ case 0: //find target
+       {
+	int allegiance=NEUTRAL, target;   
+        //find a target
+        if(object_ptr->Dyn_OCB_control_data.allegiance==ALIEN)
+        { allegiance=HUMAN; }
+        else
+        if(object_ptr->Dyn_OCB_control_data.allegiance==HUMAN)
+        { allegiance=ALIEN; }
+        else
+        { 
+         report_error ("Behaviour_aggressive: Bad allegiance","",-1);
+        }
+        
+        target=find_nearest_object_of_allegiance(the_object, allegiance);
+        if (target!=-1)
+        {
+          //found a target. Is it close enough?
+          if (get_distance_to_from_in_m(the_object,target)<30000)
+          {
+             object_ptr->Dyn_OCB_control_data.control_use_1++;
+             object_ptr->object_targetted=target; 
+             #if ZEX_PROJECT_BUILDER==1  && BEHAVIOUR_AGGRESSIVE_LOG //can only printf to OSX syscon
+             fprintf (stderr, "behaviour_aggressive: Object %i targetted object %i\n",the_object, target); 
+             #endif
+	     if (target==get_main_camera_object())
+	     {
+	        //Print Detecting scanning from CALLSIGN
+	        copystr (locked_str+LOCKED_CALLSIGN_OFFSET,(*ocb_ptr).object_list[the_object].Dyn_OCB_control_data.callsign); 
+	        add_to_text_display(locked_str,DLP_RED);
+	     }
+          }
+        }
+        else //couldn't find a target of suitable allegiance
+        {
+        }
+
+        break;
+        }
+
+ case 1:
+       {
+        double distance=get_distance_to_from_in_m(the_object,object_ptr->object_targetted);
+        object_ptr->Dyn_OCB_control_data.command_autopilot_engaged=AP_STEER;
         //if we're more than 15KM's away go to combat else transport
        // object_ptr->Dyn_OCB_control_data.command_autopilot_engaged=AP_COMBAT;
        // if (distance<15000)
