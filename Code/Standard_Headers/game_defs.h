@@ -30,8 +30,9 @@
 #define MAX_LASER_TEMP 1500
 
 
-// Zex file location
-
+//
+// Zex file locations and file specific details
+//
 #if PORTABLE_FILESYSTEM				// remain until each subsystem is fully up and running
 
     #if PORTABLE_RUNNING_FROM_SDL
@@ -48,8 +49,11 @@
     #define INIT_DIRECTORY "Init/"
 
 #else	// remove after all file system is portable
-
-    #define DirStr "\pZD3"	//what folder we are running from
-
 #endif
+// remove after all file system is portable
+    #define DirStr "\pZD3"	//what folder we are running from
+// remove after all file system is portable
+
+// addition for portable filesystem...
+    #define FILENAME_LENGTH 255				// could use FILENAME_MAX characters - but probably not needed.
 
