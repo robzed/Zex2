@@ -371,7 +371,7 @@ if (pane==0)
  if (calc_string_index==1)
  {
   //calc credits string
-  NumToString(credits,credc_str);
+  NumToString(credits,(unsigned char *)credc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   credc_str[credc_str[0]+1]='C';
   credc_str[credc_str[0]+2]='r';
   credc_str[credc_str[0]+3]=0;
@@ -382,7 +382,7 @@ if (pane==0)
  if (calc_string_index==2) //fuel
  {
   //calc fuel string
-  NumToString((*ocb_ptr).object_list[camera_object].Dyn_OCB_control_data.fuel_tank_value_in_KGS*1000,fuelc_str);
+  NumToString((*ocb_ptr).object_list[camera_object].Dyn_OCB_control_data.fuel_tank_value_in_KGS*1000,(unsigned char *)fuelc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   fuelc_str[fuelc_str[0]+1]='m';
   fuelc_str[fuelc_str[0]+2]='g';
   fuelc_str[fuelc_str[0]+3]=0;	//quick p to c hack
@@ -394,7 +394,7 @@ if (pane==0)
  if (calc_string_index==3) //fuel consumption
  {
   //calc fuel string
-  NumToString(get_total_fuel_consumption(camera_object)*1000000.0*get_time_multiplier(),flowc_str); //multiplier should be 1e6 but orcs consumption is big frig
+  NumToString(get_total_fuel_consumption(camera_object)*1000000.0*get_time_multiplier(),(unsigned char *)flowc_str); //multiplier should be 1e6 but orcs consumption is big frig
   flowc_str[flowc_str[0]+1]='n';
   flowc_str[flowc_str[0]+2]='g';
   flowc_str[flowc_str[0]+3]=0;	//quick p to c hack
@@ -406,7 +406,7 @@ if (pane==0)
  if (calc_string_index==4) //engine temperature
  {
   //calc fuel string
-  NumToString(get_engine_temperature_in_C(camera_object),etc_str);
+  NumToString(get_engine_temperature_in_C(camera_object),(unsigned char *)etc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   etc_str[etc_str[0]+1]='C';	//quick p to c hack
   etc_str[etc_str[0]+2]=0;	//quick p to c hack
   etc_str[0]=' ';
@@ -421,7 +421,7 @@ if (pane==0)
  if (calc_string_index==6) //Hull
  {
   //calc fuel string
-  NumToString(100,hullc_str);
+  NumToString(100,(unsigned char *)hullc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   hullc_str[hullc_str[0]+1]='%';
   hullc_str[hullc_str[0]+2]=0;	//quick p to c hack
   hullc_str[0]=' ';
@@ -432,7 +432,7 @@ if (pane==0)
  if (calc_string_index==7) //shields
  {
   //calc fuel string
-  NumToString(100,shieldc_str);
+  NumToString(100,(unsigned char *)shieldc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   shieldc_str[shieldc_str[0]+1]='%';
   shieldc_str[shieldc_str[0]+2]=0;	//quick p to c hack
   shieldc_str[0]=' ';
@@ -443,7 +443,7 @@ if (pane==0)
  if (calc_string_index==8) //tempmult
  {
   //calc fuel string
-  NumToString(get_time_multiplier(),tmc_str);
+  NumToString(get_time_multiplier(),(unsigned char *)tmc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   tmc_str[tmc_str[0]+1]=0;	//quick p to c hack
   tmc_str[0]=' ';
   //calc mass string
@@ -453,7 +453,7 @@ if (pane==0)
  if (calc_string_index==9) //mass
  {
   //calc fuel string
-  NumToString(get_mass_in_kg(camera_object),massc_str);
+  NumToString(get_mass_in_kg(camera_object),(unsigned char *)massc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   massc_str[massc_str[0]+1]='k';
   massc_str[massc_str[0]+2]='g';
   massc_str[massc_str[0]+3]=0;	//quick p to c hack
@@ -465,7 +465,7 @@ if (pane==0)
  if (calc_string_index==10) //hull temperature
  {
   //calc fuel string
-  NumToString(get_hull_temperature_in_C(camera_object),oatc_str);
+  NumToString(get_hull_temperature_in_C(camera_object),(unsigned char *)oatc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   oatc_str[oatc_str[0]+1]='C';
   oatc_str[oatc_str[0]+2]=0;	//quick p to c hack
   oatc_str[0]=' ';
@@ -482,13 +482,13 @@ if (pane==2)
  sds_attrib_data_type my_attrib;
   get_ship_attrib_data(get_main_camera_object(), HTRNV, &my_attrib);
   
-   NumToString(my_attrib.the_value, hypertv_str);
+   NumToString(my_attrib.the_value, (unsigned char *)hypertv_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
    hypertv_str[hypertv_str[0]+1]=0;	//quick p to c hack
    hypertv_str[0]=' ';
 
   get_ship_attrib_data(get_main_camera_object(), HTRNMAX, &my_attrib); //display max count
   
-   NumToString(my_attrib.the_value,&hypertvm_str[1]);
+   NumToString(my_attrib.the_value,(unsigned char *)&hypertvm_str[1]);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
    hypertvm_str[hypertvm_str[1]+2]=0;	//quick p to c hack
    hypertvm_str[1]=' ';
 
@@ -498,7 +498,7 @@ if (pane==2)
  if (calc_string_stat1_index==1) //AC
  {
   //calc fuel string
-  NumToString(get_ac_volts(camera_object),acc_str);
+  NumToString(get_ac_volts(camera_object),(unsigned char *)acc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   acc_str[acc_str[0]+1]='V';
   acc_str[acc_str[0]+2]=0;	//quick p to c hack
   acc_str[0]=' ';
@@ -509,7 +509,7 @@ if (pane==2)
  if (calc_string_stat1_index==2) //DC
  {
   //calc fuel string
-  NumToString(get_dc_volts(camera_object),dcc_str);
+  NumToString(get_dc_volts(camera_object),(unsigned char *)dcc_str);		// this hack is HORRID ... pstrings are unsigned, cstrings are signed
   dcc_str[dcc_str[0]+1]='V';
   dcc_str[dcc_str[0]+2]=0;	//quick p to c hack
   dcc_str[0]=' ';

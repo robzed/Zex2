@@ -543,7 +543,7 @@ register ZObject * current_object_ptr;
 //CGrafPtr the_drawing_buffer;
 GDHandle	saveGDH;
 GrafPtr		  savePort;
-unsigned char temp_str[256];
+char temp_str[256];
  unsigned char colour=20;
 
 extern GDHandle		        		mZexGDH;
@@ -635,12 +635,12 @@ object_counter=0;
                      PascalToC("\pZex",temp_str);
             		 if(screen_x < (monitor_w * 0.92))
               			{
-              			SplatText_Small_Transparent((char*)temp_str, screen_x+20 , screen_y-20,zex_colour);
+              			SplatText_Small_Transparent(temp_str, screen_x+20 , screen_y-20,zex_colour);
               			Zline_rgb(screen_x+4, screen_y-4, screen_x+18, screen_y-18, 0.8,0.8,0.8);
               			}
             		 else
               			{ 
-              			SplatText_Small_Transparent((char*)temp_str, (monitor_w*0.92) , screen_y-20,zex_colour);
+              			SplatText_Small_Transparent(temp_str, (monitor_w*0.92) , screen_y-20,zex_colour);
               			Zline_rgb(screen_x+4, screen_y-4, (monitor_w*0.92), screen_y-18, 0.8,0.8,0.8);
               			}
 
@@ -679,7 +679,7 @@ object_counter=0;
 
 	         if(screen_x>(monitor_w*0.93)) screen_x-=40;
 	         if(screen_y>(monitor_h*0.95)) screen_y-=20;
-             SplatText_Small_Transparent((char*)temp_str, screen_x , screen_y+10,colour);
+             SplatText_Small_Transparent(temp_str, screen_x , screen_y+10,colour);
  	       //   colour+=10;
               }
           else
@@ -710,12 +710,12 @@ object_counter=0;
             PascalToC(current_object_ptr->Dyn_OCB_control_data.name_str,temp_str);
             if(screen_x < (monitor_w * 0.92))
               {
-              SplatText_Small_Transparent((char*)temp_str, screen_x+20 , screen_y+20,248);
+              SplatText_Small_Transparent(temp_str, screen_x+20 , screen_y+20,248);
               Zline_rgb(screen_x+4, screen_y+4, screen_x+18, screen_y+18, 0.8,0.8,0.8);
               }
             else
               { 
-              SplatText_Small_Transparent((char*)temp_str, (monitor_w*0.92) , screen_y+20,248);
+              SplatText_Small_Transparent(temp_str, (monitor_w*0.92) , screen_y+20,248);
               Zline_rgb(screen_x+4, screen_y+4, (monitor_w*0.92), screen_y+18, 0.8,0.8,0.8);
               }
             
@@ -781,7 +781,7 @@ object_counter=0;
 //
 
 // ----------------------------
-void fill_in_name(int the_object, unsigned char* the_string, int str_offset)
+void fill_in_name(int the_object, char* the_string, int str_offset)
 {
 register ZObject * current_object_ptr;
 current_object_ptr=&ocb_ptr->object_list[the_object];
@@ -801,7 +801,7 @@ else
 
 
 // ----------------------------
-void fill_in_distance(int the_object, unsigned char* the_string, int str_offset)
+void fill_in_distance(int the_object, char* the_string, int str_offset)
 {
 double distance;
  distance=get_distance_to_from_in_m(the_object,0);
@@ -809,7 +809,7 @@ double distance;
 }
 
 // ----------------------------
-void fill_in_rotation_period(int the_object, unsigned char* rot_str, int str_offset)
+void fill_in_rotation_period(int the_object, char* rot_str, int str_offset)
 {
 int str_pos;
 double days;
@@ -841,7 +841,7 @@ else
 
 
 // ----------------------------
-void fill_in_planet_type(int the_object, unsigned char* type_str, int str_offset)
+void fill_in_planet_type(int the_object, char* type_str, int str_offset)
 {
 if (POBs_is_this_a_rock_moon(get_galactic_id(the_object)))
 {
@@ -880,7 +880,7 @@ else
 
 
 // ----------------------------
-void fill_in_production_type(int the_object, unsigned char* stype_str, int str_offset)
+void fill_in_production_type(int the_object, char* stype_str, int str_offset)
 {
 double pop_value;
 int value;
@@ -959,7 +959,7 @@ else
 }
 
 // ----------------------------
-void fill_in_population(int the_object, unsigned char* pop_str, int str_offset)
+void fill_in_population(int the_object, char* pop_str, int str_offset)
 {
 double pop_value = POBs_what_is_population(get_galactic_id(the_object));
 ZNumToStringBig(pop_value, &pop_str[str_offset]);
@@ -972,12 +972,12 @@ ZNumToStringBig(pop_value, &pop_str[str_offset]);
 void draw_item_info(int the_object, int screen_x, int screen_y, int colour)
 {
 #define X_OFF 12
-static unsigned char  name_str[64]= "      Name: ";
-static unsigned char stype_str[64]= "    Output: ";
-static unsigned char pop_str[64]=   "Population: ";
-static unsigned char type_str[64]=  "      Type: ";
-static unsigned char rot_str[64]=   "  Rotation: ";
-static unsigned char dist_str[64]=  "  Distance: ";
+static char  name_str[64]= "      Name: ";
+static char stype_str[64]= "    Output: ";
+static char pop_str[64]=   "Population: ";
+static char type_str[64]=  "      Type: ";
+static char rot_str[64]=   "  Rotation: ";
+static char dist_str[64]=  "  Distance: ";
 
 if (the_object<0) return;
 
@@ -990,12 +990,12 @@ fill_in_production_type(the_object,stype_str,X_OFF);
 fill_in_population(the_object,pop_str,X_OFF);
 
 
-SplatText_mon_fast((char*)name_str, screen_x , screen_y);
-SplatText_mon_fast((char*)type_str, screen_x , screen_y+10);
-SplatText_mon_fast((char*)rot_str, screen_x , screen_y+20);
-SplatText_mon_fast((char*)stype_str, screen_x , screen_y+30);
-SplatText_mon_fast((char*)pop_str, screen_x , screen_y+40);
-SplatText_mon_fast((char*)dist_str, screen_x , screen_y+50);
+SplatText_mon_fast(name_str, screen_x , screen_y);
+SplatText_mon_fast(type_str, screen_x , screen_y+10);
+SplatText_mon_fast(rot_str, screen_x , screen_y+20);
+SplatText_mon_fast(stype_str, screen_x , screen_y+30);
+SplatText_mon_fast(pop_str, screen_x , screen_y+40);
+SplatText_mon_fast(dist_str, screen_x , screen_y+50);
 
 }
 

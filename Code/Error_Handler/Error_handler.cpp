@@ -1,6 +1,9 @@
 //Error_handler.c
 /*
  * $Log: Error_handler.c,v $
+ * Revision 1.2  2003/09/20 12:56:57  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:22  stu_c
  * First Imported.
  *
@@ -127,7 +130,7 @@ void report_error(const char *error_string, const Str255 error_string2, int erro
 extern DSpContextReference		mDisplayContext;
 extern int vbl_block;
 
-unsigned char	errorString[256];
+char	errorString[256];
 unsigned char number_string[12];
 int i;
 	i=0;
@@ -159,7 +162,7 @@ NumToString(error_number,number_string);
    #if  ZEX_PROJECT_BUILDER==1
     fprintf (stderr, "Zex EXEC: Fatal Error Dialog. Detail follows...\n");
     fprintf (stderr, &errorString[1]);
-    fprintf (stderr, error_string2);
+    fprintf (stderr, (char *)error_string2);
     fprintf (stderr, " %d\n\n", error_number);
    #endif
    

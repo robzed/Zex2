@@ -2,6 +2,9 @@
 //drawing.c
 /*
  * $Log: drawing.c,v $
+ * Revision 1.4  2003/09/26 19:20:46  robp
+ * Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+ *
  * Revision 1.3  2003/09/22 21:44:22  robp
  * Box of Curios 1: Code tidy up things, which weren't strictly incorrect, just weird. No functional changes. Examples include a block of variables that were declared twice. These things were all thrown up by the C++ compiler.
  *
@@ -459,7 +462,7 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
    {
    //get owner
    int poly_owner;
-   unsigned char temp_name_str[256];
+   char temp_name_str[256];
 			 int str_len, str_y;
    
    poly_owner=clipped_input_ptr->owner;
@@ -476,19 +479,19 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
 
 //draw planet name - 140102
                	//get name from object - stored as pascal string
- 	         PascalToC ((*ocb_ptr).object_list[poly_owner].Dyn_OCB_control_data.name_str,(unsigned char *)temp_name_str);
+ 	         PascalToC ((*ocb_ptr).object_list[poly_owner].Dyn_OCB_control_data.name_str,temp_name_str);
 	        str_len=(*ocb_ptr).object_list[poly_owner].Dyn_OCB_control_data.name_str[0];
 			 if (str_len&1) str_y=-10; else str_y=10;
 			 
 			 if (monitor_w-clipped_input_ptr->screen_pts[0].x>100)
 			 {
-			             SplatText_Small_rgb((char*)temp_name_str,clipped_input_ptr->screen_pts[0].x+7, clipped_input_ptr->screen_pts[0].y+str_y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
+			             SplatText_Small_rgb(temp_name_str,clipped_input_ptr->screen_pts[0].x+7, clipped_input_ptr->screen_pts[0].y+str_y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
              }
 			 else
              {
 						 str_len*=7;
 						 
-			 			 SplatText_Small_rgb((char*)temp_name_str,clipped_input_ptr->screen_pts[0].x-str_len, clipped_input_ptr->screen_pts[0].y+str_y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
+			 			 SplatText_Small_rgb(temp_name_str,clipped_input_ptr->screen_pts[0].x-str_len, clipped_input_ptr->screen_pts[0].y+str_y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
 			 }     
    }
    else

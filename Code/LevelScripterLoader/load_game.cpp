@@ -3,6 +3,9 @@
 //See 3D engine design for notes
 /*
  * $Log: load_game.c,v $
+ * Revision 1.5  2003/09/26 19:20:49  robp
+ * Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+ *
  * Revision 1.4  2003/09/22 20:52:02  stu_c
  * Zex:Weapons:Laser Bay temperature and overheat (in progress)
  *
@@ -222,7 +225,7 @@ extern int reset_brightness;
 FSSpec the_file;
 Handle the_file_data_H;
 Ptr the_level_file;
-
+unsigned char level_directory[]="\pL";
 show_text_in_loading_screen("Zex: Load game\n");
 
 
@@ -241,7 +244,7 @@ load_textures(); //now done in load_level
 
 reset_objects();	//clear out old dynamic objects
 
-	make_data_fsspec("\pL",the_filename,&the_file);
+	make_data_fsspec(level_directory,the_filename,&the_file);
 
 	the_file_data_H=read_file(the_file);
     HLock(the_file_data_H);
@@ -1426,7 +1429,7 @@ while (game_fire_button()==0)
 int FILE_LOAD_ERROR_QUITS=1;
 
 //looks for a file in ZD3/folder name/
-int make_data_fsspec(Str255 the_folder_name,Str255 the_filename, FSSpec* the_fsspec)	//make fsspec of file name in zd3 folder
+int make_data_fsspec(unsigned char*the_folder_name,const unsigned char*the_filename, FSSpec* the_fsspec)	//make fsspec of file name in zd3 folder
 {
 extern FSSpec Zex_FSSpec;
 FSSpec data_folder_FSSpec;
@@ -1436,7 +1439,10 @@ HFileInfo *fpb=(HFileInfo*) &pb;	//ptrs to the union (Finfo and DirInfo) held in
 int folder_DirID;
 int return_value;
 short get_file_err;
+Str255 modifyable_target_filename;
 
+    pascal_copystr(modifyable_target_filename, the_filename);
+    
 //get the objects' folder
 	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,DirStr,&data_folder_FSSpec);
 	
@@ -1473,7 +1479,7 @@ return_value=0;
 //find file
       fpb->ioVRefNum = data_folder_FSSpec.vRefNum;
      fpb->ioDirID = folder_DirID;
-     fpb->ioNamePtr = the_filename;
+     fpb->ioNamePtr = modifyable_target_filename;
      fpb->ioFDirIndex=0;	//query the file name
      get_file_err=PBGetCatInfo(&pb,0);
      if(FILE_LOAD_ERROR_QUITS)

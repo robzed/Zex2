@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: load_objects.c,v $
+ * Revision 1.3  2003/09/22 20:45:59  stu_c
+ * Zex:Weapons: laser bay temperature and overheat (in progress)
+ *
  * Revision 1.2  2003/09/20 12:57:04  robp
  * Removed nested comments
  *
@@ -235,6 +238,9 @@ char *taddr;
 //SB 14/1198
 /*
  * $Log: load_objects.c,v $
+ * Revision 1.3  2003/09/22 20:45:59  stu_c
+ * Zex:Weapons: laser bay temperature and overheat (in progress)
+ *
  * Revision 1.2  2003/09/20 12:57:04  robp
  * Removed nested comments
  *
@@ -1244,7 +1250,7 @@ if (static_slot==-1)
             ogl_name_save= (*current_poly).Pid;
 
 //copy old name
-copystr(old_name,(*ocb_ptr).object_list[dest_ocb].Dyn_OCB_control_data.name_str);
+pascal_copystr(old_name,(*ocb_ptr).object_list[dest_ocb].Dyn_OCB_control_data.name_str);
 
 tex_ptr_save=(*ocb_ptr).object_list[dest_ocb].dynamic_tex_ptr;
 
@@ -1305,7 +1311,7 @@ clear_pb(&the_pb);	//saves loads of zero code
 	load_dyn_object(static_slot,dest_ocb,&the_pb,galactic_id,scale,-1,!DUST_BIT);	//the object, the position (-1=next free)
 
 //copy old name
- copystr((*ocb_ptr).object_list[dest_ocb].Dyn_OCB_control_data.name_str,old_name); //to,from
+ pascal_copystr((*ocb_ptr).object_list[dest_ocb].Dyn_OCB_control_data.name_str,old_name); //to,from
 
 
  (*ocb_ptr).object_list[dest_ocb].dynamic_tex_ptr=tex_ptr_save;
@@ -1398,13 +1404,14 @@ init_Pdyns();
 }
 
 
-unsigned char* object_loader_filename;
+const unsigned char* object_loader_filename;
 
-int load_object(Str255 filename, int static_slot, unsigned long id,int colldetect, unsigned long texture_id, int translucent)
+int load_object(const unsigned char *filename, int static_slot, unsigned long id,int colldetect, unsigned long texture_id, int translucent)
 {
 FSSpec the_file;
 Handle the_file_data_H;
 int Err;
+unsigned char object_directory[]="\pO";
 //int get_file_err;
 //extern FSSpec Zex_FSSpec;
 //FSSpec objects_folder_FSSpec;
@@ -1420,7 +1427,7 @@ int Err;
 object_loader_filename=filename;	//global for error reporting
 
 
-     if(make_data_fsspec("\pO",filename,&the_file)) return  -2;
+     if(make_data_fsspec(object_directory,filename,&the_file)) return  -2;
 
 //now load it
 	the_file_data_H=read_file(the_file);

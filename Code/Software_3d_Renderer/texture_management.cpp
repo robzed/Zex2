@@ -4,6 +4,9 @@
  
 /*
  * $Log: texture_management.c,v $
+ * Revision 1.2  2003/09/20 12:57:13  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:30  stu_c
  * First Imported.
  *
@@ -126,9 +129,10 @@ Str255 the_file_name;
 int return_value;
 int get_file_err = 0;
 short file_index=1;
-unsigned char temp_str[256];
-unsigned char raw_str[]="raw";
-unsigned char r32_str[]="r32";
+char temp_str[256];
+char raw_str[]="raw";
+char r32_str[]="r32";
+Str255 texture_directory="\pT";
 
         texture_name=1;
 
@@ -148,7 +152,7 @@ return_value=0;
 //find sub folder
 //      fpb->ioVRefNum = texture_folder_FSSpec.vRefNum;
      fpb->ioDirID = folder_DirID;
-     fpb->ioNamePtr = "\pT";
+     fpb->ioNamePtr = texture_directory;
      fpb->ioFDirIndex=0;	//query the file name
 
      return_value=PBGetCatInfo(&pb,0);

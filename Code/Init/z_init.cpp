@@ -1,6 +1,9 @@
 /*game
 init
 $Log: z_init.c,v $
+Revision 1.1.1.1  2003/09/05 22:35:53  stu_c
+First Imported.
+
 Revision 1.22  2002/09/08 02:02:22  stu_c
 Precompiled header adjustments
 
@@ -659,7 +662,11 @@ extern int end_of_level_code;	//if not zero, we display end_of_level_reason_stri
 extern int thrust_lockout;
 extern int no_buffet;
 extern int ship_buffet;
-
+#if TEST_SYSTEM==0
+unsigned char level_filename[]="\pgame.zlv";
+#else
+unsigned char level_filename[]="\ptest.zlv";
+#endif
 
 POBs_init();
 ship_buffet=0;
@@ -700,11 +707,8 @@ fastdock_in_progress=0; fastdock_fade_value=100;
 	ship_init();
 //get files
 	reset_camera();
-#if TEST_SYSTEM==0
-     load_level("\pgame.zlv");	//load up all objects etc.
-#else
-     load_level("\ptest.zlv");	//load up all objects etc.
-#endif
+
+     load_level(level_filename);	//load up all objects etc.
 //    set_up_solar_system();
 
 

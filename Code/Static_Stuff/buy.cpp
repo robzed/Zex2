@@ -1,6 +1,9 @@
 /*
-$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.1.1.1 2003/09/05 22:37:10 stu_c Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.2 2003/09/26 19:20:51 robp Exp $
 $Log: buy.c,v $
+Revision 1.2  2003/09/26 19:20:51  robp
+Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+
 Revision 1.1.1.1  2003/09/05 22:37:10  stu_c
 First Imported.
 
@@ -265,7 +268,7 @@ void draw_bottom_bar(LSRAW*bar_pict,int can_exit, int can_buy, int can_sell, int
 void draw_inventory_strings(int from_index, int selected_item);
 void sell_cargo(int item_selected);
 void buy_cargo(int item_selected);
-void do_string_dialog(unsigned char * the_string);
+void do_string_dialog(const unsigned char * the_string);
 void draw_vert_lines(void);
 
 
@@ -4516,7 +4519,7 @@ ZRGBForeColor(&rgbBlue);
 }
 
 
-void do_string_dialog(unsigned char * the_string)
+void do_string_dialog(const unsigned char * the_string)
 {
 LSRAW *dialog_picture;
 Handle dialog_H;

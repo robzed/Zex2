@@ -19,6 +19,9 @@
 
 /* CVS bits
 $Log: zplatform.h,v $
+Revision 1.2  2003/09/21 21:08:13  robp
+Partial source check-in  - should have no build issues, just update to include new PORTABLE switches.
+
 Revision 1.1.1.1  2003/09/05 22:37:05  stu_c
 First Imported.
 
@@ -121,11 +124,12 @@ Initial issue.
 //
 // For some reason what KeyMap points to is changed ... (used in GetKey())
 //
-#if ZEX_PROJECT_BUILDER || INTERFACE_LIB_BUILD
-  typedef unsigned long* keymap_ptr;
-#else
+// 26-9-2003 Rob - For some reason it's been changed back <sigh>...
+//#if ZEX_PROJECT_BUILDER || INTERFACE_LIB_BUILD
+//  typedef unsigned long* keymap_ptr;
+//#else
   typedef long* keymap_ptr;
-#endif
+//#endif
 
 #undef __CARBON__
 

@@ -2,6 +2,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.c,v $
+Revision 1.3  2003/09/24 21:39:40  robp
+More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
+
 Revision 1.2  2003/09/22 22:01:33  robp
 Work in progress: portable file system, stage 1 - load resources via C standard library calls. THIS INCLUDES A PROJECT FILE UPDATE.
 
@@ -274,19 +277,24 @@ int actual_bytes_read;
 long file_size;
 
 if(!make_filename(path_filename, filename, directory, "read_file_into_memory()"))	// make path first
-    { report_error("read_file_into_memory(filename) had an error on path create.",filename,1100); }
+    { report_error("read_file_into_memory(filename) had an error on path create.","\p",1100); }
   
 my_file = lsf_open_file(path_filename, "rb");
-if(my_file == NULL) { report_error("read_file_into_memory(filename) had an error on Open.",filename,1101); }
+if(my_file == NULL) { report_error("read_file_into_memory(filename) had an error on Open.","\p",1101); }
 
 file_size = lsf_get_file_size(my_file);		//find size
-if(file_size == -1) { report_error("read_file_into_memory(filename) had an error on get file size.",filename,1101); }
+if(file_size == -1) { report_error("read_file_into_memory(filename) had an error on get file size.","\p",1101); }
 
 data_storage = calloc(1, file_size+4);		// ensure a zero terminated file (zero space and put 4 on the end)
-if(data_storage == NULL) { report_error("read_file_into_memory(filename) had an error: No memory",filename,1102); }
+if(data_storage == NULL) { report_error("read_file_into_memory(filename) had an error: No memory","\p",1102); }
 
+#if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
+actual_bytes_read = lsf_read_bytes_from_file(my_file, static_cast<char *>(data_storage), file_size);
+#else
 actual_bytes_read = lsf_read_bytes_from_file(my_file, data_storage, file_size);
-if(actual_bytes_read != file_size) { report_error("read_file_into_memory(filename) had an error on matching bytes read.",filename,1103); }
+#endif
+
+if(actual_bytes_read != file_size) { report_error("read_file_into_memory(filename) had an error on matching bytes read.","\p",1103); }
 
 if(loaded_size !=NULL)
     {
@@ -788,6 +796,7 @@ int folder_DirID;
 int return_value;
 int get_file_err = 0;
 //short file_index=1;
+unsigned char resource_directory[] = "\pR";
 #endif
 
 
@@ -841,7 +850,7 @@ return_value=0;
 //find sub folder
 //      fpb->ioVRefNum = texture_folder_FSSpec.vRefNum;
      fpb->ioDirID = folder_DirID;
-     fpb->ioNamePtr = "\pR";	//resources folder
+     fpb->ioNamePtr = resource_directory;	//resources folder
      fpb->ioFDirIndex=0;	//query the file name
 
      return_value=PBGetCatInfo(&pb,0);
@@ -871,7 +880,7 @@ return_value=0;
 //given a filename (p1) and an extension (p2) returns 1 if this file does have that
 //extension else 0
 //extension (p2) should be passed in in lower case
-int check_file_extension (unsigned char * filename, unsigned char* extension)
+int check_file_extension (char * filename, char* extension)
 {
  int length;
  length=strlen((char*) filename);

@@ -958,7 +958,7 @@ else	        //center just
 
 
 // correct metric capitalisation taken from http://lamar.colostate.edu/~hillger/correct.htm
-int make_3_digit(double value, unsigned char *number_string)
+int make_3_digit(double value, char *number_string)
 {
 unsigned char units_char[2];
 int string_pos;
@@ -1291,7 +1291,7 @@ int object_controller;
 			 || FAR_STAR==object_controller)
             {
             	//get name from object - stored as pascal string
- 	         PascalToC ((*ocb_ptr).object_list[object_targetted].Dyn_OCB_control_data.name_str,(unsigned char *)target_name_str+TARGET_STRING_OFFSET_NO_CALLSIGN);
+ 	         PascalToC ((*ocb_ptr).object_list[object_targetted].Dyn_OCB_control_data.name_str,target_name_str+TARGET_STRING_OFFSET_NO_CALLSIGN);
 	        
             }
             else	//mothership

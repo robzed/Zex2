@@ -68,7 +68,7 @@ extern	DynObjectsFixedSize *ocb_ptr;
  {
 //launch a shuttle
    ship_slot=get_static_object_slot('SHT1');
-   if (ship_slot==-1) report_error ("launch_NPC: Couldn't find static SHT1","",-1);
+   if (ship_slot==-1) report_error ("launch_NPC: Couldn't find static SHT1","\p",-1);
    dyn_slot=find_vacant_dynamic_object_slot();
    if (dyn_slot!=-1)
    {
@@ -126,7 +126,7 @@ else if (object_ref==FALCON)
 {
 //launch a falcon
    ship_slot=get_static_object_slot('FALC');
-   if (ship_slot==-1) report_error ("launch_NPC: Couldn't find static FALC","",-1);
+   if (ship_slot==-1) report_error ("launch_NPC: Couldn't find static FALC","\p",-1);
    dyn_slot=find_vacant_dynamic_object_slot();
    if (dyn_slot!=-1)
    {
@@ -182,7 +182,7 @@ else if (object_ref==FALCON)
 }
 else
 {
- report_error ("launch_NPC: Unknown controller_ref passed in","",object_ref);
+ report_error ("launch_NPC: Unknown controller_ref passed in","\p",object_ref);
 }
 
 }
@@ -221,7 +221,7 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object]; //ptr to mothership;
    return;
   }
       
- report_error ("control_NPC: Unknown NPC_class","",-1);
+ report_error ("control_NPC: Unknown NPC_class","\p",-1);
 
 }
 

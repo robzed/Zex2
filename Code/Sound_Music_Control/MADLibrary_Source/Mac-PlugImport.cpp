@@ -35,8 +35,8 @@
 #define MAXPLUG	40
 #define RSRCNAME "\pRsrc Plug Sys##"
 
-void pStrCpy( unsigned char *s1, unsigned char *s2);
-void pStrCpy( unsigned char *s1, unsigned char *s2)
+void pStrCpy( unsigned char *s1, const unsigned char *s2);
+void pStrCpy( unsigned char *s1, const unsigned char *s2)
 {
 	register short len, i;
 	

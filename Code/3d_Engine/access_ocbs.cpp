@@ -70,7 +70,7 @@ void check_slot(int object_slot_number)
  if (object_slot_number<0 || object_slot_number>=MAX_NUMBER_OF_DYN_OBJECTS)
    {
 //   Debugger();
-   report_error ("OCB_ACESSORS. Bad slot number:","",object_slot_number);
+   report_error ("OCB_ACESSORS. Bad slot number:","\p",object_slot_number);
    }
 }
 
@@ -79,7 +79,7 @@ void check_static_slot(int object_slot_number)
  if (object_slot_number<0 || object_slot_number>=MAX_NUMBER_OF_STAT_OBJECTS)
    {
 //   Debugger();
-   report_error("OCB_ACESSORS. Bad static slot number:","",object_slot_number);
+   report_error("OCB_ACESSORS. Bad static slot number:","\p",object_slot_number);
    }
 }
 #endif

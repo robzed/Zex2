@@ -19,7 +19,7 @@ Str63 name;
 //stu test routine 
 void cfi_test(void);
 
-extern unsigned char *directory;
+extern unsigned char *directory;		// removed const - we pass to an OS file routine that doesn't have a const parameter
 
 //given an index return a pointer to a coffee_file_spec that gives the name of the file
 coffee_file_spec* coffee_get_file_spec(int index);

@@ -16,6 +16,9 @@
 // *
 /* ***********************************************************************************
  * $Log: coffee_file_interface.c,v $
+ * Revision 1.2  2003/09/20 12:57:07  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:23  stu_c
  * First Imported.
  *
@@ -129,7 +132,8 @@ while (n!=10)
 	
 }
 
-unsigned char *directory ="\pW";
+unsigned char directory_string[] = "\pW";
+unsigned char *directory = directory_string;		// removed const - we pass to an OS file routine that doesn't have a const parameter
 
 
 // **************Actual routines

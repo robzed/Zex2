@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: hud.h,v $
+Revision 1.1.1.1  2003/09/05 22:35:48  stu_c
+First Imported.
+
 Revision 1.2  2002/02/17 06:20:34  stu
 Added radar targetting
 
@@ -84,7 +87,7 @@ void disengage_AP(int object);
 void calc_zexs_relative_velocity(void);
 void check_target(void);
 void print_distance_in_metres_3_digit_just(int x, int y, float value, float red, float green, float blue, int just);
-int make_3_digit(double value, unsigned char *number_string);
+int make_3_digit(double value, char *number_string);
 
 extern int hud_drawn;
 extern float misc_text_red, misc_text_green, misc_text_blue;

@@ -20,9 +20,10 @@ void show_error_in_loading_screen(Str255 the_text);
 void kill_loading_screen();
 int Zstrlen(char *str);
 
-void CToPascal(char *str, char* dest_str);
-void PascalToC (unsigned char *str, unsigned char *dest_str);
-void copystr (char *to, char*from);
+void CToPascal(const char *str, char* dest_str);
+void PascalToC (const unsigned char *str, char *dest_str);
+void copystr (char *to, const char*from);
+void pascal_copystr(unsigned char *to, const unsigned char *from);
 
 void Zstrcpy(char *s, char *t);
 int Zget_Cstring_len(char* the_string);
@@ -34,21 +35,21 @@ unsigned int  ZexTickCount();
 float Zraise_by_10(int number);
 
 
-int ZNumToStringBig(double number,unsigned char * string);
+int ZNumToStringBig(double number,char * string);
 void ZexNumToStringPascal(int number,unsigned char * string);
 void ZNumToString(unsigned short number, unsigned char *string);
-void ZNumToString4(int number, unsigned char *string);
-void ZNumToString3(int number, unsigned char *string);
-void ZNumToString2(int number, unsigned char *string);
-void ZNumToString1(int number, unsigned char *string);
+void ZNumToString4(int number, char *string);
+void ZNumToString3(int number, char *string);
+void ZNumToString2(int number, char *string);
+void ZNumToString1(int number, char *string);
 
 //standardlib funcs
 void Zsrand(int seed);
 short Zrand(void);
 
 #if ZEX_ANVIL
-void strcpy(char *s, char *t);
-int strlen (char *str);
-void strcat(char *s, char* t);
+void strcpy(const char *s, char *t);
+int strlen (const char *str);
+void strcat(const char *s, char* t);
 #endif
 

@@ -300,7 +300,7 @@ static pascal void	MySndPlayDoubleBufferCallBackProc (SndChannelPtr theChannel, 
 				void (*temp)(SndChannel*, SndDoubleBuffer*);
 
 				// Call user's double back proc
-				temp = (void*)theParams->dbhDoubleBack;
+				temp = /*(void*)*/theParams->dbhDoubleBack;
 				(*temp) (theChannel, emptyBuf);
 			#else
 				CallSndDoubleBackProc (theParams->dbhDoubleBack, theChannel, emptyBuf);

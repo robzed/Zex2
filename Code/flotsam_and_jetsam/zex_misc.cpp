@@ -2,6 +2,9 @@
 
 /*
 $Log: zex_misc.c,v $
+Revision 1.2  2003/09/26 19:20:50  robp
+Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+
 Revision 1.1.1.1  2003/09/05 22:35:26  stu_c
 First Imported.
 
@@ -624,7 +627,7 @@ our_window=0;
 
 #if ZEX_ANVIL
 
-void strcat(char *s, char *t)
+void strcat(const char *s, char *t)
 {
 // find end of destination
 while(s!='\0')
@@ -639,7 +642,7 @@ while(*t!='\0')
 
 
 //copy t to s
-void strcpy(char *s, char *t)
+void strcpy(const char *s, char *t)
 {
 while((*s=*t) != '\0')
   {
@@ -650,7 +653,7 @@ while((*s=*t) != '\0')
 
 // C string length routine
 
-int strlen (char *str)
+int strlen (const char *str)
 	{
 		char *p;
 
@@ -662,7 +665,7 @@ int strlen (char *str)
 
 
 //convert a C string to pascal
-void CToPascal(char *str, char *dest_str)
+void CToPascal(const char *str, char *dest_str)
 	{
 	//char *p,*q;
         char temp;
@@ -681,7 +684,7 @@ void CToPascal(char *str, char *dest_str)
 
 
 //convert pascal string to c
-void PascalToC (unsigned char *str, unsigned char *dest_str)
+void PascalToC (const unsigned char *str, char *dest_str)
 {
 int len,n;
 	len=str[0];
@@ -773,7 +776,7 @@ return;
 
 
 //converts an unsigned integer to a C string. retruns string pos
-int ZNumToStringBig(double number,unsigned char * string)
+int ZNumToStringBig(double number,char * string)
 {
 unsigned int div, units, char_count;
 
@@ -904,7 +907,7 @@ string[4]=temp1;
 }
 //¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥
 //convert unsigned short to 4 ascii digits - e.g. 128 comes out as 128
-void ZNumToString4(int number, unsigned char *string)
+void ZNumToString4(int number, char *string)
 {
 int temp,temp1;
 temp=number/1000;
@@ -931,7 +934,7 @@ string[4]=0;
 
 //¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥
 //convert unsigned short to 3 ascii digits - e.g. 128 comes out as 128
-void ZNumToString3(int number, unsigned char *string)
+void ZNumToString3(int number, char *string)
 {
 int temp,temp1;
 
@@ -952,7 +955,7 @@ string[3]=0;
 
 }
 
-void ZNumToString2(int number, unsigned char *string)
+void ZNumToString2(int number, char *string)
 {
 int temp,temp1;
 
@@ -970,7 +973,7 @@ string[2]=0;
 }
 
 
-void ZNumToString1(int number, unsigned char *string)
+void ZNumToString1(int number, char *string)
 {
 int temp1;
 
@@ -981,9 +984,26 @@ string[1]=0;
 
 }
 
+void pascal_copystr(unsigned char *to, const unsigned char *from)
+{
+unsigned char length;
 
+length = *from;		// length is first byte in pascal strings
+*to = length;		// move length across
+to++;
+from++;
 
-void copystr (char *to, char*from)
+while(length!=0)	// while not empty
+  {
+  *to=*from;		// move byte across
+  to++;			// move to next bytes
+  from++;
+  length--;		// one less to move
+  }
+
+}
+
+void copystr (char *to, const char*from)
 {
 char temp;
 temp=-1;

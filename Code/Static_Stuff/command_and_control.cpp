@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: command_and_control.c,v $
+ * Revision 1.2  2003/09/20 12:57:09  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:37:11  stu_c
  * First Imported.
  *
@@ -151,7 +154,6 @@ int command_slot_dialog;
 void render_frame(int width, int height);
 void handle_command(LSRAW* cc_pict, LSRAW* command_dialog_pict);
 void print_available_info(int x, int y);
-void copystr (char *to, char*from);
 int process_cc_mouse();
 int make_wingman(int slot, int from_where);
 int check_under_command(int slot);

@@ -117,7 +117,7 @@ extern	DynObjectsFixedSize *ocb_ptr;
 #if BEHAVIOUR_DEBUG==1
  if ((behaviour_type<0) || (behaviour_type>LAST_BEHAVIOUR))
  {
-   report_error ("set_behaviour: Unknown behaviour type passed in","",behaviour_type);
+   report_error ("set_behaviour: Unknown behaviour type passed in","\p",behaviour_type);
  }
 #endif //BEHAVIOUR_DEBUG
 
@@ -138,7 +138,7 @@ int* current_stack_pos_ptr;
 #if BEHAVIOUR_DEBUG==1
  if ((behaviour_type<0) || (behaviour_type>LAST_BEHAVIOUR))
  {
-   report_error ("push_behaviour: Unknown behaviour type passed in","",behaviour_type);
+   report_error ("push_behaviour: Unknown behaviour type passed in","\p",behaviour_type);
  }
 #endif //BEHAVIOUR_DEBUG
 

@@ -59,7 +59,7 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object];
         { allegiance=ALIEN; }
         else
         { 
-         report_error ("Behaviour_aggressive: Bad allegiance","",-1);
+         report_error ("Behaviour_aggressive: Bad allegiance","\p",-1);
         }
         
         target=find_nearest_object_of_allegiance(the_object, allegiance);
@@ -156,7 +156,7 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object];
         { allegiance=ALIEN; }
         else
         { 
-         report_error ("Behaviour_aggressive: Bad allegiance","",-1);
+         report_error ("Behaviour_aggressive: Bad allegiance","\p",-1);
         }
         
         target=find_nearest_object_of_allegiance(the_object, allegiance);

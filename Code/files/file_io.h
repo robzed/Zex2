@@ -53,4 +53,4 @@ void save_game();
 int load_game();
 OSErr WriteZexFile( FSSpec fileSpec, Ptr buffer, long bufferLen );
 OSErr ReadZexFile( FSSpec fileSpec, Ptr buffer, long bufferLen );
-int check_file_extension (unsigned char * filename, unsigned char* extension);
+int check_file_extension (char * filename, char* extension);
