@@ -323,7 +323,7 @@ if(gHideTheScreen==1) return;
     
 	temp_obj=(*ocb_ptr).object_list[0];
 	
-	draw_bar_multi(hud_fuel,screen_cent_x-72,monitor_h-97,1);	//fuel guage
+	draw_bar_multi(STATIC_CAST_TO_INT(hud_fuel),screen_cent_x-72,monitor_h-97,1);	//fuel guage
 //get fuel consumption in range 0-20
 //calc max possible consumption
         main_thrust_consumption=(*ocb_ptr).object_list[the_object].Dyn_OCB_control_data.main_thrust_consumption_per_second_in_KGS;
@@ -352,7 +352,7 @@ if(gHideTheScreen==1) return;
         
 	draw_bar_multi((*ocb_ptr).object_list[0].Dyn_OCB_control_data.shield_value/5,screen_cent_x+74,monitor_h-97,3);	//shields
 
-        laser_bay_temperature=get_laser_bay_temperature_in_C(get_main_camera_object());
+        laser_bay_temperature=STATIC_CAST_TO_INT(get_laser_bay_temperature_in_C(get_main_camera_object()));
 	laser_bay_temperature=laser_bay_temperature/(MAX_LASER_TEMP/20);	//max temperature of 5000 by 20 bars
 	
 	if(laser_bay_temperature>20) laser_bay_temperature=20;
@@ -653,17 +653,17 @@ if(gHideTheScreen==1) return;
         else
         {
 	scalar=get_TOD_hours();
-        hours=scalar;
-        num_to_string99(scalar,&tod_string[4]);
+        hours=STATIC_CAST_TO_INT(scalar);
+        num_to_string99(STATIC_CAST_TO_INT(scalar),&tod_string[4]);
         tod_string[6]=':';   
         
 	scalar=get_TOD_mins();
-        mins=scalar;
-        num_to_string99(scalar,&tod_string[7]);
+        mins=STATIC_CAST_TO_INT(scalar);
+        num_to_string99(STATIC_CAST_TO_INT(scalar),&tod_string[7]);
         tod_string[9]=':';   
 	scalar=get_TOD_secs();
-        secs=scalar;
-        num_to_string99(scalar,&tod_string[10]);
+        secs=STATIC_CAST_TO_INT(scalar);
+        num_to_string99(STATIC_CAST_TO_INT(scalar),&tod_string[10]);
         }
 		
 
@@ -702,7 +702,7 @@ if(gHideTheScreen==1) return;
           int temp;
           //divide by velocity to get time to target in seconds
 //          scalar/=hud_calc_velocity;
-          temp=scalar/60;
+          temp=STATIC_CAST_TO_INT(scalar/60);
           mins+=temp;
           if (temp<=59)
           {
@@ -711,7 +711,7 @@ if(gHideTheScreen==1) return;
 	    
             eta_string[6]=':';   
             scalar=scalar-(temp*60);
-            num_to_string99(scalar,&eta_string[7]);
+            num_to_string99(STATIC_CAST_TO_INT(scalar),&eta_string[7]);
 
             if(mins>59) 
              {
@@ -933,7 +933,7 @@ float flash_time=0.5;
 
 void print_distance_in_metres_3_digit_just(int x, int y, float value, float red, float green, float blue, int just)
 {
-unsigned char number_string[12];
+char number_string[12];
 int strlen;
 
 
@@ -980,55 +980,55 @@ if(value<1e3) 			// under 1 kilometer print in m
 {
  units_char[0]='m';
  units_char[1]=0;
- int_value=100 * value;
+ int_value=STATIC_CAST_TO_INT(100 * value);
 }
 else if(value<1e6)		// under 1 thousand kilometers print in km 
 { 
  units_char[0]='k';
  units_char[1]='m';
- int_value=100 * (value/1e3);
+ int_value=STATIC_CAST_TO_INT(100 * (value/1e3));
 }
 else if(value<1e9) 	// under 1 million kilometers print in thousand km
 { 
  units_char[0]='k';
  units_char[1]='k';
- int_value=100 * (value/1e6);
+ int_value=STATIC_CAST_TO_INT(100 * (value/1e6));
 }
 else if(value < (0.14 * AU_in_m)) // under 0.14 AU (that 21 million kilometers to you and 
 {				//  me) print in million kilometers
  units_char[0]='M';
  units_char[1]='k';
- int_value=100 * (value / 1e9);
+ int_value=STATIC_CAST_TO_INT(100 * (value / 1e9));
 }
 else if(value < (1e3 * AU_in_m)) // if from 0.14 to 999 AU print in Astronomical units
 {
  units_char[0]='A';
  units_char[1]='U';
- int_value=100 * (value / AU_in_m);	// make in AU
+ int_value=STATIC_CAST_TO_INT(100 * (value / AU_in_m));	// make in AU
 }
 else if(value < (15e3 * AU_in_m)) // if between 1000AU and 15K AU then print in K.AU
 {
  units_char[0]='k';
  units_char[1]='A';
- int_value=100 * (value / (1e3 * AU_in_m));
+ int_value=STATIC_CAST_TO_INT(100 * (value / (1e3 * AU_in_m)));
 }
 else if(value < (1e3 * LY_in_m))	// if between 0.25 ly and 999 ly then print in ly
 {
  units_char[0]='l';
  units_char[1]='y';
- int_value=100 * ( value / ( LY_in_m));
+ int_value=STATIC_CAST_TO_INT(100 * ( value / ( LY_in_m)));
 }
 else if(value < (1e3 * PA_in_m))	// if between 1000ly and 999 Parsecs, print in parsecs
 {
  units_char[0]='P';
  units_char[1]='A';
- int_value=100 * ( value / ( PA_in_m));
+ int_value=STATIC_CAST_TO_INT(100 * ( value / ( PA_in_m)));
 }
 else if(value< (1e6 * PA_in_m))		// if between 1000PA and 999KiloParsecs print in kP 
 {
  units_char[0]='k';
  units_char[1]='P';
- int_value=100 * ( value / (1e3 * PA_in_m));
+ int_value=STATIC_CAST_TO_INT(100 * ( value / (1e3 * PA_in_m)));
 }
 else	//>999GK .... was 999Mkm
 {
@@ -1523,7 +1523,7 @@ extern _3D ship_rotated_normal; //from engine
      
      	p1.x=p2.x-p1.x; p1.y=p2.y-p1.y; p1.z=p2.z-p1.z;	//get vector to object
         
-        distance_to=abs_nobranch(sqrt(p1.x*p1.x+p1.y*p1.y+p1.z*p1.z));
+        distance_to=abs_nobranch(STATIC_CAST_TO_LONG(sqrt(p1.x*p1.x+p1.y*p1.y+p1.z*p1.z)));
      
 	 Vnormalise(&p1);	//normalised vector to object
 	
@@ -1680,38 +1680,38 @@ if(gHideTheScreen!=0) return;
         //optimised 190501 - SB
         glBegin(GL_LINES); 
         
-        this_line_rotation=sights_rotation;
+        this_line_rotation=STATIC_CAST_TO_INT(sights_rotation);
         if (this_line_rotation>359) this_line_rotation-=360;       
-        xS=targ_x+sights_radius_min*COS((int)this_line_rotation);
-        yS=targ_y+sights_radius_min*SIN((int)this_line_rotation);
-        xE=targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation);
-        yE=targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation);
+        xS=STATIC_CAST_TO_INT(targ_x+sights_radius_min*COS((int)this_line_rotation));
+        yS=STATIC_CAST_TO_INT(targ_y+sights_radius_min*SIN((int)this_line_rotation));
+        xE=STATIC_CAST_TO_INT(targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation));
+        yE=STATIC_CAST_TO_INT(targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation));
  	     OGL_line_rgb_quick(xS,yS,xE,yE,sight_colour_red, sight_colour_green, sight_colour_blue);
  
         //line 2
-        this_line_rotation=sights_rotation+90;
+        this_line_rotation=STATIC_CAST_TO_INT(sights_rotation+90);
         if (this_line_rotation>359) this_line_rotation-=360;       
-        xS=targ_x+sights_radius_min*COS((int)this_line_rotation);
-        yS=targ_y+sights_radius_min*SIN((int)this_line_rotation);
-        xE=targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation);
-        yE=targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation);
+        xS=STATIC_CAST_TO_INT(targ_x+sights_radius_min*COS((int)this_line_rotation));
+        yS=STATIC_CAST_TO_INT(targ_y+sights_radius_min*SIN((int)this_line_rotation));
+        xE=STATIC_CAST_TO_INT(targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation));
+        yE=STATIC_CAST_TO_INT(targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation));
  	     OGL_line_rgb_quick(xS,yS,xE,yE,sight_colour_red, sight_colour_green, sight_colour_blue);
  
         //line 3
-        this_line_rotation=sights_rotation+180;
+        this_line_rotation=STATIC_CAST_TO_INT(sights_rotation+180);
         if (this_line_rotation>359) this_line_rotation-=360;       
-        xS=targ_x+sights_radius_min*COS((int)this_line_rotation);
-        yS=targ_y+sights_radius_min*SIN((int)this_line_rotation);
-        xE=targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation);
-        yE=targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation);
+        xS=STATIC_CAST_TO_INT(targ_x+sights_radius_min*COS((int)this_line_rotation));
+        yS=STATIC_CAST_TO_INT(targ_y+sights_radius_min*SIN((int)this_line_rotation));
+        xE=STATIC_CAST_TO_INT(targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation));
+        yE=STATIC_CAST_TO_INT(targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation));
  	     OGL_line_rgb_quick(xS,yS,xE,yE,sight_colour_red, sight_colour_green, sight_colour_blue);
         //line 4
-        this_line_rotation=sights_rotation+270;
+        this_line_rotation=STATIC_CAST_TO_INT(sights_rotation+270);
         if (this_line_rotation>359) this_line_rotation-=360;       
-        xS=targ_x+sights_radius_min*COS((int)this_line_rotation);
-        yS=targ_y+sights_radius_min*SIN((int)this_line_rotation);
-        xE=targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation);
-        yE=targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation);
+        xS=STATIC_CAST_TO_INT(targ_x+sights_radius_min*COS((int)this_line_rotation));
+        yS=STATIC_CAST_TO_INT(targ_y+sights_radius_min*SIN((int)this_line_rotation));
+        xE=STATIC_CAST_TO_INT(targ_x+SIGHTS_RADIUS_MAX*COS((int)this_line_rotation));
+        yE=STATIC_CAST_TO_INT(targ_y+SIGHTS_RADIUS_MAX*SIN((int)this_line_rotation));
  	     OGL_line_rgb_quick(xS,yS,xE,yE,sight_colour_red, sight_colour_green, sight_colour_blue);
         
         glEnd();
@@ -1727,10 +1727,10 @@ if(gHideTheScreen!=0) return;
       {
       if ((*ocb_ptr).object_list[0].Dyn_OCB_control_data.command_autopilot_engaged!=AP_OFF && pull_up_displayed==0)
        {
-        arrow_x1=screen_cent_x+39*COS(angle_to_2d);
-        arrow_y1=screen_cent_y+39*SIN(angle_to_2d);
-        arrow_x2=screen_cent_x+21*COS(angle_to_2d);
-        arrow_y2=screen_cent_y+21*SIN(angle_to_2d);
+        arrow_x1=STATIC_CAST_TO_INT(screen_cent_x+39*COS(angle_to_2d));
+        arrow_y1=STATIC_CAST_TO_INT(screen_cent_y+39*SIN(angle_to_2d));
+        arrow_x2=STATIC_CAST_TO_INT(screen_cent_x+21*COS(angle_to_2d));
+        arrow_y2=STATIC_CAST_TO_INT(screen_cent_y+21*SIN(angle_to_2d));
         //arrow_x3=screen_cent_x+50*COS(angle_to_2d);
         //arrow_y3=screen_cent_y+50*SIN(angle_to_2d);
         

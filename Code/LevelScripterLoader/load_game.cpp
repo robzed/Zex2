@@ -3,6 +3,9 @@
 //See 3D engine design for notes
 /*
  * $Log: load_game.c,v $
+ * Revision 1.6  2003/09/27 08:58:30  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.5  2003/09/26 19:20:49  robp
  * Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
  *
@@ -601,7 +604,7 @@ while (stop==0)
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);	//number of objects in a column
             (*ocb_ptr).object_list[zex].Oworldx=dectof_result;
-            monsters_can_fire=dectof_result;	//set camera too
+            monsters_can_fire=STATIC_CAST_TO_INT(dectof_result);	//set camera too
              break;
           }
 
@@ -652,14 +655,14 @@ while (stop==0)
 //            str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
 //            //dectof_result=dec2f (&my_dec);
 //            dectof_result=dec2num (&my_dec);
-            static_slot=dectof_result;
+            static_slot=STATIC_CAST_TO_INT(dectof_result);
             //get colldet
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
             ix=0;
             vp=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            colldetect=dectof_result;	//0-3
+            colldetect=STATIC_CAST_TO_INT(dectof_result);	//0-3
             //get texture ID
             the_word[0]=0;the_word[1]=0;the_word[2]=0;the_word[3]=0;
             fname_length=get_word(the_word,&the_line[word_len]);
@@ -768,7 +771,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.control_use_1=dectof_result;
+  	        the_params.control_use_1=STATIC_CAST_TO_INT(dectof_result);
 
 
           //get control_use_2
@@ -777,7 +780,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.control_use_2=dectof_result;
+  	        the_params.control_use_2=STATIC_CAST_TO_INT(dectof_result);
 
           //get control_use_3
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -786,7 +789,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.control_use_3=dectof_result;
+  	        the_params.control_use_3=STATIC_CAST_TO_INT(dectof_result);
 
           //get controller ref
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -795,7 +798,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.controller_ref=dectof_result;
+  	        the_params.controller_ref=STATIC_CAST_TO_INT(dectof_result);
           
           //get shields
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -804,7 +807,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.shield_value=dectof_result;
+  	        the_params.shield_value=STATIC_CAST_TO_INT(dectof_result);
 
           //get mass
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -822,7 +825,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.object_category=temp_int;
 
           //get trivial rejection
@@ -831,7 +834,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.no_trivial_rejection=temp_int;
 
           //get scale
@@ -840,7 +843,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	     scale=temp_int;
             if(scale<=0) report_error("load_level: LMON: Invalid scale","\pMust be greater than 0",line_number);
 
@@ -850,7 +853,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.unique_id=temp_int;
 
 
@@ -913,7 +916,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        seed=dectof_result;
+  	        seed=STATIC_CAST_TO_INT(dectof_result);
 
           // alignment
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -921,7 +924,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        alleg=dectof_result;
+  	        alleg=STATIC_CAST_TO_INT(dectof_result);
            
                 start_pos.x=0; start_pos.y=0; start_pos.z=0;		// just in case we are a test system, then no offset
           #if TEST_SYSTEM==0
@@ -970,7 +973,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        frame_rate=dectof_result;
+  	        frame_rate=STATIC_CAST_TO_INT(dectof_result);
 
           //get animation control
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -978,7 +981,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        anim_control=dectof_result;
+  	        anim_control=STATIC_CAST_TO_INT(dectof_result);
 
           //get animation state
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -986,7 +989,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        anim_state=dectof_result;
+  	        anim_state=STATIC_CAST_TO_INT(dectof_result);
           
           //get world x
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1059,7 +1062,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.control_use_1=dectof_result;
+  	        the_params.control_use_1=STATIC_CAST_TO_INT(dectof_result);
 
 
           //get control_use_2
@@ -1068,7 +1071,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.control_use_2=dectof_result;
+  	        the_params.control_use_2=STATIC_CAST_TO_INT(dectof_result);
 
           //get control_use_3
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1077,7 +1080,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.control_use_3=dectof_result;
+  	        the_params.control_use_3=STATIC_CAST_TO_INT(dectof_result);
 
           //get controller ref
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1086,7 +1089,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.controller_ref=dectof_result;
+  	        the_params.controller_ref=STATIC_CAST_TO_INT(dectof_result);
           
           //get shields
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1095,7 +1098,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-  	        the_params.shield_value=dectof_result;
+  	        the_params.shield_value=STATIC_CAST_TO_INT(dectof_result);
 
           //get mass
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1113,7 +1116,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.object_category=temp_int;
 
           //get trivial rejection
@@ -1122,7 +1125,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.no_trivial_rejection=temp_int;
 
           //get number of missiles
@@ -1131,7 +1134,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.number_of_missiles=temp_int;
           //get laser category
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1139,7 +1142,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
   	        the_params.laser_cat=temp_int;
           //get has roll
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1147,7 +1150,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	  //convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            temp_int=dectof_result;
+            temp_int=STATIC_CAST_TO_INT(dectof_result);
 //  	          the_params.has_roll=temp_int;
 
 //     the_params.has_roll=0;
@@ -1186,7 +1189,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            bolted=dectof_result;
+            bolted=STATIC_CAST_TO_INT(dectof_result);
             
             //get object to bolt on to
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating
@@ -1194,7 +1197,7 @@ while (stop==0)
             ix=0;
             str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
             dectof_result=Zconvert_to_float (the_word);
-            boltee=dectof_result;	//0-3
+            boltee=STATIC_CAST_TO_INT(dectof_result);	//0-3
 
             //get x offset
             word_len+=get_word(the_word,&the_line[word_len]);	//get difficulty rating

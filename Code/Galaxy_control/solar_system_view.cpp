@@ -212,8 +212,8 @@ target_y_off=solar_extent_y/2+solar_extents_min.z;
 
 #if INCREMENTALLY_SCALE
 
-  frames_to_change_offset = DUAL_CHANGE_TIME/real_frame_time_in_secs;
-  frames_to_change_scale = DUAL_CHANGE_TIME/real_frame_time_in_secs;
+  frames_to_change_offset = STATIC_CAST_TO_INT(DUAL_CHANGE_TIME/real_frame_time_in_secs);
+  frames_to_change_scale = STATIC_CAST_TO_INT(DUAL_CHANGE_TIME/real_frame_time_in_secs);
   
   inc_x_off = (target_x_off - x_off) / frames_to_change_offset;
   inc_y_off = (target_y_off - y_off) / frames_to_change_offset;
@@ -249,7 +249,7 @@ target_scale_y=scale_y/2;
 check_scale_is_valid(&target_scale_x, &target_scale_y);
 
 #if INCREMENTALLY_SCALE
-  frames_to_change_scale = DUAL_CHANGE_TIME/real_frame_time_in_secs;
+  frames_to_change_scale = STATIC_CAST_TO_INT(DUAL_CHANGE_TIME/real_frame_time_in_secs);
   frames_to_change_offset = 0;
   
   inc_scale_x = (target_scale_x - scale_x) / frames_to_change_scale;
@@ -283,7 +283,7 @@ target_y_off = y_off - (((v2+v1)/2) - (window_h/2)) / scale_y;		// was 240.0
 
 #if INCREMENTALLY_SCALE
 
-  frames_to_change_offset = TOTAL_CHANGE_TIME / real_frame_time_in_secs;
+  frames_to_change_offset = STATIC_CAST_TO_INT(TOTAL_CHANGE_TIME / real_frame_time_in_secs);
   frames_to_change_scale = 0;
   
   inc_x_off = (target_x_off - x_off) / frames_to_change_offset;
@@ -327,8 +327,8 @@ check_scale_is_valid(&target_scale_x, &target_scale_y);
 
 #if INCREMENTALLY_SCALE
 
-  frames_to_change_offset = DUAL_CHANGE_TIME/real_frame_time_in_secs;
-  frames_to_change_scale = DUAL_CHANGE_TIME/real_frame_time_in_secs;
+  frames_to_change_offset = STATIC_CAST_TO_INT(DUAL_CHANGE_TIME/real_frame_time_in_secs);
+  frames_to_change_scale = STATIC_CAST_TO_INT(DUAL_CHANGE_TIME/real_frame_time_in_secs);
   
   inc_x_off = (target_x_off - x_off) / frames_to_change_offset;
   inc_y_off = (target_y_off - y_off) / frames_to_change_offset;
@@ -490,11 +490,11 @@ extern int gHideTheScreen;
 void DrawScale(void);
 void DrawScale(void)
 {
-draw_line_no_clip(20, (monitor_h*0.95), 100, (monitor_h*0.95), 246);
-draw_line_no_clip(20, (monitor_h*0.95)-5, 20, (monitor_h*0.95)+5, 246);
-draw_line_no_clip(100, (monitor_h*0.95)-5, 100, (monitor_h*0.95)+5, 246);
+draw_line_no_clip(20, STATIC_CAST_TO_INT((monitor_h*0.95)), 100, STATIC_CAST_TO_INT((monitor_h*0.95)), 246);
+draw_line_no_clip(20, STATIC_CAST_TO_INT((monitor_h*0.95)-5), 20, STATIC_CAST_TO_INT((monitor_h*0.95)+5), 246);
+draw_line_no_clip(100, STATIC_CAST_TO_INT((monitor_h*0.95)-5), 100, STATIC_CAST_TO_INT((monitor_h*0.95)+5), 246);
 gHideTheScreen=0;
-print_distance_in_metres_3_digit_just(105 , (monitor_h*0.95), ((80.0/scale_x)*(ZEX_UNIT_SIZE_IN_METERS)),1.0,1.0,1.0,0);
+print_distance_in_metres_3_digit_just(105 , STATIC_CAST_TO_INT((monitor_h*0.95)), ((80.0/scale_x)*(ZEX_UNIT_SIZE_IN_METERS)),1.0,1.0,1.0,0);
 gHideTheScreen=1;
 }
 
@@ -517,7 +517,7 @@ if(radius > size+2)
   if (selected)
    {
     //draw a line from here to Zex
-     Zline_rgb(screen_x, screen_y, zex_x, zex_y, 0.8,0.8,0.8);
+     Zline_rgb(screen_x, screen_y, STATIC_CAST_TO_INT(zex_x), STATIC_CAST_TO_INT(zex_y), 0.8,0.8,0.8);
     //Zline_rgb(-50, 100, 2000, 100, 1,1,1);
    }
    dlp_draw_rounded_box(screen_y-size,screen_x-size,screen_y+size,screen_x+size,colour);
@@ -629,19 +629,19 @@ object_counter=0;
 
        if(object_counter==0)	   //zex
                     {
-                     dlp_draw_box(screen_y-2,screen_x-2,screen_y+2, screen_x+2,zex_colour);
+                     dlp_draw_box(STATIC_CAST_TO_INT(screen_y-2),STATIC_CAST_TO_INT(screen_x-2),STATIC_CAST_TO_INT(screen_y+2), STATIC_CAST_TO_INT(screen_x+2),zex_colour);
                      zex_x=screen_x; zex_y=screen_y;
 
                      PascalToC("\pZex",temp_str);
             		 if(screen_x < (monitor_w * 0.92))
               			{
-              			SplatText_Small_Transparent(temp_str, screen_x+20 , screen_y-20,zex_colour);
-              			Zline_rgb(screen_x+4, screen_y-4, screen_x+18, screen_y-18, 0.8,0.8,0.8);
+              			SplatText_Small_Transparent(temp_str, STATIC_CAST_TO_INT(screen_x+20) , STATIC_CAST_TO_INT(screen_y-20),zex_colour);
+              			Zline_rgb(STATIC_CAST_TO_INT(screen_x+4), STATIC_CAST_TO_INT(screen_y-4), STATIC_CAST_TO_INT(screen_x+18), STATIC_CAST_TO_INT(screen_y-18), 0.8,0.8,0.8);
               			}
             		 else
               			{ 
-              			SplatText_Small_Transparent(temp_str, (monitor_w*0.92) , screen_y-20,zex_colour);
-              			Zline_rgb(screen_x+4, screen_y-4, (monitor_w*0.92), screen_y-18, 0.8,0.8,0.8);
+              			SplatText_Small_Transparent(temp_str, STATIC_CAST_TO_INT((monitor_w*0.92)) , STATIC_CAST_TO_INT(screen_y-20),zex_colour);
+              			Zline_rgb(STATIC_CAST_TO_INT(screen_x+4), STATIC_CAST_TO_INT(screen_y-4), STATIC_CAST_TO_INT((monitor_w*0.92)), STATIC_CAST_TO_INT(screen_y-18), 0.8,0.8,0.8);
               			}
 
 
@@ -653,7 +653,7 @@ object_counter=0;
          if (current_object_ptr->Dyn_OCB_control_data.controller==PLANET_CONTROL)
              {
              colour=POBs_get_planet_or_moon_colour(object_counter);
-             draw_planetary_object(screen_y, screen_x, 2, current_object_ptr->radius*scale_x,colour,object_counter==selected_object );
+             draw_planetary_object(STATIC_CAST_TO_INT(screen_y), STATIC_CAST_TO_INT(screen_x), 2, STATIC_CAST_TO_INT(current_object_ptr->radius*scale_x),colour,object_counter==selected_object );
              //dlp_draw_rounded_box(screen_y-2,screen_x-2,screen_y+2,screen_x+2,colour);
              if (scanning)
              {
@@ -679,7 +679,7 @@ object_counter=0;
 
 	         if(screen_x>(monitor_w*0.93)) screen_x-=40;
 	         if(screen_y>(monitor_h*0.95)) screen_y-=20;
-             SplatText_Small_Transparent(temp_str, screen_x , screen_y+10,colour);
+             SplatText_Small_Transparent(temp_str, STATIC_CAST_TO_INT(screen_x) , STATIC_CAST_TO_INT(screen_y+10),colour);
  	       //   colour+=10;
               }
           else
@@ -704,19 +704,19 @@ object_counter=0;
                }
               }
 
-            draw_planetary_object(screen_y, screen_x, 3, current_object_ptr->radius*scale_x, 248,object_counter==selected_object);
+            draw_planetary_object(STATIC_CAST_TO_INT(screen_y), STATIC_CAST_TO_INT(screen_x), 3, STATIC_CAST_TO_INT(current_object_ptr->radius*scale_x), 248,object_counter==selected_object);
             //dlp_draw_rounded_box(screen_y-3,screen_x-3,screen_y+3,screen_x+3,248);
 
             PascalToC(current_object_ptr->Dyn_OCB_control_data.name_str,temp_str);
             if(screen_x < (monitor_w * 0.92))
               {
-              SplatText_Small_Transparent(temp_str, screen_x+20 , screen_y+20,248);
-              Zline_rgb(screen_x+4, screen_y+4, screen_x+18, screen_y+18, 0.8,0.8,0.8);
+              SplatText_Small_Transparent(temp_str, STATIC_CAST_TO_INT(screen_x+20) , STATIC_CAST_TO_INT(screen_y+20),248);
+              Zline_rgb(STATIC_CAST_TO_INT(screen_x+4), STATIC_CAST_TO_INT(screen_y+4), STATIC_CAST_TO_INT(screen_x+18), STATIC_CAST_TO_INT(screen_y+18), 0.8,0.8,0.8);
               }
             else
               { 
-              SplatText_Small_Transparent(temp_str, (monitor_w*0.92) , screen_y+20,248);
-              Zline_rgb(screen_x+4, screen_y+4, (monitor_w*0.92), screen_y+18, 0.8,0.8,0.8);
+              SplatText_Small_Transparent(temp_str, STATIC_CAST_TO_INT((monitor_w*0.92)) , STATIC_CAST_TO_INT(screen_y+20),248);
+              Zline_rgb(STATIC_CAST_TO_INT(screen_x+4), STATIC_CAST_TO_INT(screen_y+4), STATIC_CAST_TO_INT((monitor_w*0.92)), STATIC_CAST_TO_INT(screen_y+18), 0.8,0.8,0.8);
               }
             
             }

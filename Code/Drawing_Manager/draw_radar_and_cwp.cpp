@@ -1,5 +1,8 @@
 /*
  * $Log: draw_radar_and_cwp.c,v $
+ * Revision 1.2  2003/09/20 12:56:56  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:16  stu_c
  * First Imported.
  *
@@ -307,9 +310,9 @@ do_throb=0;
  //x is x1, z is y1, y adds to y1
 
 
- x1=(radar_x+64)+(vect.x/scale_x);
- y1=(radar_y+54)-(vect.z/scale_y);
- y2=y1-vect.y/scale_y;
+ x1=STATIC_CAST_TO_INT((radar_x+64)+(vect.x/scale_x));
+ y1=STATIC_CAST_TO_INT((radar_y+54)-(vect.z/scale_y));
+ y2=STATIC_CAST_TO_INT(y1-vect.y/scale_y);
  
 //Next line not needed any more
 // if ((x1>radar_x) && (x1<(radar_x+150)) && (y1>radar_y) && (y1<(radar_y+100)) && (y2>radar_y) && (y2<(radar_y+100)))

@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: Autopilot.c,v $
+Revision 1.1.1.1  2003/09/05 22:36:19  stu_c
+First Imported.
+
 Revision 1.20  2002/09/08 02:10:19  stu_c
 Precompiled header adjustments
 
@@ -201,15 +204,15 @@ void run_flight_computations(int the_object)
     
     if(get_main_camera_object()==the_object)
     {
-      camera_object_quat_x=source_object->Qor.x*10000000;
-      camera_object_quat_y=source_object->Qor.y*10000000;
-      camera_object_quat_z=source_object->Qor.z*10000000;
-      camera_object_quat_w=source_object->Qor.w*10000000;
+      camera_object_quat_x=STATIC_CAST_TO_INT(source_object->Qor.x*10000000);
+      camera_object_quat_y=STATIC_CAST_TO_INT(source_object->Qor.y*10000000);
+      camera_object_quat_z=STATIC_CAST_TO_INT(source_object->Qor.z*10000000);
+      camera_object_quat_w=STATIC_CAST_TO_INT(source_object->Qor.w*10000000);
 
-      camera_quat_x=(*ocb_ptr).object_list[2].Qor.x*10000000;
-      camera_quat_y=(*ocb_ptr).object_list[2].Qor.y*10000000;
-      camera_quat_z=(*ocb_ptr).object_list[2].Qor.z*10000000;
-      camera_quat_w=(*ocb_ptr).object_list[2].Qor.w*10000000;
+      camera_quat_x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[2].Qor.x*10000000);
+      camera_quat_y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[2].Qor.y*10000000);
+      camera_quat_z=STATIC_CAST_TO_INT((*ocb_ptr).object_list[2].Qor.z*10000000);
+      camera_quat_w=STATIC_CAST_TO_INT((*ocb_ptr).object_list[2].Qor.w*10000000);
 
     
     }
@@ -237,7 +240,7 @@ void run_flight_computations(int the_object)
 //       else
 //       {
         distance_to_target=get_distance_to_from(get_object_targetted(the_object),the_object);
-        debug_distance_to_target=distance_to_target;
+        debug_distance_to_target=STATIC_CAST_TO_INT(distance_to_target);
 
 //       }
        if(source_object->Dyn_OCB_control_data.last_distance_to_target < distance_to_target) sign =-1;
@@ -263,7 +266,7 @@ void run_flight_computations(int the_object)
        	(distance_to_target*ZEX_UNIT_SIZE_IN_METERS)/source_object->Dyn_OCB_control_data.current_relative_velocity;
 
 
-        time_to_targ=source_object->Dyn_OCB_control_data.time_to_target_in_secs_as_crow_flies;
+        time_to_targ=STATIC_CAST_TO_INT(source_object->Dyn_OCB_control_data.time_to_target_in_secs_as_crow_flies);
 	    
 		if (the_object==get_main_camera_object() &&
 		    source_object->Dyn_OCB_control_data.command_autopilot_engaged>AP_STEER	//AP is on, 1 is steer
@@ -922,9 +925,9 @@ end_steer:
      
      if(get_main_camera_object()==the_object)
      { 
-      debug_orcs_pitch=source_object->Dyn_OCB_control_data.ORCS_extern_pitch*1000;
-      debug_orcs_roll=source_object->Dyn_OCB_control_data.ORCS_extern_roll*1000;
-      debug_orcs_yaw=source_object->Dyn_OCB_control_data.ORCS_extern_yaw*1000;
+      debug_orcs_pitch=STATIC_CAST_TO_INT(source_object->Dyn_OCB_control_data.ORCS_extern_pitch*1000);
+      debug_orcs_roll=STATIC_CAST_TO_INT(source_object->Dyn_OCB_control_data.ORCS_extern_roll*1000);
+      debug_orcs_yaw=STATIC_CAST_TO_INT(source_object->Dyn_OCB_control_data.ORCS_extern_yaw*1000);
      }
      
  return;
@@ -1130,8 +1133,8 @@ source_object->Dyn_OCB_control_data.ORCS_thrust_down=0;
           
 		if (get_main_camera_object()==the_object)
 		{
-         debug_time_to_target=time_to_target;
-         debug_time_to_stop=time_to_stop;
+         debug_time_to_target=STATIC_CAST_TO_INT(time_to_target);
+         debug_time_to_stop=STATIC_CAST_TO_INT(time_to_stop);
         }
         
 // -----------------------------------------------------------------

@@ -1,5 +1,8 @@
 /*
  * $Log: Camera_control.c,v $
+ * Revision 1.2  2003/09/20 12:57:13  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:14  stu_c
  * First Imported.
  *
@@ -95,7 +98,7 @@ extern	DynObjectsFixedSize *ocb_ptr;
   camera_pos.y=-(*ocb_ptr).object_list[camera_object_slot].Oworldy;
  camera_pos.z=-(*ocb_ptr).object_list[camera_object_slot].Oworldz;
  //reset_angular_torque(2);
- camera_pan_force_debug=camera_pan_force;
+ camera_pan_force_debug=STATIC_CAST_TO_INT(camera_pan_force);
  
  if (camera_switched_view) camera_switched_view--;
 

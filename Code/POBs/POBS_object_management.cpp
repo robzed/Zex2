@@ -1557,7 +1557,7 @@ int gal_id;
 gal_id=get_galactic_id(dyn_slot);
 check_galactic_id_is_POBs_index(gal_id);
 
-return convert_to_palette(POBs_data[gal_id].red*255,POBs_data[gal_id].green*255,POBs_data[gal_id].blue*255);
+return convert_to_palette(STATIC_CAST_TO_INT(POBs_data[gal_id].red*255),STATIC_CAST_TO_INT(POBs_data[gal_id].green*255),STATIC_CAST_TO_INT(POBs_data[gal_id].blue*255));
 }
 
 
@@ -1920,11 +1920,11 @@ else if(to_sun > (1.8*AU))
     { /* further away is bad */
     to_sun -= 1.8 * AU;
     to_sun /= 0.3 * AU;
-    rating -= to_sun;
+    rating -= STATIC_CAST_TO_INT(to_sun);
     }
 
-rating += 2 * log10(POBs_data[gal_id].population );
-rating += 2 * log10(POBs_data[gal_id].population * 2);
+rating += STATIC_CAST_TO_INT(2 * log10(POBs_data[gal_id].population ));
+rating += STATIC_CAST_TO_INT(2 * log10(POBs_data[gal_id].population * 2));
 
 if(rating < 0) rating=0;
 if(rating > 100) rating=100;

@@ -1659,7 +1659,7 @@ OSErr MADGetMusicStatus( MADDriverRec *MDriver, long *fullTime, long *curTime)
 			if( i == MDriver->PL	&&
 				x == MDriver->PartitionReader)
 				{
-					*curTime = timeResult + ((float) (time * 125L * speed * 60L)) / ((float) (50L * finespeed));
+					*curTime = STATIC_CAST_TO_LONG(timeResult + ((float) (time * 125L * speed * 60L)) / ((float) (50L * finespeed)));
 				}
 			
 			for( y = 0; y <  MDriver->curMusic->header->numChn; y++)
@@ -1696,7 +1696,7 @@ OSErr MADGetMusicStatus( MADDriverRec *MDriver, long *fullTime, long *curTime)
 						if( i == MDriver->PL	&&
 								x == MDriver->PartitionReader)
 						{
-							*curTime = timeResult + ((float) (time * 125L * speed * 60L)) / ((float) (50L * finespeed));
+							*curTime = STATIC_CAST_TO_LONG(timeResult + ((float) (time * 125L * speed * 60L)) / ((float) (50L * finespeed)));
 						}
 					}
 				}
@@ -1706,7 +1706,7 @@ OSErr MADGetMusicStatus( MADDriverRec *MDriver, long *fullTime, long *curTime)
 	
 	timeResult += ((float) (time * 125L * speed * 60L)) / ((float) (50L * finespeed));
 	
-	*fullTime = timeResult;
+	*fullTime = STATIC_CAST_TO_LONG(timeResult);
 	
 	if( *curTime == -1) *curTime = *fullTime;
 	

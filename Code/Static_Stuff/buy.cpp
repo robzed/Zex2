@@ -1,6 +1,9 @@
 /*
-$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.2 2003/09/26 19:20:51 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.c,v 1.3 2003/09/27 08:53:04 robp Exp $
 $Log: buy.c,v $
+Revision 1.3  2003/09/27 08:53:04  robp
+Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+
 Revision 1.2  2003/09/26 19:20:51  robp
 Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 
@@ -839,7 +842,7 @@ ZRGBForeColor(&rgbBlue);
      //if fuel or hull
      if (stock_item_id==FUEL)
       {
-        needed_fuel=180-ship_items[KNORMAL_FUEL_TANK].value1;
+        needed_fuel=STATIC_CAST_TO_INT(180-ship_items[KNORMAL_FUEL_TANK].value1);
         if (needed_fuel>ship_stock[stock_item_id].quantity) needed_fuel=ship_stock[stock_item_id].quantity;
         
         buyers_price=do_trading_computer
@@ -862,8 +865,8 @@ ZRGBForeColor(&rgbBlue);
      {
           if (stock_item_id==FUEL)
       {
-        buyers_price=ship_stock[stock_item_id].actual_price
-                  *(180-ship_items[KNORMAL_FUEL_TANK].value1);
+        buyers_price=STATIC_CAST_TO_INT(ship_stock[stock_item_id].actual_price
+                  *(180-ship_items[KNORMAL_FUEL_TANK].value1));
       }
       else if (stock_item_id==HULL_REPAIR)
       {
@@ -1138,7 +1141,7 @@ ZRGBForeColor(&rgbBlue);
       fdiscount=.40;
       temp_price=temp_price-(temp_price*fdiscount);
       if (temp_price<1) temp_price=1;	//dont want credits!     
-      buyers_price=temp_price;
+      buyers_price=STATIC_CAST_TO_INT(temp_price);
      }
      
 
@@ -2076,7 +2079,7 @@ temp_price=actual_price;
       if (fdiscount>60) fdiscount=60;
       temp_price=temp_price-(temp_price*(fdiscount/100));
       if (temp_price<1) temp_price=1;	//dont want credits!     
-      return temp_price;
+      return STATIC_CAST_TO_INT(temp_price);
      }
      else
      return actual_price;
@@ -2370,7 +2373,7 @@ if (check_needed(stock_index))
   price=ship_stock[stock_index].actual_price;
   if (stock_index==FUEL)
   {
-  price=price*(180-ship_items[KNORMAL_FUEL_TANK].value1);
+  price=STATIC_CAST_TO_INT(price*(180-ship_items[KNORMAL_FUEL_TANK].value1));
   }
   else if (stock_index==HULL_REPAIR)
   {
@@ -2876,7 +2879,7 @@ for (i=0;i<NUMBER_OF_GOODS;i++)
    temp_price=ship_stock[i].basic_price;
 //   add_price=temp_price*(temp_credits/100);
 
-   ship_stock[i].actual_price=temp_price;
+   ship_stock[i].actual_price=STATIC_CAST_TO_INT(temp_price);
 //calc discount
 temp_quantity=ship_stock[i].quantity;
 
@@ -2919,7 +2922,7 @@ fprice=ship_stock[i].actual_price;
 discountc=fprice*(discount+fdiff);	//proces go up as difficulty increases
 
 fprice-=discountc;
-ship_stock[i].actual_price=fprice;
+ship_stock[i].actual_price=STATIC_CAST_TO_INT(fprice);
 
    ship_stock[i].temp_removed=0;
   }
@@ -3886,8 +3889,8 @@ manufacturer=commodity_array[i].MFR & 3;
     sell_price=(basic_price+cut)-bulk_discount;
     
     if (buy_price==sell_price) sell_price+=1;	//will happen
-    commodity_array[i].buy_price=buy_price;
-    commodity_array[i].sell_price=sell_price;
+    commodity_array[i].buy_price=STATIC_CAST_TO_INT(buy_price);
+    commodity_array[i].sell_price=STATIC_CAST_TO_INT(sell_price);
 
     
   }
@@ -4399,7 +4402,7 @@ rehaggle:	//err, a label!
 //     percent=buying_price/RangedRdm(30,60);	//between 40 and 60% off
 //     buying_price=buying_price-percent;
      
-     buyers_price=do_trading_computer(buying_price, commodity_id);
+     buyers_price=do_trading_computer(STATIC_CAST_TO_INT(buying_price), commodity_id);
 
      ZMoveTo (200+off_640_x,220+off_480_y);
 	     ZDrawString ("\pTrading Computer gets a price of ");
@@ -4414,7 +4417,7 @@ rehaggle:	//err, a label!
       fdiscount=.40;
      temp_price=temp_price-(temp_price*fdiscount);
       if (temp_price<1) temp_price=1;	//dont want credits!     
-      buyers_price=temp_price;
+      buyers_price=STATIC_CAST_TO_INT(temp_price);
     }
      
 

@@ -1,5 +1,8 @@
 /*
 // $Log: inventory.c,v $
+// Revision 1.3  2003/09/26 19:20:48  robp
+// Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+//
 // Revision 1.2  2003/09/20 12:57:14  robp
 // Removed nested comments
 //
@@ -481,7 +484,7 @@ for (i=0;i<KLAST;i++)
        else
        if(ship_items[i].modifier==5) ZDrawString ("\pType 5. ");
 
-       NumToString(ship_items[KSHIELDS].value1/10,number_string);
+       NumToString(STATIC_CAST_TO_LONG(ship_items[KSHIELDS].value1/10),number_string);
        ZDrawString (number_string);
        ZDrawString ("\p%");
        
@@ -547,7 +550,7 @@ for (i=0;i<KLAST;i++)
 
    if (i==KNORMAL_FUEL_TANK)
      {
-       NumToString(ship_items[KNORMAL_FUEL_TANK].value1,number_string);
+       NumToString(STATIC_CAST_TO_LONG(ship_items[KNORMAL_FUEL_TANK].value1),number_string);
        ZDrawString (number_string);
        ZDrawString ("\p tonnes.");
      }
@@ -810,7 +813,7 @@ for (i=0;i<KLAST;i++)
        else
        if(ship_items[i].modifier==5) ZDrawString ("\pType 5. ");
 
-       NumToString(ship_items[KSHIELDS].value1/10,number_string);
+       NumToString(STATIC_CAST_TO_LONG(ship_items[KSHIELDS].value1/10),number_string);
        ZDrawString (number_string);
        ZDrawString ("\p%");
        
@@ -876,7 +879,7 @@ for (i=0;i<KLAST;i++)
 
    if (i==KNORMAL_FUEL_TANK)
      {
-       NumToString(ship_items[KNORMAL_FUEL_TANK].value1,number_string);
+       NumToString(STATIC_CAST_TO_LONG(ship_items[KNORMAL_FUEL_TANK].value1),number_string);
        ZDrawString (number_string);
        ZDrawString ("\p tonnes.");
      }

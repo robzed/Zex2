@@ -140,7 +140,7 @@ long DoVolPanning256( short whichChannel, Channel *ch, MADDriverRec *intDriver, 
 	}
 	else volFade = 32767L;
 	
-	temp = ( (float) ch->vol * (float) volEnv * (float) volFade) /((float)( 16L*32767L));
+	temp = STATIC_CAST_TO_LONG(( (float) ch->vol * (float) volEnv * (float) volFade) /((float)( 16L*32767L)));
 	
 	if( !intDriver->Active[ ch->TrackID]) return 0;
 	
@@ -386,7 +386,7 @@ void ProcessEnvelope( Channel *ch, MADDriverRec *intDriver, Boolean Recurrent)
 				basePeriod = GetOldPeriod( 48 + curData->relNote, ch->fineTune, intDriver);
 			}
 			
-			v = InterpolateEnv( p, &curIns->volEnv[a], &curIns->volEnv[b]);
+			v = InterpolateEnv( STATIC_CAST_TO_LONG(p), &curIns->volEnv[a], &curIns->volEnv[b]);
 			
 			if((curIns->volType & EFSUSTAIN) && ch->KeyOn && a==curIns->volSus && p==curIns->volEnv[a].pos)
 			{
@@ -507,7 +507,7 @@ void ProcessPanning( Channel *ch, MADDriverRec *intDriver, Boolean Recurrent)
 				basePeriod = GetOldPeriod( 48 + curData->relNote, ch->fineTune, intDriver);
 			}
 			
-			v = InterpolateEnv( pp, &curIns->pannEnv[ aa], &curIns->pannEnv[ bb]);
+			v = InterpolateEnv( STATIC_CAST_TO_LONG(pp), &curIns->pannEnv[ aa], &curIns->pannEnv[ bb]);
 
 			if( (curIns->pannType & EFNOTE)) pp += basePeriod / (float) ch->period;
 			else pp++;

@@ -1,6 +1,9 @@
 //insert object
 /*
  * $Log: insert\040object.c,v $
+ * Revision 1.2  2003/09/20 12:57:04  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:01  stu_c
  * First Imported.
  *
@@ -520,9 +523,9 @@ for (i=0;i<number_of_connections;i++)
 {
 int temp_red, temp_green, temp_blue;
   
-  temp_red=connections[i].colour.red*65535.0;
-  temp_green=connections[i].colour.green*65535.0;
-  temp_blue=connections[i].colour.blue*65535.0;
+  temp_red=STATIC_CAST_TO_INT(connections[i].colour.red*65535.0);
+  temp_green=STATIC_CAST_TO_INT(connections[i].colour.green*65535.0);
+  temp_blue=STATIC_CAST_TO_INT(connections[i].colour.blue*65535.0);
   
   test_poly.Prgb.red=temp_red;
   test_poly.Prgb.green=temp_green;

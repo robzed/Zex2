@@ -2,6 +2,9 @@
 //drawing.c
 /*
  * $Log: drawing.c,v $
+ * Revision 1.5  2003/09/27 09:00:29  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.4  2003/09/26 19:20:46  robp
  * Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
  *
@@ -455,7 +458,7 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
    fpoly_colour_g=ocb_ptr->object_list[poly_owner].blobbed_colour_green;
    fpoly_colour_b=ocb_ptr->object_list[poly_owner].blobbed_colour_blue;
 //     fpoly_colour_r=fpoly_colour_g=fpoly_colour_b=1;	  //0-1
-     OGL_plot_rgb(clipped_input_ptr->screen_pts[0].x, clipped_input_ptr->screen_pts[0].y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
+     OGL_plot_rgb(STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y), fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
    }
    else
    if(clipped_input_ptr->polyflags&PLANET_BIT)	  //optimised dust and blobbed planets
@@ -470,11 +473,11 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
    fpoly_colour_g=ocb_ptr->object_list[poly_owner].blobbed_colour_green;
    fpoly_colour_b=ocb_ptr->object_list[poly_owner].blobbed_colour_blue;
 
-     OGL_line_rgb(clipped_input_ptr->screen_pts[0].x, clipped_input_ptr->screen_pts[0].y-1,clipped_input_ptr->screen_pts[0].x+2, clipped_input_ptr->screen_pts[0].y-1,
+     OGL_line_rgb(STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y-1),STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x+2), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y-1),
                   fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
-     OGL_line_rgb(clipped_input_ptr->screen_pts[0].x-1, clipped_input_ptr->screen_pts[0].y,clipped_input_ptr->screen_pts[0].x+3, clipped_input_ptr->screen_pts[0].y,
+     OGL_line_rgb(STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x-1), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y),STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x+3), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y),
                   fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
-     OGL_line_rgb(clipped_input_ptr->screen_pts[0].x, clipped_input_ptr->screen_pts[0].y+1,clipped_input_ptr->screen_pts[0].x+2, clipped_input_ptr->screen_pts[0].y+1,
+     OGL_line_rgb(STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y+1),STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x+2), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y+1),
                   fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
 
 //draw planet name - 140102
@@ -485,13 +488,13 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
 			 
 			 if (monitor_w-clipped_input_ptr->screen_pts[0].x>100)
 			 {
-			             SplatText_Small_rgb(temp_name_str,clipped_input_ptr->screen_pts[0].x+7, clipped_input_ptr->screen_pts[0].y+str_y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
+			             SplatText_Small_rgb(temp_name_str,STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x+7), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y+str_y), fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
              }
 			 else
              {
 						 str_len*=7;
 						 
-			 			 SplatText_Small_rgb(temp_name_str,clipped_input_ptr->screen_pts[0].x-str_len, clipped_input_ptr->screen_pts[0].y+str_y, fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
+			 			 SplatText_Small_rgb(temp_name_str,STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x-str_len), STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y+str_y), fpoly_colour_r, fpoly_colour_g, fpoly_colour_b);
 			 }     
    }
    else
@@ -513,8 +516,8 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       point_v=clipped_input_ptr->texture_pts[0].v;
       point_l=clipped_input_ptr->Pvertex_light[0];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[0].x; tpoint_list->y=clipped_input_ptr->screen_pts[0].y; 
-      tpoint_list->z=clipped_input_ptr->vertices[0].z; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y); 
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[0].z); 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
       tpoint_list->l=point_l;
       tpoint_list++;
@@ -524,8 +527,8 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       point_v=clipped_input_ptr->texture_pts[1].v;
       point_l=clipped_input_ptr->Pvertex_light[1];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[1].x; tpoint_list->y=clipped_input_ptr->screen_pts[1].y;
-      tpoint_list->z=clipped_input_ptr->vertices[1].z; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].y);
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[1].z); 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
 //      tpoint_list->u=point_u; tpoint_list->v=point_v;
       tpoint_list->l=point_l;
@@ -538,8 +541,8 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       point_v=clipped_input_ptr->texture_pts[2].v;
       point_l=clipped_input_ptr->Pvertex_light[2];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[2].x; tpoint_list->y=clipped_input_ptr->screen_pts[2].y; 
-      tpoint_list->z=clipped_input_ptr->vertices[2].z; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].y); 
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[2].z); 
 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
       tpoint_list->l=point_l;
@@ -552,8 +555,8 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       point_v=clipped_input_ptr->texture_pts[3].v;
       point_l=clipped_input_ptr->Pvertex_light[3];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[3].x; tpoint_list->y=clipped_input_ptr->screen_pts[3].y; 
-      tpoint_list->z=clipped_input_ptr->vertices[3].z; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].y); 
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[3].z); 
 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
       tpoint_list->l=point_l;
@@ -622,20 +625,20 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       
       point_u=clipped_input_ptr->texture_pts[0].u;
       point_v=clipped_input_ptr->texture_pts[0].v;
-      tpoint_list->x=clipped_input_ptr->screen_pts[0].x; tpoint_list->y=clipped_input_ptr->screen_pts[0].y; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y); 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
       tpoint_list++;
       
       point_u=clipped_input_ptr->texture_pts[1].u;
       point_v=clipped_input_ptr->texture_pts[1].v;
-      tpoint_list->x=clipped_input_ptr->screen_pts[1].x; tpoint_list->y=clipped_input_ptr->screen_pts[1].y;
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].y);
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
       tpoint_list++;
       
       point_u=clipped_input_ptr->texture_pts[2].u;
       point_v=clipped_input_ptr->texture_pts[2].v;
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[2].x; tpoint_list->y=clipped_input_ptr->screen_pts[2].y; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].y); 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
 
       tpoint_list++;
@@ -645,7 +648,7 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       point_u=clipped_input_ptr->texture_pts[3].u;
       point_v=clipped_input_ptr->texture_pts[3].v;
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[3].x; tpoint_list->y=clipped_input_ptr->screen_pts[3].y; 
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].y); 
       tpoint_list->u=point_u<<16; tpoint_list->v=point_v<<16;
 
       tpoint_list++;
@@ -779,22 +782,22 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
            tpoint_list=tpoints;
          point_l=clipped_input_ptr->Pvertex_light[0];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[0].x; tpoint_list->y=clipped_input_ptr->screen_pts[0].y; 
-      tpoint_list->z=clipped_input_ptr->vertices[0].z;
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y); 
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[0].z);
       tpoint_list->l=point_l;	//light value
 
       tpoint_list++;
          point_l=clipped_input_ptr->Pvertex_light[1];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[1].x; tpoint_list->y=clipped_input_ptr->screen_pts[1].y;
-      tpoint_list->z=clipped_input_ptr->vertices[1].z;
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].y);
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[1].z);
       tpoint_list->l=point_l;
 
       tpoint_list++;
       point_l=clipped_input_ptr->Pvertex_light[2];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[2].x; tpoint_list->y=clipped_input_ptr->screen_pts[2].y; 
-      tpoint_list->z=clipped_input_ptr->vertices[2].z;
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].y); 
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[2].z);
       tpoint_list->l=point_l;
 
       tpoint_list++;
@@ -803,8 +806,8 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
       {
       point_l=clipped_input_ptr->Pvertex_light[3];
 
-      tpoint_list->x=clipped_input_ptr->screen_pts[3].x; tpoint_list->y=clipped_input_ptr->screen_pts[3].y; 
-      tpoint_list->z=clipped_input_ptr->vertices[3].z;
+      tpoint_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].x); tpoint_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].y); 
+      tpoint_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[3].z);
       tpoint_list->l=point_l;
 
       tpoint_list++;
@@ -836,7 +839,7 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
           }
        if(dmf_flag)
        {
-        translucent=translucency;
+        translucent=STATIC_CAST_TO_INT(translucency);
        }
        
        translucent=0;
@@ -894,12 +897,12 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
 //we need to get these in the range 1..0
 
       point_list=points;
-      point_list->x=clipped_input_ptr->screen_pts[0].x;  point_list->y=clipped_input_ptr->screen_pts[0].y; point_list->z=clipped_input_ptr->vertices[0].z; point_list++;
-      point_list->x=clipped_input_ptr->screen_pts[1].x;  point_list->y=clipped_input_ptr->screen_pts[1].y; point_list->z=clipped_input_ptr->vertices[1].z; point_list++;
-      point_list->x=clipped_input_ptr->screen_pts[2].x;  point_list->y=clipped_input_ptr->screen_pts[2].y; point_list->z=clipped_input_ptr->vertices[2].z; point_list++;
+      point_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].x);  point_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[0].y); point_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[0].z); point_list++;
+      point_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].x);  point_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[1].y); point_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[1].z); point_list++;
+      point_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].x);  point_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[2].y); point_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[2].z); point_list++;
       if(clipped_input_ptr->number_of_verts==4)
       {
-      point_list->x=clipped_input_ptr->screen_pts[3].x;  point_list->y=clipped_input_ptr->screen_pts[3].y; point_list->z=clipped_input_ptr->vertices[3].z; point_list++;
+      point_list->x=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].x);  point_list->y=STATIC_CAST_TO_INT(clipped_input_ptr->screen_pts[3].y); point_list->z=STATIC_CAST_TO_INT(clipped_input_ptr->vertices[3].z); point_list++;
       }
       point_list=points;
 

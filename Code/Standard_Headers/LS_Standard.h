@@ -44,6 +44,22 @@ typedef bool BOOL;
 typedef char BOOL;
 #endif
 
+#ifdef __cplusplus
+  #define STATIC_CAST_TO_INT(x) static_cast<int>(x)
+  #define STATIC_CAST_TO_UINT(x) static_cast<unsigned int>(x)
+  #define STATIC_CAST_TO_LONG(x) static_cast<long>(x)
+
+// for testing - remove the casts
+//  #define STATIC_CAST_TO_INT(x) (x)
+//  #define STATIC_CAST_TO_UINT(x) (x)
+//  #define STATIC_CAST_TO_LONG(x) (x)
+#else
+  #define STATIC_CAST_TO_INT(x) (int)(x)
+  #define STATIC_CAST_TO_UINT(x) (unsigned int)(x)
+  #define STATIC_CAST_TO_LONG(x) (long)(x)
+#endif
+
+
 // this is the output channel for printf
 #define OUTPUT_FP stderr		// this was stderr in SDL documentation
 

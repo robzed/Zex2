@@ -24,6 +24,9 @@
 // *
 /*
  * $Log: dlp_explosions.c,v $
+ * Revision 1.2  2003/09/20 12:57:02  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:19  stu_c
  * First Imported.
  *
@@ -482,13 +485,13 @@ sin_val=COS(rotation);
 	for (count=0; count<8; count++)
 	  {	
 	  xc1=(*(exp_pix)); yc1=(*(exp_pix+1)); xc2=(*(exp_pix+3)); yc2=(*(exp_pix+4)); xc3=(*(exp_pix+6)); yc3=(*(exp_pix+7));
-	  xs1=sin_val*xc1; ys1=sin_val*yc1;  xs2=sin_val*xc2; ys2=sin_val*yc2;  xs3=sin_val*xc3; ys3=sin_val*yc3;
-	  xc1=cos_val*xc1; yc1=cos_val*yc1;  xc2=cos_val*xc2; yc2=cos_val*yc2;  xc3=cos_val*xc3; yc3=cos_val*yc3;
+	  xs1=STATIC_CAST_TO_INT(sin_val*xc1); ys1=STATIC_CAST_TO_INT(sin_val*yc1);  xs2=STATIC_CAST_TO_INT(sin_val*xc2); ys2=STATIC_CAST_TO_INT(sin_val*yc2);  xs3=STATIC_CAST_TO_INT(sin_val*xc3); ys3=STATIC_CAST_TO_INT(sin_val*yc3);
+	  xc1=STATIC_CAST_TO_INT(cos_val*xc1); yc1=STATIC_CAST_TO_INT(cos_val*yc1);  xc2=STATIC_CAST_TO_INT(cos_val*xc2); yc2=STATIC_CAST_TO_INT(cos_val*yc2);  xc3=STATIC_CAST_TO_INT(cos_val*xc3); yc3=STATIC_CAST_TO_INT(cos_val*yc3);
 	  x1=xc1-ys1; y1=xs1+yc1; x2=xc2-ys2; y2=xs2+yc2; x3=xc3-ys3; y3=xs3+yc3;
 	  
-	  x1*=frame_key2; y1*=frame_key2;
-	  x2*=frame_key2; y2*=frame_key2;
-	  x3*=frame_key2; y3*=frame_key2;
+	  x1=STATIC_CAST_TO_INT(x1*frame_key2); y1=STATIC_CAST_TO_INT(y1*frame_key2);
+	  x2=STATIC_CAST_TO_INT(x2*frame_key2); y2=STATIC_CAST_TO_INT(y2*frame_key2);
+	  x3=STATIC_CAST_TO_INT(x3*frame_key2); y3=STATIC_CAST_TO_INT(y3*frame_key2);
 	  
 	  plot_polys(x1+x,y1+y,top_brite,x2+x,y2+y,bot_brite,x3+x,y3+y,bot_brite,r, g, b);
 	  exp_pix+=9;

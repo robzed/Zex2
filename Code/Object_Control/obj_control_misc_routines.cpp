@@ -1,5 +1,8 @@
 /*
  * $Log: object_control_misc_routines.c,v $
+ * Revision 1.2  2003/09/20 12:57:06  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:07  stu_c
  * First Imported.
  *
@@ -399,7 +402,8 @@ void clear_pb(load_dyn_object_pb* the_pb)
  the_pb->attack_mode=0;
  the_pb->parent=-1;
  
- the_pb->shield_value=the_pb->mass=0;
+ the_pb->shield_value=0;
+ the_pb->mass=0;
  the_pb->dq=0;
  the_pb->no_trivial_rejection=0;
  the_pb->object_category=0;

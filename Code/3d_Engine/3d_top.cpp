@@ -1,6 +1,9 @@
 //3d_top.c
 /*
 $Log: 3d_top.c,v $
+Revision 1.1.1.1  2003/09/05 22:35:09  stu_c
+First Imported.
+
 Revision 1.36  2002/09/08 02:11:36  stu_c
 Precompiled header adjustments
 
@@ -1233,7 +1236,7 @@ while (active_object_count<dynamic_object_index)
 		//black level clamping
 		if (light_value<black_level) light_value=black_level;
 		
-        (*the_polys).Plight_value=light_value;
+        (*the_polys).Plight_value=STATIC_CAST_TO_INT(light_value);
     }
     else
     {
@@ -1264,7 +1267,7 @@ if ((p1.z>0 || p2.z>0 || p3.z>0)) any_point_in_front=TRUE;
 //calc poly lighting
 //looks like a lot of maths, but is comparable to rotating the surface normal (3 muls less actually!) 
 //Calc normal relative to camera
-    D=-p1.x*(p2.y*p3.z-p3.y*p2.z) - p2.x*(p3.y*p1.z-p1.y*p3.z) - p3.x*(p1.y*p2.z-p2.y*p1.z);
+    D=STATIC_CAST_TO_INT(-p1.x*(p2.y*p3.z-p3.y*p2.z) - p2.x*(p3.y*p1.z-p1.y*p3.z) - p3.x*(p1.y*p2.z-p2.y*p1.z));
 //check if poly is in frustum   
 
  #ifndef RIGHT_HANDED 
@@ -1569,11 +1572,11 @@ int binary_suns;		// currently binaries are only handled for lense FLARES not fo
          	//max distance is 320
          	fx=  abs_nobranch (screen_cent_x-sun_coord1.x);
          	fy= abs_nobranch  (screen_cent_y-sun_coord1.y);
-         	flare_radius=MINIMUM_FLARE_RADIUS+(light_dist1);
-         	flength=sqrt(fx*fx+fy*fy);
+         	flare_radius=STATIC_CAST_TO_INT(MINIMUM_FLARE_RADIUS+(light_dist1));
+         	flength=STATIC_CAST_TO_INT(sqrt(fx*fx+fy*fy));
          	ulength=flength;
          	if (ulength>flare_radius) ulength=flare_radius;
-                flare_brightness=light_dist1;	// *1.9; 	 //Adjust this line for general glare at distance
+                flare_brightness=STATIC_CAST_TO_INT(light_dist1);	// *1.9; 	 //Adjust this line for general glare at distance
                 //flare_brightness/=3;	//at max attenuation
 
         if ( sun_coord1.behind==0 )	//only draw frare if in front
@@ -1581,7 +1584,7 @@ int binary_suns;		// currently binaries are only handled for lense FLARES not fo
         	if (light_dist1>4)
         	{
         	//calc sun center
-        	add_to_dlp(DRAW_OUTER_FLARE,sun_coord1.x, sun_coord1.y, light_dist1, 1,0,0,0,0,0);
+        	add_to_dlp(DRAW_OUTER_FLARE,sun_coord1.x, sun_coord1.y, STATIC_CAST_TO_INT(light_dist1), 1,0,0,0,0,0);
          	}
          	flare_brightness+=FLARE_STEPS-(ulength/(flare_radius/FLARE_STEPS));	//adjust this line for glare at angle
          	
@@ -1596,7 +1599,7 @@ if(binary_suns)
         	if (light_dist2>4)
         	{
         	//calc sun center
-        	add_to_dlp(DRAW_OUTER_FLARE,sun_coord2.x, sun_coord2.y, light_dist2, 1,0,0,0,0,0);
+        	add_to_dlp(DRAW_OUTER_FLARE,sun_coord2.x, sun_coord2.y, STATIC_CAST_TO_INT(light_dist2), 1,0,0,0,0,0);
          	}
 //         	flare_brightness+=FLARE_STEPS-(ulength/(flare_radius/FLARE_STEPS));	//adjust this line for glare at angle
          	
@@ -1988,7 +1991,7 @@ while (in_poly!=0)
          
          //switch z buffer on at poly #                                                 
          clipped_polys_drawing_info.switch_zbuffer_on_at_poly_number=zbuff_on_poly;
-         zbuffer_divisor=clipped_polys_drawing_info.z_divisor_for_zbuffer;
+         zbuffer_divisor=STATIC_CAST_TO_INT(clipped_polys_drawing_info.z_divisor_for_zbuffer);
          
         }
 
@@ -2442,8 +2445,8 @@ else
  
 pdiv=depth_of_field;
  //{
-  return_val.x=center_x+(x*pdiv/z);
-  return_val.y=center_y-(y*pdiv/z);
+  return_val.x=STATIC_CAST_TO_INT(center_x+(x*pdiv/z));
+  return_val.y=STATIC_CAST_TO_INT(center_y-(y*pdiv/z));
  //}
  //else
  //{
@@ -2469,8 +2472,8 @@ _2Dp return_val;
 
 pdiv=depth_of_field;
  //{
-  return_val.x=center_x+(x*pdiv/z);
-  return_val.y=center_y-(y*pdiv/z);
+  return_val.x=STATIC_CAST_TO_INT(center_x+(x*pdiv/z));
+  return_val.y=STATIC_CAST_TO_INT(center_y-(y*pdiv/z));
      if (z<0) return_val.behind=1;
      else return_val.behind=0;
 

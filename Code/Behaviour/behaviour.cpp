@@ -186,10 +186,10 @@ current_stack_pos_ptr+=object_ptr->Dyn_OCB_control_data.BSTACK_ptr; //right plac
 *current_stack_pos_ptr=object_ptr->Dyn_OCB_control_data.control_use_5; current_stack_pos_ptr++;
 *current_stack_pos_ptr=object_ptr->Dyn_OCB_control_data.control_use_6; current_stack_pos_ptr++;
 
-*current_stack_pos_ptr=object_ptr->Dyn_OCB_control_data.control_use_1_float; current_stack_pos_ptr++;
-*current_stack_pos_ptr=object_ptr->Dyn_OCB_control_data.control_use_2_float; current_stack_pos_ptr++;
-*current_stack_pos_ptr=object_ptr->Dyn_OCB_control_data.control_use_3_float; current_stack_pos_ptr++;
-*current_stack_pos_ptr=object_ptr->Dyn_OCB_control_data.control_use_4_float; current_stack_pos_ptr++;
+*current_stack_pos_ptr=STATIC_CAST_TO_INT(object_ptr->Dyn_OCB_control_data.control_use_1_float); current_stack_pos_ptr++;
+*current_stack_pos_ptr=STATIC_CAST_TO_INT(object_ptr->Dyn_OCB_control_data.control_use_2_float); current_stack_pos_ptr++;
+*current_stack_pos_ptr=STATIC_CAST_TO_INT(object_ptr->Dyn_OCB_control_data.control_use_3_float); current_stack_pos_ptr++;
+*current_stack_pos_ptr=STATIC_CAST_TO_INT(object_ptr->Dyn_OCB_control_data.control_use_4_float); current_stack_pos_ptr++;
 object_ptr->Dyn_OCB_control_data.BSTACK_ptr+=11;
 
 //Clear current control vars

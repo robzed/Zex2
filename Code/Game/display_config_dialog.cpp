@@ -1328,10 +1328,10 @@ for(screen=0; screen<number_of_screens; screen++)
   int top, left, bottom, right;
   
   // transform these into window sized coordinates
-  top =    ((active_screen_coords[screen].top    - center_y) * scale) + SCREEN_WINDOW_Y_CENTER;
-  left =   ((active_screen_coords[screen].left   - center_x) * scale) + SCREEN_WINDOW_X_CENTER;
-  bottom = ((active_screen_coords[screen].bottom - center_y) * scale) + SCREEN_WINDOW_Y_CENTER;
-  right =  ((active_screen_coords[screen].right  - center_x) * scale) + SCREEN_WINDOW_X_CENTER;
+  top =    STATIC_CAST_TO_INT(((active_screen_coords[screen].top    - center_y) * scale) + SCREEN_WINDOW_Y_CENTER);
+  left =   STATIC_CAST_TO_INT(((active_screen_coords[screen].left   - center_x) * scale) + SCREEN_WINDOW_X_CENTER);
+  bottom = STATIC_CAST_TO_INT(((active_screen_coords[screen].bottom - center_y) * scale) + SCREEN_WINDOW_Y_CENTER);
+  right =  STATIC_CAST_TO_INT(((active_screen_coords[screen].right  - center_x) * scale) + SCREEN_WINDOW_X_CENTER);
   active_draw_coords[screen].top=top;
   active_draw_coords[screen].left=left;
   active_draw_coords[screen].bottom=bottom;

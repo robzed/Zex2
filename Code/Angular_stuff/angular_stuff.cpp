@@ -2,6 +2,9 @@
 //SB/Lightsoft Apr 99
 /*
  * $Log: angular_stuff.c,v $
+ * Revision 1.2  2003/09/20 12:57:07  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:12  stu_c
  * First Imported.
  *
@@ -156,7 +159,7 @@ float zex_wx,zex_wy,obj_wx,obj_wy;
   obj_wx=(*ocb_ptr).object_list[from_object].Oworldx;
   obj_wy=(*ocb_ptr).object_list[from_object].Oworldy;
 
-  return get_angle_to_from(zex_wx,zex_wy,obj_wx,obj_wy);
+  return get_angle_to_from(STATIC_CAST_TO_INT(zex_wx),STATIC_CAST_TO_INT(zex_wy),STATIC_CAST_TO_INT(obj_wx),STATIC_CAST_TO_INT(obj_wy));
 }
 
 

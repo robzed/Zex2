@@ -31,6 +31,9 @@
 //Change to handle "smooth" polys (Gourad shaded)
 /*
  * $Log: MeshToZex.c,v $
+ * Revision 1.2  2003/09/20 12:57:05  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:52  stu_c
  * First Imported.
  *
@@ -166,14 +169,14 @@ word_len=get_word(the_word,&the_line[line_pos]); //version major
 ix=0;
 str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
 dectof_result=Zconvert_to_float (the_word);
-version=dectof_result*10;
+version=STATIC_CAST_TO_INT(dectof_result*10);
 
 line_pos+=word_len; //next word
 word_len=get_word(the_word,&the_line[line_pos]); //version minor
 ix=0;
 str2dec(the_word,&ix,&my_dec,&vp);	//convert from string to float
 dectof_result=Zconvert_to_float (the_word);
-version+=dectof_result;
+version+=STATIC_CAST_TO_INT(dectof_result);
 
 line_pos+=word_len;
 
@@ -553,8 +556,8 @@ for (material=0;material<8;material++)
             if (px<0) px=0;
             if (px>BITMAP_SIZE-1) px=BITMAP_SIZE-1;
 
-            connections[connections_index].u=px;
-            connections[connections_index].v=py;
+            connections[connections_index].u=STATIC_CAST_TO_INT(px);
+            connections[connections_index].v=STATIC_CAST_TO_INT(py);
             connections[connections_index].type=TEXTURE;
             if(smoothing==1)
             {
@@ -613,8 +616,8 @@ for (material=0;material<8;material++)
             if (px<0) px=0;
             if (px>BITMAP_SIZE-1) px=BITMAP_SIZE-1;
 
-            connections[connections_index].u=px;
-            connections[connections_index].v=py;
+            connections[connections_index].u=STATIC_CAST_TO_INT(px);
+            connections[connections_index].v=STATIC_CAST_TO_INT(py);
             connections[connections_index].type=TEXTURE;
             if(smoothing==1)
             {
@@ -680,8 +683,8 @@ for (material=0;material<8;material++)
             if (px<0) px=0;
             else if (px>BITMAP_SIZE-1) px=BITMAP_SIZE-1;
 
-            connections[connections_index].u=px;
-            connections[connections_index].v=py;
+            connections[connections_index].u=STATIC_CAST_TO_INT(px);
+            connections[connections_index].v=STATIC_CAST_TO_INT(py);
             connections[connections_index].type=TEXTURE;
             if(smoothing==1)
             {

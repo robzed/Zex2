@@ -1,6 +1,9 @@
 //object control top
 /*
 $Log: object_control_top.c,v $
+Revision 1.3  2003/09/22 20:51:32  stu_c
+Zex:Weapons:Laser Bay temperature and overheat (in progress)
+
 Revision 1.2  2003/09/14 12:22:38  stu_c
 Zex: Combat: Added a call to run_npc_gen so we can monitor the player and introduce monsters when we think the time is right (hypertransport etc).
 
@@ -978,7 +981,7 @@ atmosphere_penetration=distance-(*ocb_ptr).object_list[the_planet].radius; //200
 atmosphere_penetration=atmosphere_penetration/atmosphere_depth;	//110000/10000=11
 if(atmosphere_penetration>1) atmosphere_penetration=1;
 
-temp_buffet=atmosphere_penetration*30000;	//runs 0 to 30000
+temp_buffet=STATIC_CAST_TO_INT(atmosphere_penetration*30000);	//runs 0 to 30000
 //ship buffet is reset at the start of every frame
 ship_buffet+=30000-temp_buffet;			//so 0 at top and 30000 at base
 

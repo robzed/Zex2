@@ -111,7 +111,7 @@ angle_of_view=angle;
 
 int get_angle_of_view(void)
 {
-return angle_of_view;
+return STATIC_CAST_TO_INT(angle_of_view);
 }
 
 

@@ -2,6 +2,9 @@
 //SB - Lightsoft SW 8/12/98
 /*
  * $Log: pictures.c,v $
+ * Revision 1.3  2003/09/20 12:56:56  robp
+ * Removed nested comments
+ *
  * Revision 1.2  2003/09/11 21:13:12  robp
  * Made a change so LF were consumed as whitespace when reading 3dmf files.
  *
@@ -738,8 +741,8 @@ start_pix=(char*)screenaddr+(y*screenwidth)+x;
 
 source_x_index_inc=1/magnification;	//index into source
 source_y_index_inc=1/magnification;
-dest_width=picture_w*magnification;	//how wide final picture is
-dest_h=picture_h*magnification;
+dest_width=STATIC_CAST_TO_INT(picture_w*magnification);	//how wide final picture is
+dest_h=STATIC_CAST_TO_INT(picture_h*magnification);
 actual_x=x-(dest_width-monitor_h)/2;
 actual_y=y-(dest_h-monitor_h)/2;
 actual_y+=y_correction;

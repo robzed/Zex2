@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /*
  * $Log: collision.c,v $
+ * Revision 1.3  2003/09/20 12:57:08  robp
+ * Removed nested comments
+ *
  * Revision 1.2  2003/09/16 20:55:38  stu_c
  * Zex: particles: Fix for control freeze if hit by gun particles.
  *
@@ -353,7 +356,7 @@ handle_collision_velocities(&pos_vector1, &the_object_ptr->abs_velocity_vector, 
 // now we apply this to the objects
         if(damage_each > 0)		// only apply if there IS damage (i.e. damage!=0) and no negative damage allowed!
           {
-          Cdamage_object(compare_object_ptr,damage_each);
+          Cdamage_object(compare_object_ptr,STATIC_CAST_TO_INT(damage_each));
 
           // old code
 	  //accel=(Vft2.x+Vft2.y+Vft2.z);
@@ -366,7 +369,7 @@ handle_collision_velocities(&pos_vector1, &the_object_ptr->abs_velocity_vector, 
              play_zsound(large_shield_sound, sound_low_pri, stereo1_chan, sound_vol_7);
           }
 
-          Cdamage_object(the_object_ptr,damage_each);
+          Cdamage_object(the_object_ptr,STATIC_CAST_TO_INT(damage_each));
           
           run_collision_processing(the_object_ptr, compare_object_ptr); //check for bullets, shields explosions etc
 
@@ -524,8 +527,8 @@ double post_dir_vel1, post_dir_vel2;	// magnitude of velocity in direction of im
     post_dir_vel2 = calc_vector_in_direction(vel_obj2, &UNIT2);
 
 // now calculate the change in velocities - this will be used in the collision calculations
-    *change_in_vel1 = abs(dir_vel1-post_dir_vel1);
-    *change_in_vel2 = abs(dir_vel2-post_dir_vel2);     
+    *change_in_vel1 = fabs(dir_vel1-post_dir_vel1);
+    *change_in_vel2 = fabs(dir_vel2-post_dir_vel2);     
     } // if actually going to collide
   else
     {

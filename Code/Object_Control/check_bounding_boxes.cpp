@@ -1,6 +1,9 @@
 //check_bounding_boxes
 /*
  * $Log: check_bounding_boxes.c,v $
+ * Revision 1.2  2003/09/20 12:57:13  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:59  stu_c
  * First Imported.
  *
@@ -57,44 +60,44 @@ obj2_rect.right=(*ocb_ptr).object_list[obj2].box_max_translated.x;
 //now walk across the top of obj1 bounding box
 //topleft =minx, maxy
 //topright = maxx,maxy
-p1.x=(*ocb_ptr).object_list[obj1].box_min_translated.x;
-p1.y=(*ocb_ptr).object_list[obj1].box_max_translated.y;
+p1.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.x);
+p1.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.y);
 
-p2.x=(*ocb_ptr).object_list[obj1].box_max_translated.x;
-p2.y=(*ocb_ptr).object_list[obj1].box_max_translated.y;
+p2.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.x);
+p2.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.y);
 
 if (walk_line_in_rect(p1,p2,obj2_rect)) return 1;
 
 //now walk across the bottom of obj1 bounding box
 //bottomleft =minx, miny
 //bottomright = maxx,miny
-p1.x=(*ocb_ptr).object_list[obj1].box_min_translated.x;
-p1.y=(*ocb_ptr).object_list[obj1].box_min_translated.y;
+p1.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.x);
+p1.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.y);
 
-p2.x=(*ocb_ptr).object_list[obj1].box_max_translated.x;
-p2.y=(*ocb_ptr).object_list[obj1].box_min_translated.y;
+p2.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.x);
+p2.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.y);
 
 if (walk_line_in_rect(p1,p2,obj2_rect)) return 1;
 
 //now walk down the right side of obj1 bounding box
 //topright =maxx, maxy
 //bottomright = maxx,miny
-p1.x=(*ocb_ptr).object_list[obj1].box_max_translated.x;
-p1.y=(*ocb_ptr).object_list[obj1].box_max_translated.y;
+p1.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.x);
+p1.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.y);
 
-p2.x=(*ocb_ptr).object_list[obj1].box_max_translated.x;
-p2.y=(*ocb_ptr).object_list[obj1].box_min_translated.y;
+p2.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.x);
+p2.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.y);
 
 if (walk_line_in_rect(p1,p2,obj2_rect)) return 1;
 
 //now walk down the left side of obj1 bounding box
 //topleft =minx, maxy
 //bottomleft = minx,miny
-p1.x=(*ocb_ptr).object_list[obj1].box_min_translated.x;
-p1.y=(*ocb_ptr).object_list[obj1].box_max_translated.y;
+p1.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.x);
+p1.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_max_translated.y);
 
-p2.x=(*ocb_ptr).object_list[obj1].box_min_translated.x;
-p2.y=(*ocb_ptr).object_list[obj1].box_min_translated.y;
+p2.x=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.x);
+p2.y=STATIC_CAST_TO_INT((*ocb_ptr).object_list[obj1].box_min_translated.y);
 
 if (walk_line_in_rect(p1,p2,obj2_rect)) return 1;
 

@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: Galaxy.c,v $
+ * Revision 1.3  2003/09/26 19:20:47  robp
+ * Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+ *
  * Revision 1.2  2003/09/20 12:56:58  robp
  * Removed nested comments
  *
@@ -2125,39 +2128,39 @@ register ZFObject * current_object_ptr;
 
    if (rand<65)
    {
-   red=colour*65535.0;
-   green=colour*65535.0;
-   blue=colour*65535.0;
+   red=STATIC_CAST_TO_INT(colour*65535.0);
+   green=STATIC_CAST_TO_INT(colour*65535.0);
+   blue=STATIC_CAST_TO_INT(colour*65535.0);
    }
    else
    if (rand<70)
    {	//red
-   red=colour*65535.0;
-   green=colour*55000.0;
-   blue=colour*55000.0;
+   red=STATIC_CAST_TO_INT(colour*65535.0);
+   green=STATIC_CAST_TO_INT(colour*55000.0);
+   blue=STATIC_CAST_TO_INT(colour*55000.0);
 
    }
    else
    if (rand<80)
    {	//blue
-   red=colour*55000.0;
-   green=colour*55000.0;
-   blue=colour*65535.0;
+   red=STATIC_CAST_TO_INT(colour*55000.0);
+   green=STATIC_CAST_TO_INT(colour*55000.0);
+   blue=STATIC_CAST_TO_INT(colour*65535.0);
 
    }
    else
    if (rand<98)
    {	//blue
-   red=colour*55000.0;
-   green=colour*55535.0;
-   blue=colour*65535.0;
+   red=STATIC_CAST_TO_INT(colour*55000.0);
+   green=STATIC_CAST_TO_INT(colour*55535.0);
+   blue=STATIC_CAST_TO_INT(colour*65535.0);
 
    }
    else
    {	//blue
-   red=colour*65535.0;
-   green=colour*45535.0;
-   blue=colour*60535.0;
+   red=STATIC_CAST_TO_INT(colour*65535.0);
+   green=STATIC_CAST_TO_INT(colour*45535.0);
+   blue=STATIC_CAST_TO_INT(colour*60535.0);
 
    }
 

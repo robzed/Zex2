@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: real_time.c,v $
+ * Revision 1.2  2003/09/20 12:57:00  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:13  stu_c
  * First Imported.
  *
@@ -520,7 +523,7 @@ if (time_to_check_salary<0)
    else MyDebugStr(__LINE__,"real_time.c"," check_sleep: Rank Fail");
    salary*=smult;
   //add and display salary
-   credits+=salary;
+   credits+=STATIC_CAST_TO_INT(salary);
   //copy salary_note to salary_string
   i=0;
   o=0;
@@ -536,7 +539,7 @@ if (time_to_check_salary<0)
     goto copy_note;
     }
   //now get the number of credits as a string
-    NumToString(salary,number_string);
+    NumToString(STATIC_CAST_TO_LONG(salary),number_string);
   //copy to salary_string
    n=number_string[0];
    m=0;
@@ -664,7 +667,7 @@ int time_to_add;
 
 remainder_handler+=time_in_secs;	// time in seconds from this frame, plus fraction we couldn't handle from last frame
 
-time_to_add=remainder_handler*60;	// integer number of 60ths that we can handle this frame
+time_to_add=STATIC_CAST_TO_INT(remainder_handler*60);	// integer number of 60ths that we can handle this frame
 
 remainder_handler=remainder_handler-(((double)time_to_add)/60.0);	// save fractional part we can't handle this frame, for next frame
 

@@ -6,6 +6,9 @@
 //
 /*
  * $Log: polyclip.c,v $
+ * Revision 1.3  2003/09/21 14:32:37  robp
+ * Corrected mistake in the nested comment book-in.
+ *
  * Revision 1.2  2003/09/20 12:57:06  robp
  * Removed nested comments
  *
@@ -446,9 +449,9 @@ if(edge<3)  // x axis clipping
   fraction_upline=( (float)(cut_point-x1) / (float) (x2-x1) );
 
   x1=cut_point;
-  y1+=(y2-y1)*fraction_upline;
-  u1+=(u2-u1)*fraction_upline;
-  v1+=(v2-v1)*fraction_upline;
+  y1+=STATIC_CAST_TO_INT((y2-y1)*fraction_upline);
+  u1+=STATIC_CAST_TO_INT((u2-u1)*fraction_upline);
+  v1+=STATIC_CAST_TO_INT((v2-v1)*fraction_upline);
   }
 else  // y axis clipping
   {
@@ -456,10 +459,10 @@ else  // y axis clipping
 
   fraction_upline=( (float) (cut_point-y1) / (float) (y2-y1) );
 
-  x1+=(x2-x1)*fraction_upline;
+  x1+=STATIC_CAST_TO_INT((x2-x1)*fraction_upline);
   y1=cut_point;
-  u1+=(u2-u1)*fraction_upline;
-  v1+=(v2-v1)*fraction_upline;
+  u1+=STATIC_CAST_TO_INT((u2-u1)*fraction_upline);
+  v1+=STATIC_CAST_TO_INT((v2-v1)*fraction_upline);
   }
 
 out->x=x1;

@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.c,v $
+// Revision 1.5  2003/09/26 19:20:49  robp
+// Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+//
 // Revision 1.4  2003/09/24 21:39:39  robp
 // More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
 //
@@ -1538,8 +1541,8 @@ pictbuffer=(LSRAW*)NewPtr(memsize);
     print_pict_scaled(pictbuffer,pict_x[scaling_factor],123,scaling_factor,1);
     else
     {
-    picture_x=x1+r*COS(y);
-    picture_y=y1+r*SIN(y);
+    picture_x=STATIC_CAST_TO_INT(x1+r*COS(y));
+    picture_y=STATIC_CAST_TO_INT(y1+r*SIN(y));
     print_pict_scaled(pictbuffer,picture_x,picture_y,scaling_factor,1);
     y+=y_inc;
     if (y>359)  { y-=360; }

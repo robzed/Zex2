@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: engines.c,v $
+Revision 1.3  2003/09/22 21:04:17  stu_c
+Zex: Weapons: Adjustments to temp rise and fall in laser bay. Rebuild required.
+
 Revision 1.2  2003/09/22 20:45:33  stu_c
 Zex:Weapons: laser bay temperature and overheat (in progress)
 
@@ -435,9 +438,9 @@ run_engine_sound(the_object);
 //for sim_pane
 if (get_main_camera_object()==the_object)
 {
- camera_object_total_fuel=source_object->Dyn_OCB_control_data.fuel_tank_value_in_KGS*100000000;
- camera_object_total_fuel_consumption=total_fuel_consumption*100000000;
- camera_object_orcs_fuel_consumption=orcs_cons*100000000;
+ camera_object_total_fuel=STATIC_CAST_TO_INT(source_object->Dyn_OCB_control_data.fuel_tank_value_in_KGS*100000000);
+ camera_object_total_fuel_consumption=STATIC_CAST_TO_INT(total_fuel_consumption*100000000);
+ camera_object_orcs_fuel_consumption=STATIC_CAST_TO_INT(orcs_cons*100000000);
 }
 set_all_thrusters_to_zero(the_object);
 
@@ -817,8 +820,8 @@ else
 if (get_main_camera_object()==object)
 {
  
-  camera_object_orcs_rot_fuel_consumption=ORCS_rot_fuel_consumption*100000000*STANDARD_FUEL_USAGE_PER_NEWTONSECOND_IN_KGS;
-  camera_object_orcs_lin_fuel_consumption=ORCS_lin_fuel_consumption*100000000*STANDARD_FUEL_USAGE_PER_NEWTONSECOND_IN_KGS;
+  camera_object_orcs_rot_fuel_consumption=STATIC_CAST_TO_INT(ORCS_rot_fuel_consumption*100000000*STANDARD_FUEL_USAGE_PER_NEWTONSECOND_IN_KGS);
+  camera_object_orcs_lin_fuel_consumption=STATIC_CAST_TO_INT(ORCS_lin_fuel_consumption*100000000*STANDARD_FUEL_USAGE_PER_NEWTONSECOND_IN_KGS);
 
 }
 ORCS_fuel_consumption=ORCS_lin_fuel_consumption+ORCS_rot_fuel_consumption;

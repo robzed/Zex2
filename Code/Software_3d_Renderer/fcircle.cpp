@@ -20,6 +20,9 @@
 // ***********************************************************************************
 /*
  * $Log: fcircle.c,v $
+ * Revision 1.2  2003/09/20 12:57:03  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:25  stu_c
  * First Imported.
  *
@@ -227,29 +230,29 @@ int tempx,tempy;
   
 // close size circle, further from center than effect location
 tempx=x-screen_x_center; tempy=y-screen_y_center;
-tempx=tempx*1.3; tempy=tempy*1.3;
+tempx=STATIC_CAST_TO_INT(tempx*1.3); tempy=STATIC_CAST_TO_INT(tempy*1.3);
 tempx=tempx+screen_x_center; tempy=tempy+screen_y_center;
 fcircle(tempx,tempy,size/3,231,MODE_TRANSPARENT);
 
 // close size circle, closer to center than effect location
 tempx=x-screen_x_center; tempy=y-screen_y_center;
-tempx=tempx*0.75; tempy=tempy*0.75;
+tempx=STATIC_CAST_TO_INT(tempx*0.75); tempy=STATIC_CAST_TO_INT(tempy*0.75);
 tempx=tempx+screen_x_center; tempy=tempy+screen_y_center;
 fcircle(tempx,tempy,size/4,141,MODE_TRANSPARENT);
 
 // further size circles
 tempx=x-screen_x_center; tempy=y-screen_y_center;
-tempx=tempx*1.4; tempy=tempy*1.4;
+tempx=STATIC_CAST_TO_INT(tempx*1.4); tempy=STATIC_CAST_TO_INT(tempy*1.4);
 tempx=screen_x_center-tempx; tempy=screen_y_center-tempy;
 fcircle(tempx,tempy,size/3,170,MODE_TRANSPARENT);
 
 tempx=x-screen_x_center; tempy=y-screen_y_center;
-tempx=tempx*0.4; tempy=tempy*0.4;
+tempx=STATIC_CAST_TO_INT(tempx*0.4); tempy=STATIC_CAST_TO_INT(tempy*0.4);
 tempx=screen_x_center-tempx; tempy=screen_y_center-tempy;
 fcircle(tempx,tempy,size/4,137,MODE_TRANSPARENT);
 
 tempx=x-screen_x_center; tempy=y-screen_y_center;
-tempx=tempx*0.5; tempy=tempy*0.5;
+tempx=STATIC_CAST_TO_INT(tempx*0.5); tempy=STATIC_CAST_TO_INT(tempy*0.5);
 tempx=screen_x_center-tempx; tempy=screen_y_center-tempy;
 fcircle(tempx,tempy,size/5,227,MODE_TRANSPARENT);
 
@@ -289,8 +292,8 @@ angle_incr=360/NUM_SIDES;
 
 while(angle<360)
   {
-  curr_x=(r*COS(angle))+x;
-  curr_y=(r*SIN(angle))+y;
+  curr_x=STATIC_CAST_TO_INT((r*COS(angle))+x);
+  curr_y=STATIC_CAST_TO_INT((r*SIN(angle))+y);
 
   strange_ogl_poly(x,y,last_x,last_y,curr_x,curr_y,red,green,blue,mode);
 
@@ -527,12 +530,12 @@ accumulator=0;							// accumulator of the lines to access the circle table
       width=*(circle_table_ptr+FIX_TO_I(accumulator));  // get value out of circle table
       width*=r;								// scale returned value
     
-      xstart=x-width; xend=x+width;
+      xstart=STATIC_CAST_TO_INT(x-width); xend=STATIC_CAST_TO_INT(x+width);
 											// clipping for x at each line
       width=*(circle_table_ptr+FIX_TO_I(accumulator));  // get value out of circle table
       width*=r;								// scale returned value
     
-      xstart=x-width; xend=x+width;
+      xstart=STATIC_CAST_TO_INT(x-width); xend=STATIC_CAST_TO_INT(x+width);
 											// clipping for x at each line
 	OGL_plot(xstart,ypos,colour+1);
 	OGL_plot(xstart+1,ypos,colour);
@@ -607,7 +610,7 @@ accumulator=0;							// accumulator of the lines to access the circle table
       width=*(circle_table_ptr+FIX_TO_I(accumulator));  // get value out of circle table
       width*=w/2;								// scale returned value
     
-      xstart=x-width; xend=x+width;
+      xstart=STATIC_CAST_TO_INT(x-width); xend=STATIC_CAST_TO_INT(x+width);
 	
      convert_to_rgb(colour, &red, &green, &blue);
      temp_r1=red;

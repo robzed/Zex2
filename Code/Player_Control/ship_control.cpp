@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
 // $Log: ship_control.c,v $
+// Revision 1.3  2003/09/22 20:41:23  stu_c
+// Zex: Weapons: laser bay temperature and overheat (in progress)
+//
 // Revision 1.2  2003/09/20 12:57:11  robp
 // Removed nested comments
 //
@@ -1505,7 +1508,7 @@ if (ship_items[KNORMAL_FUEL_TANK].value1>1 && ship_items[KSHIELDS].modifier>0) /
    shields_warning_timer--;
   } 
 
-(*ocb_ptr).object_list[0].Dyn_OCB_control_data.shield_value=ship_items[KSHIELDS].value1;
+(*ocb_ptr).object_list[0].Dyn_OCB_control_data.shield_value = STATIC_CAST_TO_INT(ship_items[KSHIELDS].value1);
 }	//end of shields
 
 

@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: 3dmf_import.c,v $
+Revision 1.2  2003/09/19 20:54:52  robp
+Removed items causing warnings.
+
 Revision 1.1.1.1  2003/09/05 22:35:51  stu_c
 First Imported.
 
@@ -517,15 +520,15 @@ post_process_trimeshes();	//fill in counts in trimesh array
  float coord;
  
  coord=vertices[connections[n].vertex].x;
- coord=abs_nobranch(coord);
+ coord=abs_nobranch(STATIC_CAST_TO_LONG(coord));
  if (coord > bounds_sphere) bounds_sphere=coord; 
 
  coord=vertices[connections[n].vertex].y;
- coord=abs_nobranch(coord);
+ coord=abs_nobranch(STATIC_CAST_TO_LONG(coord));
  if (coord > bounds_sphere) bounds_sphere=coord; 
 
  coord=vertices[connections[n].vertex].z;
- coord=abs_nobranch(coord);
+ coord=abs_nobranch(STATIC_CAST_TO_LONG(coord));
  if (coord > bounds_sphere) bounds_sphere=coord; 
 
  
@@ -578,13 +581,13 @@ post_process_trimeshes();	//fill in counts in trimesh array
      
      the_vertex=connections[n].vertex;
      t=uv_array[the_vertex].u;
-     connections[n].u=(128*t);
+     connections[n].u=STATIC_CAST_TO_INT((128*t));
           
 //     connections[n].v=128*(uv_array[connections[n].vertex].v);
 
      the_vertex=connections[n].vertex;
      t=uv_array[the_vertex].v;
-     connections[n].v=128-(128*t);
+     connections[n].v=STATIC_CAST_TO_INT(128-(128*t));
      } 
      else
      {
@@ -608,9 +611,9 @@ post_process_trimeshes();	//fill in counts in trimesh array
    
    if(min_u>127)
    {
-    connections[n].u-=min_u;
-    connections[n+1].u-=min_u;
-    connections[n+2].u-=min_u;
+    connections[n].u-=STATIC_CAST_TO_INT(min_u);
+    connections[n+1].u-=STATIC_CAST_TO_INT(min_u);
+    connections[n+2].u-=STATIC_CAST_TO_INT(min_u);
    }
 
 
@@ -621,9 +624,9 @@ post_process_trimeshes();	//fill in counts in trimesh array
    
    if(min_v>127)
    {
-   connections[n].v-=min_v;
-   connections[n+1].v-=min_v;
-   connections[n+2].v-=min_v;
+   connections[n].v-=STATIC_CAST_TO_INT(min_v);
+   connections[n+1].v-=STATIC_CAST_TO_INT(min_v);
+   connections[n+2].v-=STATIC_CAST_TO_INT(min_v);
    }
           
   }
@@ -862,29 +865,29 @@ current_num_points=numPoints;	//get current total number of points so we can add
    {
 
       phase|=READTRIHEADER;	//set that we've done the trimesh header
-      TMnumTriangles=str_to_num(the_word);	//convert from string to float
+      TMnumTriangles=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
       numTriangles+=TMnumTriangles;
         
       error=find_next_word(&source,the_word);	//get next word in the word and update source
       if(error) { report_error("import_3dmf: Number of Triangle Attributes expected.",object_loader_filename,674); }
-      numTrianglesAttributeTypes=str_to_num(the_word);	//convert from string to float
+      numTrianglesAttributeTypes=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
       
       error=find_next_word(&source,the_word);	//get next word in the word and update source
       if(error) { report_error("import_3dmf: Number of edges expected.",object_loader_filename,675);  } 
-      numEdges=str_to_num(the_word);	//convert from string to float
+      numEdges=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
   
       error=find_next_word(&source,the_word);	//get next word in the word and update source
       if(error) { report_error("import_3dmf: Number of Edge Attributes expected.",object_loader_filename,676);  }
-      numEdgeAttributeTypes=str_to_num(the_word);	//convert from string to float
+      numEdgeAttributeTypes=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
   
       error=find_next_word(&source,the_word);	//get next word in the word and update source
       if(error) { report_error("import_3dmf: Number of vertices expected.",object_loader_filename,677);  }
-      TMnumPoints=str_to_num(the_word);	//convert from string to float
+      TMnumPoints=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
       numPoints+=TMnumPoints;  
       
       error=find_next_word(&source,the_word);	//get next word in the word and update source
       if(error) { report_error("import_3dmf: Number of Vertex Attributes expected.",object_loader_filename,678);  }
-      numPointAttributeTypes+=str_to_num(the_word);	//convert from string to float
+      numPointAttributeTypes+=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
       
       if(find_eol(&source))	//skip any comments
       { report_error("import_3dmf: Unexpected End Of File after trimesh header.",object_loader_filename,679);  }
@@ -910,15 +913,15 @@ current_num_points=numPoints;	//get current total number of points so we can add
       connection_arrray[0]=str_to_num(the_word);	//convert from string to float
       connection_arrray[0]+=current_num_points;
 
-      connections[connections_index].vertex=connection_arrray[0];
+      connections[connections_index].vertex=STATIC_CAST_TO_INT(connection_arrray[0]);
       connections[connections_index].OGL_name=current_texture_count;	//save texture id
       connections_index++;
 
-      connections[connections_index].vertex=connection_arrray[1];
+      connections[connections_index].vertex=STATIC_CAST_TO_INT(connection_arrray[1]);
       connections[connections_index].OGL_name=current_texture_count;	//which is inc'd in pixmap/mipmap
       connections_index++;
       
-      connections[connections_index].vertex=connection_arrray[2];
+      connections[connections_index].vertex=STATIC_CAST_TO_INT(connection_arrray[2]);
       connections[connections_index].OGL_name=current_texture_count;      
       connections_index++;
       
@@ -986,7 +989,7 @@ float uf,vf;
 //check out the type of attribs, we don't need the normals, just UV
    error=find_next_word(&source,the_word);	//get next word in the word and update source
    if(error) { report_error("import_3dmf: Unexpected end of file in container.",object_loader_filename,702);  }
-   type=str_to_num(the_word);	//convert from string to float
+   type=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
    
    if(type==kQ3AttributeTypeNormal)
    {
@@ -1009,7 +1012,7 @@ float uf,vf;
    //get tri/edge/vertex selector
    error=find_next_word(&source,the_word);	//get next word in the word and update source
    if(error) { report_error("import_3dmf: Unexpected end of file in container.",object_loader_filename,704);  }
-   type=str_to_num(the_word);	//convert from string to float
+   type=STATIC_CAST_TO_INT(str_to_num(the_word));	//convert from string to float
    if(type!=2)  report_error("import_3dmf: Can only accept vertices with uv.",object_loader_filename,705);
    //skip position in array and flag
    if(find_eol(&source))	//skip any comments

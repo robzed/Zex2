@@ -327,11 +327,11 @@ void FFT8S( char* SData, long size, double *filter, MADDriverRec *intDriver, sho
 				
 				if( a+1 < powersize)
 				{
-					shiftAr[ i] = (EQInterpolate( (double) (i * EQPACKET*2) / (double) powersize, a, a+1, filter[ a], filter[ a+1]) * powersize) / (EQPACKET*2);
+					shiftAr[ i] = STATIC_CAST_TO_LONG((EQInterpolate( (double) (i * EQPACKET*2) / (double) powersize, a, a+1, filter[ a], filter[ a+1]) * powersize) / (EQPACKET*2));
 				}
 				else
 				{
-					shiftAr[ i] = (filter[ a] * powersize) / (EQPACKET*2);
+					shiftAr[ i] = STATIC_CAST_TO_LONG((filter[ a] * powersize) / (EQPACKET*2));
 				}
 				fDataCopy2[ i] = 0;
 			}
@@ -381,22 +381,22 @@ void FFT8S( char* SData, long size, double *filter, MADDriverRec *intDriver, sho
 		{
 			if( powersize*2 > size)
 			{
-				for( i = 0 ; i < size/2; i++) SData[ 2*i] = fDataCopy[ i+1];
+				for( i = 0 ; i < size/2; i++) SData[ 2*i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 			else
 			{
-				for( i = 0 ; i < powersize; i++) SData[ 2*i] = fDataCopy[ i+1];
+				for( i = 0 ; i < powersize; i++) SData[ 2*i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 		}
 		else				// MONO
 		{
 			if( powersize > size)
 			{
-				for( i = 0 ; i < size; i++) SData[ i] = fDataCopy[ i+1];
+				for( i = 0 ; i < size; i++) SData[ i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 			else
 			{
-				for( i = 0 ; i < powersize; i++) SData[ i] = fDataCopy[ i+1];
+				for( i = 0 ; i < powersize; i++) SData[ i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 		}
 		
@@ -531,7 +531,7 @@ void FFT16S( short* SData, long size, double *filter, MADDriverRec *intDriver, s
 				a = (i * EQPACKET*2) / powersize;
 				b = a+1;
 				
-				shiftAr[ i] = (EQInterpolate( (double) (i * EQPACKET*2) / (double) powersize, a, a+1, filter[ a], filter[ a+1]) * powersize) / (EQPACKET*2);
+				shiftAr[ i] = STATIC_CAST_TO_LONG((EQInterpolate( (double) (i * EQPACKET*2) / (double) powersize, a, a+1, filter[ a], filter[ a+1]) * powersize) / (EQPACKET*2));
 				fDataCopy2[ i] = 0;
 			}
 			
@@ -592,22 +592,22 @@ void FFT16S( short* SData, long size, double *filter, MADDriverRec *intDriver, s
 		{
 			if( powersize*2 > size)
 			{
-				for( i = 0 ; i < size/2; i++) SData[ 2*i] = fDataCopy[ i+1];
+				for( i = 0 ; i < size/2; i++) SData[ 2*i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 			else
 			{
-				for( i = 0 ; i < powersize; i++) SData[ 2*i] = fDataCopy[ i+1];
+				for( i = 0 ; i < powersize; i++) SData[ 2*i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 		}
 		else				// MONO
 		{
 			if( powersize > size)
 			{
-				for( i = 0 ; i < size; i++) SData[ i] = fDataCopy[ i+1];
+				for( i = 0 ; i < size; i++) SData[ i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 			else
 			{
-				for( i = 0 ; i < powersize; i++) SData[ i] = fDataCopy[ i+1];
+				for( i = 0 ; i < powersize; i++) SData[ i] = STATIC_CAST_TO_INT(fDataCopy[ i+1]);
 			}
 		}
 		

@@ -2,6 +2,9 @@
 
 /*
 $Log: zex_misc.c,v $
+Revision 1.3  2003/09/27 09:00:28  robp
+Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+
 Revision 1.2  2003/09/26 19:20:50  robp
 Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 
@@ -248,7 +251,7 @@ if (string_len!=0)
 	if (exp_part<0.0) exp_sign=-exp_sign;
 	exp_part=fabs(exp_part);
 	
-		e_multiplier=Zraise_by_10(fabs(exp_part));
+		e_multiplier=Zraise_by_10(STATIC_CAST_TO_INT(fabs(exp_part)));
 		if (exp_sign<0)
 		{
 		    e_multiplier=1/e_multiplier;
@@ -816,41 +819,41 @@ string[1]=0;
 return 1;
 
 
-millions: div=number/1000000;
+millions: div=STATIC_CAST_TO_UINT(number/1000000);
 number=number-(div*1000000);
 string[char_count]=div+'0';
 char_count++;
 
 
-hunthousands: div=number/100000;
+hunthousands: div=STATIC_CAST_TO_UINT(number/100000);
 number=number-(div*100000);
 string[char_count]=div+'0';
 char_count++;
 
 
-tenthousands: div=number/10000;
+tenthousands: div=STATIC_CAST_TO_UINT(number/10000);
 number=number-(div*10000);
 string[char_count]=div+'0';
 char_count++;
 
 
-thousands: div=number/1000;
+thousands: div=STATIC_CAST_TO_UINT(number/1000);
 number=number-(div*1000);
 string[char_count]=div+'0';
 char_count++;
 
-hundreds: div=number/100;
+hundreds: div=STATIC_CAST_TO_UINT(number/100);
 number=number-(div*100);
 string[char_count]=div+'0';
 char_count++;
 
 
-tens: div=number/10;
+tens: div=STATIC_CAST_TO_UINT(number/10);
 number=number-(div*10);
 string[char_count]=div+'0';
 char_count++;
 
-units: string[char_count]=number+'0';
+units: string[char_count]=STATIC_CAST_TO_INT(number+'0');
 
 if (units==1)
 {

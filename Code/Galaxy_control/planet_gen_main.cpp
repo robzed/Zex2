@@ -18,6 +18,9 @@
 // *
 /*
  * $Log: planet_gen_main.c,v $
+ * Revision 1.2  2003/09/20 12:56:59  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:36  stu_c
  * First Imported.
  *
@@ -1233,8 +1236,8 @@ void strip_land(void)
    for(a=0; a<iter_per_tree; a++)
      {
      build_square(x, y, HEIGHT_MASK & ((unsigned)Zrand()) );
-     x += dir_x + (((unsigned)Zrand()) & MOVEMENT_MASK) - (MOVEMENT_MASK/2);
-     y += dir_x + (((unsigned)Zrand()) & MOVEMENT_MASK) - (MOVEMENT_MASK/2);
+     x += STATIC_CAST_TO_INT(dir_x + (((unsigned)Zrand()) & MOVEMENT_MASK) - (MOVEMENT_MASK/2));
+     y += STATIC_CAST_TO_INT(dir_x + (((unsigned)Zrand()) & MOVEMENT_MASK) - (MOVEMENT_MASK/2));
      }
      
    lands_count++;
@@ -1323,7 +1326,7 @@ if(abs_distance_long > abs_distance_lat)
   planet_plot(lat1,long1,colour);
   while(abs_distance_long>0)
     {
-    lat1+=slope_lat;
+    lat1+=STATIC_CAST_TO_INT(slope_lat);
     long1+=sign_long;
     planet_plot(lat1,long1,colour);
     abs_distance_long--;
@@ -1336,7 +1339,7 @@ else
   planet_plot(lat1,long1,colour);
   while(abs_distance_lat>0)
     {
-    long1+=slope_long;
+    long1+=STATIC_CAST_TO_INT(slope_long);
     lat1+=sign_lat;
     planet_plot(lat1,long1,colour);
     abs_distance_lat--;
@@ -1474,7 +1477,7 @@ for(y=-radius; y<=(radius+3); y+=1.025) //1.005)		// there is a bug in the textu
 
 	  
 	  // ====== CONVERT COLOUR =======
- 	  pixel=255&(unsigned int)planet_get_point(lati+angle, longi);
+ 	  pixel=255&(unsigned int)planet_get_point(STATIC_CAST_TO_INT(lati+angle), STATIC_CAST_TO_INT(longi));
 
 
 /*      if(pixel<10)
@@ -1882,7 +1885,7 @@ for(y=0; y<TEXTURE_SIZE; y++)
 //      }
 
       // ====== CONVERT COLOUR =======
-      pixel=255&(unsigned int)planet_get_point(lati, longi);
+      pixel=255&(unsigned int)planet_get_point(STATIC_CAST_TO_INT(lati), STATIC_CAST_TO_INT(longi));
 
 
       red=planet_table[colour_sel][pixel/32].red;

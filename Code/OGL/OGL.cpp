@@ -23,6 +23,9 @@
 // ***********************************************************************************
 /*
  * $Log: OGL.c,v $
+ * Revision 1.2  2003/09/20 12:57:10  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:11  stu_c
  * First Imported.
  *
@@ -1652,7 +1655,7 @@ while(i<CONSTANT_IMAGE_MAX)	// inly do it if there are some constant images!
                0.5, /* redness */
                0.5, /* greeness */
                0.5, /* blueness */ 
-               0.0 /* not translucent */ 
+               0 /* not translucent */ 
                );
      }
      i++;          

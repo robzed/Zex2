@@ -5,6 +5,9 @@ Owner: SB
 Started: 29/10/98
 ©Lightsoft 98
 $Log: sound.c,v $
+Revision 1.2  2003/09/24 21:39:38  robp
+More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
+
 Revision 1.1.1.1  2003/09/05 22:37:04  stu_c
 First Imported.
 
@@ -301,7 +304,7 @@ if (distance_to_camera<MIN_LISTEN_DISTANCE_IN_M)
   if(total_fuel_consumption>0)
   {
    //we want a percentage
-   volume=(total_fuel_consumption/max_volume)*100;
+   volume=STATIC_CAST_TO_INT((total_fuel_consumption/max_volume)*100);
    if (volume<0) volume=0; //prevent those nasty 'Oops' situations...
   }
   else

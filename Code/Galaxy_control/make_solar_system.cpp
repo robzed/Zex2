@@ -16,6 +16,9 @@
 // ***********************************************************************************
 
 // $Log: make_solar_system.c,v $
+// Revision 1.2  2003/09/14 12:20:55  stu_c
+// Zex: Removed old checkin comments
+//
 // Revision 1.1.1.1  2003/09/05 22:35:31  stu_c
 // First Imported.
 //
@@ -99,15 +102,15 @@ band_selector=RangedRdm(0,100);
 //         20% chance - gas giant         <
 //         20% change - large gas giant   <
 if(band_selector < 10)		// small planet
-    { size= 1e4*RangedRdm(MSS_min_planet_size,MSS_medium_planet_min_size); }
+    { size= STATIC_CAST_TO_INT(1e4*RangedRdm(MSS_min_planet_size,MSS_medium_planet_min_size)); }
 else if(band_selector < 50)	// medium size
-    { size= 1e4*RangedRdm(MSS_medium_planet_min_size,MSS_large_planet_min_size); }
+    { size= STATIC_CAST_TO_INT(1e4*RangedRdm(MSS_medium_planet_min_size,MSS_large_planet_min_size)); }
 else if(band_selector < 60)	// large size
-    { size= 1e4*RangedRdm(MSS_large_planet_min_size,MSS_gas_giant_min_size); }
+    { size= STATIC_CAST_TO_INT(1e4*RangedRdm(MSS_large_planet_min_size,MSS_gas_giant_min_size)); }
 else if(band_selector < 80)	// gas
-    { size= 1e4*RangedRdm(MSS_gas_giant_min_size,MSS_massive_gas_min_size); }
+    { size= STATIC_CAST_TO_INT(1e4*RangedRdm(MSS_gas_giant_min_size,MSS_massive_gas_min_size)); }
 else 				// massive
-    { size= 1e4*RangedRdm(MSS_massive_gas_min_size,MSS_max_planet_size); }
+    { size= STATIC_CAST_TO_INT(1e4*RangedRdm(MSS_massive_gas_min_size,MSS_max_planet_size)); }
 
 return (double)size;
 }
@@ -222,7 +225,7 @@ int MSS_pds_effect=4;			// start this effect after the fourth
 double MSS_min_moon_distance=0.2;	// fraction of planets radius above surface
 int MSS_min_moons=0;
 int MSS_max_moons=30;
-int MSS_planet_size_number_of_moons_ratio=2100e3;
+int MSS_planet_size_number_of_moons_ratio = STATIC_CAST_TO_INT(2100e3);
 
 double MSS_max_moon_to_planet_ratio=0.29;		// how big compared with planet
 double MSS_max_moon_to_planet_ratio_for_gas_giants=0.1; // except for gas giants that have smaller moons
@@ -429,7 +432,7 @@ for (n=1;n<number_of_planet_motherships;n++)
 
 cd += (planet_diameter/2) * MSS_min_moon_distance;
 
-max_moons=planet_diameter/MSS_planet_size_number_of_moons_ratio;
+max_moons = STATIC_CAST_TO_INT(planet_diameter/MSS_planet_size_number_of_moons_ratio);
 if(max_moons>MSS_max_moons)	// can't have more than so many moons
   {
   max_moons=MSS_max_moons;
