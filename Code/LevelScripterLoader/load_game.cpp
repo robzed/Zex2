@@ -2,6 +2,9 @@
 //SB 18/12/98
 //See 3D engine design for notes
 /* $Log: load_game.c,v $
+/* Revision 1.1.1.1  2003/09/05 22:35:57  stu_c
+/* First Imported.
+/*
 /* Revision 1.25  2002/09/08 02:01:41  stu_c
 /* Precompiled header adjustments
 /*
@@ -227,22 +230,7 @@ unload_textures();
 load_textures(); //now done in load_level
 
 reset_objects();	//clear out old dynamic objects
-/*
-//convert level to 2 char number string if not 1 (game or test)
-    if (the_level!=1)
-	{
-	int tens;
-	
-     tens=the_level/10;
-     filename[1]=tens+'0';
-     filename[2]=(the_level-(tens*10))+'0';
-     filename[3]='.';
-     filename[4]='Z';
-     filename[5]='L';
-     filename[6]='V';
-     filename[0]=6;
-	}
-*/
+
 	make_data_fsspec("\pL",the_filename,&the_file);
 
 	the_file_data_H=read_file(the_file);
@@ -929,6 +917,7 @@ while (stop==0)
           #endif
                 POBs_load_spacestation((x*ZEX_UNIT_SIZE_IN_METERS)+start_pos.x, (y*ZEX_UNIT_SIZE_IN_METERS)+start_pos.y, 
                                         (z*ZEX_UNIT_SIZE_IN_METERS)+start_pos.z, seed,alleg);
+          
           break;
           }  
 
