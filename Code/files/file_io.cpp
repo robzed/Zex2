@@ -2,6 +2,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.c,v $
+Revision 1.1.1.1  2003/09/05 22:35:24  stu_c
+First Imported.
+
 Revision 1.14  2002/09/08 02:03:13  stu_c
 Precompiled header adjustments
 
@@ -108,6 +111,9 @@ First Imported.
 #include "camera_control.h"
 #include "docked.h"
 
+#include "system_independant_file.h"
+#include "system_interface.h"
+
 //read file
 //needs an fsspec
 //returns a handle to the file data
@@ -213,6 +219,7 @@ FSSpec prefs_fsspec;
     WritePrefsFile(prefs_fsspec,(char*)&gzex_prefs,sizeof(gzex_prefs));
 }
 
+#if !REMOVE_OLD_FILESYSTEM_JUNK
 Handle read_file (FSSpec the_file)
 {
 short refnum;
@@ -246,6 +253,54 @@ Err=FSClose(refnum);
 		
 return hData;
 }
+#endif
+
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: read_file_into_memory   | AUTHOR(s): Rob Probin   | DATE STARTED: 22 Sept 03
+// +
+// | DESCRIPTION: Read a file into memory. Must be freed by release file read into memory.
+// +----------------------------------------------------------------ROUTINE HEADER----
+void *read_file_into_memory(char *directory, char *filename)
+{
+ls_file_t my_file;
+char path_filename[FILENAME_LENGTH];
+void *data_storage;
+int actual_bytes_read;
+long file_size;
+
+if(!make_filename(path_filename, filename, directory, "read_file_into_memory()"))	// make path first
+    { report_error("read_file_into_memory(filename) had an error on path create.",filename,1100); }
+  
+my_file = lsf_open_file(path_filename, "rb");
+if(my_file == NULL) { report_error("read_file_into_memory(filename) had an error on Open.",filename,1101); }
+
+file_size = lsf_get_file_size(my_file);		//find size
+if(file_size == -1) { report_error("read_file_into_memory(filename) had an error on get file size.",filename,1101); }
+
+data_storage = calloc(1, file_size+4);		// ensure a zero terminated file (zero space and put 4 on the end)
+if(data_storage == NULL) { report_error("read_file_into_memory(filename) had an error: No memory",filename,1102); }
+
+actual_bytes_read = lsf_read_bytes_from_file(my_file, data_storage, file_size);
+if(actual_bytes_read != file_size) { report_error("read_file_into_memory(filename) had an error on matching bytes read.",filename,1103); }
+
+lsf_close_file(my_file);
+
+return data_storage;
+}
+
+
+// +--------------------------------+-------------------------+-----------------------
+// | TITLE: read_file_into_memory   | AUTHOR(s): Rob Probin   | DATE STARTED: 22 Sept 03
+// +
+// | DESCRIPTION: Abstraction for file previously read into memory (so memory mechanism can change)
+// |
+// +----------------------------------------------------------------ROUTINE HEADER----
+void release_file_read_into_memory(void *memory_pointer)
+{
+free(memory_pointer);
+}
+
+
 
 short zex_res_file;
 //fills Zex_fsspec with the fsspec of Zex
@@ -658,13 +713,21 @@ return return_value;
 }
 
 
+#if PORTABLE_FILESYSTEM
+void *ZGetResource(unsigned int Type, short ID)
+#else
 Handle ZGetResource(unsigned int Type, short ID)
+#endif
 {
+#if PORTABLE_FILESYSTEM
+unsigned char filename[FILENAME_LENGTH];
+unsigned char numberstr[FILENAME_LENGTH];
+#else
 Str255 filename;
-
 FSSpec the_fsspec;
 FSSpec resource_folder_FSSpec;
 //FSSpec the_resource_FSSpec;
+
 Str255 numberstr;	//build filename number as ascii here
 
 extern FSSpec Zex_FSSpec;
@@ -675,6 +738,8 @@ int folder_DirID;
 int return_value;
 int get_file_err = 0;
 //short file_index=1;
+#endif
+
 
 //create filename
 //make the filename
@@ -690,6 +755,15 @@ int get_file_err = 0;
  filename[8]=numberstr[3];
  filename[9]=numberstr[4];
 
+
+#if PORTABLE_FILESYSTEM
+
+//  1. im working here adding the allocate/open/read/close... (need to decide what size buffer to allocate)
+//  2. also rest of program wants me to return a handle? Do we do this or do we return a pointer and alter
+//     the rest of the program. Also do they ever de-allocate this space? With what call?
+     
+  return read_file_into_memory(RESOURCE_DIRECTORY,filename);
+#else
 //get the objects' folder
 // If osx build then we need to climb out of the bundle to get to the zd3 folder
 // We know the directory ID that holds Zex, so if we get info on that, we should get the parent directory
@@ -741,6 +815,7 @@ return_value=0;
       FSMakeFSSpec (fpb->ioVRefNum, folder_DirID,filename,&the_fsspec);
 
 	return read_file(the_fsspec);	//handles errors locally; kills the game on error
+#endif
 }
 
 //given a filename (p1) and an extension (p2) returns 1 if this file does have that

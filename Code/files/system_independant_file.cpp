@@ -17,8 +17,8 @@
  * exceptionally rare.
  *
  * $Author: robp $
- * $Date: 2003/09/20 18:02:10 $
- * $Revision: 1.9 $
+ * $Date: 2003/09/21 13:13:10 $
+ * $Revision: 1.1 $
  *
  * For log see end of file...
  *
@@ -32,7 +32,7 @@
 // *
 
 #define MAX_LINE 512	 	 // maximum size of a line
-#define MAX_OPEN_FILES 10
+#define MAX_OPEN_FILES 10	// could use FOPEN_MAX files - but probably not needed
 #define LSF_ls_file_OFFSET 13335	// shouldn't be zero (currently just "magic number" to spot errors)
 
 // ***********************************************************************************
@@ -366,6 +366,101 @@ return bytes_written;
 
 
 // +--------------------------------+-------------------------+-----------------------
+// | TITLE: lsf_get_file_size       | AUTHOR(s): Rob Probin   | DATE STARTED: 22 Sept 03
+// +
+// | DESCRIPTION: This finds the length of a file. Returns -1 for error.
+// | 
+// | This may not be overly portable in C since:-
+// |	(a) does ftell return the length after a SEEK_END?
+// | 	(b) not all systems support SEEK_END.
+// |
+// | An alternative method is to read successive bytes into a small array, adding up
+// | how many have been read. If this method is going to be used, and performance
+// | of reading the twice is an issue, then it would be better to allocate a 64K buffer
+// | read up to 64K, then extend (if too small) and read the rest or shrink the buffer if
+// | too much has been allocated.
+// |
+// | Also see notes after routine.
+//
+// +----------------------------------------------------------------ROUTINE HEADER----
+
+long lsf_get_file_size(ls_file_t the_file)
+{
+FILE *file;
+long current_position;
+long end_position;
+
+the_file-=LSF_ls_file_OFFSET;
+
+if(the_file<0 || the_file>=MAX_OPEN_FILES) // look for an error
+    { 
+    fprintf(OUTPUT_FP, "lsf> File ref error in lsf_get_file_size!\n"); 
+    return -1; 
+    }
+    
+file = lsf_file_array[the_file].file_ptr;
+
+
+current_position = ftell(file);		// get the current file position
+if(current_position == -1)
+    { 
+    fprintf(OUTPUT_FP, "lsf> ftell_1 error in lsf_get_file_size!\n"); 
+    return -1; 
+    }
+
+if(fseek(file, 0, SEEK_END))		// set to the end of the file
+    { 
+    fprintf(OUTPUT_FP, "lsf>seek end error in lsf_get_file_size!\n"); 
+    return -1; 
+    }
+
+end_position = ftell(file);		// this might not be a valid method for determining the length in C??
+if(end_position == -1)
+    { 
+    fprintf(OUTPUT_FP, "lsf> ftell_2 error in lsf_get_file_size!\n"); 
+    return -1; 
+    }
+
+if(fseek(file, current_position, SEEK_SET))	// set back to where we were.
+    { 
+    fprintf(OUTPUT_FP, "lsf> ftell_1 error in lsf_get_file_size!\n"); 
+    return -1; 
+    }
+
+return end_position;
+}
+
+// from http://open-systems.ufl.edu/mirrors/ftp.isc.org/pub/usenet/comp.sources.unix/volume26/funnelweb/part08
+//
+// comment from the FunnelWeb Source 
+//
+/* Finding The Length of a File                                               */
+/* ----------------------------                                               */
+/* We have to be able to find out the length of a file before reading it in   */
+/* because, in this version of FunnelWeb, the entire file must be read into   */
+/* one contiguous block of memory.                                            */
+/*                                                                            */
+/* As it turns out, finding the length of a file in portable C turns out to   */
+/* be a very hard problem. Here are some possible solutions:                  */
+/*                                                                            */
+/*    1. Read the entire file in and see how long it is.                      */
+/*    2. Use fseek to move to the end of the file and then use ftell.         */
+/*    3. Use the Unix 'stat' call.                                            */
+/*                                                                            */
+/* Of these, only the first is portable. The second alternative is            */
+/* non-portable because some environments do not support the SEEK_END symbol  */
+/* required to perform a seek to the end of file.                             */
+/* Alternatives to needing the length are as follows:                         */
+/*                                                                            */
+/*    4. Read the file/allocate memory in 64K blocks.                         */
+/*    5. Read the file in 64K blocks and then copy them to a contiguous one.  */
+/*                                                                            */
+/* Perhaps options 4 or 5 could be implemented later. However, right now I    */
+/* haven't got the time to do anything except strive for portability, so      */
+/* option 1 it is.                                                            */
+
+
+// +--------------------------------+-------------------------+-----------------------
 // | TITLE: lsf_get_word            | AUTHOR(s): Rob Probin   | DATE STARTED: 21 Dec 02
 // +
 // | DESCRIPTION:  
@@ -469,7 +564,10 @@ return FALSE;
 
 /* CVS LOG
  *
- * $Log: system_independant_file.cpp,v $
+ * $Log: system_independant_file.c,v $
+ * Revision 1.1  2003/09/21 13:13:10  robp
+ * First phase of system independant file system - add Z_dungeons file system and expand.
+ *
  * Revision 1.9  2003/09/20 18:02:10  robp
  * *** NAME CHANGE OF ALL C FILES FROM .c TO .cpp *** 
 Before this point you will need to rename the files back to .c (i.e. remove the pp from .cpp) to build older versions.

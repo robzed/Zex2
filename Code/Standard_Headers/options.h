@@ -47,4 +47,5 @@
 #if PORTABLE_ZEX
     #define PORTABLE_RUNNING_FROM_SDL 0		// not currently running from SDL
     #define PORTABLE_FILESYSTEM	1		// these labels (and all the #if code) can disappear as they become the "defacto" Zex sub-systems
+    #define REMOVE_OLD_FILESYSTEM_JUNK 0 	// only used this when all the filesystem stuff is removed
 #endif

@@ -6,8 +6,8 @@
  *  Copyright (c) 2002 Lightsoft. All rights reserved.
  *
  * $Author: robp $
- * $Date: 2003/08/23 15:04:05 $
- * $Revision: 1.5 $
+ * $Date: 2003/09/21 13:13:10 $
+ * $Revision: 1.1 $
  *
  * For log see end of file...
  *
@@ -37,7 +37,7 @@ FILE *lsf_get_system_file_pointer(ls_file_t the_file); // Returns the system fil
 // Added for Zex. Notice: With neither of these routines do you have access to the error/eof info.
 int lsf_read_bytes_from_file(ls_file_t the_file, char *destination, int maximum_length); // returns length actually read
 int lsf_write_bytes_to_file(ls_file_t the_file, char *source, int length);		 // return length actually written
-
+long lsf_get_file_size(ls_file_t the_file);
 
 //
 // *** the following are NOT TESTED ***
@@ -50,6 +50,9 @@ file_error lsf_get_until_character(ls_file_t the_file, char the_character, int m
 /* CVS LOG
  *
  * $Log: system_independant_file.h,v $
+ * Revision 1.1  2003/09/21 13:13:10  robp
+ * First phase of system independant file system - add Z_dungeons file system and expand.
+ *
  * Revision 1.5  2003/08/23 15:04:05  robp
  * Added start of save code
  *
