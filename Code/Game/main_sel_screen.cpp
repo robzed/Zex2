@@ -1,6 +1,6 @@
 // *************************************MODULE HEADER*********************************
 // * FILENAME           : main_sel_screen.cpp
-// * MODULE TITLE       : main_sel_screen.c
+// * MODULE TITLE       : main_sel_screen.cpp
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
 // * DATE STARTED       : 01:11:06 on 31st March 2000
@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.cpp,v $
+// Revision 1.12  2003/10/15 17:37:00  stu_c
+// Zex: now boots to game, added VBL sync (via OGL)
+//
 // Revision 1.11  2003/10/08 20:15:42  robp
 // Altered picture load based on new file load.
 //
