@@ -4,7 +4,11 @@
 // v 1.00 - RP - 31//12/98 Moved standard polyclip from fpoly, added texture
 //               stuff.
 //
-/* $Log: polyclip.c,v $
+/*
+ * $Log: polyclip.c,v $
+ * Revision 1.2  2003/09/20 12:57:06  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:29  stu_c
  * First Imported.
  *
