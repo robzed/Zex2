@@ -128,7 +128,7 @@ static char targ1_str[]="  Rep Status :                                         
 */
 
 
-static float misc_text_red=1, misc_text_green=0.0, misc_text_blue=0.1;
+static float misc_text_red2=1, misc_text_green2=0.0, misc_text_blue2=0.1;
 
 static float rot_array[]={0.6, 0.8, 1.0, 0.8, 0.6, 0.8, 1.0, 0.8};
 static float rot_time=0.0;
@@ -228,49 +228,49 @@ void draw_frame(void)
 //         glNewList(name, GL_COMPILE);
 		glBegin(GL_LINES);
 //top right left
-	    OGL_line_rgb_quick(screen_cent_x+(RB_START-2),monitor_h-(TOP+2),screen_cent_x+(RB_MID1),monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);	    
-		OGL_line_rgb_quick(screen_cent_x+(RB_START-1),monitor_h-(TOP+1),screen_cent_x+(RB_MID1),monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);	    
-		OGL_line_rgb_quick(screen_cent_x+RB_START,monitor_h-(TOP),screen_cent_x+(RB_MID1),monitor_h-TOP,rot_array[2],misc_text_green,misc_text_blue);
-		OGL_line_rgb_quick(screen_cent_x+(RB_START+1),monitor_h-(TOP-1),screen_cent_x+(RB_MID1),monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);	    
-		OGL_line_rgb_quick(screen_cent_x+(RB_START+2),monitor_h-(TOP-2),screen_cent_x+(RB_MID1),monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);
+	    OGL_line_rgb_quick(screen_cent_x+(RB_START-2),monitor_h-(TOP+2),screen_cent_x+(RB_MID1),monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);	    
+		OGL_line_rgb_quick(screen_cent_x+(RB_START-1),monitor_h-(TOP+1),screen_cent_x+(RB_MID1),monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);	    
+		OGL_line_rgb_quick(screen_cent_x+RB_START,monitor_h-(TOP),screen_cent_x+(RB_MID1),monitor_h-TOP,rot_array[2],misc_text_green2,misc_text_blue2);
+		OGL_line_rgb_quick(screen_cent_x+(RB_START+1),monitor_h-(TOP-1),screen_cent_x+(RB_MID1),monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);	    
+		OGL_line_rgb_quick(screen_cent_x+(RB_START+2),monitor_h-(TOP-2),screen_cent_x+(RB_MID1),monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);
 //the hoop - top
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP+2),screen_cent_x+(RB_MID1+5),monitor_h-(TOP+7),rot_array[0],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP+1),screen_cent_x+(RB_MID1+5),monitor_h-(TOP+6),rot_array[1],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP+2),screen_cent_x+(RB_MID1+5),monitor_h-(TOP+7),rot_array[0],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP+1),screen_cent_x+(RB_MID1+5),monitor_h-(TOP+6),rot_array[1],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP+7),screen_cent_x+(RB_START2-5),monitor_h-(TOP+7),rot_array[0],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP+6),screen_cent_x+(RB_START2-5),monitor_h-(TOP+6),rot_array[1],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP+7),screen_cent_x+(RB_START2-5),monitor_h-(TOP+7),rot_array[0],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP+6),screen_cent_x+(RB_START2-5),monitor_h-(TOP+6),rot_array[1],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP+7),screen_cent_x+(RB_START2),monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP+6),screen_cent_x+(RB_START2),monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP+7),screen_cent_x+(RB_START2),monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP+6),screen_cent_x+(RB_START2),monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);	    
 
 
 
 //the hoop - bottom
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP-2),screen_cent_x+(RB_MID1+5),monitor_h-(TOP-7),rot_array[4],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP-1),screen_cent_x+(RB_MID1+5),monitor_h-(TOP-6),rot_array[3],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP-2),screen_cent_x+(RB_MID1+5),monitor_h-(TOP-7),rot_array[4],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1),monitor_h-(TOP-1),screen_cent_x+(RB_MID1+5),monitor_h-(TOP-6),rot_array[3],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP-7),screen_cent_x+(RB_START2-5),monitor_h-(TOP-7),rot_array[4],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP-6),screen_cent_x+(RB_START2-5),monitor_h-(TOP-6),rot_array[3],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP-7),screen_cent_x+(RB_START2-5),monitor_h-(TOP-7),rot_array[4],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_MID1+5),monitor_h-(TOP-6),screen_cent_x+(RB_START2-5),monitor_h-(TOP-6),rot_array[3],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP-7),screen_cent_x+(RB_START2),monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP-6),screen_cent_x+(RB_START2),monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP-7),screen_cent_x+(RB_START2),monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x+(RB_START2-5),monitor_h-(TOP-6),screen_cent_x+(RB_START2),monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);	    
 //text
 
 //top right right
-	    OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP+2),monitor_w,monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);	    
-		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP+1),monitor_w,monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);	    
-		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP),monitor_w,monitor_h-TOP,rot_array[2],misc_text_green,misc_text_blue);
-		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP-1),monitor_w,monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);	    
-		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP-2),monitor_w,monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP+2),monitor_w,monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);	    
+		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP+1),monitor_w,monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);	    
+		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP),monitor_w,monitor_h-TOP,rot_array[2],misc_text_green2,misc_text_blue2);
+		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP-1),monitor_w,monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);	    
+		OGL_line_rgb_quick(screen_cent_x+RB_START2,monitor_h-(TOP-2),monitor_w,monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);	    
 
 
 
 //diagonal right
-	    OGL_line_rgb_quick(screen_cent_x+118,monitor_h-1,screen_cent_x+(RB_START-2),monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x+119,monitor_h-1,screen_cent_x+(RB_START-1),monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x+120,monitor_h-1,screen_cent_x+RB_START,monitor_h-TOP,rot_array[2],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x+121,monitor_h-1,screen_cent_x+(RB_START+1),monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x+122,monitor_h-1,screen_cent_x+(RB_START+2),monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);
+	    OGL_line_rgb_quick(screen_cent_x+118,monitor_h-1,screen_cent_x+(RB_START-2),monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x+119,monitor_h-1,screen_cent_x+(RB_START-1),monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x+120,monitor_h-1,screen_cent_x+RB_START,monitor_h-TOP,rot_array[2],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x+121,monitor_h-1,screen_cent_x+(RB_START+1),monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x+122,monitor_h-1,screen_cent_x+(RB_START+2),monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);
 
 
 
@@ -279,56 +279,56 @@ void draw_frame(void)
 
 
 //top left right
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START-2),monitor_h-(TOP+2),screen_cent_x-(LB_MID1+1),monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START-1),monitor_h-(TOP+1),screen_cent_x-(LB_MID1+1),monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-LB_START,monitor_h-(TOP),screen_cent_x-(LB_MID1+1),monitor_h-TOP,rot_array[2],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START+1),monitor_h-(TOP-1),screen_cent_x-(LB_MID1+1),monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START+2),monitor_h-(TOP-2),screen_cent_x-(LB_MID1+1),monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START-2),monitor_h-(TOP+2),screen_cent_x-(LB_MID1+1),monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START-1),monitor_h-(TOP+1),screen_cent_x-(LB_MID1+1),monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-LB_START,monitor_h-(TOP),screen_cent_x-(LB_MID1+1),monitor_h-TOP,rot_array[2],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START+1),monitor_h-(TOP-1),screen_cent_x-(LB_MID1+1),monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START+2),monitor_h-(TOP-2),screen_cent_x-(LB_MID1+1),monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);
 
 
 //top left left
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+2),0,monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+1),0,monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-LB_START2,monitor_h-(TOP),0,monitor_h-TOP,rot_array[2],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-1),0,monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-2),0,monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+2),0,monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+1),0,monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-LB_START2,monitor_h-(TOP),0,monitor_h-TOP,rot_array[2],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-1),0,monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-2),0,monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);
 
 
 //the hoop - top
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+2),screen_cent_x-(LB_START2-5),monitor_h-(TOP+7),rot_array[0],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+2),screen_cent_x-(LB_START2-5),monitor_h-(TOP+7),rot_array[0],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+1),screen_cent_x-(LB_START2-5),monitor_h-(TOP+6),rot_array[1],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP+1),screen_cent_x-(LB_START2-5),monitor_h-(TOP+6),rot_array[1],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP+7),screen_cent_x-(LB_MID1+5),monitor_h-(TOP+7),rot_array[0],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP+6),screen_cent_x-(LB_MID1+5),monitor_h-(TOP+6),rot_array[1],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP+7),screen_cent_x-(LB_MID1+5),monitor_h-(TOP+7),rot_array[0],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP+6),screen_cent_x-(LB_MID1+5),monitor_h-(TOP+6),rot_array[1],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP+7),screen_cent_x-LB_MID1,monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP+6),screen_cent_x-LB_MID1,monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP+7),screen_cent_x-LB_MID1,monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP+6),screen_cent_x-LB_MID1,monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);	    
 
 
 
 //the hoop - bottom
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-2),screen_cent_x-(LB_START2-5),monitor_h-(TOP-7),rot_array[4],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-1),screen_cent_x-(LB_START2-5),monitor_h-(TOP-6),rot_array[3],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-2),screen_cent_x-(LB_START2-5),monitor_h-(TOP-7),rot_array[4],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2),monitor_h-(TOP-1),screen_cent_x-(LB_START2-5),monitor_h-(TOP-6),rot_array[3],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP-7),screen_cent_x-(LB_MID1+5),monitor_h-(TOP-7),rot_array[4],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP-6),screen_cent_x-(LB_MID1+5),monitor_h-(TOP-6),rot_array[3],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP-7),screen_cent_x-(LB_MID1+5),monitor_h-(TOP-7),rot_array[4],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_START2-5),monitor_h-(TOP-6),screen_cent_x-(LB_MID1+5),monitor_h-(TOP-6),rot_array[3],misc_text_green2,misc_text_blue2);	    
 
-	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP-7),screen_cent_x-(LB_MID1),monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);	    
-	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP-6),screen_cent_x-(LB_MID1),monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP-7),screen_cent_x-(LB_MID1),monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);	    
+	    OGL_line_rgb_quick(screen_cent_x-(LB_MID1+5),monitor_h-(TOP-6),screen_cent_x-(LB_MID1),monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);	    
 
 
 
 //DIagonal left
-	    OGL_line_rgb_quick(screen_cent_x-118,monitor_h-1,screen_cent_x-(LB_START-2),monitor_h-(TOP+2),rot_array[0],misc_text_green,misc_text_blue); //outside
-	    OGL_line_rgb_quick(screen_cent_x-119,monitor_h-1,screen_cent_x-(LB_START-1),monitor_h-(TOP+1),rot_array[1],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-120,monitor_h-1,screen_cent_x-LB_START,monitor_h-TOP,rot_array[2],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-121,monitor_h-1,screen_cent_x-(LB_START+1),monitor_h-(TOP-1),rot_array[3],misc_text_green,misc_text_blue);
-	    OGL_line_rgb_quick(screen_cent_x-122,monitor_h-1,screen_cent_x-(LB_START+2),monitor_h-(TOP-2),rot_array[4],misc_text_green,misc_text_blue);
+	    OGL_line_rgb_quick(screen_cent_x-118,monitor_h-1,screen_cent_x-(LB_START-2),monitor_h-(TOP+2),rot_array[0],misc_text_green2,misc_text_blue2); //outside
+	    OGL_line_rgb_quick(screen_cent_x-119,monitor_h-1,screen_cent_x-(LB_START-1),monitor_h-(TOP+1),rot_array[1],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-120,monitor_h-1,screen_cent_x-LB_START,monitor_h-TOP,rot_array[2],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-121,monitor_h-1,screen_cent_x-(LB_START+1),monitor_h-(TOP-1),rot_array[3],misc_text_green2,misc_text_blue2);
+	    OGL_line_rgb_quick(screen_cent_x-122,monitor_h-1,screen_cent_x-(LB_START+2),monitor_h-(TOP-2),rot_array[4],misc_text_green2,misc_text_blue2);
         glEnd();		
 
 //Now the text for the frames
-		   glColor3d(misc_text_red, misc_text_green, misc_text_blue);
+		   glColor3d(misc_text_red2, misc_text_green2, misc_text_blue2);
 		SplatText_mon_fast("MFD",screen_cent_x+RB_MID1+13 , monitor_h-(TOP+2));
 		SplatText_mon_fast("OBC",screen_cent_x-LB_START2+13 , monitor_h-(TOP+2));
 
@@ -533,7 +533,7 @@ if (pane==2)
 
 void show_targ_page(void)
 {
-  glColor3d(misc_text_red, misc_text_green, misc_text_blue);
+  glColor3d(misc_text_red2, misc_text_green2, misc_text_blue2);
 
   draw_item_info(get_object_targetted(get_main_camera_object()),monitor_w-210,monitor_h-80,250);
 
@@ -542,7 +542,7 @@ void show_targ_page(void)
 
 void show_status1_page(void)
 {
-  glColor3d(misc_text_red, misc_text_green, misc_text_blue);
+  glColor3d(misc_text_red2, misc_text_green2, misc_text_blue2);
 
   SplatText_mon_fast(hypert_str,screen_cent_x+TEXT_LEFT1 , monitor_h-(TOP-TEXT_OFFSET_FROM_TOP));
   SplatText_mon_fast(hypertv_str,screen_cent_x+NUMBER_LEFT1+24 , monitor_h-(TOP-TEXT_OFFSET_FROM_TOP));
@@ -560,7 +560,7 @@ void show_status1_page(void)
 
 void show_gen_page(void)
 {
-	    glColor3d(misc_text_red, misc_text_green, misc_text_blue);
+	    glColor3d(misc_text_red2, misc_text_green2, misc_text_blue2);
 
 		SplatText_mon_fast(rank_str,screen_cent_x+TEXT_LEFT1 , monitor_h-(TOP-TEXT_OFFSET_FROM_TOP));
 		SplatText_mon_fast(rankc_str,screen_cent_x+NUMBER_LEFT1+7 , monitor_h-(TOP-TEXT_OFFSET_FROM_TOP));

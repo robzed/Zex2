@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: ogl_text.c,v $
+ * Revision 1.2  2003/09/20 12:57:13  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:11  stu_c
  * First Imported.
  *
@@ -220,7 +223,7 @@ int len,stop;
 }
 
 //Pstring version
-void OGL_draw_helveticaP(unsigned char * the_string)
+void OGL_draw_helveticaP(const unsigned char * the_string)
 {
 	glListBase(HELVETICA_BASE);	
 	glCallLists(the_string[0], GL_BYTE, the_string+1);
@@ -266,7 +269,7 @@ void ZLineTo(int x, int y)
    OGL_line_no_colour( last_x, last_y, x, y);
 }
 
-void ZDrawString(unsigned char * the_string)
+void ZDrawString(const unsigned char * the_string)
 {
 
    OGL_draw_helveticaP(the_string);

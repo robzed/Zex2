@@ -99,7 +99,7 @@ TYPICAL BEHAVIOURS
 */
 
 
-int get_behaviour (the_object)
+int get_behaviour (int the_object)
 {
 extern	DynObjectsFixedSize *ocb_ptr;
 

@@ -38,7 +38,7 @@ void gen_callsign(int dyn_slot)
   
   the_object=&ocb_ptr->object_list[dyn_slot];
   UInt8 allegiance=the_object->Dyn_OCB_control_data.allegiance;  
-  UInt8 class=the_object->Dyn_OCB_control_data.NPC_class;
+  UInt8 ship_class=the_object->Dyn_OCB_control_data.NPC_class;
   
   if (allegiance==HUMAN) { the_object->Dyn_OCB_control_data.callsign[0]='H'; }
   else
@@ -49,13 +49,13 @@ void gen_callsign(int dyn_slot)
   { the_object->Dyn_OCB_control_data.callsign[0]='U'; }
 
   
-  if (class==NPC_CLASS_FIGHTER || class==NPC_CLASS_TRADER || class==NPC_CLASS_GUARD)
+  if (ship_class==NPC_CLASS_FIGHTER || ship_class==NPC_CLASS_TRADER || ship_class==NPC_CLASS_GUARD)
   {
     UInt32 random=NDRangedRdm(0,9999);
     ZNumToString4(random,&the_object->Dyn_OCB_control_data.callsign[1]);
   }
   else
-  if (class==NPC_CLASS_PIRATE)
+  if (ship_class==NPC_CLASS_PIRATE)
   {
     the_object->Dyn_OCB_control_data.callsign[1]='x'; 
     the_object->Dyn_OCB_control_data.callsign[2]='x'; 

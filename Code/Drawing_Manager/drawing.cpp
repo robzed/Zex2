@@ -2,6 +2,9 @@
 //drawing.c
 /*
  * $Log: drawing.c,v $
+ * Revision 1.2  2003/09/20 12:56:56  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:17  stu_c
  * First Imported.
  *
@@ -168,7 +171,7 @@ extern int binds;
 RGBColor	rgbWhite1 = { 0xffff, 0xffff, 0xffff};
 RGBColor	rgbRed1= { 0xffff, 0x0, 0x0};
 //Main poly draw routine
-void Draw_it(width, height) 
+void Draw_it(int width, int height) 
 {
 //extern Ptr screenaddr;
 //extern int screenwidth;
@@ -265,7 +268,7 @@ if (training_mission==1 || pilot_asleep==0)
 
 
 //Main poly draw routine
-void Draw_it_no_erase(width,height) 
+void Draw_it_no_erase(int width, int height) 
 {
 //extern Ptr screenaddr;
 //extern int screenwidth;
@@ -286,7 +289,7 @@ void Draw_it_no_erase(width,height)
 }
 
 //Main poly draw routine
-void Draw_it_colour_bg(width,height,colour) 
+void Draw_it_colour_bg(int width,int height, int colour) 
 {
 //extern Ptr screenaddr;
 //extern int screenwidth;

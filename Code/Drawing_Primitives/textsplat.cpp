@@ -25,6 +25,9 @@
 //              in draw_it.
 //              Check if ZRAW resource got else error (text looks bad without it <G>).
 // $Log: textsplat.c,v $
+// Revision 1.1.1.1  2003/09/05 22:35:21  stu_c
+// First Imported.
+//
 // Revision 1.7  2002/09/08 02:08:37  stu_c
 // Precompiled header adjustments
 //
@@ -125,17 +128,6 @@ module_private void Draw_to_Double_Buffer(char *char_ptr, int x_pos, int y_pos, 
  Handle small_font_h;
  Handle large_font_h;
 Ptr large_font;
-
-
-Ptr double_buffer;
-int screen_width;
-Handle hpic;
-Ptr medium_font;
-Ptr tiny_font;
-Handle small_font_h;
-Handle large_font_h;
-Ptr large_font;
-
 void InitText()
  {
 // hpic = (Handle) ZGetResource('ZRAW',128);  //Get the Handle to the Resource 
