@@ -1,6 +1,9 @@
 //object control top
 /*
 $Log: object_control_top.c,v $
+Revision 1.1.1.1  2003/09/05 22:36:08  stu_c
+First Imported.
+
 Revision 1.34  2002/09/14 02:38:43  stu_c
 Some tidy up work and shells now killed on collision
 
@@ -160,6 +163,7 @@ First Imported.
 #include "npc.h"
 #include "camera_control.h"
 #include "particles.h"
+#include "npc_gen.h"
 
 #define KILL_LIST_MAX 200
 
@@ -378,7 +382,7 @@ calculate_object_near_flag();
 clear_collided_withs();
 reset_buffet();
 
-
+run_npc_gen(); //npc_gen.c
 
 active_object_counter=0;
 object_counter=0;
