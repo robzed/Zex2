@@ -60,6 +60,9 @@ void handle_mothership(int it)
 ZObject * current_object_ptr;
 extern	DynObjectsFixedSize *ocb_ptr;
 
+#if TEST_SYSTEM==1
+return;
+#endif
  current_object_ptr=&ocb_ptr->object_list[it];
 
 //check the launch ship timer
