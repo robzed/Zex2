@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: 3dmf_import.cpp,v $
+Revision 1.5  2003/09/28 17:30:07  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.4  2003/09/28 10:36:02  robp
 Signed/Unsigned comparison fixes from last night, plus collision fix.
 
@@ -123,9 +126,9 @@ Checkin 280501
 #define SPACE 32
 #define COMMA ','
 
-#define MAXCONNECTIONS 1600
-#define MAXVERTICES 1600
-#define MAXUVS 1600
+#define MAXCONNECTIONS 1800
+#define MAXVERTICES 1800
+#define MAXUVS 1800
 #define MAX_TEXTURES 8
 #define MAX_COLOURS 32
 #define MAX_NUM_TRIMESHES 32
@@ -932,7 +935,7 @@ current_num_points=numPoints;	//get current total number of points so we can add
       connections_index++;
       
 	  
-	  if (connections_index>MAXCONNECTIONS) report_error("import_3dmf: Too many connections. ",object_loader_filename,1280); 
+	  if (connections_index>MAXCONNECTIONS) report_error("import_3dmf: Too many connections. ",object_loader_filename,TMnumTriangles); 
      }  
      
      //get vertices
@@ -1391,21 +1394,34 @@ int find_next_word(char** source, char* the_word)
 char* source_ptr=*source;
 int error;
 
-  error =  eat_white_space(&source_ptr);
-  if (error) return error;
+  for (EVER) //find start of nect word that isn't a comment
+  {
+        error =  eat_white_space(&source_ptr);
+        if (error) return error; //eof etc
+        
+        if (*source_ptr=='#') //comment?
+        {
+            error = find_eol(&source_ptr);
+            if (error) return error; //eof etc
+        }
+        else
+        {
+            break;
+        }
+  }
+
   //copy to white space
   for(EVER)
   {
-  	if(*source_ptr==0) return !0;	//EOF
+    if(*source_ptr==0) return !0;	//EOF
  
-    if((*source_ptr==SPACE) || (*source_ptr==TAB) || (*source_ptr==CR) || (*source_ptr==LF)
-    )
+    if((*source_ptr==SPACE) || (*source_ptr==TAB) || (*source_ptr==CR) || (*source_ptr==LF)) //end of word
      {
        *source=source_ptr;
        *the_word=0;
        return 0;
-  	 }
-    *the_word=*source_ptr;	//copy char
+     }
+    *the_word=*source_ptr;	//copy char and keep going
     source_ptr++; the_word++;
   }
 
@@ -1430,6 +1446,7 @@ int eat_white_space(char** where)
 
 
 
+
 //finds the next occurence of a given word and updates source. returns 0=ok
 int find_word (char* the_word,char** source)
 {
@@ -1450,26 +1467,7 @@ for(EVER)	//but not really obviously...
 return 0;
 }
 
-#if 0 // never used
-void skip_word (char* the_word,char** source)
-{
-char* source_ptr=*source;
 
-//just walk the file looking for word. File terminates in 0
-for(EVER)	//but not really obviously...
-{
-  if(*the_word!=0)
-  {
-    source_ptr++;
-    the_word++;
-  }
-  else break;
-}
-
-*source=source_ptr;	//return new position in file
-return;
-}
-#endif
 
 
 //expects only first param to be zero terminated. returns 0=match
