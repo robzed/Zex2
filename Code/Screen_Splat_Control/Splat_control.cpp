@@ -1,8 +1,11 @@
 /*
  * Splat_control.cpp
  *
-$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.cpp,v 1.3 2003/09/28 17:30:02 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.cpp,v 1.4 2003/09/28 18:04:29 robp Exp $
 $Log: Splat_control.cpp,v $
+Revision 1.4  2003/09/28 18:04:29  robp
+Fixed filename too long (!) problem, and booked in project file.
+
 Revision 1.3  2003/09/28 17:30:02  robp
 Changed files from .c to .cpp and removed spaces out of a couple of filenames.
 
@@ -328,7 +331,7 @@ int run_ogl()
 #if OGL==1
 extern int zbuffer_depth;
 GLfloat Projection[16];
-
+GLint swapInt=1;
 // any renderer
 	GLint          attrib16[] = { AGL_RGBA, AGL_DOUBLEBUFFER, AGL_DEPTH_SIZE, 16, AGL_NONE };
 	GLint          attrib32[] = { AGL_RGBA, AGL_DOUBLEBUFFER, AGL_DEPTH_SIZE, 32, AGL_NONE };
@@ -522,8 +525,12 @@ GLfloat Projection[16];
 	//glFrustum(-1,1,-1,1,0.01,1.0);
 	
 	monitor_w=window_w; monitor_h=window_h;
-//	aglSetInteger (ctx, AGL_SWAP_INTERVAL, &swapInt);	//sync to vbl
-    glOrtho( 0 /* left */, (GLfloat) (window_w-1) /* right */, (GLfloat) (window_h-1) /* bottom */, 
+        //if (Use_VBL==1)
+        //vbl always on now
+        {
+	  aglSetInteger (ctx, AGL_SWAP_INTERVAL, &swapInt);	//sync to vbl
+        }
+        glOrtho( 0 /* left */, (GLfloat) (window_w-1) /* right */, (GLfloat) (window_h-1) /* bottom */, 
             0 /* top */ , 0 /* znear */ , -1 /* zfar */ ); // SB 230602 - make OGL map real coords 
                                                            // rather than +-1
 

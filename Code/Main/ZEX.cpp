@@ -7,8 +7,11 @@ Zex.cpp
 060903 - Zex 2.3 in CVS
 
 Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.cpp,v 1.5 2003/09/28 10:36:10 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.cpp,v 1.6 2003/09/28 17:30:11 robp Exp $
 $Log: ZEX.cpp,v $
+Revision 1.6  2003/09/28 17:30:11  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.5  2003/09/28 10:36:10  robp
 Signed/Unsigned comparison fixes from last night, plus collision fix.
 
@@ -301,7 +304,7 @@ timing changes for coffee
 //#define equalise 1
 //#define debug_info
 //fps
-#define SKIP_MENU 1 //If 1 we skip right to the game with difficulty=1 and rank=1
+#define SKIP_MENU 0 //If 1 we skip right to the game with difficulty=1 and rank=1
 
 
 //define the following to get various info up on screen
@@ -997,7 +1000,7 @@ game_running=1; Goutside=1;  //If we are in this loop then we are outside
 //¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥END GAME
 
 
-/* end_game: */ show_text_in_loading_screen("Exec: Clean up for quit\n");
+end_game:  show_text_in_loading_screen("Exec: Clean up for quit\n");
 
 
      fade_out_music();
