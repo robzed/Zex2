@@ -1,5 +1,5 @@
 /*
- *  particles.c
+ *  particles.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Tue May 28 2002.

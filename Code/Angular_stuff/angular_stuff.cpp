@@ -1,7 +1,10 @@
-//angular stuff
+//angular_stuff.cpp
 //SB/Lightsoft Apr 99
 /*
- * $Log: angular_stuff.c,v $
+ * $Log: angular_stuff.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:58  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:07  robp
  * Removed nested comments
  *

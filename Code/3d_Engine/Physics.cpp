@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : ZPhysics.c
+// * FILENAME           : Physics.cpp
 // * MODULE TITLE       : ZPhysics
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: Physics.c,v $
+ * $Log: Physics.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:11  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:12  stu_c
  * First Imported.
  *

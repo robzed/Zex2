@@ -1,7 +1,10 @@
-/* game pause
+/* game_pause.cpp
 // SB 190199
 
-// $Log: game_pause.c,v $
+// $Log: game_pause.cpp,v $
+// Revision 1.4  2003/09/28 10:36:08  robp
+// Signed/Unsigned comparison fixes from last night, plus collision fix.
+//
 // Revision 1.3  2003/09/26 19:20:47  robp
 // Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 //

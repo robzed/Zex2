@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : coffee_file_interface.c
+// * FILENAME           : coffee_file_interface.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -15,7 +15,10 @@
 // *
 // *
 /* ***********************************************************************************
- * $Log: coffee_file_interface.c,v $
+ * $Log: coffee_file_interface.cpp,v $
+ * Revision 1.3  2003/09/27 08:58:32  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.2  2003/09/20 12:57:07  robp
  * Removed nested comments
  *

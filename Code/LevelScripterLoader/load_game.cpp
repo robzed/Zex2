@@ -1,8 +1,12 @@
+// load_game.cpp
 //load level
 //SB 18/12/98
 //See 3D engine design for notes
 /*
- * $Log: load_game.c,v $
+ * $Log: load_game.cpp,v $
+ * Revision 1.8  2003/09/27 21:52:41  robp
+ * Fixed places where we were loading an unsigned with -1.
+ *
  * Revision 1.7  2003/09/27 20:41:41  robp
  * Fixed float->int warnings.
  *

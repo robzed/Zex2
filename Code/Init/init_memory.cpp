@@ -1,6 +1,9 @@
-//init_ocbs
+//init_memory.cpp
 /*
- * $Log: init_memory.c,v $
+ * $Log: init_memory.cpp,v $
+ * Revision 1.3  2003/09/27 08:58:34  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.2  2003/09/20 12:56:58  robp
  * Removed nested comments
  *

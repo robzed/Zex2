@@ -1,6 +1,11 @@
 /*
-$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.c,v 1.1.1.1 2003/09/05 22:36:18 stu_c Exp $
-$Log: Splat_control.c,v $
+ * Splat_control.cpp
+ *
+$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.cpp,v 1.2 2003/09/27 21:52:41 robp Exp $
+$Log: Splat_control.cpp,v $
+Revision 1.2  2003/09/27 21:52:41  robp
+Fixed places where we were loading an unsigned with -1.
+
 Revision 1.1.1.1  2003/09/05 22:36:18  stu_c
 First Imported.
 

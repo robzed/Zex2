@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Untitled 1
+// * FILENAME           : command_and_control.cpp
 // * MODULE TITLE       : Untitled 1
 // * PROJECT            : Zex
 // * DATE STARTED       : 19:22:04 on 15th September 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: command_and_control.c,v $
+ * $Log: command_and_control.cpp,v $
+ * Revision 1.4  2003/09/28 10:36:05  robp
+ * Signed/Unsigned comparison fixes from last night, plus collision fix.
+ *
  * Revision 1.3  2003/09/27 08:58:33  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *

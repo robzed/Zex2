@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : make_solar_system.c
+// * FILENAME           : make_solar_system.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : Sat 17:09:10 on 30th Sept 2000
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 
-// $Log: make_solar_system.c,v $
+// $Log: make_solar_system.cpp,v $
+// Revision 1.3  2003/09/27 20:41:49  robp
+// Fixed float->int warnings.
+//
 // Revision 1.2  2003/09/14 12:20:55  stu_c
 // Zex: Removed old checkin comments
 //

@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : dust.c
+// * FILENAME           : dust.cpp
 // * MODULE TITLE       : dust
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: dust.c,v $
+ * $Log: dust.cpp,v $
+ * Revision 1.2  2003/09/20 12:56:57  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:44  stu_c
  * First Imported.
  *

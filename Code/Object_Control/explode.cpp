@@ -1,5 +1,9 @@
-/*
- * $Log: explode.c,v $
+/* explode.cpp
+ *
+ * $Log: explode.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:02  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:00  stu_c
  * First Imported.
  *

@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : galaxy_view.c
+// * FILENAME           : galaxy_view.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : 18:24:00 on 18th November 2001

@@ -1,7 +1,11 @@
+//zex_misc.cpp
 //misc functions
 
 /*
-$Log: zex_misc.c,v $
+$Log: zex_misc.cpp,v $
+Revision 1.5  2003/09/28 10:36:06  robp
+Signed/Unsigned comparison fixes from last night, plus collision fix.
+
 Revision 1.4  2003/09/27 20:41:47  robp
 Fixed float->int warnings.
 

@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : screen_splats.c
+// * FILENAME           : screen_splats.cpp
 // * MODULE TITLE       : screen_splats.c
 // * PROJECT            : Zex
 // * DATE STARTED       : 06:36:10 on 14th June 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: screen_splats.c,v $
+ * $Log: screen_splats.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:07  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:17  stu_c
  * First Imported.
  *

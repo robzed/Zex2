@@ -1,5 +1,5 @@
 
-// Name:   		TxtSplat.c
+// Name:   		TxtSplat.cpp
 // Description:		This routine, reads in a string and the 
 //			location of where it needs to be printed
 //			on screen.
@@ -24,7 +24,10 @@
 // 2/12/98 SB - Removed base_addr and width as params and ref'd to externs calc'd on page flip
 //              in draw_it.
 //              Check if ZRAW resource got else error (text looks bad without it <G>).
-// $Log: textsplat.c,v $
+// $Log: textsplat.cpp,v $
+// Revision 1.3  2003/09/24 21:39:39  robp
+// More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
+//
 // Revision 1.2  2003/09/22 21:44:23  robp
 // Box of Curios 1: Code tidy up things, which weren't strictly incorrect, just weird. No functional changes. Examples include a block of variables that were declared twice. These things were all thrown up by the C++ compiler.
 //

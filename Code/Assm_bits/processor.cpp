@@ -1,5 +1,5 @@
 // *****************************************************************MODULE HEADER*****
-// * FILENAME		: processor.c
+// * FILENAME		: processor.cpp
 // * MODULE TITLE	: processor related functions
 // * PROJECT		: Zex
 // * DATE STARTED	: 2nd June 1999, Wed 10:49pm
@@ -19,7 +19,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: processor.c,v $
+ * $Log: processor.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:00  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:13  stu_c
  * First Imported.
  *

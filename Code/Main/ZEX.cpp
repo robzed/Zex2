@@ -1,11 +1,17 @@
 /*©Lightsoft 1998/9/0-03
+
+Zex.cpp
+
 060599 - Zex 1
 030300 - Zex 2
 060903 - Zex 2.3 in CVS
 
 Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.c,v 1.4 2003/09/27 21:52:43 robp Exp $
-$Log: ZEX.c,v $
+$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.cpp,v 1.5 2003/09/28 10:36:10 robp Exp $
+$Log: ZEX.cpp,v $
+Revision 1.5  2003/09/28 10:36:10  robp
+Signed/Unsigned comparison fixes from last night, plus collision fix.
+
 Revision 1.4  2003/09/27 21:52:43  robp
 Fixed places where we were loading an unsigned with -1.
 

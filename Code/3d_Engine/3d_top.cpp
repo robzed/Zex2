@@ -1,6 +1,9 @@
-//3d_top.c
+//3d_top.cpp
 /*
-$Log: 3d_top.c,v $
+$Log: 3d_top.cpp,v $
+Revision 1.4  2003/09/28 10:36:03  robp
+Signed/Unsigned comparison fixes from last night, plus collision fix.
+
 Revision 1.3  2003/09/27 21:52:38  robp
 Fixed places where we were loading an unsigned with -1.
 
@@ -150,7 +153,7 @@ First Imported.
 #include "matrix_primitives.h"
 #include "3d_top.h"
 #include "camera_control.h"
-#include "insert object.h"
+#include "insert_object.h"
 #include "debug_timing.h"
 #include "Physics.h"
 #include	"objects_controls.h"	//controller definitions

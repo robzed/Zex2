@@ -1,3 +1,9 @@
+// hud_main.cpp
+//
+/*
+ * $Log$
+ *
+ */
 
 #ifndef __ZEX_PCH__
   #include "zselector.h"

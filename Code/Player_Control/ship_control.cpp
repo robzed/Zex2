@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : ship_control.c
+// * FILENAME           : ship_control.cpp
 // * MODULE TITLE       : ship_control.c
 // * PROJECT            : Zex
 // * DATE STARTED       : 22:29:16 on 22nd June 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
-// $Log: ship_control.c,v $
+// $Log: ship_control.cpp,v $
+// Revision 1.5  2003/09/28 10:36:08  robp
+// Signed/Unsigned comparison fixes from last night, plus collision fix.
+//
 // Revision 1.4  2003/09/27 20:41:51  robp
 // Fixed float->int warnings.
 //

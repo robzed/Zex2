@@ -1,6 +1,9 @@
-//objects_misc.c
+//objects_misc.cpp
 /*
- * $Log: objects_misc.c,v $
+ * $Log: objects_misc.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:06  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:08  stu_c
  * First Imported.
  *

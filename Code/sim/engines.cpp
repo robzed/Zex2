@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : engines.c
+// * FILENAME           : engines.cpp
 // * MODULE TITLE       : Engines
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: engines.c,v $
+$Log: engines.cpp,v $
+Revision 1.4  2003/09/27 20:41:55  robp
+Fixed float->int warnings.
+
 Revision 1.3  2003/09/22 21:04:17  stu_c
 Zex: Weapons: Adjustments to temp rise and fall in laser bay. Rebuild required.
 

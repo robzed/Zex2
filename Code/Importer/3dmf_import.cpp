@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : 3dmf_import
+// * FILENAME           : 3dmf_import.cpp
 // * MODULE TITLE       : Untitled 1
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: 3dmf_import.c,v $
+$Log: 3dmf_import.cpp,v $
+Revision 1.4  2003/09/28 10:36:02  robp
+Signed/Unsigned comparison fixes from last night, plus collision fix.
+
 Revision 1.3  2003/09/27 20:41:38  robp
 Fixed float->int warnings.
 
@@ -105,7 +108,7 @@ Checkin 280501
 
 #include "3dmf_import.h"
 #include "MeshToZex.h"
-#include "insert object.h"
+#include "insert_object.h"
 #include "pictures.h"
 #include "texture_management.h"
 

@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Autopilot.c
+// * FILENAME           : Autopilot.cpp
 // * MODULE TITLE       : Autopilot
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: Autopilot.c,v $
+$Log: Autopilot.cpp,v $
+Revision 1.2  2003/09/27 20:41:53  robp
+Fixed float->int warnings.
+
 Revision 1.1.1.1  2003/09/05 22:36:19  stu_c
 First Imported.
 

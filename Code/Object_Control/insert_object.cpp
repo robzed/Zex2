@@ -1,6 +1,9 @@
-//insert object
+//insert object.cpp
 /*
- * $Log: insert\040object.c,v $
+ * $Log: insert_object.cpp,v $
+ * Revision 1.4  2003/09/27 21:52:39  robp
+ * Fixed places where we were loading an unsigned with -1.
+ *
  * Revision 1.3  2003/09/27 20:41:40  robp
  * Fixed float->int warnings.
  *
@@ -84,7 +87,7 @@ Added accessor in access_ocbs which returns a pointer to type ZObjectControl
 #endif
 
 #include "3d_top.h"
-#include "insert object.h"
+#include "insert_object.h"
 #include "texture_management.h"
 #include "matrix_primitives.h"
 #include "sds.h"

@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : keyboard.c
+// * FILENAME           : keyboard.cpp
 // * MODULE TITLE       : keyboard
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: keyboard.c,v $
+$Log: keyboard.cpp,v $
+Revision 1.1.1.1  2003/09/05 22:35:55  stu_c
+First Imported.
+
 Revision 1.17  2002/09/08 02:00:50  stu_c
 Precompiled header adjustments
 

@@ -1,6 +1,12 @@
-/*game
-init
-$Log: z_init.c,v $
+/*
+
+z_init.cpp
+game init
+
+$Log: z_init.cpp,v $
+Revision 1.2  2003/09/27 08:58:31  robp
+Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+
 Revision 1.1.1.1  2003/09/05 22:35:53  stu_c
 First Imported.
 

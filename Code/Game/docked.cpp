@@ -1,6 +1,9 @@
-/* docked.c
+/* docked.cpp
 // SB 300199
-// $Log: docked.c,v $
+// $Log: docked.cpp,v $
+// Revision 1.3  2003/09/26 19:20:46  robp
+// Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+//
 // Revision 1.2  2003/09/20 12:57:14  robp
 // Removed nested comments
 //

@@ -1,5 +1,5 @@
 /*
- *  object_manipulation.c
+ *  object_manipulation.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Fri Dec 28 2001.
@@ -12,8 +12,11 @@
  *  Similarly, where a vector is specified it MUST be normalised else again garbage results.
  
  Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.2/Code/3d\040Engine/object_manipulation.c,v 1.5 2002/09/08 02:15:37 stu_c Exp $
-$Log: object_manipulation.c,v $
+$Header: /home/ls_cvs/ZEX2.3/Code/3d_Engine/object_manipulation.cpp,v 1.1.1.1 2003/09/05 22:35:11 stu_c Exp $
+$Log: object_manipulation.cpp,v $
+Revision 1.1.1.1  2003/09/05 22:35:11  stu_c
+First Imported.
+
 Revision 1.5  2002/09/08 02:15:37  stu_c
 Precompiled header adjustments
 

@@ -1,4 +1,4 @@
-//MeshToZex
+//MeshToZex.cpp
 //SB 14/11/98
 //
 //Note to Stu:
@@ -30,7 +30,10 @@
 //Update 9/1/99
 //Change to handle "smooth" polys (Gourad shaded)
 /*
- * $Log: MeshToZex.c,v $
+ * $Log: MeshToZex.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:57  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:05  robp
  * Removed nested comments
  *
@@ -97,7 +100,7 @@ Coffee fixes after changes for X.
 
 
 #include "MeshToZex.h"
-#include "insert object.h"
+#include "insert_object.h"
 #include "texture_management.h"
 #include "3dmf_import.h"
 

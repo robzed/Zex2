@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : show_stats.c
+// * FILENAME           : show_stats.cpp
 // * MODULE TITLE       : show_stats.c
 // * PROJECT            : Zex
 // * DATE STARTED       : 14:21:40 on 21st June 1999
@@ -14,7 +14,10 @@
 // *
 // *
 /* ***********************************************************************************
-// $Log: show_stats.c,v $
+// $Log: show_stats.cpp,v $
+// Revision 1.3  2003/09/26 19:20:49  robp
+// Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
+//
 // Revision 1.2  2003/09/20 12:57:15  robp
 // Removed nested comments
 //

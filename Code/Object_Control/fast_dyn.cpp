@@ -1,5 +1,5 @@
 /*
- *  fast_dyn.c
+ *  fast_dyn.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Sat Feb 09 2002.

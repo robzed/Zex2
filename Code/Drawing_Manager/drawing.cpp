@@ -1,7 +1,10 @@
 
-//drawing.c
+//drawing.cpp
 /*
- * $Log: drawing.c,v $
+ * $Log: drawing.cpp,v $
+ * Revision 1.6  2003/09/27 20:41:38  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.5  2003/09/27 09:00:29  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *

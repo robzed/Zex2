@@ -1,5 +1,11 @@
 /*
-// $Log: inventory.c,v $
+
+inventory.cpp
+
+// $Log: inventory.cpp,v $
+// Revision 1.4  2003/09/27 20:41:59  robp
+// Fixed float->int warnings.
+//
 // Revision 1.3  2003/09/26 19:20:48  robp
 // Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 //

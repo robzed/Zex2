@@ -1,5 +1,10 @@
 /*
- * $Log: draw_radar_and_cwp.c,v $
+ * draw_radar_and_cmp.cpp
+ *
+ * $Log: draw_radar_and_cwp.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:43  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:56:56  robp
  * Removed nested comments
  *

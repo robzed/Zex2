@@ -1,6 +1,9 @@
-//check_bounding_boxes
+//check_bounding_boxes.cpp
 /*
- * $Log: check_bounding_boxes.c,v $
+ * $Log: check_bounding_boxes.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:39  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:13  robp
  * Removed nested comments
  *

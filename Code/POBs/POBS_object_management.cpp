@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : POBS_object_management.c
+// * FILENAME           : POBS_object_management.cpp
 // * MODULE TITLE       : Load and Unload objects from the system automatically.
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C

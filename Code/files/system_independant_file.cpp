@@ -1,6 +1,6 @@
 /*
  *  system_independant_file.cpp
- *  Z_dungeon
+ *  Z_dungeon / Zex
  *
  *  Created by Rob Probin on Sat Dec 21 2002.
  *  Copyright (c) 2002 Lightsoft. All rights reserved.
@@ -17,8 +17,8 @@
  * exceptionally rare.
  *
  * $Author: robp $
- * $Date: 2003/09/21 13:13:10 $
- * $Revision: 1.1 $
+ * $Date: 2003/09/22 22:01:32 $
+ * $Revision: 1.2 $
  *
  * For log see end of file...
  *
@@ -564,7 +564,10 @@ return FALSE;
 
 /* CVS LOG
  *
- * $Log: system_independant_file.c,v $
+ * $Log: system_independant_file.cpp,v $
+ * Revision 1.2  2003/09/22 22:01:32  robp
+ * Work in progress: portable file system, stage 1 - load resources via C standard library calls. THIS INCLUDES A PROJECT FILE UPDATE.
+ *
  * Revision 1.1  2003/09/21 13:13:10  robp
  * First phase of system independant file system - add Z_dungeons file system and expand.
  *

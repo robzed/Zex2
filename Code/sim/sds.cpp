@@ -1,6 +1,6 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : mount.c
-// * MODULE TITLE       : 
+// * FILENAME           : sds.cpp
+// * MODULE TITLE       : previously mount.c
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
 // * DATE STARTED       : 22:08:25 on 9th July 2001
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: sds.c,v $
+$Log: sds.cpp,v $
+Revision 1.1.1.1  2003/09/05 22:36:22  stu_c
+First Imported.
+
 Revision 1.12  2002/09/08 02:09:42  stu_c
 Precompiled header adjustments
 

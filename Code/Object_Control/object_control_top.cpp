@@ -1,6 +1,9 @@
-//object control top
+//object_control_top.cpp
 /*
-$Log: object_control_top.c,v $
+$Log: object_control_top.cpp,v $
+Revision 1.4  2003/09/27 20:41:49  robp
+Fixed float->int warnings.
+
 Revision 1.3  2003/09/22 20:51:32  stu_c
 Zex:Weapons:Laser Bay temperature and overheat (in progress)
 

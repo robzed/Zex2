@@ -1,13 +1,13 @@
 /*
  *  system_interface.cpp
- *  Z_dungeon
+ *  Z_dungeon / Zex
  *
  *  Created by Rob Probin on Thu Nov 07 2002.
  *  Copyright (c) 2002 Lightsoft. All rights reserved.
  *
  * $Author: robp $
- * $Date: 2003/09/20 18:02:11 $
- * $Revision: 1.9 $
+ * $Date: 2003/09/22 22:01:33 $
+ * $Revision: 1.1 $
  *
  * For log see end of file...
  *
@@ -94,6 +94,9 @@ return TRUE;
 /* CVS LOG
  *
  * $Log: system_interface.cpp,v $
+ * Revision 1.1  2003/09/22 22:01:33  robp
+ * Work in progress: portable file system, stage 1 - load resources via C standard library calls. THIS INCLUDES A PROJECT FILE UPDATE.
+ *
  * Revision 1.9  2003/09/20 18:02:11  robp
  * *** NAME CHANGE OF ALL C FILES FROM .c TO .cpp *** 
 Before this point you will need to rename the files back to .c (i.e. remove the pp from .cpp) to build older versions.

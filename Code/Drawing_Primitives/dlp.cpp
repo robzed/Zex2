@@ -1,4 +1,4 @@
-// dlp.c - new header by Rob.
+// dlp.cpp - new header by Rob.
 // (It's brilliant mate...)
 //
 #ifndef __ZEX_PCH__

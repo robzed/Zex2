@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : real_time.c
+// * FILENAME           : real_time.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : 03:02:30 on 9th September 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: real_time.c,v $
+ * $Log: real_time.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:46  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:00  robp
  * Removed nested comments
  *

@@ -1,6 +1,10 @@
+// matrix_primitives.cpp
 //matrix functions (primitives) and low level trig
 /*
-$Log: matrix_primitives.c,v $
+$Log: matrix_primitives.cpp,v $
+Revision 1.1.1.1  2003/09/05 22:35:11  stu_c
+First Imported.
+
 Revision 1.11  2002/09/08 02:11:53  stu_c
 Precompiled header adjustments
 

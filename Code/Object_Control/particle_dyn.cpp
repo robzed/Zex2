@@ -1,5 +1,5 @@
 /*
- *  particle_dyn.c
+ *  particle_dyn.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Sun Jun 02 2002.

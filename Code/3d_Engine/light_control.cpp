@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : light_control.c
+// * FILENAME           : light_control.cpp
 // * MODULE TITLE       : Lighting
 // * PROJECT            : Zex
 // * DATE STARTED       : 22:55:43 on 22nd June 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: light_control.c,v $
+ * $Log: light_control.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:10  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:11  stu_c
  * First Imported.
  *

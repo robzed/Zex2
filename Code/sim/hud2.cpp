@@ -1,9 +1,11 @@
 /*
- *  hud2.c
+ *  hud2.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Sun Apr 21 2002.
  *  Copyright (c) 2002 Lightsoft. All rights reserved.
+ *
+ * $Log$
  *
  */
 #ifndef __ZEX_PCH__

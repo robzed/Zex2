@@ -1,5 +1,5 @@
 /*
- *  motherships2.c
+ *  motherships2.cpp
  *  zex22
  *
  *  Created by stu on Sat Dec 01 2001.

@@ -1,6 +1,9 @@
-//score and credits
+//score_and_credits.cpp
 /*
- * $Log: score_and_credits.c,v $
+ * $Log: score_and_credits.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:01  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:47  stu_c
  * First Imported.
  *

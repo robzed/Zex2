@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : 3d_depth_of_field_manager.c
+// * FILENAME           : 3d_depth_of_field_manager.cpp
 // * MODULE TITLE       : Handles setting up the screen correctly
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C

@@ -1,5 +1,5 @@
 // *****************************************************************MODULE HEADER*****
-// * FILENAME		: fcircle.c
+// * FILENAME		: fcircle.cpp
 // * MODULE TITLE	: Circle drawing
 // * PROJECT		: Zex
 // * DATE STARTED	: 10th April 1999, Sat 10:12pm
@@ -19,7 +19,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: fcircle.c,v $
+ * $Log: fcircle.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:56  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:03  robp
  * Removed nested comments
  *

@@ -1,10 +1,13 @@
 /*
 
-Sound.c calls Eclipse.c
+Sound.cpp calls Eclipse.cpp
 Owner: SB
 Started: 29/10/98
 ©Lightsoft 98
-$Log: sound.c,v $
+$Log: sound.cpp,v $
+Revision 1.4  2003/09/27 21:52:40  robp
+Fixed places where we were loading an unsigned with -1.
+
 Revision 1.3  2003/09/27 20:41:46  robp
 Fixed float->int warnings.
 

@@ -1,5 +1,9 @@
-/*
- * $Log: static_object_support.c,v $
+/* static_object_support.cpp
+ * 
+ * $Log: static_object_support.cpp,v $
+ * Revision 1.2  2003/09/20 12:56:56  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:57  stu_c
  * First Imported.
  *

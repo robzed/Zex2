@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : electrics.c
+// * FILENAME           : electrics.cpp
 // * MODULE TITLE       : electrics
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: electrics.c,v $
+$Log: electrics.cpp,v $
+Revision 1.1.1.1  2003/09/05 22:36:20  stu_c
+First Imported.
+
 Revision 1.6  2002/09/08 02:09:54  stu_c
 Precompiled header adjustments
 

@@ -1,9 +1,12 @@
-//debug_timing.c
+//debug_timing.cpp
 //SB 6/2/99
 //DO NOT RELEASE THIS CODE - IT ONLY WORKS WHEN LINKED WITH DRIVERSEERVICESLIB
 //WHICH IS NOT AVAILABLE EVERYWHERE
 /*
- * $Log: debug_timing.c,v $
+ * $Log: debug_timing.cpp,v $
+ * Revision 1.2  2003/09/20 12:56:55  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:16  stu_c
  * First Imported.
  *

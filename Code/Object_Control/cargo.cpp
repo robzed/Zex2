@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Untitled 1
+// * FILENAME           : cargo.cpp
 // * MODULE TITLE       : Untitled 1
 // * PROJECT            : Zex
 // * DATE STARTED       : 03:45:11 on 11th August 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: cargo.c,v $
+ * $Log: cargo.cpp,v $
+ * Revision 1.2  2003/09/20 12:56:57  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:59  stu_c
  * First Imported.
  *

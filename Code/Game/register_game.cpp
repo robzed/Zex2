@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : register_game.c
+// * FILENAME           : register_game.cpp
 // * MODULE TITLE       : register_game.c
 // * PROJECT            : Zex
 // * DATE STARTED       : 19:22:23 on 2nd July 1999
@@ -14,7 +14,10 @@
 // *
 // *
 /* ***********************************************************************************
-// $Log: register_game.c,v $
+// $Log: register_game.cpp,v $
+// Revision 1.2  2003/09/20 12:57:11  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:35:47  stu_c
 // First Imported.
 //

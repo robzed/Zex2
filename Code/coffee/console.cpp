@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : console.c
+// * FILENAME           : console.cpp
 // * MODULE TITLE       : Untitled 1
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -15,7 +15,10 @@
 // *
 // *
 /* ***********************************************************************************
- * $Log: console.c,v $
+ * $Log: console.cpp,v $
+ * Revision 1.3  2003/09/28 10:36:05  robp
+ * Signed/Unsigned comparison fixes from last night, plus collision fix.
+ *
  * Revision 1.2  2003/09/20 12:57:09  robp
  * Removed nested comments
  *

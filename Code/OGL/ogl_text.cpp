@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : ogl_text.c
+// * FILENAME           : ogl_text.cpp
 // * MODULE TITLE       : Untitled 1
 // * PROJECT            : Zex OGL
 // * DATE STARTED       : 16:19:47 on 16th October 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: ogl_text.c,v $
+ * $Log: ogl_text.cpp,v $
+ * Revision 1.3  2003/09/22 21:44:24  robp
+ * Box of Curios 1: Code tidy up things, which weren't strictly incorrect, just weird. No functional changes. Examples include a block of variables that were declared twice. These things were all thrown up by the C++ compiler.
+ *
  * Revision 1.2  2003/09/20 12:57:13  robp
  * Removed nested comments
  *

@@ -1,5 +1,5 @@
 /*
- *  NPC.c
+ *  NPC.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Fri Mar 15 2002.

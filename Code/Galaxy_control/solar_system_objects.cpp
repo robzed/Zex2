@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : solar_system_objects.c
+// * FILENAME           : solar_system_objects.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : 09:18:00 on 23rd Septemeber 2001

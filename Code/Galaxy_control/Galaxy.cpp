@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Galaxy.c
+// * FILENAME           : Galaxy.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : 19:57:55 on 29th August 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: Galaxy.c,v $
+ * $Log: Galaxy.cpp,v $
+ * Revision 1.4  2003/09/27 20:41:56  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.3  2003/09/26 19:20:47  robp
  * Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
  *

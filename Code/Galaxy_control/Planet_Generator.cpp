@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Planet_Generator.c
+// * FILENAME           : Planet_Generator.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : 19:37:44 on 29th August 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: Planet_Generator.c,v $
+ * $Log: Planet_Generator.cpp,v $
+ * Revision 1.2  2003/09/20 12:56:59  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:37  stu_c
  * First Imported.
  *

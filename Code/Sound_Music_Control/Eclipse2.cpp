@@ -1,5 +1,5 @@
 /*
- *  Eclipse2.c
+ *  Eclipse2.cpp
  *  zex22
  *
  *  Created by Stu on Sat Nov 10 2001.

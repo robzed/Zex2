@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : galaxy_create.c
+// * FILENAME           : galaxy_create.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : 20:38:00 on 12th November 2001

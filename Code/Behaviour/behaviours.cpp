@@ -1,5 +1,5 @@
 /*
- *  behaviours.c
+ *  behaviours.cpp
  *  zex22
  *
  *  Created by Stuart Ball on Thu Apr 11 2002.

@@ -1,4 +1,6 @@
 /***********************************************************************
+* FPOLY4_1.cpp
+*
 * FANTASY 		POLYGON DRAWER	      	      	      
 * VERSION:      	M003.004		
 * PROGRAMMER:   	ROBERT PROBIN		
@@ -50,7 +52,10 @@
 * 18/12/98      SB: Made clip rect dymaic, setup by calling set_poly_clipping
 
 ***********************************************************************
- * $Log: FPOLY4_1.c,v $
+ * $Log: FPOLY4_1.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:03  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:36:28  stu_c
  * First Imported.
  *

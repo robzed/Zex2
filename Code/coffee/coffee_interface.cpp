@@ -1,6 +1,6 @@
 
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : coffee_interface
+// * FILENAME           : coffee_interface.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // *
 /* ***********************************************************************************
- * $Log: coffee_interface.c,v $
+ * $Log: coffee_interface.cpp,v $
+ * Revision 1.4  2003/09/28 10:36:04  robp
+ * Signed/Unsigned comparison fixes from last night, plus collision fix.
+ *
  * Revision 1.3  2003/09/24 21:39:40  robp
  * More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
  *

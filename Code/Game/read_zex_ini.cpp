@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Untitled 1
+// * FILENAME           : read_zex_ini.cpp
 // * MODULE TITLE       : Untitled 1
 // * PROJECT            : Zex
 // * DATE STARTED       : 00:22:42 on 15th September 1999
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: read_zex_ini.c,v $
+ * $Log: read_zex_ini.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:00  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:46  stu_c
  * First Imported.
  *

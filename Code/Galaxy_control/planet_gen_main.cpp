@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : planet_gen_main.fth
+// * FILENAME           : planet_gen_main.cpp
 // * MODULE TITLE       : planet_gen_main
 // * PROJECT            : Zex
 // * DATE STARTED       : 22:26:28 on 29th August 1999
@@ -17,7 +17,10 @@
 // * MISC NOTES
 // *
 /*
- * $Log: planet_gen_main.c,v $
+ * $Log: planet_gen_main.cpp,v $
+ * Revision 1.4  2003/09/28 10:36:07  robp
+ * Signed/Unsigned comparison fixes from last night, plus collision fix.
+ *
  * Revision 1.3  2003/09/27 20:41:50  robp
  * Fixed float->int warnings.
  *

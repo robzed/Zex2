@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : collision.c
+// * FILENAME           : collision.cpp
 // * MODULE TITLE       : physics
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: collision.c,v $
+ * $Log: collision.cpp,v $
+ * Revision 1.5  2003/09/28 10:36:02  robp
+ * Signed/Unsigned comparison fixes from last night, plus collision fix.
+ *
  * Revision 1.4  2003/09/27 20:41:54  robp
  * Fixed float->int warnings.
  *

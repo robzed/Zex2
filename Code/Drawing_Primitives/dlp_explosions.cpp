@@ -1,5 +1,5 @@
 // *****************************************************************MODULE HEADER*****
-// * FILENAME		: dlp_explosions.c
+// * FILENAME		: dlp_explosions.cpp
 // * MODULE TITLE	: Explosions based on the DLP
 // * PROJECT		: Zex
 // * DATE STARTED	: 13th March 1999, Sat 11:00pm
@@ -23,7 +23,10 @@
 // * INCLUDED FILES
 // *
 /*
- * $Log: dlp_explosions.c,v $
+ * $Log: dlp_explosions.cpp,v $
+ * Revision 1.3  2003/09/27 20:41:54  robp
+ * Fixed float->int warnings.
+ *
  * Revision 1.2  2003/09/20 12:57:02  robp
  * Removed nested comments
  *

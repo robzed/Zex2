@@ -1,7 +1,11 @@
-//Zex file io
+//file_io.cpp
+//Zex 
 //SB 14/11/98
 /*
-$Log: file_io.c,v $
+$Log: file_io.cpp,v $
+Revision 1.5  2003/09/27 21:52:39  robp
+Fixed places where we were loading an unsigned with -1.
+
 Revision 1.4  2003/09/27 09:00:31  robp
 Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
 

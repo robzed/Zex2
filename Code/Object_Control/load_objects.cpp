@@ -1,6 +1,6 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : load_objects.c
-// * MODULE TITLE       : load_objects.c
+// * FILENAME           : load_objects.cpp
+// * MODULE TITLE       : load_objects.cpp
 // * PROJECT            : Zex
 // * DATE STARTED       : 22:20:32 on 22nd June 1999
 // * FIRST AUTHOR       : Stuart Ball
@@ -15,7 +15,10 @@
 // *
 // ***********************************************************************************
 /*
- * $Log: load_objects.c,v $
+ * $Log: load_objects.cpp,v $
+ * Revision 1.4  2003/09/27 08:58:30  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.3  2003/09/22 20:45:59  stu_c
  * Zex:Weapons: laser bay temperature and overheat (in progress)
  *
@@ -237,7 +240,10 @@ char *taddr;
 //Zex Load objects
 //SB 14/1198
 /*
- * $Log: load_objects.c,v $
+ * $Log: load_objects.cpp,v $
+ * Revision 1.4  2003/09/27 08:58:30  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.3  2003/09/22 20:45:59  stu_c
  * Zex:Weapons: laser bay temperature and overheat (in progress)
  *

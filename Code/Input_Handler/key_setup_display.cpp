@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : key_setup_display.c
+// * FILENAME           : key_setup_display.cpp
 // * MODULE TITLE       : key_setup_display
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C

@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : access_ocbs.c
+// * FILENAME           : access_ocbs.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * DATE STARTED       : Sun 08:56:11 on 8th Oct 2000

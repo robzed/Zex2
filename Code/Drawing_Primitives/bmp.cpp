@@ -1,5 +1,10 @@
 /*
- * $Log: bmp.c,v $
+ * bmp.cpp
+ *
+ * $Log: bmp.cpp,v $
+ * Revision 1.2  2003/09/20 12:57:01  robp
+ * Removed nested comments
+ *
  * Revision 1.1.1.1  2003/09/05 22:35:17  stu_c
  * First Imported.
  *

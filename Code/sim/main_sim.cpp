@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : Untitled 4
+// * FILENAME           : main_sim.cpp
 // * MODULE TITLE       : Untitled 4
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -16,7 +16,10 @@
 // *
 // ***********************************************************************************
 /* CVS bits
-$Log: main_sim.c,v $
+$Log: main_sim.cpp,v $
+Revision 1.1.1.1  2003/09/05 22:36:22  stu_c
+First Imported.
+
 Revision 1.5  2002/09/08 02:10:05  stu_c
 Precompiled header adjustments
 

@@ -1,5 +1,5 @@
 /*
- *  npc_gen.c
+ *  npc_gen.cpp
  *  zex23xcode
  *
  *  Created by Stuart Ball on Sat Sep 13 2003.

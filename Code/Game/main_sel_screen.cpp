@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : main_sel_screen.c
+// * FILENAME           : main_sel_screen.cpp
 // * MODULE TITLE       : main_sel_screen.c
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -17,7 +17,10 @@
 // ***********************************************************************************
 
 /*
-// $Log: main_sel_screen.c,v $
+// $Log: main_sel_screen.cpp,v $
+// Revision 1.8  2003/09/28 10:36:08  robp
+// Signed/Unsigned comparison fixes from last night, plus collision fix.
+//
 // Revision 1.7  2003/09/27 21:52:42  robp
 // Fixed places where we were loading an unsigned with -1.
 //

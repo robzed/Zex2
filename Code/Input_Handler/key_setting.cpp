@@ -1,6 +1,6 @@
 
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : key_setting.c
+// * FILENAME           : key_setting.cpp
 // * MODULE TITLE       : key_setting
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C

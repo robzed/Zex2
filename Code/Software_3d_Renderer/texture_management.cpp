@@ -1,9 +1,12 @@
-//texture_management.c
+//texture_management.cpp
 //SB 3/1/99
 //manages Zex's textures for me cause I'm too lazy to do it myself.
  
 /*
- * $Log: texture_management.c,v $
+ * $Log: texture_management.cpp,v $
+ * Revision 1.3  2003/09/27 09:00:30  robp
+ * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
+ *
  * Revision 1.2  2003/09/20 12:57:13  robp
  * Removed nested comments
  *
