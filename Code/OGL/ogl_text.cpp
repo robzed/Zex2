@@ -14,51 +14,54 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: ogl_text.c,v $
-/* Revision 1.10  2002/09/08 02:11:20  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.9  2002/06/24 21:59:22  stu_c
-/* Update for mapping now done via glOrtho rather than int_to_ogl
-/*
-/* Revision 1.8  2002/01/09 23:49:11  stu
-/* Furhter work on trading.
-/*
-/* Revision 1.7  2002/01/02 13:30:11  stu
-/* Continuing development for trading/static screens
-/*
-/* Revision 1.6  2001/12/29 01:12:09  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.5  2001/11/09 18:29:11  rob
-/* Various debug changes.
-/*
-/* Revision 1.4  2001/11/02 19:32:34  rob
-/* Build variants for interface lib and carbon.
+ * $Log: ogl_text.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:11  stu_c
+ * First Imported.
+ *
+ * Revision 1.10  2002/09/08 02:11:20  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.9  2002/06/24 21:59:22  stu_c
+ * Update for mapping now done via glOrtho rather than int_to_ogl
+ *
+ * Revision 1.8  2002/01/09 23:49:11  stu
+ * Furhter work on trading.
+ *
+ * Revision 1.7  2002/01/02 13:30:11  stu
+ * Continuing development for trading/static screens
+ *
+ * Revision 1.6  2001/12/29 01:12:09  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.5  2001/11/09 18:29:11  rob
+ * Various debug changes.
+ *
+ * Revision 1.4  2001/11/02 19:32:34  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/26 22:41:08  rob
-/* Dual headers
-/*
-/* Revision 1.2  2001/10/24 21:43:04  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.1  2001/10/21 01:10:49  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/06/01 21:50:31  stu
-/* GetFNum used to set up fonts
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:37  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:40  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.3  2001/10/26 22:41:08  rob
+ * Dual headers
+ *
+ * Revision 1.2  2001/10/24 21:43:04  stu
+ * First set of source to build on pb for carbon.
+ *
+ * Revision 1.1  2001/10/21 01:10:49  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/06/01 21:50:31  stu
+ * GetFNum used to set up fonts
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:37  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:40  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************

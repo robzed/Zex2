@@ -10,35 +10,39 @@
 //
 //
 //
-/* $Log: fgouraud.c,v $
-/* Revision 1.3  2002/09/08 02:07:46  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.2  2001/11/02 19:31:45  rob
-/* Build variants for interface lib and carbon.
+ * $Log: fgouraud.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:27  stu_c
+ * First Imported.
+ *
+ * Revision 1.3  2002/09/08 02:07:46  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.2  2001/11/02 19:31:45  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:04:31  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/10/02 22:25:25  rob
-/* Detected unused types.h usage for when building via mox
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.2  2000/09/30 20:05:59  stu
-/* Solar System Map changes and autopilot combat mode.
-/*
-/* Revision 1.1  2000/09/04 20:04:56  rob
-/* Hopefully fixed little black line problem with software renderer.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:09:40  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:04:31  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/10/02 22:25:25  rob
+ * Detected unused types.h usage for when building via mox
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.2  2000/09/30 20:05:59  stu
+ * Solar System Map changes and autopilot combat mode.
+ *
+ * Revision 1.1  2000/09/04 20:04:56  rob
+ * Hopefully fixed little black line problem with software renderer.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:09:40  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -1,24 +1,28 @@
 //objects_misc.c
-/* $Log: objects_misc.c,v $
-/* Revision 1.3  2002/09/08 02:14:00  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.2  2001/11/02 19:32:19  rob
-/* Build variants for interface lib and carbon.
+ * $Log: objects_misc.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:08  stu_c
+ * First Imported.
+ *
+ * Revision 1.3  2002/09/08 02:14:00  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.2  2001/11/02 19:32:19  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:13:02  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:08:05  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:13:02  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:08:05  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

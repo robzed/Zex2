@@ -10,38 +10,42 @@
 // Version 1.03 - RP - Mon 11/1/99 - Created light values in distort at request of Stu. Thanks Stu. (Welcome).
 //
 //
-/* $Log: fdistort.c,v $
-/* Revision 1.4  2002/09/08 02:07:59  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.3  2001/11/02 19:31:48  rob
-/* Build variants for interface lib and carbon.
+ * $Log: fdistort.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:26  stu_c
+ * First Imported.
+ *
+ * Revision 1.4  2002/09/08 02:07:59  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.3  2001/11/02 19:31:48  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:03  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:04:21  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/05/28 01:50:24  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.2  2000/09/30 20:05:44  stu
-/* Solar System Map changes and autopilot combat mode.
-/*
-/* Revision 1.1  2000/09/04 20:04:53  rob
-/* Hopefully fixed little black line problem with software renderer.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:09:27  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:03  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:04:21  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/05/28 01:50:24  stu
+ * 280501
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.2  2000/09/30 20:05:44  stu
+ * Solar System Map changes and autopilot combat mode.
+ *
+ * Revision 1.1  2000/09/04 20:04:53  rob
+ * Hopefully fixed little black line problem with software renderer.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:09:27  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
@@ -117,7 +121,7 @@ point_list++; x2=point_list->x; y2=point_list->y;
     {		  
         if(x2<xmin) { xmin=x2; xminu=(point_list->u); xminv=(point_list->v); }
         if(x2>xmax) { xmax=x2; xmaxu=(point_list->u); xmaxv=(point_list->v); }
-    }          	/* ignore connection - but store for single height case*/
+    }          	 /* ignore connection - but store for single height case*/
       
 tex_draw2(tex_startspace,tex_endspace,x1,y1,x2,y2,(point_list-1)->u,(point_list-1)->v,point_list->u,point_list->v);
 

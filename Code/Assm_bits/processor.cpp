@@ -18,87 +18,91 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: processor.c,v $
-/* Revision 1.16  2002/09/08 02:00:26  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.15  2002/08/27 20:59:39  stu_c
-/* Colliding shells
-/*
-/* Revision 1.14  2002/07/07 03:45:23  stu_c
-/* Lasers now work but need moving to POCB's
-/*
-/* Revision 1.13  2002/07/04 22:43:30  stu_c
-/* debug switch to switch off rt thread in 3d_structures_def.h
-/*
-/* Revision 1.12  2002/04/14 15:59:49  stu
-/* Further work
-/*
-/* Revision 1.11  2002/04/13 15:31:44  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.10  2002/02/16 19:04:23  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.9  2002/02/15 22:50:02  stu
-/* Added thread control code
-/*
-/* Revision 1.8  2001/12/31 20:03:56  stu
-/* Dunno
-/*
-/* Revision 1.7  2001/12/29 01:10:08  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.6  2001/12/14 19:44:18  stu
-/* Docking
-/*
-/* Revision 1.5  2001/11/03 14:28:17  stu
-/* Further OS X work
-/*
-/* Revision 1.4  2001/11/02 19:30:59  rob
-/* Build variants for interface lib and carbon.
+ * $Log: processor.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:13  stu_c
+ * First Imported.
+ *
+ * Revision 1.16  2002/09/08 02:00:26  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.15  2002/08/27 20:59:39  stu_c
+ * Colliding shells
+ *
+ * Revision 1.14  2002/07/07 03:45:23  stu_c
+ * Lasers now work but need moving to POCB's
+ *
+ * Revision 1.13  2002/07/04 22:43:30  stu_c
+ * debug switch to switch off rt thread in 3d_structures_def.h
+ *
+ * Revision 1.12  2002/04/14 15:59:49  stu
+ * Further work
+ *
+ * Revision 1.11  2002/04/13 15:31:44  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.10  2002/02/16 19:04:23  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.9  2002/02/15 22:50:02  stu
+ * Added thread control code
+ *
+ * Revision 1.8  2001/12/31 20:03:56  stu
+ * Dunno
+ *
+ * Revision 1.7  2001/12/29 01:10:08  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.6  2001/12/14 19:44:18  stu
+ * Docking
+ *
+ * Revision 1.5  2001/11/03 14:28:17  stu
+ * Further OS X work
+ *
+ * Revision 1.4  2001/11/02 19:30:59  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/27 18:56:35  rob
-/* dual interface lib/carbon lib changes
-/*
-/* Revision 1.2  2001/10/22 21:27:53  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:02:45  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.5  2001/09/23 17:58:27  rob
-/* now have real_frame_time_in_secs
-/*
-/* Revision 1.4  2001/09/18 20:42:42  stu
-/* More Sim/ hud numbers print
-/*
-/* Revision 1.3  2001/09/10 21:40:57  stu
-/* 100901
+ *
+ * Revision 1.3  2001/10/27 18:56:35  rob
+ * dual interface lib/carbon lib changes
+ *
+ * Revision 1.2  2001/10/22 21:27:53  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:02:45  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.5  2001/09/23 17:58:27  rob
+ * now have real_frame_time_in_secs
+ *
+ * Revision 1.4  2001/09/18 20:42:42  stu
+ * More Sim/ hud numbers print
+ *
+ * Revision 1.3  2001/09/10 21:40:57  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.2  2001/07/29 10:38:00  rob
-/* time_in_secs became double, various timing changes
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.3  2000/09/20 23:56:10  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.2  2000/08/27 01:34:13  stu
-/* Hud changes
-/*
-/* Revision 1.1  2000/08/27 00:01:23  rob
-/* added freeze physics routines to stop time (returns zero time per frame, therefore not changing physics)
-/*
-/* Revision 1.0.0.1  2000/08/21 22:00:01  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/07/29 10:38:00  rob
+ * time_in_secs became double, various timing changes
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.3  2000/09/20 23:56:10  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.2  2000/08/27 01:34:13  stu
+ * Hud changes
+ *
+ * Revision 1.1  2000/08/27 00:01:23  rob
+ * added freeze physics routines to stop time (returns zero time per frame, therefore not changing physics)
+ *
+ * Revision 1.0.0.1  2000/08/21 22:00:01  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************

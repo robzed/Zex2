@@ -1,70 +1,74 @@
 //insert object
-/* $Log: insert\040object.c,v $
-/* Revision 1.11  2002/09/08 02:15:12  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.10  2002/07/28 17:16:34  stu_c
-/* Exhaust particles and further work
-/*
-/* Revision 1.9  2002/05/31 23:54:21  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.8  2002/04/13 15:33:29  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.7  2001/12/04 23:36:44  stu
-/* Motherships work
-/*
-/* Revision 1.6  2001/11/05 22:45:12  stu
-/* Object thrust initialised correctly so engines doesn't crash on frame #1
-/*
-/* Revision 1.5  2001/11/05 20:02:34  stu
-/* More OSX work
-/*
-/* Revision 1.4  2001/11/02 23:20:06  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:32:27  rob
-/* Build variants for interface lib and carbon.
+ * $Log: insert\040object.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:01  stu_c
+ * First Imported.
+ *
+ * Revision 1.11  2002/09/08 02:15:12  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.10  2002/07/28 17:16:34  stu_c
+ * Exhaust particles and further work
+ *
+ * Revision 1.9  2002/05/31 23:54:21  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.8  2002/04/13 15:33:29  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.7  2001/12/04 23:36:44  stu
+ * Motherships work
+ *
+ * Revision 1.6  2001/11/05 22:45:12  stu
+ * Object thrust initialised correctly so engines doesn't crash on frame #1
+ *
+ * Revision 1.5  2001/11/05 20:02:34  stu
+ * More OSX work
+ *
+ * Revision 1.4  2001/11/02 23:20:06  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:32:27  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:27:57  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:04:52  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.6  2001/09/04 20:37:29  stu
-/* Sim stuff
-/*
-/* Revision 1.5  2001/06/23 20:02:09  stu
-/* 0.66 checkin
-/*
-/* Revision 1.4  2001/06/03 03:20:32  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.2  2001/10/22 21:27:57  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:04:52  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.6  2001/09/04 20:37:29  stu
+ * Sim stuff
+ *
+ * Revision 1.5  2001/06/23 20:02:09  stu
+ * 0.66 checkin
+ *
+ * Revision 1.4  2001/06/03 03:20:32  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.3  2001/05/28 01:46:28  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/01 18:27:52  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.1  2000/10/08 21:45:06  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:07:04  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.3  2001/05/28 01:46:28  stu
+ * 280501
+ *
+ * Revision 1.2  2001/04/01 18:27:52  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.1  2000/10/08 21:45:06  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:07:04  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

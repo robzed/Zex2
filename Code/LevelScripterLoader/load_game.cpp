@@ -1,154 +1,158 @@
 //load level
 //SB 18/12/98
 //See 3D engine design for notes
-/* $Log: load_game.c,v $
-/* Revision 1.1.1.1  2003/09/05 22:35:57  stu_c
-/* First Imported.
 /*
-/* Revision 1.25  2002/09/08 02:01:41  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.24  2002/08/27 21:00:07  stu_c
-/* Colliding shells
-/*
-/* Revision 1.23  2002/07/28 17:11:09  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.22  2002/04/13 15:32:22  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.21  2002/03/10 02:47:22  stu
-/* Fix for suns/particles not being rendered
-/*
-/* Revision 1.20  2002/03/09 15:16:11  stu
-/* load the parts of alien motherships
-/*
-/* Revision 1.19  2002/02/24 23:58:12  rob
-/* LMSP command for level loader
-/*
-/* Revision 1.18  2002/02/24 03:37:55  stu
-/* TEST_SYSTEM around pobs
-/*
-/* Revision 1.17  2002/02/13 00:50:40  rob
-/* POBs now manages player ship and velocity vector
-/*
-/* Revision 1.16  2002/02/02 23:47:59  rob
-/* pre-load moon
-/*
-/* Revision 1.15  2002/01/29 22:55:38  rob
-/* pobs change
-/*
-/* Revision 1.14  2002/01/27 18:05:41  stu
-/* Unused variables removed
-/*
-/* Revision 1.13  2002/01/20 17:09:08  stu
-/* Loading of new stars and new sun.
-/*
-/* Revision 1.12  2002/01/02 19:26:36  rob
-/* Added key setup code
-/*
-/* Revision 1.11  2001/12/31 20:04:51  stu
-/* load_level now takes pointer to filename rather than level number
-/*
-/* Revision 1.10  2001/12/29 01:10:17  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.9  2001/12/28 23:08:13  stu
-/* Now include texture_management.h but doesn't use it.
-/*
-/* Revision 1.8  2001/12/27 19:48:28  stu
-/* Additional development work for docking
-/*
-/* Revision 1.7  2001/11/24 19:29:29  stu
-/* *** empty log message ***
-/*
-/* Revision 1.6  2001/11/05 20:01:50  stu
-/* More OSX work
-/*
-/* Revision 1.5  2001/11/03 22:29:51  stu
-/* Bundles
-/*
-/* Revision 1.4  2001/11/02 23:20:19  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:31:02  rob
-/* Build variants for interface lib and carbon.
+ * $Log: load_game.c,v $
+ * Revision 1.2  2003/09/14 12:18:46  stu_c
+ * Removed some unused commented out code
+ *
+ * Revision 1.1.1.1  2003/09/05 22:35:57  stu_c
+ * First Imported.
+ *
+ * Revision 1.25  2002/09/08 02:01:41  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.24  2002/08/27 21:00:07  stu_c
+ * Colliding shells
+ *
+ * Revision 1.23  2002/07/28 17:11:09  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.22  2002/04/13 15:32:22  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.21  2002/03/10 02:47:22  stu
+ * Fix for suns/particles not being rendered
+ *
+ * Revision 1.20  2002/03/09 15:16:11  stu
+ * load the parts of alien motherships
+ *
+ * Revision 1.19  2002/02/24 23:58:12  rob
+ * LMSP command for level loader
+ *
+ * Revision 1.18  2002/02/24 03:37:55  stu
+ * TEST_SYSTEM around pobs
+ *
+ * Revision 1.17  2002/02/13 00:50:40  rob
+ * POBs now manages player ship and velocity vector
+ *
+ * Revision 1.16  2002/02/02 23:47:59  rob
+ * pre-load moon
+ *
+ * Revision 1.15  2002/01/29 22:55:38  rob
+ * pobs change
+ *
+ * Revision 1.14  2002/01/27 18:05:41  stu
+ * Unused variables removed
+ *
+ * Revision 1.13  2002/01/20 17:09:08  stu
+ * Loading of new stars and new sun.
+ *
+ * Revision 1.12  2002/01/02 19:26:36  rob
+ * Added key setup code
+ *
+ * Revision 1.11  2001/12/31 20:04:51  stu
+ * load_level now takes pointer to filename rather than level number
+ *
+ * Revision 1.10  2001/12/29 01:10:17  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.9  2001/12/28 23:08:13  stu
+ * Now include texture_management.h but doesn't use it.
+ *
+ * Revision 1.8  2001/12/27 19:48:28  stu
+ * Additional development work for docking
+ *
+ * Revision 1.7  2001/11/24 19:29:29  stu
+ * *** empty log message ***
+ *
+ * Revision 1.6  2001/11/05 20:01:50  stu
+ * More OSX work
+ *
+ * Revision 1.5  2001/11/03 22:29:51  stu
+ * Bundles
+ *
+ * Revision 1.4  2001/11/02 23:20:19  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:31:02  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:38  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:02:22  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.10  2001/09/23 19:01:39  stu
-/* AP work, improved number print, engines.
-/*
-/* Revision 1.9  2001/06/23 23:10:32  stu
-/* 0.66
-/*
-/* Revision 1.8  2001/06/21 20:31:13  rob
-/* make so bad load doesn't quit
-/*
-/* Revision 1.7  2001/06/13 18:19:57  rob
-/* Clear pb stuff
-/*
-/* Revision 1.6  2001/06/01 21:50:10  stu
-/* Changes so we only need one run-time folder for both test and real environments
-/*
-/* Revision 1.5  2001/05/28 21:40:22  stu
-/* Major commit 280501
-/*
-/* Revision 1.4  2001/05/28 01:44:28  stu
-/* 280501
-/*
-/* Revision 1.3  2001/04/01 18:34:35  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/15 19:56:29  stu
-/* Bolts, fuel freeze
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:36  rob
-/* First Imported.
-/*
-/* Revision 1.10  2000/12/11 19:47:51  stu
-/* Light fix in 3d_top - calc_normal
-/*
-/* Revision 1.9  2000/12/10 03:31:41  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+ *
+ * Revision 1.2  2001/10/22 21:28:38  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:02:22  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.10  2001/09/23 19:01:39  stu
+ * AP work, improved number print, engines.
+ *
+ * Revision 1.9  2001/06/23 23:10:32  stu
+ * 0.66
+ *
+ * Revision 1.8  2001/06/21 20:31:13  rob
+ * make so bad load doesn't quit
+ *
+ * Revision 1.7  2001/06/13 18:19:57  rob
+ * Clear pb stuff
+ *
+ * Revision 1.6  2001/06/01 21:50:10  stu
+ * Changes so we only need one run-time folder for both test and real environments
+ *
+ * Revision 1.5  2001/05/28 21:40:22  stu
+ * Major commit 280501
+ *
+ * Revision 1.4  2001/05/28 01:44:28  stu
+ * 280501
+ *
+ * Revision 1.3  2001/04/01 18:34:35  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/15 19:56:29  stu
+ * Bolts, fuel freeze
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:36  rob
+ * First Imported.
+ *
+ * Revision 1.10  2000/12/11 19:47:51  stu
+ * Light fix in 3d_top - calc_normal
+ *
+ * Revision 1.9  2000/12/10 03:31:41  stu
+ * Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
-/*
-/* Revision 1.8  2000/12/03 23:52:22  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.7  2000/11/28 22:27:51  stu
-/* ASteroid loaded
-/*
-/* Revision 1.6  2000/11/21 19:17:38  stu
-/* Lurkers clean up
-/*
-/* Revision 1.5  2000/11/16 20:35:57  rob
-/* orbit
-/*
-/* Revision 1.4  2000/09/20 23:49:38  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.3  2000/09/02 13:23:36  stu
-/* Added velocity vector display to HUD. Uses new object HUD_VV.z.
-/*
-/* Revision 1.2  2000/08/27 21:41:52  stu
-/* Lurkers clear up...
-/*
-/* Revision 1.1  2000/08/27 16:25:22  stu
-/* Zex Mass changed to 1 tonne.
+ *
+ * Revision 1.8  2000/12/03 23:52:22  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.7  2000/11/28 22:27:51  stu
+ * ASteroid loaded
+ *
+ * Revision 1.6  2000/11/21 19:17:38  stu
+ * Lurkers clean up
+ *
+ * Revision 1.5  2000/11/16 20:35:57  rob
+ * orbit
+ *
+ * Revision 1.4  2000/09/20 23:49:38  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.3  2000/09/02 13:23:36  stu
+ * Added velocity vector display to HUD. Uses new object HUD_VV.z.
+ *
+ * Revision 1.2  2000/08/27 21:41:52  stu
+ * Lurkers clear up...
+ *
+ * Revision 1.1  2000/08/27 16:25:22  stu
+ * Zex Mass changed to 1 tonne.
 Changes for movement decoupling in time.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:04:24  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.0.0.1  2000/08/21 22:04:24  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

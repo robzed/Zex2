@@ -14,32 +14,36 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: screen_splats.c,v $
-/* Revision 1.5  2002/09/08 02:06:56  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.4  2001/12/29 01:11:02  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.3  2001/11/02 19:31:37  rob
-/* Build variants for interface lib and carbon.
+ * $Log: screen_splats.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:17  stu_c
+ * First Imported.
+ *
+ * Revision 1.5  2002/09/08 02:06:56  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.4  2001/12/29 01:11:02  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.3  2001/11/02 19:31:37  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:30  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:06:20  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:09:01  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:30  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:06:20  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:09:01  stu
+ * First Imported.
+ *
  */
 
 

@@ -13,101 +13,104 @@
 // *
 // *
 // *
-// ***********************************************************************************
-/* $Log: show_stats.c,v $
-/* Revision 1.13  2002/09/08 02:20:40  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.12  2002/07/28 17:12:45  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.11  2002/04/13 15:33:03  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.10  2002/02/02 23:11:33  stu
-/* i_know_what_im_doing_kill param changes
-/*
-/* Revision 1.9  2001/12/29 01:12:47  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.8  2001/12/27 19:48:32  stu
-/* Additional development work for docking
-/*
-/* Revision 1.7  2001/12/04 22:57:38  rob
-/* sin tab proto removed
-/*
-/* Revision 1.6  2001/11/24 19:30:03  stu
-/* *** empty log message ***
-/*
-/* Revision 1.5  2001/11/02 19:33:04  rob
-/* Build variants for interface lib and carbon.
+/* ***********************************************************************************
+// $Log: show_stats.c,v $
+// Revision 1.1.1.1  2003/09/05 22:37:13  stu_c
+// First Imported.
+//
+// Revision 1.13  2002/09/08 02:20:40  stu_c
+// Precompiled header adjustments
+//
+// Revision 1.12  2002/07/28 17:12:45  stu_c
+// Exhausts and further particle work
+//
+// Revision 1.11  2002/04/13 15:33:03  stu
+// Rotation, Alycians, behaviour
+//
+// Revision 1.10  2002/02/02 23:11:33  stu
+// i_know_what_im_doing_kill param changes
+//
+// Revision 1.9  2001/12/29 01:12:47  stu
+// Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+//
+// Revision 1.8  2001/12/27 19:48:32  stu
+// Additional development work for docking
+//
+// Revision 1.7  2001/12/04 22:57:38  rob
+// sin tab proto removed
+//
+// Revision 1.6  2001/11/24 19:30:03  stu
+// *** empty log message ***
+//
+// Revision 1.5  2001/11/02 19:33:04  rob
+// Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.4  2001/10/24 21:41:01  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.3  2001/10/23 21:54:31  stu
-/* More carbon work
-/*
-/* Revision 1.2  2001/10/22 21:29:24  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:13:36  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:08  rob
-/* First Imported.
-/*
-/* Revision 1.6  2001/09/04 22:42:39  stu
-/* SDS
-/*
-/* Revision 1.5  2001/06/23 20:11:06  stu
-/* 0.66 checkin
-/*
-/* Revision 1.4  2001/06/03 03:22:32  stu
-/* OCB structure now contains a sub structure called:
+//
+// Revision 1.4  2001/10/24 21:41:01  stu
+// First set of source to build on pb for carbon.
+//
+// Revision 1.3  2001/10/23 21:54:31  stu
+// More carbon work
+//
+// Revision 1.2  2001/10/22 21:29:24  rob
+// Carbon warning changes
+//
+// Revision 1.1  2001/10/21 01:13:36  stu
+// Initial porting work
+//
+// Revision 1.0.0.1  2001/10/17 20:46:08  rob
+// First Imported.
+//
+// Revision 1.6  2001/09/04 22:42:39  stu
+// SDS
+//
+// Revision 1.5  2001/06/23 20:11:06  stu
+// 0.66 checkin
+//
+// Revision 1.4  2001/06/03 03:22:32  stu
+// OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.3  2001/05/28 01:54:18  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/01 18:24:29  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.7  2000/12/10 03:37:11  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+//
+// Revision 1.3  2001/05/28 01:54:18  stu
+// 280501
+//
+// Revision 1.2  2001/04/01 18:24:29  stu
+// *** empty log message ***
+//
+// Revision 1.1.1.1  2001/01/01 21:13:39  rob
+// First Imported.
+//
+// Revision 1.7  2000/12/10 03:37:11  stu
+// Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
 
 Old lighting calls removed
-/*
-/* Revision 1.6  2000/12/03 23:52:29  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.5  2000/11/28 22:30:28  stu
-/* Playing time to months, weeks, days etc.
+//
+// Revision 1.6  2000/12/03 23:52:29  rob
+// changed constants for object type to get uniformity
+//
+// Revision 1.5  2000/11/28 22:30:28  stu
+// Playing time to months, weeks, days etc.
 Crash fix.
-/*
-/* Revision 1.4  2000/11/16 20:45:18  rob
-/* orbit
-/*
-/* Revision 1.3  2000/09/20 23:52:15  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.2  2000/08/27 19:43:08  rob
-/* removed day night light movement code
-/*
-/* Revision 1.1  2000/08/27 01:35:24  stu
-/* Hud changes
-/*
-/* Revision 1.0.0.1  2000/08/21 22:11:29  stu
-/* First Imported.
-/*
+//
+// Revision 1.4  2000/11/16 20:45:18  rob
+// orbit
+//
+// Revision 1.3  2000/09/20 23:52:15  stu
+// HUD/AP/Scaling
+//
+// Revision 1.2  2000/08/27 19:43:08  rob
+// removed day night light movement code
+//
+// Revision 1.1  2000/08/27 01:35:24  stu
+// Hud changes
+//
+// Revision 1.0.0.1  2000/08/21 22:11:29  stu
+// First Imported.
+//
  */
 
 // ***********************************************************************************

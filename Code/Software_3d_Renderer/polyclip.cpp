@@ -5,46 +5,49 @@
 //               stuff.
 //
 /* $Log: polyclip.c,v $
-/* Revision 1.9  2002/09/08 02:07:22  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.8  2002/05/31 23:52:57  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.7  2002/02/24 03:39:32  stu
-/* Some compiler warnings removed
-/*
-/* Revision 1.6  2002/01/02 19:27:59  rob
-/* Added key setup code
-/*
-/* Revision 1.5  2001/12/31 20:02:41  stu
-/* Integrated OGL scissors 2d clip rect.
-/*
-/* Revision 1.4  2001/12/29 01:11:00  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.3  2001/11/09 18:28:47  rob
-/* Various debug changes.
-/*
-/* Revision 1.2  2001/11/02 19:31:43  rob
-/* Build variants for interface lib and carbon.
+ * Revision 1.1.1.1  2003/09/05 22:36:29  stu_c
+ * First Imported.
+ *
+ * Revision 1.9  2002/09/08 02:07:22  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.8  2002/05/31 23:52:57  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.7  2002/02/24 03:39:32  stu
+ * Some compiler warnings removed
+ *
+ * Revision 1.6  2002/01/02 19:27:59  rob
+ * Added key setup code
+ *
+ * Revision 1.5  2001/12/31 20:02:41  stu
+ * Integrated OGL scissors 2d clip rect.
+ *
+ * Revision 1.4  2001/12/29 01:11:00  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.3  2001/11/09 18:28:47  rob
+ * Various debug changes.
+ *
+ * Revision 1.2  2001/11/02 19:31:43  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:06:12  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/05/28 01:50:32  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:09:57  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:06:12  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/05/28 01:50:32  stu
+ * 280501
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:09:57  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

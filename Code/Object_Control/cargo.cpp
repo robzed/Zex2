@@ -14,66 +14,69 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: cargo.c,v $
-/* Revision 1.9  2002/09/08 02:04:03  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.8  2002/07/28 17:13:29  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.7  2002/05/05 22:27:30  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+ * $Log: cargo.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:59  stu_c
+ * First Imported.
+ *
+ * Revision 1.9  2002/09/08 02:04:03  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.8  2002/07/28 17:13:29  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.7  2002/05/05 22:27:30  stu
+ * Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.6  2002/03/16 00:44:24  stu
-/* Continued development
-/*
-/* Revision 1.5  2002/02/16 19:02:54  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.4  2002/01/09 23:48:52  stu
-/* Furhter work on trading.
-/*
-/* Revision 1.3  2001/11/02 19:31:23  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.6  2002/03/16 00:44:24  stu
+ * Continued development
+ *
+ * Revision 1.5  2002/02/16 19:02:54  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.4  2002/01/09 23:48:52  stu
+ * Furhter work on trading.
+ *
+ * Revision 1.3  2001/11/02 19:31:23  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:50  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:01:27  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.4  2001/06/23 20:08:26  stu
-/* 0.66 checkin
-/*
-/* Revision 1.3  2001/06/03 03:18:33  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.2  2001/10/22 21:28:50  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:01:27  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.4  2001/06/23 20:08:26  stu
+ * 0.66 checkin
+ *
+ * Revision 1.3  2001/06/03 03:18:33  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.2  2001/04/01 18:27:04  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.2  2000/11/16 20:38:11  rob
-/* orbit
-/*
-/* Revision 1.1  2000/09/20 23:47:47  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:44  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/04/01 18:27:04  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.2  2000/11/16 20:38:11  rob
+ * orbit
+ *
+ * Revision 1.1  2000/09/20 23:47:47  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:44  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************

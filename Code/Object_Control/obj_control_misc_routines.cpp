@@ -1,92 +1,96 @@
-/* $Log: object_control_misc_routines.c,v $
-/* Revision 1.16  2002/09/08 02:13:22  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.15  2002/07/28 17:12:58  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.14  2002/05/31 23:54:32  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.13  2002/05/05 22:28:39  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+ * $Log: object_control_misc_routines.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:07  stu_c
+ * First Imported.
+ *
+ * Revision 1.16  2002/09/08 02:13:22  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.15  2002/07/28 17:12:58  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.14  2002/05/31 23:54:32  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.13  2002/05/05 22:28:39  stu
+ * Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.12  2002/04/28 06:23:07  stu
-/* This checkin adds more to the HUD and brings out some sim variables to the player.
-/*
-/* Revision 1.11  2002/04/21 14:45:11  stu
-/* Further work
-/*
-/* Revision 1.10  2002/04/14 16:00:48  stu
-/* Further work
-/*
-/* Revision 1.9  2002/04/13 15:32:51  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.8  2002/03/19 23:16:33  stu
-/* Clear control_use_6 in clear_pb
-/*
-/* Revision 1.7  2002/03/16 00:44:47  stu
-/* Continued development
-/*
-/* Revision 1.6  2002/02/04 23:08:08  stu
-/* ADded get_unique_object_id (for bolts)
-/*
-/* Revision 1.5  2002/01/20 17:10:59  stu
-/* removed planet_on_screen
-/*
-/* Revision 1.4  2001/11/02 19:32:14  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.12  2002/04/28 06:23:07  stu
+ * This checkin adds more to the HUD and brings out some sim variables to the player.
+ *
+ * Revision 1.11  2002/04/21 14:45:11  stu
+ * Further work
+ *
+ * Revision 1.10  2002/04/14 16:00:48  stu
+ * Further work
+ *
+ * Revision 1.9  2002/04/13 15:32:51  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.8  2002/03/19 23:16:33  stu
+ * Clear control_use_6 in clear_pb
+ *
+ * Revision 1.7  2002/03/16 00:44:47  stu
+ * Continued development
+ *
+ * Revision 1.6  2002/02/04 23:08:08  stu
+ * ADded get_unique_object_id (for bolts)
+ *
+ * Revision 1.5  2002/01/20 17:10:59  stu
+ * removed planet_on_screen
+ *
+ * Revision 1.4  2001/11/02 19:32:14  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/24 21:40:01  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.2  2001/10/22 21:28:59  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:05:33  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.6  2001/06/23 23:09:43  stu
-/* 0.66
-/*
-/* Revision 1.5  2001/06/13 18:19:41  rob
-/* Two lines added - ????
-/*
-/* Revision 1.4  2001/06/03 03:21:16  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.3  2001/10/24 21:40:01  stu
+ * First set of source to build on pb for carbon.
+ *
+ * Revision 1.2  2001/10/22 21:28:59  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:05:33  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.6  2001/06/23 23:09:43  stu
+ * 0.66
+ *
+ * Revision 1.5  2001/06/13 18:19:41  rob
+ * Two lines added - ????
+ *
+ * Revision 1.4  2001/06/03 03:21:16  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.3  2001/05/28 01:54:27  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/01 18:22:02  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.3  2000/12/03 23:52:31  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.2  2000/11/16 20:40:05  rob
-/* orbit
-/*
-/* Revision 1.1  2000/09/20 23:50:32  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 22:08:09  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.3  2001/05/28 01:54:27  stu
+ * 280501
+ *
+ * Revision 1.2  2001/04/01 18:22:02  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.3  2000/12/03 23:52:31  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.2  2000/11/16 20:40:05  rob
+ * orbit
+ *
+ * Revision 1.1  2000/09/20 23:50:32  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.0.0.1  2000/08/21 22:08:09  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

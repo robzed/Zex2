@@ -1,120 +1,124 @@
 
 //drawing.c
-/* $Log: drawing.c,v $
-/* Revision 1.15  2002/09/08 01:57:23  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.14  2002/06/24 21:36:13  stu_c
-/* Removed screen coord to ogl +-1 mapping code.
-/*
-/* Revision 1.13  2002/03/16 00:45:24  stu
-/* Continued development
-/*
-/* Revision 1.12  2002/02/21 22:51:14  stu
-/* Background colour now black (not dark grey)
-/*
-/* Revision 1.11  2002/02/10 21:52:56  stu
-/* texture binding counting
-/*
-/* Revision 1.10  2002/02/03 19:31:43  stu
-/* Planet labels now in same colour as blobbed object
-/*
-/* Revision 1.9  2002/02/02 23:07:14  stu
-/* Changes for LOD on planets/labels
-/*
-/* Revision 1.8  2002/01/29 23:15:18  stu
-/* Planet names now aligned better
-/*
-/* Revision 1.7  2002/01/20 21:37:40  stu
-/* Changes to get it building on Anvil
-/*
-/* Revision 1.6  2002/01/20 17:05:11  stu
-/* erase colour now setable, planet labels.
-/*
-/* Revision 1.5  2001/12/29 01:11:16  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.4  2001/11/02 19:32:04  rob
-/* Build variants for interface lib and carbon.
+ * $Log: drawing.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:17  stu_c
+ * First Imported.
+ *
+ * Revision 1.15  2002/09/08 01:57:23  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.14  2002/06/24 21:36:13  stu_c
+ * Removed screen coord to ogl +-1 mapping code.
+ *
+ * Revision 1.13  2002/03/16 00:45:24  stu
+ * Continued development
+ *
+ * Revision 1.12  2002/02/21 22:51:14  stu
+ * Background colour now black (not dark grey)
+ *
+ * Revision 1.11  2002/02/10 21:52:56  stu
+ * texture binding counting
+ *
+ * Revision 1.10  2002/02/03 19:31:43  stu
+ * Planet labels now in same colour as blobbed object
+ *
+ * Revision 1.9  2002/02/02 23:07:14  stu
+ * Changes for LOD on planets/labels
+ *
+ * Revision 1.8  2002/01/29 23:15:18  stu
+ * Planet names now aligned better
+ *
+ * Revision 1.7  2002/01/20 21:37:40  stu
+ * Changes to get it building on Anvil
+ *
+ * Revision 1.6  2002/01/20 17:05:11  stu
+ * erase colour now setable, planet labels.
+ *
+ * Revision 1.5  2001/12/29 01:11:16  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.4  2001/11/02 19:32:04  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/23 21:56:15  stu
-/* More carbon work
-/*
-/* Revision 1.2  2001/10/22 21:28:44  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:01:58  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.10  2001/06/23 20:05:11  stu
-/* 0.66 checkin
-/*
-/* Revision 1.9  2001/06/01 21:51:20  stu
-/* Lurkers clear up
-/*
-/* Revision 1.8  2001/05/29 20:43:16  stu
-/* Removed zbuffer debugging code that was booked in on last commit.
+ *
+ * Revision 1.3  2001/10/23 21:56:15  stu
+ * More carbon work
+ *
+ * Revision 1.2  2001/10/22 21:28:44  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:01:58  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.10  2001/06/23 20:05:11  stu
+ * 0.66 checkin
+ *
+ * Revision 1.9  2001/06/01 21:51:20  stu
+ * Lurkers clear up
+ *
+ * Revision 1.8  2001/05/29 20:43:16  stu
+ * Removed zbuffer debugging code that was booked in on last commit.
 D'oh!
-/*
-/* Revision 1.7  2001/05/28 20:35:46  stu
-/* 280501
-/*
-/* Revision 1.6  2001/05/28 01:45:02  stu
-/* 280501
-/*
-/* Revision 1.5  2001/04/29 20:55:43  stu
-/* Z Clipping
-/*
-/* Revision 1.4  2001/04/02 17:28:25  rob
-/* made various variables switch on and off-able from forth. These include dust, asteriods, hud, zbuffer.
-/*
-/* Revision 1.3  2001/04/01 18:30:15  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/14 17:12:05  stu
-/* Gourad Fix
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:37  rob
-/* First Imported.
-/*
-/* Revision 1.9  2000/12/11 22:28:15  stu
-/* BIG BUG FIX For jerky redraws - the gamma fading
+ *
+ * Revision 1.7  2001/05/28 20:35:46  stu
+ * 280501
+ *
+ * Revision 1.6  2001/05/28 01:45:02  stu
+ * 280501
+ *
+ * Revision 1.5  2001/04/29 20:55:43  stu
+ * Z Clipping
+ *
+ * Revision 1.4  2001/04/02 17:28:25  rob
+ * made various variables switch on and off-able from forth. These include dust, asteriods, hud, zbuffer.
+ *
+ * Revision 1.3  2001/04/01 18:30:15  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/14 17:12:05  stu
+ * Gourad Fix
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:37  rob
+ * First Imported.
+ *
+ * Revision 1.9  2000/12/11 22:28:15  stu
+ * BIG BUG FIX For jerky redraws - the gamma fading
 was geting called every bloody frame!!!!!!!
 
 D'OH
-/*
-/* Revision 1.8  2000/11/28 22:29:33  stu
-/* Dunno.
-/*
-/* Revision 1.7  2000/10/19 19:04:07  stu
-/* Relative velocities, turbulence, planet names.
-/*
-/* Revision 1.6  2000/10/11 21:30:31  stu
-/* Finished off 64 bit conversion. Made engines bigger.
+ *
+ * Revision 1.8  2000/11/28 22:29:33  stu
+ * Dunno.
+ *
+ * Revision 1.7  2000/10/19 19:04:07  stu
+ * Relative velocities, turbulence, planet names.
+ *
+ * Revision 1.6  2000/10/11 21:30:31  stu
+ * Finished off 64 bit conversion. Made engines bigger.
 AP tweaks.
-/*
-/* Revision 1.5  2000/10/08 21:44:24  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.4  2000/09/30 20:01:56  stu
-/* Solar System Map changes and autopilot combat mode.
-/*
-/* Revision 1.3  2000/09/20 23:55:54  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.2  2000/09/13 20:31:44  stu
-/* Changes for hud targetting and sun corona effects.
-/*
-/* Revision 1.1  2000/09/02 13:26:11  stu
-/* Lurker clean up
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:20  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.5  2000/10/08 21:44:24  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.4  2000/09/30 20:01:56  stu
+ * Solar System Map changes and autopilot combat mode.
+ *
+ * Revision 1.3  2000/09/20 23:55:54  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.2  2000/09/13 20:31:44  stu
+ * Changes for hud targetting and sun corona effects.
+ *
+ * Revision 1.1  2000/09/02 13:26:11  stu
+ * Lurker clean up
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:20  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

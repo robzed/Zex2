@@ -1,24 +1,28 @@
 //check_bounding_boxes
-/* $Log: check_bounding_boxes.c,v $
-/* Revision 1.3  2002/09/08 02:14:58  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.2  2001/11/02 19:32:26  rob
-/* Build variants for interface lib and carbon.
+ * $Log: check_bounding_boxes.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:59  stu_c
+ * First Imported.
+ *
+ * Revision 1.3  2002/09/08 02:14:58  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.2  2001/11/02 19:32:26  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:03:22  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:45  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:03:22  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:45  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -14,89 +14,93 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: real_time.c,v $
-/* Revision 1.14  2002/09/08 02:01:57  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.13  2002/05/31 23:51:55  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.12  2002/02/17 06:18:59  stu
-/* Added radar targetting
-/*
-/* Revision 1.11  2002/02/16 19:14:44  stu
-/* DLP_BLUE changed to DLP_PURP
-/*
-/* Revision 1.10  2002/02/16 19:00:54  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.9  2002/02/10 21:53:49  stu
-/* Widened gap for salary addition
-/*
-/* Revision 1.8  2002/01/27 18:09:18  stu
-/* Added a few direct set time multiplier functions; now called TEMPMULT
-/*
-/* Revision 1.7  2002/01/20 17:02:50  stu
-/* Added get_time_multiplier call
-/*
-/* Revision 1.6  2001/12/29 01:09:38  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.5  2001/12/27 19:48:04  stu
-/* Additional development work for docking
-/*
-/* Revision 1.4  2001/11/09 18:28:45  rob
-/* Various debug changes.
-/*
-/* Revision 1.3  2001/11/02 19:31:04  rob
-/* Build variants for interface lib and carbon.
+ * $Log: real_time.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:13  stu_c
+ * First Imported.
+ *
+ * Revision 1.14  2002/09/08 02:01:57  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.13  2002/05/31 23:51:55  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.12  2002/02/17 06:18:59  stu
+ * Added radar targetting
+ *
+ * Revision 1.11  2002/02/16 19:14:44  stu
+ * DLP_BLUE changed to DLP_PURP
+ *
+ * Revision 1.10  2002/02/16 19:00:54  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.9  2002/02/10 21:53:49  stu
+ * Widened gap for salary addition
+ *
+ * Revision 1.8  2002/01/27 18:09:18  stu
+ * Added a few direct set time multiplier functions; now called TEMPMULT
+ *
+ * Revision 1.7  2002/01/20 17:02:50  stu
+ * Added get_time_multiplier call
+ *
+ * Revision 1.6  2001/12/29 01:09:38  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.5  2001/12/27 19:48:04  stu
+ * Additional development work for docking
+ *
+ * Revision 1.4  2001/11/09 18:28:45  rob
+ * Various debug changes.
+ *
+ * Revision 1.3  2001/11/02 19:31:04  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:27  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:02:57  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.5  2001/09/18 20:42:36  stu
-/* More Sim/ hud numbers print
-/*
-/* Revision 1.4  2001/07/29 10:38:27  rob
-/* real time clock linked to processor.c timing
-/*
-/* Revision 1.3  2001/05/28 01:48:49  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/01 18:23:16  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.6  2000/12/03 22:20:53  rob
-/* Changed time multiplier back to sensible values.
-/*
-/* Revision 1.5  2000/11/28 22:29:51  stu
-/* TOD months, weeks, days etc for stats screen
-/*
-/* Revision 1.4  2000/11/26 22:55:41  stu
-/* Various.
-/*
-/* Revision 1.3  2000/10/08 21:46:16  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.2  2000/09/20 23:55:15  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.1  2000/09/09 21:08:02  stu
-/* Split salary message over 2 lines
-/*
-/* Revision 1.0.0.1  2000/08/21 22:08:30  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:27  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:02:57  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.5  2001/09/18 20:42:36  stu
+ * More Sim/ hud numbers print
+ *
+ * Revision 1.4  2001/07/29 10:38:27  rob
+ * real time clock linked to processor.c timing
+ *
+ * Revision 1.3  2001/05/28 01:48:49  stu
+ * 280501
+ *
+ * Revision 1.2  2001/04/01 18:23:16  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.6  2000/12/03 22:20:53  rob
+ * Changed time multiplier back to sensible values.
+ *
+ * Revision 1.5  2000/11/28 22:29:51  stu
+ * TOD months, weeks, days etc for stats screen
+ *
+ * Revision 1.4  2000/11/26 22:55:41  stu
+ * Various.
+ *
+ * Revision 1.3  2000/10/08 21:46:16  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.2  2000/09/20 23:55:15  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.1  2000/09/09 21:08:02  stu
+ * Split salary message over 2 lines
+ *
+ * Revision 1.0.0.1  2000/08/21 22:08:30  stu
+ * First Imported.
+ *
  */
 
 

@@ -14,48 +14,51 @@
 // *
 // *
 // *
-// ***********************************************************************************
-/* $Log: coffee_file_interface.c,v $
-/* Revision 1.8  2002/09/08 02:17:04  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.7  2002/01/02 19:23:45  rob
-/* Added key setup code
-/*
-/* Revision 1.6  2001/12/29 01:11:40  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.5  2001/11/05 20:04:22  stu
-/* More OSX work
-/*
-/* Revision 1.4  2001/11/03 22:30:05  stu
-/* Bundles
-/*
-/* Revision 1.3  2001/11/02 19:32:48  rob
-/* Build variants for interface lib and carbon.
+/* ***********************************************************************************
+ * $Log: coffee_file_interface.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:23  stu_c
+ * First Imported.
+ *
+ * Revision 1.8  2002/09/08 02:17:04  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.7  2002/01/02 19:23:45  rob
+ * Added key setup code
+ *
+ * Revision 1.6  2001/12/29 01:11:40  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.5  2001/11/05 20:04:22  stu
+ * More OSX work
+ *
+ * Revision 1.4  2001/11/03 22:30:05  stu
+ * Bundles
+ *
+ * Revision 1.3  2001/11/02 19:32:48  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:18  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:08:53  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/05/28 01:55:10  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/08 20:24:11  rob
-/* changed init around
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:35  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:01:32  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:29:18  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:08:53  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/05/28 01:55:10  stu
+ * 280501
+ *
+ * Revision 1.2  2001/04/08 20:24:11  rob
+ * changed init around
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:35  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:01:32  stu
+ * First Imported.
+ *
  */
 
 

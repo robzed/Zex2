@@ -1,7 +1,11 @@
-/* $Log: bmp.c,v $
-/* Revision 1.5  2002/09/08 02:09:01  stu_c
-/* Precompiled header adjustments
 /*
+ * $Log: bmp.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:17  stu_c
+ * First Imported.
+ *
+ * Revision 1.5  2002/09/08 02:09:01  stu_c
+ * Precompiled header adjustments
+ *
 
 */
 #ifndef __ZEX_PCH__

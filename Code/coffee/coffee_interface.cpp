@@ -15,91 +15,94 @@
 // *					  Zex C interface to LSGF AKA Coffee
 // *
 // *
-// ***********************************************************************************
-/* $Log: coffee_interface.c,v $
-/* Revision 1.32  2002/09/08 02:17:19  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.31  2002/07/11 21:10:16  rob_c
-/* Accessors for display
-/*
-/* Revision 1.30  2002/04/21 21:43:18  rob
-/* Accessors to view rotation of planets & moons.
-/*
-/* Revision 1.29  2002/04/01 22:53:33  rob
-/* More POBs data accessors
-/*
-/* Revision 1.28  2002/03/24 00:46:17  rob
-/* Added commands so could check POBs data in a pane.
-/*
-/* Revision 1.27  2002/02/27 23:02:30  stu
-/* Fixed motherships not geting taken out of view - too many visible polys error.
-/*
-/* Revision 1.26  2002/02/24 19:05:47  rob
-/* set field of view angle commands for coffee
-/*
-/* Revision 1.25  2002/02/10 21:43:24  stu
-/* binds declared to coffee
-/*
-/* Revision 1.24  2002/02/02 23:13:36  stu
-/* Declared some 3d_top debug vars
-/*
-/* Revision 1.23  2002/01/27 18:11:52  stu
-/* Declared some ORCS variables
-/*
-/* Revision 1.22  2002/01/20 19:38:51  stu
-/* Declared ship_buffet to coffee
-/*
-/* Revision 1.21  2002/01/05 20:49:21  rob
-/* LSGF must be more than 13, otherwise liable for crashing.
-/*
-/* Revision 1.20  2002/01/02 19:29:37  rob
-/* Added key setup code
-/*
-/* Revision 1.19  2001/12/29 01:09:44  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.18  2001/11/26 23:13:44  rob
-/* space change only
-/*
-/* Revision 1.17  2001/11/24 21:21:32  rob
-/* Background galaxy changes
-/*
-/* Revision 1.16  2001/11/12 22:10:54  stu
-/* Eclipse work
-/*
-/* Revision 1.15  2001/11/11 21:47:50  rob
-/* Fixes switch screen blank problem.
-/*
-/* Revision 1.14  2001/11/09 18:28:42  rob
-/* Various debug changes.
-/*
-/* Revision 1.13  2001/11/03 19:38:37  rob
-/* Check for root.zsl success.
-/*
-/* Revision 1.12  2001/11/03 19:27:52  rob
-/* Check for root.zsl success.
-/*
-/* Revision 1.11  2001/11/02 20:00:47  rob
-/* PB build changes
-/*
-/* Revision 1.10  2001/11/02 19:30:49  rob
-/* Build variants for interface lib and carbon.
+/* ***********************************************************************************
+ * $Log: coffee_interface.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:15  stu_c
+ * First Imported.
+ *
+ * Revision 1.32  2002/09/08 02:17:19  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.31  2002/07/11 21:10:16  rob_c
+ * Accessors for display
+ *
+ * Revision 1.30  2002/04/21 21:43:18  rob
+ * Accessors to view rotation of planets & moons.
+ *
+ * Revision 1.29  2002/04/01 22:53:33  rob
+ * More POBs data accessors
+ *
+ * Revision 1.28  2002/03/24 00:46:17  rob
+ * Added commands so could check POBs data in a pane.
+ *
+ * Revision 1.27  2002/02/27 23:02:30  stu
+ * Fixed motherships not geting taken out of view - too many visible polys error.
+ *
+ * Revision 1.26  2002/02/24 19:05:47  rob
+ * set field of view angle commands for coffee
+ *
+ * Revision 1.25  2002/02/10 21:43:24  stu
+ * binds declared to coffee
+ *
+ * Revision 1.24  2002/02/02 23:13:36  stu
+ * Declared some 3d_top debug vars
+ *
+ * Revision 1.23  2002/01/27 18:11:52  stu
+ * Declared some ORCS variables
+ *
+ * Revision 1.22  2002/01/20 19:38:51  stu
+ * Declared ship_buffet to coffee
+ *
+ * Revision 1.21  2002/01/05 20:49:21  rob
+ * LSGF must be more than 13, otherwise liable for crashing.
+ *
+ * Revision 1.20  2002/01/02 19:29:37  rob
+ * Added key setup code
+ *
+ * Revision 1.19  2001/12/29 01:09:44  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.18  2001/11/26 23:13:44  rob
+ * space change only
+ *
+ * Revision 1.17  2001/11/24 21:21:32  rob
+ * Background galaxy changes
+ *
+ * Revision 1.16  2001/11/12 22:10:54  stu
+ * Eclipse work
+ *
+ * Revision 1.15  2001/11/11 21:47:50  rob
+ * Fixes switch screen blank problem.
+ *
+ * Revision 1.14  2001/11/09 18:28:42  rob
+ * Various debug changes.
+ *
+ * Revision 1.13  2001/11/03 19:38:37  rob
+ * Check for root.zsl success.
+ *
+ * Revision 1.12  2001/11/03 19:27:52  rob
+ * Check for root.zsl success.
+ *
+ * Revision 1.11  2001/11/02 20:00:47  rob
+ * PB build changes
+ *
+ * Revision 1.10  2001/11/02 19:30:49  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.9  2001/10/28 15:11:13  rob
-/* Detached resource before resizing.
+ *
+ * Revision 1.9  2001/10/28 15:11:13  rob
+ * Detached resource before resizing.
 Checks for re-size or illegal addresses made.
-/*
-/* Revision 1.7  2001/10/27 22:10:22  stu
-/* Furhter porting work
-/*
-/* Revision 1.6  2001/10/26 22:40:47  rob
-/* Dual headers.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:00:06  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.7  2001/10/27 22:10:22  stu
+ * Furhter porting work
+ *
+ * Revision 1.6  2001/10/26 22:40:47  rob
+ * Dual headers.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:00:06  stu
+ * First Imported.
+ *
  */
 
 

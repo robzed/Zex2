@@ -15,91 +15,95 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: Physics.c,v $
-/* Revision 1.12  2002/09/08 02:10:48  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.11  2002/04/14 15:57:31  stu
-/* Further work
-/*
-/* Revision 1.10  2002/04/13 15:29:17  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.9  2002/02/21 22:48:02  stu
-/* reset_angular_torque function added
-/*
-/* Revision 1.8  2002/01/27 18:11:34  stu
-/* Put in but commented out acceleration too great breaks.
-/*
-/* Revision 1.7  2001/12/29 01:12:10  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.6  2001/12/14 19:43:46  stu
-/* Docking
-/*
-/* Revision 1.5  2001/11/28 21:40:23  stu
-/* Finish Eclipse so works on Non os x carbon as well.
-/*
-/* Revision 1.4  2001/11/24 19:27:45  stu
-/* RA_line_line in place of sqrt
-/*
-/* Revision 1.3  2001/11/02 19:32:30  rob
-/* Build variants for interface lib and carbon.
+ * $Log: Physics.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:12  stu_c
+ * First Imported.
+ *
+ * Revision 1.12  2002/09/08 02:10:48  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.11  2002/04/14 15:57:31  stu
+ * Further work
+ *
+ * Revision 1.10  2002/04/13 15:29:17  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.9  2002/02/21 22:48:02  stu
+ * reset_angular_torque function added
+ *
+ * Revision 1.8  2002/01/27 18:11:34  stu
+ * Put in but commented out acceleration too great breaks.
+ *
+ * Revision 1.7  2001/12/29 01:12:10  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.6  2001/12/14 19:43:46  stu
+ * Docking
+ *
+ * Revision 1.5  2001/11/28 21:40:23  stu
+ * Finish Eclipse so works on Non os x carbon as well.
+ *
+ * Revision 1.4  2001/11/24 19:27:45  stu
+ * RA_line_line in place of sqrt
+ *
+ * Revision 1.3  2001/11/02 19:32:30  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:22  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:10:57  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.4  2001/09/04 20:39:02  stu
-/* Sim stuff
-/*
-/* Revision 1.3  2001/07/29 10:36:21  rob
-/* time_in_secs prototype removed
-/*
-/* Revision 1.2  2001/06/23 20:04:31  stu
-/* 0.66 checkin
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.9  2000/11/26 22:54:37  stu
-/* Various.
-/*
-/* Revision 1.8  2000/11/26 22:36:06  rob
-/* Fixed gravity
-/*
-/* Revision 1.7  2000/10/19 19:08:25  stu
-/* Relative velocities, turbulence, planet names.
-/*
-/* Revision 1.6  2000/10/08 21:43:22  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.5  2000/10/08 13:21:56  rob
-/* Added:
+ *
+ * Revision 1.2  2001/10/22 21:29:22  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:10:57  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.4  2001/09/04 20:39:02  stu
+ * Sim stuff
+ *
+ * Revision 1.3  2001/07/29 10:36:21  rob
+ * time_in_secs prototype removed
+ *
+ * Revision 1.2  2001/06/23 20:04:31  stu
+ * 0.66 checkin
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.9  2000/11/26 22:54:37  stu
+ * Various.
+ *
+ * Revision 1.8  2000/11/26 22:36:06  rob
+ * Fixed gravity
+ *
+ * Revision 1.7  2000/10/19 19:08:25  stu
+ * Relative velocities, turbulence, planet names.
+ *
+ * Revision 1.6  2000/10/08 21:43:22  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.5  2000/10/08 13:21:56  rob
+ * Added:
 
 1. apply linear force with reference to world coords
-/*
-/* Revision 1.4  2000/09/20 23:53:24  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.3  2000/08/27 21:40:51  stu
-/* Lurkers clear up...
-/*
-/* Revision 1.2  2000/08/27 16:28:24  stu
-/* Changes for movement decoupling in time.
-/*
-/* Revision 1.1  2000/08/27 01:34:06  stu
-/* Hud changes
-/*
-/* Revision 1.0.0.1  2000/08/21 21:59:50  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.4  2000/09/20 23:53:24  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.3  2000/08/27 21:40:51  stu
+ * Lurkers clear up...
+ *
+ * Revision 1.2  2000/08/27 16:28:24  stu
+ * Changes for movement decoupling in time.
+ *
+ * Revision 1.1  2000/08/27 01:34:06  stu
+ * Hud changes
+ *
+ * Revision 1.0.0.1  2000/08/21 21:59:50  stu
+ * First Imported.
+ *
  */
 
 

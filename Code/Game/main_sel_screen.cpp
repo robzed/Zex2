@@ -16,123 +16,126 @@
 // *
 // ***********************************************************************************
 
-
-/* $Log: main_sel_screen.c,v $
-/* Revision 1.19  2002/09/08 02:35:46  stu_c
-/* Pre compiled header support
 /*
-/* Revision 1.18  2002/09/07 15:57:05  rob_c
-/* Get rid of screen overriden in window mode in main screen key setting.
-/*
-/* Revision 1.17  2002/07/28 17:11:48  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.16  2002/05/31 23:56:58  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.15  2002/04/13 15:32:39  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.14  2002/02/17 06:21:12  stu
-/* Added radar targetting
-/*
-/* Revision 1.13  2002/02/02 23:11:20  stu
-/* i_know_what_im_doing_kill param changes
-/*
-/* Revision 1.12  2002/01/27 18:13:35  stu
-/* Dunno
-/*
-/* Revision 1.11  2002/01/02 19:22:07  rob
-/* added key setup code
-/*
-/* Revision 1.10  2002/01/02 13:30:25  stu
-/* Continuing development for trading/static screens
-/*
-/* Revision 1.9  2001/12/31 20:01:20  stu
-/* Now works; displays 3d ships.
-/*
-/* Revision 1.8  2001/12/29 01:12:59  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.7  2001/12/04 22:56:37  rob
-/* sin tab proto removed
-/*
-/* Revision 1.6  2001/11/24 21:19:52  rob
-/* Extra
-/*
-/* Revision 1.5  2001/11/12 20:22:05  stu
-/* Added call to eclipse_kill_looped_sounds on netry.
-/*
-/* Revision 1.4  2001/11/02 23:20:56  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:33:12  rob
-/* Build variants for interface lib and carbon.
+// $Log: main_sel_screen.c,v $
+// Revision 1.1.1.1  2003/09/05 22:35:46  stu_c
+// First Imported.
+//
+// Revision 1.19  2002/09/08 02:35:46  stu_c
+// Pre compiled header support
+//
+// Revision 1.18  2002/09/07 15:57:05  rob_c
+// Get rid of screen overriden in window mode in main screen key setting.
+//
+// Revision 1.17  2002/07/28 17:11:48  stu_c
+// Exhausts and further particle work
+//
+// Revision 1.16  2002/05/31 23:56:58  stu
+// Removed all warnings from the code
+//
+// Revision 1.15  2002/04/13 15:32:39  stu
+// Rotation, Alycians, behaviour
+//
+// Revision 1.14  2002/02/17 06:21:12  stu
+// Added radar targetting
+//
+// Revision 1.13  2002/02/02 23:11:20  stu
+// i_know_what_im_doing_kill param changes
+//
+// Revision 1.12  2002/01/27 18:13:35  stu
+// Dunno
+//
+// Revision 1.11  2002/01/02 19:22:07  rob
+// added key setup code
+//
+// Revision 1.10  2002/01/02 13:30:25  stu
+// Continuing development for trading/static screens
+//
+// Revision 1.9  2001/12/31 20:01:20  stu
+// Now works; displays 3d ships.
+//
+// Revision 1.8  2001/12/29 01:12:59  stu
+// Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+//
+// Revision 1.7  2001/12/04 22:56:37  rob
+// sin tab proto removed
+//
+// Revision 1.6  2001/11/24 21:19:52  rob
+// Extra
+//
+// Revision 1.5  2001/11/12 20:22:05  stu
+// Added call to eclipse_kill_looped_sounds on netry.
+//
+// Revision 1.4  2001/11/02 23:20:56  stu
+// Further OS X work. Enabled syscon logging.
+//
+// Revision 1.3  2001/11/02 19:33:12  rob
+// Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:09  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 00:58:13  stu
-/* Initial port work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:05  rob
-/* First Imported.
-/*
-/* Revision 1.9  2001/07/29 10:34:03  rob
-/* render_frame_no_erase prototype removed
-/*
-/* Revision 1.8  2001/06/24 21:42:09  rob
-/* changes to kill call
-/*
-/* Revision 1.7  2001/06/24 03:36:41  stu
-/* Was calling i_know_what_im_doing_kill on a dead object.
-/*
-/* Revision 1.6  2001/06/13 18:21:24  rob
-/* clear pb added
-/*
-/* Revision 1.5  2001/06/03 00:25:03  stu
-/* Fix for dialogs not showing. Also affects finder and Anvil console commands
-/*
-/* Revision 1.4  2001/05/28 01:53:33  stu
-/* 280501
-/*
-/* Revision 1.3  2001/04/01 18:46:41  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/02 18:56:58  stu
-/* switching to finder
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:33  rob
-/* First Imported.
-/*
-/* Revision 1.7  2000/12/10 03:36:28  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+//
+// Revision 1.2  2001/10/22 21:28:09  rob
+// Carbon warning changes
+//
+// Revision 1.1  2001/10/21 00:58:13  stu
+// Initial port work
+//
+// Revision 1.0.0.1  2001/10/17 20:46:05  rob
+// First Imported.
+//
+// Revision 1.9  2001/07/29 10:34:03  rob
+// render_frame_no_erase prototype removed
+//
+// Revision 1.8  2001/06/24 21:42:09  rob
+// changes to kill call
+//
+// Revision 1.7  2001/06/24 03:36:41  stu
+// Was calling i_know_what_im_doing_kill on a dead object.
+//
+// Revision 1.6  2001/06/13 18:21:24  rob
+// clear pb added
+//
+// Revision 1.5  2001/06/03 00:25:03  stu
+// Fix for dialogs not showing. Also affects finder and Anvil console commands
+//
+// Revision 1.4  2001/05/28 01:53:33  stu
+// 280501
+//
+// Revision 1.3  2001/04/01 18:46:41  stu
+// *** empty log message ***
+//
+// Revision 1.2  2001/01/02 18:56:58  stu
+// switching to finder
+//
+// Revision 1.1.1.1  2001/01/01 21:13:33  rob
+// First Imported.
+//
+// Revision 1.7  2000/12/10 03:36:28  stu
+// Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
 
 Old lighting calls removed
-/*
-/* Revision 1.6  2000/12/03 23:52:19  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.5  2000/11/16 20:16:52  rob
-/* orbit
-/*
-/* Revision 1.4  2000/10/08 21:48:46  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.3  2000/09/20 23:50:12  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.2  2000/08/27 16:27:04  stu
-/* Changes for movement decoupling in time.
-/*
-/* Revision 1.1  2000/08/27 01:33:05  stu
-/* Hud changes
-/*
-/* Revision 1.0.0.1  2000/08/21 21:58:44  stu
-/* First Imported.
-/*
+//
+// Revision 1.6  2000/12/03 23:52:19  rob
+// changed constants for object type to get uniformity
+//
+// Revision 1.5  2000/11/16 20:16:52  rob
+// orbit
+//
+// Revision 1.4  2000/10/08 21:48:46  stu
+// Engine conversion to 64 bit. Bitch of a job.
+//
+// Revision 1.3  2000/09/20 23:50:12  stu
+// HUD/AP/Scaling
+//
+// Revision 1.2  2000/08/27 16:27:04  stu
+// Changes for movement decoupling in time.
+//
+// Revision 1.1  2000/08/27 01:33:05  stu
+// Hud changes
+//
+// Revision 1.0.0.1  2000/08/21 21:58:44  stu
+// First Imported.
+//
  */
 
 //do_main_sel_screen

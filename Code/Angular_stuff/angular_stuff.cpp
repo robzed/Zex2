@@ -1,37 +1,41 @@
 //angular stuff
 //SB/Lightsoft Apr 99
-/* $Log: angular_stuff.c,v $
-/* Revision 1.7  2002/09/08 02:12:05  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.6  2002/05/31 23:55:39  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.5  2001/12/29 01:11:39  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.4  2001/12/14 19:41:08  stu
-/* Docking
-/*
-/* Revision 1.3  2001/11/02 19:32:41  rob
-/* Build variants for interface lib and carbon.
+ * $Log: angular_stuff.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:12  stu_c
+ * First Imported.
+ *
+ * Revision 1.7  2002/09/08 02:12:05  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.6  2002/05/31 23:55:39  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.5  2001/12/29 01:11:39  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.4  2001/12/14 19:41:08  stu
+ * Docking
+ *
+ * Revision 1.3  2001/11/02 19:32:41  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:13  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:03:16  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 21:59:58  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:29:13  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:03:16  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 21:59:58  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

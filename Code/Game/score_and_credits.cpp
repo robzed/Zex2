@@ -1,36 +1,40 @@
 //score and credits
-/* $Log: score_and_credits.c,v $
-/* Revision 1.7  2002/09/08 02:02:35  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.6  2002/07/28 17:12:16  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.5  2002/02/16 19:03:06  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.4  2001/12/29 01:10:31  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.3  2001/11/02 19:31:08  rob
-/* Build variants for interface lib and carbon.
+ * $Log: score_and_credits.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:47  stu_c
+ * First Imported.
+ *
+ * Revision 1.7  2002/09/08 02:02:35  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.6  2002/07/28 17:12:16  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.5  2002/02/16 19:03:06  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.4  2001/12/29 01:10:31  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.3  2001/11/02 19:31:08  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:28  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:03:05  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:35  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:02:02  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:28  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:03:05  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:35  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:02:02  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

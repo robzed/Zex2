@@ -2,38 +2,42 @@
 //SB 6/2/99
 //DO NOT RELEASE THIS CODE - IT ONLY WORKS WHEN LINKED WITH DRIVERSEERVICESLIB
 //WHICH IS NOT AVAILABLE EVERYWHERE
-/* $Log: debug_timing.c,v $
-/* Revision 1.5  2002/09/08 02:00:38  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.4  2001/12/29 01:10:00  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.3  2001/11/02 19:30:56  rob
-/* Build variants for interface lib and carbon.
+ * $Log: debug_timing.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:16  stu_c
+ * First Imported.
+ *
+ * Revision 1.5  2002/09/08 02:00:38  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.4  2001/12/29 01:10:00  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.3  2001/11/02 19:30:56  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:51  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:01:34  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/08/12 19:01:38  rob
-/* Sorted out some minor problems with the timings code.
-/*
-/* Revision 1.2  2001/07/29 10:34:49  rob
-/* changes for coffee
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:00:17  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:51  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:01:34  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/08/12 19:01:38  rob
+ * Sorted out some minor problems with the timings code.
+ *
+ * Revision 1.2  2001/07/29 10:34:49  rob
+ * changes for coffee
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:00:17  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************

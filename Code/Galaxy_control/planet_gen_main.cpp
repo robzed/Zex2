@@ -16,48 +16,51 @@
 // ***********************************************************************************
 // * MISC NOTES
 // *
-
-/* $Log: planet_gen_main.c,v $
-/* Revision 1.10  2002/09/08 02:04:51  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.9  2002/04/29 00:50:30  rob
-/* error in snow code since random change
-/*
-/* Revision 1.8  2002/04/29 00:27:33  rob
-/* planet graphic changes
-/*
-/* Revision 1.7  2002/04/01 22:54:54  rob
-/* More planet gen changes
-/*
-/* Revision 1.6  2002/02/24 19:08:11  rob
-/* added extra resolution to a local PI - should have no effect....
-/*
-/* Revision 1.5  2001/12/29 01:09:58  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.4  2001/11/07 21:34:51  stu
-/* Both X and IB now use same RAndom Gems.
-/*
-/* Revision 1.3  2001/11/02 19:31:27  rob
-/* Build variants for interface lib and carbon.
+ * $Log: planet_gen_main.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:36  stu_c
+ * First Imported.
+ *
+ * Revision 1.10  2002/09/08 02:04:51  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.9  2002/04/29 00:50:30  rob
+ * error in snow code since random change
+ *
+ * Revision 1.8  2002/04/29 00:27:33  rob
+ * planet graphic changes
+ *
+ * Revision 1.7  2002/04/01 22:54:54  rob
+ * More planet gen changes
+ *
+ * Revision 1.6  2002/02/24 19:08:11  rob
+ * added extra resolution to a local PI - should have no effect....
+ *
+ * Revision 1.5  2001/12/29 01:09:58  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.4  2001/11/07 21:34:51  stu
+ * Both X and IB now use same RAndom Gems.
+ *
+ * Revision 1.3  2001/11/02 19:31:27  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:43  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:13:10  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:05  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:36  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:03:11  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:43  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:13:10  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:05  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:36  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:03:11  stu
+ * First Imported.
+ *
  */
 
 #define PLANET_GEN_DEBUG 0

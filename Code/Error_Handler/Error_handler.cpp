@@ -1,61 +1,65 @@
 //Error_handler.c
-/* $Log: Error_handler.c,v $
-/* Revision 1.13  2002/09/08 02:02:46  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.12  2002/07/07 03:44:47  stu_c
-/* Lasers now work but need moving to POCB's
-/*
-/* Revision 1.11  2002/03/09 15:16:45  stu
-/* Fatal error dialog now copied to stdErr
-/*
-/* Revision 1.10  2001/12/29 01:10:10  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.9  2001/11/24 19:28:52  stu
-/* *** empty log message ***
-/*
-/* Revision 1.8  2001/11/02 23:23:51  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.7  2001/11/02 23:14:15  rob
-/* build name change
-/*
-/* Revision 1.6  2001/11/02 19:31:11  rob
-/* Build variants for interface lib and carbon.
+ * $Log: Error_handler.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:22  stu_c
+ * First Imported.
+ *
+ * Revision 1.13  2002/09/08 02:02:46  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.12  2002/07/07 03:44:47  stu_c
+ * Lasers now work but need moving to POCB's
+ *
+ * Revision 1.11  2002/03/09 15:16:45  stu
+ * Fatal error dialog now copied to stdErr
+ *
+ * Revision 1.10  2001/12/29 01:10:10  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.9  2001/11/24 19:28:52  stu
+ * *** empty log message ***
+ *
+ * Revision 1.8  2001/11/02 23:23:51  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.7  2001/11/02 23:14:15  rob
+ * build name change
+ *
+ * Revision 1.6  2001/11/02 19:31:11  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.5  2001/10/27 18:57:22  rob
-/* dual interface lib/carbon build
-/*
-/* Revision 1.4  2001/10/22 21:28:54  rob
-/* Carbon warning changes
-/*
-/* Revision 1.3  2001/10/21 12:35:48  rob
-/* const strings.
+ *
+ * Revision 1.5  2001/10/27 18:57:22  rob
+ * dual interface lib/carbon build
+ *
+ * Revision 1.4  2001/10/22 21:28:54  rob
+ * Carbon warning changes
+ *
+ * Revision 1.3  2001/10/21 12:35:48  rob
+ * const strings.
 carbon warning reduction
-/*
-/* Revision 1.2  2001/10/21 00:57:25  stu
-/* Initial port work
-/*
-/* Revision 1.1  2001/10/20 23:59:49  rob
-/* Various carbonisation fixes.
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/09/09 21:30:56  rob
-/* Added ability to see console screen if something goes wrong during boot sequence by clicking on the Debugger button.
-/*
-/* Revision 1.2  2001/06/03 08:39:15  rob
-/* Altered report_error (and variants) so would not close down drawsprokets if it wasn't active yet, thereby allowing us to see early dialog boxes. (e.g. R folder missing, coffee could not load, etc).
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:35  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:01:29  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/21 00:57:25  stu
+ * Initial port work
+ *
+ * Revision 1.1  2001/10/20 23:59:49  rob
+ * Various carbonisation fixes.
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/09/09 21:30:56  rob
+ * Added ability to see console screen if something goes wrong during boot sequence by clicking on the Debugger button.
+ *
+ * Revision 1.2  2001/06/03 08:39:15  rob
+ * Altered report_error (and variants) so would not close down drawsprokets if it wasn't active yet, thereby allowing us to see early dialog boxes. (e.g. R folder missing, coffee could not load, etc).
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:35  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:01:29  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

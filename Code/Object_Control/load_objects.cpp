@@ -14,142 +14,145 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: load_objects.c,v $
-/* Revision 1.29  2002/09/08 02:14:14  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.28  2002/08/31 19:25:16  stu_c
-/* Callsigns
-/*
-/* Revision 1.27  2002/08/11 22:07:31  stu_c
-/* behaviour_aggressive started, falcons from motherships.
-/*
-/* Revision 1.26  2002/07/28 17:11:29  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.25  2002/07/09 21:44:02  stu_c
-/* NPC lasers; might become exhausts
-/*
-/* Revision 1.24  2002/06/16 23:19:20  stu
-/* Particles booked in for backup purposes - not working yet or complete.
-/*
-/* Revision 1.23  2002/05/31 23:53:57  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.22  2002/05/19 03:18:08  stu
-/* Guns fix
-/*
-/* Revision 1.21  2002/04/28 06:22:21  stu
-/* This checkin adds more to the HUD and brings out some sim variables to the player.
-/*
-/* Revision 1.20  2002/04/14 16:00:34  stu
-/* Further work
-/*
-/* Revision 1.19  2002/04/13 15:28:51  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.18  2002/03/16 00:43:12  stu
-/* Continued development
-/*
-/* Revision 1.17  2002/02/24 04:52:33  stu
-/* Just some formatting
-/*
-/* Revision 1.16  2002/02/16 19:03:57  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.15  2002/02/10 21:36:53  stu
-/* fast_dyn_objects
-/*
-/* Revision 1.14  2002/02/04 00:46:36  rob
-/* ensure LOD code honours galactic id
-/*
-/* Revision 1.13  2002/02/03 19:32:41  stu
-/* swap_dyn_object now inlines setting of the blobbed colour
-/*
-/* Revision 1.12  2002/02/02 23:09:43  stu
-/* new function - swap_dyn_object still in-progress
-/*
-/* Revision 1.11  2002/01/09 23:48:42  stu
-/* Furhter work on trading.
-/*
-/* Revision 1.10  2001/12/31 20:03:12  stu
-/* More error reporting in load_dyn_object
-/*
-/* Revision 1.9  2001/12/29 01:13:04  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.8  2001/12/04 23:36:33  stu
-/* Motherships work
-/*
-/* Revision 1.7  2001/11/26 23:29:30  rob
-/* Whitespace changes
-/*
-/* Revision 1.6  2001/11/24 19:30:11  stu
-/* *** empty log message ***
-/*
-/* Revision 1.5  2001/11/05 20:01:19  stu
-/* More OSX work
-/*
-/* Revision 1.4  2001/11/02 23:19:54  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:32:21  rob
-/* Build variants for interface lib and carbon.
+ * $Log: load_objects.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:03  stu_c
+ * First Imported.
+ *
+ * Revision 1.29  2002/09/08 02:14:14  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.28  2002/08/31 19:25:16  stu_c
+ * Callsigns
+ *
+ * Revision 1.27  2002/08/11 22:07:31  stu_c
+ * behaviour_aggressive started, falcons from motherships.
+ *
+ * Revision 1.26  2002/07/28 17:11:29  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.25  2002/07/09 21:44:02  stu_c
+ * NPC lasers; might become exhausts
+ *
+ * Revision 1.24  2002/06/16 23:19:20  stu
+ * Particles booked in for backup purposes - not working yet or complete.
+ *
+ * Revision 1.23  2002/05/31 23:53:57  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.22  2002/05/19 03:18:08  stu
+ * Guns fix
+ *
+ * Revision 1.21  2002/04/28 06:22:21  stu
+ * This checkin adds more to the HUD and brings out some sim variables to the player.
+ *
+ * Revision 1.20  2002/04/14 16:00:34  stu
+ * Further work
+ *
+ * Revision 1.19  2002/04/13 15:28:51  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.18  2002/03/16 00:43:12  stu
+ * Continued development
+ *
+ * Revision 1.17  2002/02/24 04:52:33  stu
+ * Just some formatting
+ *
+ * Revision 1.16  2002/02/16 19:03:57  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.15  2002/02/10 21:36:53  stu
+ * fast_dyn_objects
+ *
+ * Revision 1.14  2002/02/04 00:46:36  rob
+ * ensure LOD code honours galactic id
+ *
+ * Revision 1.13  2002/02/03 19:32:41  stu
+ * swap_dyn_object now inlines setting of the blobbed colour
+ *
+ * Revision 1.12  2002/02/02 23:09:43  stu
+ * new function - swap_dyn_object still in-progress
+ *
+ * Revision 1.11  2002/01/09 23:48:42  stu
+ * Furhter work on trading.
+ *
+ * Revision 1.10  2001/12/31 20:03:12  stu
+ * More error reporting in load_dyn_object
+ *
+ * Revision 1.9  2001/12/29 01:13:04  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.8  2001/12/04 23:36:33  stu
+ * Motherships work
+ *
+ * Revision 1.7  2001/11/26 23:29:30  rob
+ * Whitespace changes
+ *
+ * Revision 1.6  2001/11/24 19:30:11  stu
+ * *** empty log message ***
+ *
+ * Revision 1.5  2001/11/05 20:01:19  stu
+ * More OSX work
+ *
+ * Revision 1.4  2001/11/02 23:19:54  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:32:21  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:07  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:05:16  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.12  2001/09/10 21:39:47  stu
-/* 100901
+ *
+ * Revision 1.2  2001/10/22 21:28:07  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:05:16  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.12  2001/09/10 21:39:47  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.11  2001/09/10 20:44:04  rob
-/* 1. Stopped linear dampers.
+ *
+ * Revision 1.11  2001/09/10 20:44:04  rob
+ * 1. Stopped linear dampers.
 2. Turned off test system.
 3. Altered so solar system map comes up.
-/*
-/* Revision 1.10  2001/09/04 20:38:15  stu
-/* Sim stuff
-/*
-/* Revision 1.9  2001/06/23 23:10:02  stu
-/* 0.66
-/*
-/* Revision 1.8  2001/06/21 20:30:50  rob
-/* make so load object doesn't quit on bad load
-/*
-/* Revision 1.7  2001/06/13 18:22:56  rob
-/* Object created alterations
-/*
-/* Revision 1.6  2001/06/03 03:27:15  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.10  2001/09/04 20:38:15  stu
+ * Sim stuff
+ *
+ * Revision 1.9  2001/06/23 23:10:02  stu
+ * 0.66
+ *
+ * Revision 1.8  2001/06/21 20:30:50  rob
+ * make so load object doesn't quit on bad load
+ *
+ * Revision 1.7  2001/06/13 18:22:56  rob
+ * Object created alterations
+ *
+ * Revision 1.6  2001/06/03 03:27:15  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.5  2001/06/01 21:36:31  rob
-/* Space change
-/*
-/* Revision 1.4  2001/05/28 01:50:09  stu
-/* 280501
-/*
-/* Revision 1.3  2001/04/01 18:28:05  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/15 19:55:32  stu
-/* Bolts, fuel freeze
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
+ *
+ * Revision 1.5  2001/06/01 21:36:31  rob
+ * Space change
+ *
+ * Revision 1.4  2001/05/28 01:50:09  stu
+ * 280501
+ *
+ * Revision 1.3  2001/04/01 18:28:05  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/15 19:55:32  stu
+ * Bolts, fuel freeze
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************
@@ -227,282 +230,286 @@ char *taddr;
 
 //Zex Load objects
 //SB 14/1198
-/* $Log: load_objects.c,v $
-/* Revision 1.29  2002/09/08 02:14:14  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.28  2002/08/31 19:25:16  stu_c
-/* Callsigns
-/*
-/* Revision 1.27  2002/08/11 22:07:31  stu_c
-/* behaviour_aggressive started, falcons from motherships.
-/*
-/* Revision 1.26  2002/07/28 17:11:29  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.25  2002/07/09 21:44:02  stu_c
-/* NPC lasers; might become exhausts
-/*
-/* Revision 1.24  2002/06/16 23:19:20  stu
-/* Particles booked in for backup purposes - not working yet or complete.
-/*
-/* Revision 1.23  2002/05/31 23:53:57  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.22  2002/05/19 03:18:08  stu
-/* Guns fix
-/*
-/* Revision 1.21  2002/04/28 06:22:21  stu
-/* This checkin adds more to the HUD and brings out some sim variables to the player.
-/*
-/* Revision 1.20  2002/04/14 16:00:34  stu
-/* Further work
-/*
-/* Revision 1.19  2002/04/13 15:28:51  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.18  2002/03/16 00:43:12  stu
-/* Continued development
-/*
-/* Revision 1.17  2002/02/24 04:52:33  stu
-/* Just some formatting
-/*
-/* Revision 1.16  2002/02/16 19:03:57  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.15  2002/02/10 21:36:53  stu
-/* fast_dyn_objects
-/*
-/* Revision 1.14  2002/02/04 00:46:36  rob
-/* ensure LOD code honours galactic id
-/*
-/* Revision 1.13  2002/02/03 19:32:41  stu
-/* swap_dyn_object now inlines setting of the blobbed colour
-/*
-/* Revision 1.12  2002/02/02 23:09:43  stu
-/* new function - swap_dyn_object still in-progress
-/*
-/* Revision 1.11  2002/01/09 23:48:42  stu
-/* Furhter work on trading.
-/*
-/* Revision 1.10  2001/12/31 20:03:12  stu
-/* More error reporting in load_dyn_object
-/*
-/* Revision 1.9  2001/12/29 01:13:04  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.8  2001/12/04 23:36:33  stu
-/* Motherships work
-/*
-/* Revision 1.7  2001/11/26 23:29:30  rob
-/* Whitespace changes
-/*
-/* Revision 1.6  2001/11/24 19:30:11  stu
-/* *** empty log message ***
-/*
-/* Revision 1.5  2001/11/05 20:01:19  stu
-/* More OSX work
-/*
-/* Revision 1.4  2001/11/02 23:19:54  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:32:21  rob
-/* Build variants for interface lib and carbon.
+ * $Log: load_objects.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:03  stu_c
+ * First Imported.
+ *
+ * Revision 1.29  2002/09/08 02:14:14  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.28  2002/08/31 19:25:16  stu_c
+ * Callsigns
+ *
+ * Revision 1.27  2002/08/11 22:07:31  stu_c
+ * behaviour_aggressive started, falcons from motherships.
+ *
+ * Revision 1.26  2002/07/28 17:11:29  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.25  2002/07/09 21:44:02  stu_c
+ * NPC lasers; might become exhausts
+ *
+ * Revision 1.24  2002/06/16 23:19:20  stu
+ * Particles booked in for backup purposes - not working yet or complete.
+ *
+ * Revision 1.23  2002/05/31 23:53:57  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.22  2002/05/19 03:18:08  stu
+ * Guns fix
+ *
+ * Revision 1.21  2002/04/28 06:22:21  stu
+ * This checkin adds more to the HUD and brings out some sim variables to the player.
+ *
+ * Revision 1.20  2002/04/14 16:00:34  stu
+ * Further work
+ *
+ * Revision 1.19  2002/04/13 15:28:51  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.18  2002/03/16 00:43:12  stu
+ * Continued development
+ *
+ * Revision 1.17  2002/02/24 04:52:33  stu
+ * Just some formatting
+ *
+ * Revision 1.16  2002/02/16 19:03:57  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.15  2002/02/10 21:36:53  stu
+ * fast_dyn_objects
+ *
+ * Revision 1.14  2002/02/04 00:46:36  rob
+ * ensure LOD code honours galactic id
+ *
+ * Revision 1.13  2002/02/03 19:32:41  stu
+ * swap_dyn_object now inlines setting of the blobbed colour
+ *
+ * Revision 1.12  2002/02/02 23:09:43  stu
+ * new function - swap_dyn_object still in-progress
+ *
+ * Revision 1.11  2002/01/09 23:48:42  stu
+ * Furhter work on trading.
+ *
+ * Revision 1.10  2001/12/31 20:03:12  stu
+ * More error reporting in load_dyn_object
+ *
+ * Revision 1.9  2001/12/29 01:13:04  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.8  2001/12/04 23:36:33  stu
+ * Motherships work
+ *
+ * Revision 1.7  2001/11/26 23:29:30  rob
+ * Whitespace changes
+ *
+ * Revision 1.6  2001/11/24 19:30:11  stu
+ * *** empty log message ***
+ *
+ * Revision 1.5  2001/11/05 20:01:19  stu
+ * More OSX work
+ *
+ * Revision 1.4  2001/11/02 23:19:54  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:32:21  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:07  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:05:16  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.12  2001/09/10 21:39:47  stu
-/* 100901
+ *
+ * Revision 1.2  2001/10/22 21:28:07  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:05:16  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.12  2001/09/10 21:39:47  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.11  2001/09/10 20:44:04  rob
-/* 1. Stopped linear dampers.
+ *
+ * Revision 1.11  2001/09/10 20:44:04  rob
+ * 1. Stopped linear dampers.
 2. Turned off test system.
 3. Altered so solar system map comes up.
-/*
-/* Revision 1.10  2001/09/04 20:38:15  stu
-/* Sim stuff
-/*
-/* Revision 1.9  2001/06/23 23:10:02  stu
-/* 0.66
-/*
-/* Revision 1.8  2001/06/21 20:30:50  rob
-/* make so load object doesn't quit on bad load
-/*
-/* Revision 1.7  2001/06/13 18:22:56  rob
-/* Object created alterations
-/*
-/* Revision 1.6  2001/06/03 03:27:15  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.10  2001/09/04 20:38:15  stu
+ * Sim stuff
+ *
+ * Revision 1.9  2001/06/23 23:10:02  stu
+ * 0.66
+ *
+ * Revision 1.8  2001/06/21 20:30:50  rob
+ * make so load object doesn't quit on bad load
+ *
+ * Revision 1.7  2001/06/13 18:22:56  rob
+ * Object created alterations
+ *
+ * Revision 1.6  2001/06/03 03:27:15  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.5  2001/06/01 21:36:31  rob
-/* Space change
-/*
-/* Revision 1.4  2001/05/28 01:50:09  stu
-/* 280501
-/*
-/* Revision 1.3  2001/04/01 18:28:05  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/15 19:55:32  stu
-/* Bolts, fuel freeze
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.12  2000/12/11 19:47:20  stu
-/* Light fix in 3d_top - calc_normal
-/*
-/* Revision 1.11  2000/12/10 03:33:06  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+ *
+ * Revision 1.5  2001/06/01 21:36:31  rob
+ * Space change
+ *
+ * Revision 1.4  2001/05/28 01:50:09  stu
+ * 280501
+ *
+ * Revision 1.3  2001/04/01 18:28:05  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/15 19:55:32  stu
+ * Bolts, fuel freeze
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.12  2000/12/11 19:47:20  stu
+ * Light fix in 3d_top - calc_normal
+ *
+ * Revision 1.11  2000/12/10 03:33:06  stu
+ * Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
 
 Dust now self lit.
-/*
-/* Revision 1.10  2000/12/03 23:52:16  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.9  2000/11/16 20:39:21  rob
-/* orbit
-/*
-/* Revision 1.8  2000/10/19 19:07:43  stu
-/* Relative velocities, turbulence, planet names.
-/*
-/* Revision 1.7  2000/10/11 21:29:05  stu
-/* Finished off 64 bit conversion. Made engines bigger.
+ *
+ * Revision 1.10  2000/12/03 23:52:16  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.9  2000/11/16 20:39:21  rob
+ * orbit
+ *
+ * Revision 1.8  2000/10/19 19:07:43  stu
+ * Relative velocities, turbulence, planet names.
+ *
+ * Revision 1.7  2000/10/11 21:29:05  stu
+ * Finished off 64 bit conversion. Made engines bigger.
 AP tweaks.
-/*
-/* Revision 1.6  2000/10/11 00:08:56  rob
-/* add error message to failed find dyn object slot
-/*
-/* Revision 1.5  2000/10/08 21:48:13  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.4  2000/10/01 13:29:59  rob
-/* Stu's changes to load objects so that it can scale different copies of the same object properly.
-/*
-/* Revision 1.3  2000/09/20 23:45:06  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.2  2000/09/13 20:35:37  stu
-/* Changes for hud targetting and sun corona effects.
-/*
-/* Revision 1.1  2000/08/27 16:28:05  stu
-/* Changes for movement decoupling in time.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:07:21  stu
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/11 23:19:33  stu
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/11 23:08:35  stu
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/11 22:34:22  stu
-/* First Imported.
-/*
-/* Revision 1.2  2000/04/07 01:59:12  stu
-/* Ongoing camera in cockpit
-/*
-/* Revision 1.1.1.1  2000/03/23 22:43:32  stu
-/* First Imported.
-/*
-/* Revision 1.29  1999/11/07 17:33:29  stu
-/* *** empty log message ***
-/*
-/* Revision 1.28  1999/11/07 04:04:16  stu
-/* 0.94.3
+ *
+ * Revision 1.6  2000/10/11 00:08:56  rob
+ * add error message to failed find dyn object slot
+ *
+ * Revision 1.5  2000/10/08 21:48:13  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.4  2000/10/01 13:29:59  rob
+ * Stu's changes to load objects so that it can scale different copies of the same object properly.
+ *
+ * Revision 1.3  2000/09/20 23:45:06  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.2  2000/09/13 20:35:37  stu
+ * Changes for hud targetting and sun corona effects.
+ *
+ * Revision 1.1  2000/08/27 16:28:05  stu
+ * Changes for movement decoupling in time.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:07:21  stu
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/11 23:19:33  stu
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/11 23:08:35  stu
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/11 22:34:22  stu
+ * First Imported.
+ *
+ * Revision 1.2  2000/04/07 01:59:12  stu
+ * Ongoing camera in cockpit
+ *
+ * Revision 1.1.1.1  2000/03/23 22:43:32  stu
+ * First Imported.
+ *
+ * Revision 1.29  1999/11/07 17:33:29  stu
+ * *** empty log message ***
+ *
+ * Revision 1.28  1999/11/07 04:04:16  stu
+ * 0.94.3
 071199 SB
-/*
-/* Revision 1.27  1999/10/17 20:42:40  stu
-/* 17 Oct 99 SB
-/*
-/* Revision 1.26  1999/10/16 04:22:53  stu
-/* 151099
-/*
-/* Revision 1.25  1999/10/01 04:11:44  stu
-/* 0.94.2 011099 SB
-/*
-/* Revision 1.24  1999/09/27 14:49:28  stu
-/* Fixes NPC's bust on 260999
-/*
-/* Revision 1.23  1999/09/26 18:34:42  stu
-/* 260999
-/*
-/* Revision 1.22  1999/09/20 19:03:30  stu
-/* 0.93.3
-/*
-/* Revision 1.21  1999/09/19 05:38:53  stu
-/* 0.93 as posted
-/*
-/* Revision 1.20  1999/09/14 15:07:47  stu
-/* 14/9/99
-/*
-/* Revision 1.19  1999/09/12 00:56:13  stu
-/* 120999
-/*
-/* Revision 1.18  1999/08/30 22:23:00  stu
-/* 300899
-/*
-/* Revision 1.17  1999/08/20 09:57:29  stu
-/* 20 Aug 99
-/*
-/* Revision 1.16  1999/08/15 22:17:00  stu
-/* Cleanup 150899
-/*
-/* Revision 1.15  1999/07/26 19:08:43  stu
-/* Pre 0.86 test 27 July 99
-/*
-/* Revision 1.14  1999/07/19 17:42:21  stu
-/* 200799
-/*
-/* Revision 1.13  1999/07/17 18:35:52  stu
-/* 180799 - level 4 changes
-/*
-/* Revision 1.12  1999/07/13 04:07:59  stu
-/* Clean up 130799
-/*
-/* Revision 1.11  1999/07/04 18:37:17  stu
-/* Clean up, Sunday 4th july
-/*
-/* Revision 1.10  1999/07/04 00:21:29  stu
-/* Major changes and development.
+ *
+ * Revision 1.27  1999/10/17 20:42:40  stu
+ * 17 Oct 99 SB
+ *
+ * Revision 1.26  1999/10/16 04:22:53  stu
+ * 151099
+ *
+ * Revision 1.25  1999/10/01 04:11:44  stu
+ * 0.94.2 011099 SB
+ *
+ * Revision 1.24  1999/09/27 14:49:28  stu
+ * Fixes NPC's bust on 260999
+ *
+ * Revision 1.23  1999/09/26 18:34:42  stu
+ * 260999
+ *
+ * Revision 1.22  1999/09/20 19:03:30  stu
+ * 0.93.3
+ *
+ * Revision 1.21  1999/09/19 05:38:53  stu
+ * 0.93 as posted
+ *
+ * Revision 1.20  1999/09/14 15:07:47  stu
+ * 14/9/99
+ *
+ * Revision 1.19  1999/09/12 00:56:13  stu
+ * 120999
+ *
+ * Revision 1.18  1999/08/30 22:23:00  stu
+ * 300899
+ *
+ * Revision 1.17  1999/08/20 09:57:29  stu
+ * 20 Aug 99
+ *
+ * Revision 1.16  1999/08/15 22:17:00  stu
+ * Cleanup 150899
+ *
+ * Revision 1.15  1999/07/26 19:08:43  stu
+ * Pre 0.86 test 27 July 99
+ *
+ * Revision 1.14  1999/07/19 17:42:21  stu
+ * 200799
+ *
+ * Revision 1.13  1999/07/17 18:35:52  stu
+ * 180799 - level 4 changes
+ *
+ * Revision 1.12  1999/07/13 04:07:59  stu
+ * Clean up 130799
+ *
+ * Revision 1.11  1999/07/04 18:37:17  stu
+ * Clean up, Sunday 4th july
+ *
+ * Revision 1.10  1999/07/04 00:21:29  stu
+ * Major changes and development.
 Colldet changes.
 Level 2,3,4
 Version 0.86
-/*
-/* Revision 1.9  1999/06/25 01:14:36  stu
-/* Lurkers clewan up
-/*
-/* Revision 1.8  1999/06/23 00:51:50  stu
-/* Changes for new lighting control
-/*
-/* Revision 1.7  1999/06/22 10:57:31  stu
-/* Lurkers clean up
-/*
-/* Revision 1.6  1999/05/25 04:49:34  stu
-/* Missiles not working fix
-/*
-/* Revision 1.5  1999/05/21 03:31:23  stu
-/* 1. New screen driver.
+ *
+ * Revision 1.9  1999/06/25 01:14:36  stu
+ * Lurkers clewan up
+ *
+ * Revision 1.8  1999/06/23 00:51:50  stu
+ * Changes for new lighting control
+ *
+ * Revision 1.7  1999/06/22 10:57:31  stu
+ * Lurkers clean up
+ *
+ * Revision 1.6  1999/05/25 04:49:34  stu
+ * Missiles not working fix
+ *
+ * Revision 1.5  1999/05/21 03:31:23  stu
+ * 1. New screen driver.
 2. VBL Driven music fade and play
-/*
-/* Revision 1.4  1999/05/12 15:20:12  stu
-/* Added $Log to top of file
-/*
+ *
+ * Revision 1.4  1999/05/12 15:20:12  stu
+ * Added $Log to top of file
+ *
 */
 
 

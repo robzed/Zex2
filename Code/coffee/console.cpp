@@ -14,71 +14,74 @@
 // *
 // *
 // *
-// ***********************************************************************************
-/* $Log: console.c,v $
-/* Revision 1.10  2002/09/08 02:17:32  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.9  2002/02/15 23:25:49  stu
-/* Just removed some commented out code
-/*
-/* Revision 1.8  2001/12/29 01:11:42  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.7  2001/11/07 22:21:55  rob
-/* No game input from keyboard when in input mode.
-/*
-/* Revision 1.6  2001/11/06 20:11:15  rob
-/* Key input changes
-/*
-/* Revision 1.5  2001/11/03 10:33:32  rob
-/* Fix for console window not working under X.
-/*
-/* Revision 1.4  2001/11/02 23:18:43  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:32:50  rob
-/* Build variants for interface lib and carbon.
+/* ***********************************************************************************
+ * $Log: console.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:15  stu_c
+ * First Imported.
+ *
+ * Revision 1.10  2002/09/08 02:17:32  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.9  2002/02/15 23:25:49  stu
+ * Just removed some commented out code
+ *
+ * Revision 1.8  2001/12/29 01:11:42  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.7  2001/11/07 22:21:55  rob
+ * No game input from keyboard when in input mode.
+ *
+ * Revision 1.6  2001/11/06 20:11:15  rob
+ * Key input changes
+ *
+ * Revision 1.5  2001/11/03 10:33:32  rob
+ * Fix for console window not working under X.
+ *
+ * Revision 1.4  2001/11/02 23:18:43  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:32:50  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:06  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:09:41  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.8  2001/09/09 21:30:54  rob
-/* Added ability to see console screen if something goes wrong during boot sequence by clicking on the Debugger button.
-/*
-/* Revision 1.7  2001/09/07 20:40:57  rob
-/* Added console debug_print
+ *
+ * Revision 1.2  2001/10/22 21:29:06  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:09:41  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.8  2001/09/09 21:30:54  rob
+ * Added ability to see console screen if something goes wrong during boot sequence by clicking on the Debugger button.
+ *
+ * Revision 1.7  2001/09/07 20:40:57  rob
+ * Added console debug_print
 Added instant_console flag
-/*
-/* Revision 1.6  2001/09/04 20:40:53  stu
-/* SDS/Sim etc
-/*
-/* Revision 1.5  2001/08/07 19:56:05  rob
-/* 1. Added support for KEY? into console.
+ *
+ * Revision 1.6  2001/09/04 20:40:53  stu
+ * SDS/Sim etc
+ *
+ * Revision 1.5  2001/08/07 19:56:05  rob
+ * 1. Added support for KEY? into console.
 2. Added check for LSGF core version into c coffee loader.
-/*
-/* Revision 1.4  2001/01/15 19:52:02  stu
-/* Bolts, fuel freeze
-/*
-/* Revision 1.3  2001/01/07 20:10:43  rob
-/* Scroll was filling with blanks
-/*
-/* Revision 1.2  2001/01/02 18:57:17  stu
-/* CLS fills with zeros. Various OGL calls in-lined
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:00:12  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.4  2001/01/15 19:52:02  stu
+ * Bolts, fuel freeze
+ *
+ * Revision 1.3  2001/01/07 20:10:43  rob
+ * Scroll was filling with blanks
+ *
+ * Revision 1.2  2001/01/02 18:57:17  stu
+ * CLS fills with zeros. Various OGL calls in-lined
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:00:12  stu
+ * First Imported.
+ *
  */
 
 

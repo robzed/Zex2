@@ -1,76 +1,80 @@
 //pictures
 //SB - Lightsoft SW 8/12/98
-/* $Log: pictures.c,v $
-/* Revision 1.1.1.1  2003/09/05 22:35:20  stu_c
-/* First Imported.
 /*
-/* Revision 1.16  2002/09/08 02:36:02  stu_c
-/* Pre compiled header support
-/*
-/* Revision 1.15  2002/09/01 14:54:20  rob_c
-/* Fixed 640x480 main select screen.
-/*
-/* Revision 1.14  2002/06/24 21:58:16  stu_c
-/* Update for mapping now done via ogl with glOrtho
-/*
-/* Revision 1.13  2002/02/21 22:51:56  stu
-/* erase_zex_rect_rgb added
-/*
-/* Revision 1.12  2002/01/27 18:06:21  stu
-/* Unused varaibles removed
-/*
-/* Revision 1.11  2002/01/09 23:49:15  stu
-/* Furhter work on trading.
-/*
-/* Revision 1.10  2002/01/02 19:25:05  rob
-/* Added key setup code
-/*
-/* Revision 1.9  2002/01/02 13:30:01  stu
-/* Continuing development for trading/static screens
-/*
-/* Revision 1.8  2001/12/29 01:11:11  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.7  2001/12/28 23:08:32  stu
-/* Fixed a comment
-/*
-/* Revision 1.6  2001/11/09 18:28:58  rob
-/* Various debug changes.
-/*
-/* Revision 1.5  2001/11/05 19:58:59  stu
-/* More OSX work
-/*
-/* Revision 1.4  2001/11/02 23:21:53  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:31:49  rob
-/* Build variants for interface lib and carbon.
+ * $Log: pictures.c,v $
+ * Revision 1.2  2003/09/11 21:13:12  robp
+ * Made a change so LF were consumed as whitespace when reading 3dmf files.
+ *
+ * Revision 1.1.1.1  2003/09/05 22:35:20  stu_c
+ * First Imported.
+ *
+ * Revision 1.16  2002/09/08 02:36:02  stu_c
+ * Pre compiled header support
+ *
+ * Revision 1.15  2002/09/01 14:54:20  rob_c
+ * Fixed 640x480 main select screen.
+ *
+ * Revision 1.14  2002/06/24 21:58:16  stu_c
+ * Update for mapping now done via ogl with glOrtho
+ *
+ * Revision 1.13  2002/02/21 22:51:56  stu
+ * erase_zex_rect_rgb added
+ *
+ * Revision 1.12  2002/01/27 18:06:21  stu
+ * Unused varaibles removed
+ *
+ * Revision 1.11  2002/01/09 23:49:15  stu
+ * Furhter work on trading.
+ *
+ * Revision 1.10  2002/01/02 19:25:05  rob
+ * Added key setup code
+ *
+ * Revision 1.9  2002/01/02 13:30:01  stu
+ * Continuing development for trading/static screens
+ *
+ * Revision 1.8  2001/12/29 01:11:11  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.7  2001/12/28 23:08:32  stu
+ * Fixed a comment
+ *
+ * Revision 1.6  2001/11/09 18:28:58  rob
+ * Various debug changes.
+ *
+ * Revision 1.5  2001/11/05 19:58:59  stu
+ * More OSX work
+ *
+ * Revision 1.4  2001/11/02 23:21:53  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:31:49  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:41  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:13:59  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/07/08 20:24:26  stu
-/* 0.66 release 080701
-/*
-/* Revision 1.2  2001/05/28 01:45:14  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:35  rob
-/* First Imported.
-/*
-/* Revision 1.1  2000/09/20 23:52:56  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 22:01:03  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:41  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:13:59  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/07/08 20:24:26  stu
+ * 0.66 release 080701
+ *
+ * Revision 1.2  2001/05/28 01:45:14  stu
+ * 280501
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:35  rob
+ * First Imported.
+ *
+ * Revision 1.1  2000/09/20 23:52:56  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.0.0.1  2000/08/21 22:01:03  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -21,99 +21,102 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: OGL.c,v $
-/* Revision 1.20  2002/09/08 02:11:03  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.19  2002/06/24 21:40:35  stu_c
-/* Screen coords to ogl normalised mapping code removed; we're now mapped via the glOrtho command. Saves 2 divs and 2 adds per vertex.
-/*
-/* Revision 1.18  2002/04/28 06:22:34  stu
-/* This checkin adds more to the HUD and brings out some sim variables to the player.
-/*
-/* Revision 1.17  2002/02/24 03:41:46  stu
-/* (Some) compiler warnings cleaned up
-/*
-/* Revision 1.16  2002/02/10 21:52:08  stu
-/* texture binding optimisation
-/*
-/* Revision 1.15  2002/01/20 21:37:03  stu
-/* GL_CLAMP_TO_EDGE
-/*
-/* Revision 1.14  2002/01/20 17:00:21  stu
-/* GL_CLAMP changed to GL_CLAMP_TO_EDGE
-/*
-/* Revision 1.13  2002/01/09 23:47:29  stu
-/* Enabled textures via ROBIT
-/*
-/* Revision 1.12  2002/01/02 19:22:31  rob
-/* added key setup code
-/*
-/* Revision 1.11  2002/01/02 13:30:16  stu
-/* Continuing development for trading/static screens
-/*
-/* Revision 1.10  2001/12/29 01:12:04  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.9  2001/12/14 19:41:46  stu
-/* Docking
-/*
-/* Revision 1.8  2001/11/26 23:31:22  rob
-/* Remove textures quickly.
-/*
-/* Revision 1.7  2001/11/09 18:29:08  rob
-/* Various debug changes.
-/*
-/* Revision 1.6  2001/11/02 19:32:31  rob
-/* Build variants for interface lib and carbon.
+ * $Log: OGL.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:11  stu_c
+ * First Imported.
+ *
+ * Revision 1.20  2002/09/08 02:11:03  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.19  2002/06/24 21:40:35  stu_c
+ * Screen coords to ogl normalised mapping code removed; we're now mapped via the glOrtho command. Saves 2 divs and 2 adds per vertex.
+ *
+ * Revision 1.18  2002/04/28 06:22:34  stu
+ * This checkin adds more to the HUD and brings out some sim variables to the player.
+ *
+ * Revision 1.17  2002/02/24 03:41:46  stu
+ * (Some) compiler warnings cleaned up
+ *
+ * Revision 1.16  2002/02/10 21:52:08  stu
+ * texture binding optimisation
+ *
+ * Revision 1.15  2002/01/20 21:37:03  stu
+ * GL_CLAMP_TO_EDGE
+ *
+ * Revision 1.14  2002/01/20 17:00:21  stu
+ * GL_CLAMP changed to GL_CLAMP_TO_EDGE
+ *
+ * Revision 1.13  2002/01/09 23:47:29  stu
+ * Enabled textures via ROBIT
+ *
+ * Revision 1.12  2002/01/02 19:22:31  rob
+ * added key setup code
+ *
+ * Revision 1.11  2002/01/02 13:30:16  stu
+ * Continuing development for trading/static screens
+ *
+ * Revision 1.10  2001/12/29 01:12:04  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.9  2001/12/14 19:41:46  stu
+ * Docking
+ *
+ * Revision 1.8  2001/11/26 23:31:22  rob
+ * Remove textures quickly.
+ *
+ * Revision 1.7  2001/11/09 18:29:08  rob
+ * Various debug changes.
+ *
+ * Revision 1.6  2001/11/02 19:32:31  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.5  2001/10/26 22:41:27  rob
-/* Dual headers
-/*
-/* Revision 1.4  2001/10/24 21:40:20  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.3  2001/10/23 20:46:25  stu
-/* More carbonising
-/*
-/* Revision 1.2  2001/10/22 21:28:00  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:10:26  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.9  2001/06/23 20:05:43  stu
-/* 0.66 checkin
-/*
-/* Revision 1.8  2001/06/01 21:38:58  stu
-/* Translucency belnding function fixed
-/*
-/* Revision 1.7  2001/05/28 21:40:19  stu
-/* Major commit 280501
-/*
-/* Revision 1.6  2001/05/28 01:44:44  stu
-/* 280501
-/*
-/* Revision 1.4  2001/04/02 17:28:23  rob
-/* made various variables switch on and off-able from forth. These include dust, asteriods, hud, zbuffer.
-/*
-/* Revision 1.3  2001/04/01 18:36:04  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/14 17:13:17  stu
-/* Gourad Fix
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:37  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:37  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.5  2001/10/26 22:41:27  rob
+ * Dual headers
+ *
+ * Revision 1.4  2001/10/24 21:40:20  stu
+ * First set of source to build on pb for carbon.
+ *
+ * Revision 1.3  2001/10/23 20:46:25  stu
+ * More carbonising
+ *
+ * Revision 1.2  2001/10/22 21:28:00  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:10:26  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.9  2001/06/23 20:05:43  stu
+ * 0.66 checkin
+ *
+ * Revision 1.8  2001/06/01 21:38:58  stu
+ * Translucency belnding function fixed
+ *
+ * Revision 1.7  2001/05/28 21:40:19  stu
+ * Major commit 280501
+ *
+ * Revision 1.6  2001/05/28 01:44:44  stu
+ * 280501
+ *
+ * Revision 1.4  2001/04/02 17:28:23  rob
+ * made various variables switch on and off-able from forth. These include dust, asteriods, hud, zbuffer.
+ *
+ * Revision 1.3  2001/04/01 18:36:04  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/14 17:13:17  stu
+ * Gourad Fix
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:37  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:37  stu
+ * First Imported.
+ *
  */
 
 #define ROBIT 1			// ROBIT=0 removes textures, ROBIT=1 adds textures

@@ -14,59 +14,63 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: read_zex_ini.c,v $
-/* Revision 1.8  2002/09/08 02:03:25  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.7  2002/07/11 21:04:10  rob_c
-/* Display configuration changes.
-/*
-/* Revision 1.6  2002/02/03 19:28:19  stu
-/* low_res_planets added
-/*
-/* Revision 1.5  2002/01/05 20:50:20  rob
-/* Default for dock is off.
-/*
-/* Revision 1.4  2001/12/29 01:10:30  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.3  2001/11/07 22:30:22  stu
-/* Hide dock mods.
-/*
-/* Revision 1.2  2001/11/02 19:31:18  rob
-/* Build variants for interface lib and carbon.
+ * $Log: read_zex_ini.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:46  stu_c
+ * First Imported.
+ *
+ * Revision 1.8  2002/09/08 02:03:25  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.7  2002/07/11 21:04:10  rob_c
+ * Display configuration changes.
+ *
+ * Revision 1.6  2002/02/03 19:28:19  stu
+ * low_res_planets added
+ *
+ * Revision 1.5  2002/01/05 20:50:20  rob
+ * Default for dock is off.
+ *
+ * Revision 1.4  2001/12/29 01:10:30  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.3  2001/11/07 22:30:22  stu
+ * Hide dock mods.
+ *
+ * Revision 1.2  2001/11/02 19:31:18  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:02:51  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:05  rob
-/* First Imported.
-/*
-/* Revision 1.7  2001/06/21 20:30:02  rob
-/* declare variable vs. declare constant changes
-/*
-/* Revision 1.6  2001/05/28 21:40:12  stu
-/* Major commit 280501
-/*
-/* Revision 1.5  2001/04/25 20:40:49  rob
-/* force software renderer changes
-/*
-/* Revision 1.4  2001/04/08 20:22:53  rob
-/* changed init around
-/*
-/* Revision 1.3  2001/04/01 18:47:44  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/02 18:55:57  stu
-/* minor updates
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:33  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 21:58:45  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:02:51  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:05  rob
+ * First Imported.
+ *
+ * Revision 1.7  2001/06/21 20:30:02  rob
+ * declare variable vs. declare constant changes
+ *
+ * Revision 1.6  2001/05/28 21:40:12  stu
+ * Major commit 280501
+ *
+ * Revision 1.5  2001/04/25 20:40:49  rob
+ * force software renderer changes
+ *
+ * Revision 1.4  2001/04/08 20:22:53  rob
+ * changed init around
+ *
+ * Revision 1.3  2001/04/01 18:47:44  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/02 18:55:57  stu
+ * minor updates
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:33  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 21:58:45  stu
+ * First Imported.
+ *
  */
 
 

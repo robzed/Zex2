@@ -15,60 +15,63 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: collision.c,v $
-/* Revision 1.1.1.1  2003/09/05 22:35:10  stu_c
-/* First Imported.
 /*
-/* Revision 1.10  2002/09/14 02:39:34  stu_c
-/* Some tidy up work and shells now killed on collision
-/*
-/* Revision 1.9  2002/09/09 21:45:02  rob_c
-/* New collision calculations
-/*
-/* Revision 1.8  2002/09/08 02:12:19  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.7  2002/03/09 15:10:44  stu
-/* Work for complex objects docking other objects - tracing the bolts back to parent object.
-/*
-/* Revision 1.6  2002/01/27 18:12:04  stu
-/* No diff
-/*
-/* Revision 1.5  2001/12/14 19:43:54  stu
-/* Docking
-/*
-/* Revision 1.4  2001/11/02 19:32:43  rob
-/* Build variants for interface lib and carbon.
+ * $Log: collision.c,v $
+ * Revision 1.2  2003/09/16 20:55:38  stu_c
+ * Zex: particles: Fix for control freeze if hit by gun particles.
+ *
+ * Revision 1.1.1.1  2003/09/05 22:35:10  stu_c
+ * First Imported.
+ *
+ * Revision 1.10  2002/09/14 02:39:34  stu_c
+ * Some tidy up work and shells now killed on collision
+ *
+ * Revision 1.9  2002/09/09 21:45:02  rob_c
+ * New collision calculations
+ *
+ * Revision 1.8  2002/09/08 02:12:19  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.7  2002/03/09 15:10:44  stu
+ * Work for complex objects docking other objects - tracing the bolts back to parent object.
+ *
+ * Revision 1.6  2002/01/27 18:12:04  stu
+ * No diff
+ *
+ * Revision 1.5  2001/12/14 19:43:54  stu
+ * Docking
+ *
+ * Revision 1.4  2001/11/02 19:32:43  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/22 22:12:11  stu
-/* More Carbon work
-/*
-/* Revision 1.2  2001/10/22 21:29:05  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:09:17  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/09/04 22:42:16  stu
-/* SDS
-/*
-/* Revision 1.2  2001/06/23 20:01:17  stu
-/* 0.66 checkin
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.1  2000/10/19 19:08:34  stu
-/* Relative velocities, turbulence, planet names.
-/*
-/* Revision 1.0.0.1  2000/08/21 21:59:39  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.3  2001/10/22 22:12:11  stu
+ * More Carbon work
+ *
+ * Revision 1.2  2001/10/22 21:29:05  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:09:17  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/09/04 22:42:16  stu
+ * SDS
+ *
+ * Revision 1.2  2001/06/23 20:01:17  stu
+ * 0.66 checkin
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.1  2000/10/19 19:08:34  stu
+ * Relative velocities, turbulence, planet names.
+ *
+ * Revision 1.0.0.1  2000/08/21 21:59:39  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************

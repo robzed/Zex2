@@ -1,46 +1,50 @@
-/* $Log: Camera_control.c,v $
-/* Revision 1.4  2002/09/08 02:17:43  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.3  2001/11/02 19:32:56  rob
-/* Build variants for interface lib and carbon.
+ * $Log: Camera_control.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:14  stu_c
+ * First Imported.
+ *
+ * Revision 1.4  2002/09/08 02:17:43  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.3  2001/11/02 19:32:56  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:16  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:08:48  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.6  2001/09/04 20:37:00  stu
-/* Sim stuff
-/*
-/* Revision 1.5  2001/07/08 20:24:49  stu
-/* 0.66 release 080701
-/*
-/* Revision 1.4  2001/06/24 22:34:40  stu
-/* Removed lots of obsolete calls and added
+ *
+ * Revision 1.2  2001/10/22 21:29:16  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:08:48  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.6  2001/09/04 20:37:00  stu
+ * Sim stuff
+ *
+ * Revision 1.5  2001/07/08 20:24:49  stu
+ * 0.66 release 080701
+ *
+ * Revision 1.4  2001/06/24 22:34:40  stu
+ * Removed lots of obsolete calls and added
 set_main_camera_object
-/*
-/* Revision 1.3  2001/06/24 21:45:00  stu
-/* Removed lots of obsolete calls and added
+ *
+ * Revision 1.3  2001/06/24 21:45:00  stu
+ * Removed lots of obsolete calls and added
 set_main_camera_object
-/*
-/* Revision 1.2  2001/05/28 01:52:46  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.1  2000/10/08 21:43:50  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:00:03  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/05/28 01:52:46  stu
+ * 280501
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.1  2000/10/08 21:43:50  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:00:03  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -22,78 +22,82 @@
 // ***********************************************************************************
 // * INCLUDED FILES
 // *
-/* $Log: dlp_explosions.c,v $
-/* Revision 1.10  2002/09/08 01:57:37  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.9  2002/07/28 17:13:41  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.8  2002/05/31 23:53:33  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.7  2002/05/05 22:27:41  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+ * $Log: dlp_explosions.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:19  stu_c
+ * First Imported.
+ *
+ * Revision 1.10  2002/09/08 01:57:37  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.9  2002/07/28 17:13:41  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.8  2002/05/31 23:53:33  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.7  2002/05/05 22:27:41  stu
+ * Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.6  2001/12/04 22:58:26  rob
-/* Sin tab proto removed
-/*
-/* Revision 1.5  2001/11/09 18:29:02  rob
-/* Various debug changes.
-/*
-/* Revision 1.4  2001/11/02 19:31:57  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.6  2001/12/04 22:58:26  rob
+ * Sin tab proto removed
+ *
+ * Revision 1.5  2001/11/09 18:29:02  rob
+ * Various debug changes.
+ *
+ * Revision 1.4  2001/11/02 19:31:57  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/23 21:56:01  stu
-/* More carbon work
-/*
-/* Revision 1.2  2001/10/22 21:28:52  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:03:44  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.5  2001/06/23 20:08:32  stu
-/* 0.66 checkin
-/*
-/* Revision 1.4  2001/06/03 03:20:12  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.3  2001/10/23 21:56:01  stu
+ * More carbon work
+ *
+ * Revision 1.2  2001/10/22 21:28:52  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:03:44  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.5  2001/06/23 20:08:32  stu
+ * 0.66 checkin
+ *
+ * Revision 1.4  2001/06/03 03:20:12  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.3  2001/05/28 01:48:57  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/01 18:37:48  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.4  2000/12/10 03:36:51  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+ *
+ * Revision 1.3  2001/05/28 01:48:57  stu
+ * 280501
+ *
+ * Revision 1.2  2001/04/01 18:37:48  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.4  2000/12/10 03:36:51  stu
+ * Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
-/*
-/* Revision 1.3  2000/12/03 23:52:39  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.2  2000/11/16 20:19:35  rob
-/* orbit
-/*
-/* Revision 1.1  2000/09/20 23:48:06  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 22:00:44  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.3  2000/12/03 23:52:39  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.2  2000/11/16 20:19:35  rob
+ * orbit
+ *
+ * Revision 1.1  2000/09/20 23:48:06  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.0.0.1  2000/08/21 22:00:44  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -29,50 +29,54 @@
 //Change to handle mapping extents in material blocks
 //Update 9/1/99
 //Change to handle "smooth" polys (Gourad shaded)
-/* $Log: MeshToZex.c,v $
-/* Revision 1.8  2002/09/08 02:14:46  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.7  2002/05/31 23:53:45  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.6  2002/03/09 15:09:44  stu
-/* Can now import as RIGHT_HANDED or left.
-/*
-/* Revision 1.5  2001/12/29 01:11:47  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.4  2001/11/02 23:20:40  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.3  2001/11/02 19:32:25  rob
-/* Build variants for interface lib and carbon.
+ * $Log: MeshToZex.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:52  stu_c
+ * First Imported.
+ *
+ * Revision 1.8  2002/09/08 02:14:46  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.7  2002/05/31 23:53:45  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.6  2002/03/09 15:09:44  stu
+ * Can now import as RIGHT_HANDED or left.
+ *
+ * Revision 1.5  2001/12/29 01:11:47  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.4  2001/11/02 23:20:40  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.3  2001/11/02 19:32:25  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:21  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:12:52  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/05/28 01:52:27  stu
-/* 280501
-/*
-/* Revision 1.2  2001/01/14 17:17:29  stu
-/* Gourad Fix
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.1  2000/10/08 21:45:20  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:07:29  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:29:21  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:12:52  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/05/28 01:52:27  stu
+ * 280501
+ *
+ * Revision 1.2  2001/01/14 17:17:29  stu
+ * Gourad Fix
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.1  2000/10/08 21:45:20  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:07:29  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -15,105 +15,109 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: dust.c,v $
-/* Revision 1.11  2002/09/08 02:02:09  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.10  2002/07/28 17:13:53  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.9  2002/05/31 23:51:08  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.8  2002/05/05 22:27:53  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+ * $Log: dust.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:44  stu_c
+ * First Imported.
+ *
+ * Revision 1.11  2002/09/08 02:02:09  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.10  2002/07/28 17:13:53  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.9  2002/05/31 23:51:08  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.8  2002/05/05 22:27:53  stu
+ * Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.7  2002/04/13 15:32:07  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.6  2002/02/10 21:46:16  stu
-/* fast dyn objects
-/*
-/* Revision 1.5  2001/12/14 19:42:08  stu
-/* Docking
-/*
-/* Revision 1.4  2001/12/04 23:35:08  stu
-/* Motherships work
-/*
-/* Revision 1.3  2001/11/02 19:31:06  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.7  2002/04/13 15:32:07  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.6  2002/02/10 21:46:16  stu
+ * fast dyn objects
+ *
+ * Revision 1.5  2001/12/14 19:42:08  stu
+ * Docking
+ *
+ * Revision 1.4  2001/12/04 23:35:08  stu
+ * Motherships work
+ *
+ * Revision 1.3  2001/11/02 19:31:06  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:45  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:11:45  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:05  rob
-/* First Imported.
-/*
-/* Revision 1.9  2001/09/21 19:58:55  rob
-/* No asteriods
-/*
-/* Revision 1.8  2001/09/18 20:42:28  stu
-/* More Sim/ hud numbers print
-/*
-/* Revision 1.7  2001/09/10 21:41:55  stu
-/* 100901
+ *
+ * Revision 1.2  2001/10/22 21:28:45  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:11:45  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:05  rob
+ * First Imported.
+ *
+ * Revision 1.9  2001/09/21 19:58:55  rob
+ * No asteriods
+ *
+ * Revision 1.8  2001/09/18 20:42:28  stu
+ * More Sim/ hud numbers print
+ *
+ * Revision 1.7  2001/09/10 21:41:55  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.6  2001/06/23 20:06:22  stu
-/* 0.66 checkin
-/*
-/* Revision 1.5  2001/06/03 03:17:36  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.6  2001/06/23 20:06:22  stu
+ * 0.66 checkin
+ *
+ * Revision 1.5  2001/06/03 03:17:36  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.4  2001/04/29 20:57:57  stu
-/* Z Clipping
-/*
-/* Revision 1.3  2001/04/02 17:28:45  rob
-/* made various variables switch on and off-able from forth. These include dust, asteriods, hud, zbuffer.
-/*
-/* Revision 1.2  2001/04/01 18:38:34  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:35  rob
-/* First Imported.
-/*
-/* Revision 1.7  2000/12/11 19:49:00  stu
-/* Light fix in 3d_top - calc_normal
-/*
-/* Revision 1.6  2000/12/10 03:35:27  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+ *
+ * Revision 1.4  2001/04/29 20:57:57  stu
+ * Z Clipping
+ *
+ * Revision 1.3  2001/04/02 17:28:45  rob
+ * made various variables switch on and off-able from forth. These include dust, asteriods, hud, zbuffer.
+ *
+ * Revision 1.2  2001/04/01 18:38:34  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:35  rob
+ * First Imported.
+ *
+ * Revision 1.7  2000/12/11 19:49:00  stu
+ * Light fix in 3d_top - calc_normal
+ *
+ * Revision 1.6  2000/12/10 03:35:27  stu
+ * Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
 
 Dust now self lit.
-/*
-/* Revision 1.5  2000/12/03 23:52:44  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.4  2000/11/26 22:58:46  stu
-/* Various.
-/*
-/* Revision 1.3  2000/11/16 20:21:54  rob
-/* orbit
-/*
-/* Revision 1.2  2000/10/08 21:45:42  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.1  2000/09/20 23:48:17  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 22:01:59  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.5  2000/12/03 23:52:44  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.4  2000/11/26 22:58:46  stu
+ * Various.
+ *
+ * Revision 1.3  2000/11/16 20:21:54  rob
+ * orbit
+ *
+ * Revision 1.2  2000/10/08 21:45:42  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.1  2000/09/20 23:48:17  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.0.0.1  2000/08/21 22:01:59  stu
+ * First Imported.
+ *
  */
 
 

@@ -1,45 +1,49 @@
 //init_ocbs
-/* $Log: init_memory.c,v $
-/* Revision 1.7  2002/09/08 02:03:49  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.6  2002/06/16 23:19:33  stu
-/* Particles booked in for backup purposes - not working yet or complete.
-/*
-/* Revision 1.5  2002/05/31 23:52:07  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.4  2002/02/10 21:43:51  stu
-/* fast dyn objects
-/*
-/* Revision 1.3  2001/11/02 19:31:20  rob
-/* Build variants for interface lib and carbon.
+ * $Log: init_memory.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:52  stu_c
+ * First Imported.
+ *
+ * Revision 1.7  2002/09/08 02:03:49  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.6  2002/06/16 23:19:33  stu
+ * Particles booked in for backup purposes - not working yet or complete.
+ *
+ * Revision 1.5  2002/05/31 23:52:07  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.4  2002/02/10 21:43:51  stu
+ * fast dyn objects
+ *
+ * Revision 1.3  2001/11/02 19:31:20  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:37  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:02:10  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/04/29 20:57:52  stu
-/* Z Clipping
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:36  rob
-/* First Imported.
-/*
-/* Revision 1.2  2000/10/08 21:49:06  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.1  2000/09/20 23:47:07  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 22:03:21  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.2  2001/10/22 21:28:37  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:02:10  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/04/29 20:57:52  stu
+ * Z Clipping
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:36  rob
+ * First Imported.
+ *
+ * Revision 1.2  2000/10/08 21:49:06  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.1  2000/09/20 23:47:07  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.0.0.1  2000/08/21 22:03:21  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -1,139 +1,143 @@
-/* $Log: draw_radar_and_cwp.c,v $
-/* Revision 1.17  2002/09/08 02:08:24  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.16  2002/07/28 17:17:04  stu_c
-/* Exhaust particles and further work
-/*
-/* Revision 1.15  2002/05/05 22:26:03  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+ * $Log: draw_radar_and_cwp.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:16  stu_c
+ * First Imported.
+ *
+ * Revision 1.17  2002/09/08 02:08:24  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.16  2002/07/28 17:17:04  stu_c
+ * Exhaust particles and further work
+ *
+ * Revision 1.15  2002/05/05 22:26:03  stu
+ * Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.14  2002/04/28 06:24:30  stu
-/* This checkin adds more to the HUD and brings out some sim variables to the player.
-/*
-/* Revision 1.13  2002/04/20 18:36:19  stu
-/* Furhter work for AP and control at time>1
-/*
-/* Revision 1.12  2002/02/23 01:11:10  stu
-/* Fix for radar not working on release build.
-/*
-/* Revision 1.11  2002/02/17 06:19:56  stu
-/* Added radar targetting
-/*
-/* Revision 1.10  2002/02/16 19:01:24  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.9  2002/02/04 23:12:48  stu
-/* time accelerator removal from internal timings, only throbs if alien displayed, cwp working
-/*
-/* Revision 1.8  2001/12/29 01:11:08  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.7  2001/12/02 19:32:05  stu
-/* Radar runs every fifth frame. Now draws bottom, graticule, top items.
-/*
-/* Revision 1.6  2001/11/26 23:16:20  rob
-/* Galaxy hide screen stuff
-/*
-/* Revision 1.5  2001/11/24 19:28:47  stu
-/* Dunno
-/*
-/* Revision 1.4  2001/11/09 18:28:59  rob
-/* Various debug changes.
-/*
-/* Revision 1.3  2001/11/02 19:31:53  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.14  2002/04/28 06:24:30  stu
+ * This checkin adds more to the HUD and brings out some sim variables to the player.
+ *
+ * Revision 1.13  2002/04/20 18:36:19  stu
+ * Furhter work for AP and control at time>1
+ *
+ * Revision 1.12  2002/02/23 01:11:10  stu
+ * Fix for radar not working on release build.
+ *
+ * Revision 1.11  2002/02/17 06:19:56  stu
+ * Added radar targetting
+ *
+ * Revision 1.10  2002/02/16 19:01:24  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.9  2002/02/04 23:12:48  stu
+ * time accelerator removal from internal timings, only throbs if alien displayed, cwp working
+ *
+ * Revision 1.8  2001/12/29 01:11:08  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.7  2001/12/02 19:32:05  stu
+ * Radar runs every fifth frame. Now draws bottom, graticule, top items.
+ *
+ * Revision 1.6  2001/11/26 23:16:20  rob
+ * Galaxy hide screen stuff
+ *
+ * Revision 1.5  2001/11/24 19:28:47  stu
+ * Dunno
+ *
+ * Revision 1.4  2001/11/09 18:28:59  rob
+ * Various debug changes.
+ *
+ * Revision 1.3  2001/11/02 19:31:53  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:15  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:01:41  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.11  2001/09/23 18:59:18  stu
-/* AP work, improved number print, engines.
-/*
-/* Revision 1.10  2001/09/21 19:59:39  rob
-/* Better names = happer Stu
-/*
-/* Revision 1.9  2001/09/18 20:39:44  stu
-/* More Sim/ hud numbers print
-/*
-/* Revision 1.8  2001/09/18 20:03:38  rob
-/* Added flashing radar indicator for targetted object.
-/*
-/* Revision 1.7  2001/09/10 21:42:08  stu
-/* 100901
+ *
+ * Revision 1.2  2001/10/22 21:28:15  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:01:41  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.11  2001/09/23 18:59:18  stu
+ * AP work, improved number print, engines.
+ *
+ * Revision 1.10  2001/09/21 19:59:39  rob
+ * Better names = happer Stu
+ *
+ * Revision 1.9  2001/09/18 20:39:44  stu
+ * More Sim/ hud numbers print
+ *
+ * Revision 1.8  2001/09/18 20:03:38  rob
+ * Added flashing radar indicator for targetted object.
+ *
+ * Revision 1.7  2001/09/10 21:42:08  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.6  2001/09/04 20:35:53  stu
-/* Sim stuff
-/*
-/* Revision 1.5  2001/07/29 10:41:09  rob
-/* radar_grat and time_in_secs size change
-/*
-/* Revision 1.4  2001/06/23 20:01:32  stu
-/* 0.66 checkin
-/*
-/* Revision 1.3  2001/06/01 21:36:57  stu
-/* Radar now translucent
-/*
-/* Revision 1.2  2001/05/28 01:49:09  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.13  2000/12/10 03:35:52  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+ *
+ * Revision 1.6  2001/09/04 20:35:53  stu
+ * Sim stuff
+ *
+ * Revision 1.5  2001/07/29 10:41:09  rob
+ * radar_grat and time_in_secs size change
+ *
+ * Revision 1.4  2001/06/23 20:01:32  stu
+ * 0.66 checkin
+ *
+ * Revision 1.3  2001/06/01 21:36:57  stu
+ * Radar now translucent
+ *
+ * Revision 1.2  2001/05/28 01:49:09  stu
+ * 280501
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.13  2000/12/10 03:35:52  stu
+ * Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
-/*
-/* Revision 1.12  2000/12/04 00:06:57  rob
-/* Added extra type just in case another object type is added
-/*
-/* Revision 1.11  2000/12/03 23:52:34  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.10  2000/12/03 23:01:19  rob
-/* Fixed Radar
-/*
-/* Revision 1.9  2000/11/20 20:02:22  rob
-/* Altered radar ranges, and also made planets appear on radar
-/*
-/* Revision 1.8  2000/10/08 21:45:51  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.7  2000/10/01 14:28:56  rob
-/* Altered centerings for new ranges
-/*
-/* Revision 1.6  2000/10/01 14:06:41  rob
-/* Altered the ranges for the radar to closer map to the vastness of space. Provisional only.
-/*
-/* Revision 1.5  2000/09/20 23:54:09  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.4  2000/09/13 22:06:34  stu
-/* Added planet buffet to temperature warning
-/*
-/* Revision 1.3  2000/09/13 20:30:44  stu
-/* Changes for hud targetting and sun corona effects.
-/*
-/* Revision 1.2  2000/09/09 21:08:19  stu
-/* Radar changes - colour etc.
-/*
-/* Revision 1.1  2000/09/05 00:38:36  stu
-/* Removed old radar graticule.
+ *
+ * Revision 1.12  2000/12/04 00:06:57  rob
+ * Added extra type just in case another object type is added
+ *
+ * Revision 1.11  2000/12/03 23:52:34  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.10  2000/12/03 23:01:19  rob
+ * Fixed Radar
+ *
+ * Revision 1.9  2000/11/20 20:02:22  rob
+ * Altered radar ranges, and also made planets appear on radar
+ *
+ * Revision 1.8  2000/10/08 21:45:51  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.7  2000/10/01 14:28:56  rob
+ * Altered centerings for new ranges
+ *
+ * Revision 1.6  2000/10/01 14:06:41  rob
+ * Altered the ranges for the radar to closer map to the vastness of space. Provisional only.
+ *
+ * Revision 1.5  2000/09/20 23:54:09  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.4  2000/09/13 22:06:34  stu
+ * Added planet buffet to temperature warning
+ *
+ * Revision 1.3  2000/09/13 20:30:44  stu
+ * Changes for hud targetting and sun corona effects.
+ *
+ * Revision 1.2  2000/09/09 21:08:19  stu
+ * Radar changes - colour etc.
+ *
+ * Revision 1.1  2000/09/05 00:38:36  stu
+ * Removed old radar graticule.
 Added new dynamic one.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:47  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:47  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

@@ -1,59 +1,63 @@
-/* $Log: explode.c,v $
-/* Revision 1.7  2002/09/08 02:13:48  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.6  2002/05/31 23:54:09  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.5  2002/05/05 22:28:04  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+ * $Log: explode.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:00  stu_c
+ * First Imported.
+ *
+ * Revision 1.7  2002/09/08 02:13:48  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.6  2002/05/31 23:54:09  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.5  2002/05/05 22:28:04  stu
+ * Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.4  2002/03/16 00:44:36  stu
-/* Continued development
-/*
-/* Revision 1.3  2001/11/02 19:32:18  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.4  2002/03/16 00:44:36  stu
+ * Continued development
+ *
+ * Revision 1.3  2001/11/02 19:32:18  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:29:09  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:03:56  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:06  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/06/23 20:10:29  stu
-/* 0.66 checkin
-/*
-/* Revision 1.2  2001/06/03 03:22:17  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.2  2001/10/22 21:29:09  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:03:56  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:06  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/06/23 20:10:29  stu
+ * 0.66 checkin
+ *
+ * Revision 1.2  2001/06/03 03:22:17  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:38  rob
-/* First Imported.
-/*
-/* Revision 1.4  2000/12/03 23:52:11  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.3  2000/11/16 20:38:37  rob
-/* orbit
-/*
-/* Revision 1.2  2000/09/20 23:51:07  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.1  2000/08/27 01:31:26  stu
-/* Hud changes
-/*
-/* Revision 1.0.0.1  2000/08/21 22:06:54  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:38  rob
+ * First Imported.
+ *
+ * Revision 1.4  2000/12/03 23:52:11  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.3  2000/11/16 20:38:37  rob
+ * orbit
+ *
+ * Revision 1.2  2000/09/20 23:51:07  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.1  2000/08/27 01:31:26  stu
+ * Hud changes
+ *
+ * Revision 1.0.0.1  2000/08/21 22:06:54  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

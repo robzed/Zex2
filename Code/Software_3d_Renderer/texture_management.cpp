@@ -1,66 +1,71 @@
 //texture_management.c
 //SB 3/1/99
 //manages Zex's textures for me cause I'm too lazy to do it myself.
-/* $Log: texture_management.c,v $
-/* Revision 1.11  2002/09/08 02:07:09  stu_c
-/* Precompiled header adjustments
+ 
 /*
-/* Revision 1.10  2002/02/16 19:03:32  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.9  2002/01/20 21:36:30  stu
-/* GL_CLAMP_TO_EDGE not available on non mach-o systems so made GL_CLAMP if Anvil build.
-/*
-/* Revision 1.8  2002/01/20 16:59:34  stu
-/* GL_CLAMP changed to GL_CALMP_TO_EDGE
-/*
-/* Revision 1.7  2001/12/29 01:11:06  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.6  2001/12/28 23:07:28  stu
-/* Added:
+ * $Log: texture_management.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:30  stu_c
+ * First Imported.
+ *
+ * Revision 1.11  2002/09/08 02:07:09  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.10  2002/02/16 19:03:32  stu
+ * Radar range decrease key and rationalisation of dlp colours
+ *
+ * Revision 1.9  2002/01/20 21:36:30  stu
+ * GL_CLAMP_TO_EDGE not available on non mach-o systems so made GL_CLAMP if Anvil build.
+ *
+ * Revision 1.8  2002/01/20 16:59:34  stu
+ * GL_CLAMP changed to GL_CALMP_TO_EDGE
+ *
+ * Revision 1.7  2001/12/29 01:11:06  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.6  2001/12/28 23:07:28  stu
+ * Added:
 int texture_compare(int* tex1, int* tex2);
 int find_texture(int* the_texture);
 
 Loading textures from 3dmf's now only load IF the texture is not already loaded. 3dmfs with idenitical textures now share them from the first object to use the texture. Hurrah.
 
 Also prevents a rerun error of Out of texture memory!
-/*
-/* Revision 1.5  2001/11/05 20:04:50  stu
-/* More OSX work
-/*
-/* Revision 1.4  2001/11/03 14:27:59  stu
-/* Further OS X work
-/*
-/* Revision 1.3  2001/11/02 23:19:12  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.2  2001/11/02 19:31:41  rob
-/* Build variants for interface lib and carbon.
+ *
+ * Revision 1.5  2001/11/05 20:04:50  stu
+ * More OSX work
+ *
+ * Revision 1.4  2001/11/03 14:27:59  stu
+ * Further OS X work
+ *
+ * Revision 1.3  2001/11/02 23:19:12  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.2  2001/11/02 19:31:41  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:13:47  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.4  2001/09/10 21:40:52  stu
-/* 100901
+ *
+ * Revision 1.1  2001/10/21 01:13:47  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.4  2001/09/10 21:40:52  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.3  2001/05/28 01:45:31  stu
-/* 280501
-/*
-/* Revision 1.2  2001/04/01 18:25:53  stu
-/* *** empty log message ***
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:10:02  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.3  2001/05/28 01:45:31  stu
+ * 280501
+ *
+ * Revision 1.2  2001/04/01 18:25:53  stu
+ * *** empty log message ***
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:10:02  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

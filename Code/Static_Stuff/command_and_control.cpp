@@ -14,67 +14,70 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: command_and_control.c,v $
-/* Revision 1.12  2002/09/08 01:57:50  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.11  2002/08/31 19:25:31  stu_c
-/* Callsigns
-/*
-/* Revision 1.10  2002/04/28 06:23:43  stu
-/* This checkin adds more to the HUD and brings out some sim variables to the player.
-/*
-/* Revision 1.9  2002/04/13 15:33:15  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.8  2002/03/16 00:42:58  stu
-/* Continued development
-/*
-/* Revision 1.7  2002/01/02 19:29:01  rob
-/* Added key setup code
-/*
-/* Revision 1.6  2001/12/29 01:12:14  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.5  2001/12/27 19:48:12  stu
-/* Additional development work for docking
-/*
-/* Revision 1.4  2001/11/06 20:11:13  rob
-/* Key input changes
-/*
-/* Revision 1.3  2001/11/02 19:32:54  rob
-/* Build variants for interface lib and carbon.
+ * $Log: command_and_control.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:37:11  stu_c
+ * First Imported.
+ *
+ * Revision 1.12  2002/09/08 01:57:50  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.11  2002/08/31 19:25:31  stu_c
+ * Callsigns
+ *
+ * Revision 1.10  2002/04/28 06:23:43  stu
+ * This checkin adds more to the HUD and brings out some sim variables to the player.
+ *
+ * Revision 1.9  2002/04/13 15:33:15  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.8  2002/03/16 00:42:58  stu
+ * Continued development
+ *
+ * Revision 1.7  2002/01/02 19:29:01  rob
+ * Added key setup code
+ *
+ * Revision 1.6  2001/12/29 01:12:14  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.5  2001/12/27 19:48:12  stu
+ * Additional development work for docking
+ *
+ * Revision 1.4  2001/11/06 20:11:13  rob
+ * Key input changes
+ *
+ * Revision 1.3  2001/11/02 19:32:54  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.2  2001/10/22 21:28:13  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:09:30  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:08  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/06/23 20:07:06  stu
-/* 0.66 checkin
-/*
-/* Revision 1.2  2001/06/03 03:16:45  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.2  2001/10/22 21:28:13  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:09:30  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:08  rob
+ * First Imported.
+ *
+ * Revision 1.3  2001/06/23 20:07:06  stu
+ * 0.66 checkin
+ *
+ * Revision 1.2  2001/06/03 03:16:45  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.1  2000/10/19 19:07:06  stu
-/* Relative velocities, turbulence, planet names.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:11:06  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.1  2000/10/19 19:07:06  stu
+ * Relative velocities, turbulence, planet names.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:11:06  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************

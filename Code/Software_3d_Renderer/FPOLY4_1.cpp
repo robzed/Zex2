@@ -49,33 +49,36 @@
 *
 * 18/12/98      SB: Made clip rect dymaic, setup by calling set_poly_clipping
 
-***********************************************************************/
-/* $Log: FPOLY4_1.c,v $
-/* Revision 1.5  2002/09/08 02:07:34  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.4  2001/12/29 01:10:59  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.3  2001/11/09 18:28:48  rob
-/* Various debug changes.
-/*
-/* Revision 1.2  2001/11/02 19:31:44  rob
-/* Build variants for interface lib and carbon.
+***********************************************************************
+ * $Log: FPOLY4_1.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:28  stu_c
+ * First Imported.
+ *
+ * Revision 1.5  2002/09/08 02:07:34  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.4  2001/12/29 01:10:59  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.3  2001/11/09 18:28:48  rob
+ * Various debug changes.
+ *
+ * Revision 1.2  2001/11/02 19:31:44  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:04:40  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.0.0.1  2000/08/21 22:09:47  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:04:40  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.0.0.1  2000/08/21 22:09:47  stu
+ * First Imported.
+ *
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

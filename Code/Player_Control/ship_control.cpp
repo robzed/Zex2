@@ -14,120 +14,123 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: ship_control.c,v $
-/* Revision 1.35  2002/09/08 02:19:10  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.34  2002/08/31 19:23:19  stu_c
-/* Callsigns
-/*
-/* Revision 1.33  2002/08/11 22:05:50  stu_c
-/* behaviour_aggressive started, falcons from motherships.
-/*
-/* Revision 1.32  2002/07/28 17:12:31  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.31  2002/07/09 21:43:48  stu_c
-/* NPC lasers; might become exhausts
-/*
-/* Revision 1.30  2002/07/08 21:09:19  stu_c
-/* Laser and gun triggers now part of the OCB, so in theory any object could now shoot lasers and cannons.
-/*
-/* Revision 1.29  2002/07/07 03:44:35  stu_c
-/* Lasers now work but need moving to POCB's
-/*
-/* Revision 1.28  2002/05/19 03:17:29  stu
-/* Guns fix
-/*
-/* Revision 1.27  2002/05/05 22:26:52  stu
-/* Further developement - hull temperature now correct for multiple suns and atmosphere.
+// $Log: ship_control.c,v $
+// Revision 1.1.1.1  2003/09/05 22:36:14  stu_c
+// First Imported.
+//
+// Revision 1.35  2002/09/08 02:19:10  stu_c
+// Precompiled header adjustments
+//
+// Revision 1.34  2002/08/31 19:23:19  stu_c
+// Callsigns
+//
+// Revision 1.33  2002/08/11 22:05:50  stu_c
+// behaviour_aggressive started, falcons from motherships.
+//
+// Revision 1.32  2002/07/28 17:12:31  stu_c
+// Exhausts and further particle work
+//
+// Revision 1.31  2002/07/09 21:43:48  stu_c
+// NPC lasers; might become exhausts
+//
+// Revision 1.30  2002/07/08 21:09:19  stu_c
+// Laser and gun triggers now part of the OCB, so in theory any object could now shoot lasers and cannons.
+//
+// Revision 1.29  2002/07/07 03:44:35  stu_c
+// Lasers now work but need moving to POCB's
+//
+// Revision 1.28  2002/05/19 03:17:29  stu
+// Guns fix
+//
+// Revision 1.27  2002/05/05 22:26:52  stu
+// Further developement - hull temperature now correct for multiple suns and atmosphere.
 
 All calls to add_to_kill_list check the return
-/*
-/* Revision 1.26  2002/04/13 15:30:42  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.25  2002/03/09 15:12:16  stu
-/* Faster cannon reload
-/*
-/* Revision 1.24  2002/02/21 22:47:09  stu
-/* AP now disengaged if we request dock
-/*
-/* Revision 1.23  2002/02/17 06:20:10  stu
-/* Added radar targetting
-/*
-/* Revision 1.22  2002/02/16 19:14:57  stu
-/* DLP_BLUE changed to DLP_PURP
-/*
-/* Revision 1.21  2002/02/16 19:02:18  stu
-/* Radar range decrease key and rationalisation of dlp colours
-/*
-/* Revision 1.20  2002/02/10 21:44:35  stu
-/* removed an unused local
-/*
-/* Revision 1.19  2002/02/04 23:05:01  stu
-/* time multiplier forced to 1 if buffet active
-/*
-/* Revision 1.18  2002/02/03 19:30:46  stu
-/* Reduced buffet intensity
-/*
-/* Revision 1.17  2002/02/03 10:52:59  rob
-/* reinit solar system on multiple solar system entries to stop in progress selection.
-/*
-/* Revision 1.16  2002/02/02 23:01:54  stu
-/* Removed init_solar_map
-/*
-/* Revision 1.15  2002/01/27 18:12:42  stu
-/* Time accel set to 1 in various places. no_buffet cheat added.
+//
+// Revision 1.26  2002/04/13 15:30:42  stu
+// Rotation, Alycians, behaviour
+//
+// Revision 1.25  2002/03/09 15:12:16  stu
+// Faster cannon reload
+//
+// Revision 1.24  2002/02/21 22:47:09  stu
+// AP now disengaged if we request dock
+//
+// Revision 1.23  2002/02/17 06:20:10  stu
+// Added radar targetting
+//
+// Revision 1.22  2002/02/16 19:14:57  stu
+// DLP_BLUE changed to DLP_PURP
+//
+// Revision 1.21  2002/02/16 19:02:18  stu
+// Radar range decrease key and rationalisation of dlp colours
+//
+// Revision 1.20  2002/02/10 21:44:35  stu
+// removed an unused local
+//
+// Revision 1.19  2002/02/04 23:05:01  stu
+// time multiplier forced to 1 if buffet active
+//
+// Revision 1.18  2002/02/03 19:30:46  stu
+// Reduced buffet intensity
+//
+// Revision 1.17  2002/02/03 10:52:59  rob
+// reinit solar system on multiple solar system entries to stop in progress selection.
+//
+// Revision 1.16  2002/02/02 23:01:54  stu
+// Removed init_solar_map
+//
+// Revision 1.15  2002/01/27 18:12:42  stu
+// Time accel set to 1 in various places. no_buffet cheat added.
 1 no_buffet ! in console.
-/*
-/* Revision 1.14  2002/01/20 16:44:03  stu
-/* Buffet now works again.
+//
+// Revision 1.14  2002/01/20 16:44:03  stu
+// Buffet now works again.
 Sets bg colour as well
-/*
-/* Revision 1.13  2002/01/02 19:30:53  rob
-/* Added key setup code
-/*
-/* Revision 1.12  2001/12/29 01:12:43  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.11  2001/12/14 19:42:28  stu
-/* Docking
-/*
-/* Revision 1.10  2001/11/26 23:28:36  rob
-/* Galaxy map.
-/*
-/* Revision 1.9  2001/11/24 19:29:16  stu
-/* *** empty log message ***
-/*
-/* Revision 1.8  2001/11/07 20:49:53  stu
-/* More Carbon work. SOund now plays OK
-/*
-/* Revision 1.7  2001/11/06 00:26:45  rob
-/* First stage of getting keyboard working.
-/*
-/* Revision 1.6  2001/11/05 19:57:51  stu
-/* More OSX work
-/*
-/* Revision 1.5  2001/11/02 19:32:57  rob
-/* Build variants for interface lib and carbon.
+//
+// Revision 1.13  2002/01/02 19:30:53  rob
+// Added key setup code
+//
+// Revision 1.12  2001/12/29 01:12:43  stu
+// Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+//
+// Revision 1.11  2001/12/14 19:42:28  stu
+// Docking
+//
+// Revision 1.10  2001/11/26 23:28:36  rob
+// Galaxy map.
+//
+// Revision 1.9  2001/11/24 19:29:16  stu
+// *** empty log message ***
+//
+// Revision 1.8  2001/11/07 20:49:53  stu
+// More Carbon work. SOund now plays OK
+//
+// Revision 1.7  2001/11/06 00:26:45  rob
+// First stage of getting keyboard working.
+//
+// Revision 1.6  2001/11/05 19:57:51  stu
+// More OSX work
+//
+// Revision 1.5  2001/11/02 19:32:57  rob
+// Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.4  2001/10/26 22:44:34  rob
-/* Anvil changes
-/*
-/* Revision 1.3  2001/10/24 21:39:44  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.2  2001/10/22 21:29:02  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:11:13  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
+//
+// Revision 1.4  2001/10/26 22:44:34  rob
+// Anvil changes
+//
+// Revision 1.3  2001/10/24 21:39:44  stu
+// First set of source to build on pb for carbon.
+//
+// Revision 1.2  2001/10/22 21:29:02  rob
+// Carbon warning changes
+//
+// Revision 1.1  2001/10/21 01:11:13  stu
+// Initial porting work
+//
+// Revision 1.0.0.1  2001/10/17 20:46:07  rob
+// First Imported.
 
  */
 

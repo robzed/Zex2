@@ -1,92 +1,95 @@
-//docked.c
-//SB 300199
-/* $Log: docked.c,v $
-/* Revision 1.32  2002/09/08 02:17:56  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.31  2002/08/31 19:26:39  stu_c
-/* Callsigns
-/*
-/* Revision 1.30  2002/07/28 17:14:42  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.29  2002/07/04 22:45:40  stu_c
-/* Just removed the conditionals around yield_to_thread
-/*
-/* Revision 1.28  2002/05/31 23:55:51  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.27  2002/04/21 14:45:39  stu
-/* Further work
-/*
-/* Revision 1.26  2002/04/13 15:30:09  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.25  2002/03/10 03:40:48  stu
-/* Additional work on trading - we can buy and sell on different motehrships.
-/*
-/* Revision 1.24  2002/03/10 02:48:17  stu
-/* Fix for suns/particles not being rendered
-/*
-/* Revision 1.23  2002/02/24 03:42:15  stu
-/* (Some) compiler warnings cleaned up
-/*
-/* Revision 1.22  2002/02/23 18:52:45  stu
-/* Can now undock - yay!
-/*
-/* Revision 1.21  2002/02/21 22:44:22  stu
-/* Removed old scene code; now show view out of mothership
-/*
-/* Revision 1.20  2002/02/12 23:57:54  rob
-/* Kill kill list always resets kill list
+/* docked.c
+// SB 300199
+// $Log: docked.c,v $
+// Revision 1.1.1.1  2003/09/05 22:35:43  stu_c
+// First Imported.
+//
+// Revision 1.32  2002/09/08 02:17:56  stu_c
+// Precompiled header adjustments
+//
+// Revision 1.31  2002/08/31 19:26:39  stu_c
+// Callsigns
+//
+// Revision 1.30  2002/07/28 17:14:42  stu_c
+// Exhausts and further particle work
+//
+// Revision 1.29  2002/07/04 22:45:40  stu_c
+// Just removed the conditionals around yield_to_thread
+//
+// Revision 1.28  2002/05/31 23:55:51  stu
+// Removed all warnings from the code
+//
+// Revision 1.27  2002/04/21 14:45:39  stu
+// Further work
+//
+// Revision 1.26  2002/04/13 15:30:09  stu
+// Rotation, Alycians, behaviour
+//
+// Revision 1.25  2002/03/10 03:40:48  stu
+// Additional work on trading - we can buy and sell on different motehrships.
+//
+// Revision 1.24  2002/03/10 02:48:17  stu
+// Fix for suns/particles not being rendered
+//
+// Revision 1.23  2002/02/24 03:42:15  stu
+// (Some) compiler warnings cleaned up
+//
+// Revision 1.22  2002/02/23 18:52:45  stu
+// Can now undock - yay!
+//
+// Revision 1.21  2002/02/21 22:44:22  stu
+// Removed old scene code; now show view out of mothership
+//
+// Revision 1.20  2002/02/12 23:57:54  rob
+// Kill kill list always resets kill list
 Added new dock code to dock.
-/*
-/* Revision 1.19  2002/02/02 23:10:44  stu
-/* i_know_what_im_doing_kill param changes
-/*
-/* Revision 1.18  2002/01/27 18:04:44  stu
-/* Unused variables removed
-/*
-/* Revision 1.17  2002/01/02 19:25:53  rob
-/* Added key setup code
-/*
-/* Revision 1.16  2002/01/02 13:30:08  stu
-/* Continuing development for trading/static screens
-/*
-/* Revision 1.15  2001/12/31 20:00:55  stu
-/* More dev work; runs lots faster than the old version. Using code from main_menu screen
-/*
-/* Revision 1.14  2001/12/29 22:59:22  stu
-/* More dev work; now actually displays a falcon and runs OK.
-/*
-/* Revision 1.13  2001/12/29 01:12:52  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.12  2001/12/28 23:12:37  stu
-/* More dev work
-/*
-/* Revision 1.11  2001/12/27 19:47:51  stu
-/* Additional development work for docking
-/*
-/* Revision 1.10  2001/12/14 19:42:16  stu
-/* Docking
-/*
-/* Revision 1.9  2001/12/04 22:57:04  rob
-/* sin tab proto removed
-/*
-/* Revision 1.8  2001/11/24 19:29:54  stu
-/* *** empty log message ***
-/*
-/* Revision 1.7  2001/11/02 23:21:12  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.6  2001/11/02 19:33:08  rob
-/* Build variants for interface lib and carbon.
+//
+// Revision 1.19  2002/02/02 23:10:44  stu
+// i_know_what_im_doing_kill param changes
+//
+// Revision 1.18  2002/01/27 18:04:44  stu
+// Unused variables removed
+//
+// Revision 1.17  2002/01/02 19:25:53  rob
+// Added key setup code
+//
+// Revision 1.16  2002/01/02 13:30:08  stu
+// Continuing development for trading/static screens
+//
+// Revision 1.15  2001/12/31 20:00:55  stu
+// More dev work; runs lots faster than the old version. Using code from main_menu screen
+//
+// Revision 1.14  2001/12/29 22:59:22  stu
+// More dev work; now actually displays a falcon and runs OK.
+//
+// Revision 1.13  2001/12/29 01:12:52  stu
+// Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+//
+// Revision 1.12  2001/12/28 23:12:37  stu
+// More dev work
+//
+// Revision 1.11  2001/12/27 19:47:51  stu
+// Additional development work for docking
+//
+// Revision 1.10  2001/12/14 19:42:16  stu
+// Docking
+//
+// Revision 1.9  2001/12/04 22:57:04  rob
+// sin tab proto removed
+//
+// Revision 1.8  2001/11/24 19:29:54  stu
+// *** empty log message ***
+//
+// Revision 1.7  2001/11/02 23:21:12  stu
+// Further OS X work. Enabled syscon logging.
+//
+// Revision 1.6  2001/11/02 19:33:08  rob
+// Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.5  2001/10/27 22:39:27  stu
-/* zplatform included
-/*
+//
+// Revision 1.5  2001/10/27 22:39:27  stu
+// zplatform included
+//
 
  */
 #ifndef __ZEX_PCH__

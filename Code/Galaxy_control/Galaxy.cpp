@@ -14,179 +14,183 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: Galaxy.c,v $
-/* Revision 1.17  2002/09/08 02:05:22  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.16  2002/07/28 17:14:11  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.15  2002/05/31 23:52:20  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.14  2002/04/13 15:33:57  stu
-/* Rotation, Alycians, behaviour
-/*
-/* Revision 1.13  2002/02/10 21:38:53  stu
-/* fast dyn objects
-/*
-/* Revision 1.12  2002/02/02 23:03:46  stu
-/* gen_planet_name now takes anotehr parameter telling it whether to append [m],[p] or [s]
-/*
-/* Revision 1.11  2002/01/27 18:05:15  stu
-/* Unused variables removed
-/*
-/* Revision 1.10  2002/01/20 17:08:34  stu
-/* loading of FAR_STARS
-/*
-/* Revision 1.9  2001/12/29 01:10:45  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.8  2001/12/02 19:32:49  stu
-/* Dunno
-/*
-/* Revision 1.7  2001/11/24 21:21:59  rob
-/* Background galaxy changes
-/*
-/* Revision 1.6  2001/11/24 19:27:33  stu
-/* RA_line_len in place of sqrt
-/*
-/* Revision 1.5  2001/11/02 23:21:37  stu
-/* Further OS X work. Enabled syscon logging.
-/*
-/* Revision 1.4  2001/11/02 19:31:32  rob
-/* Build variants for interface lib and carbon.
+ * $Log: Galaxy.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:28  stu_c
+ * First Imported.
+ *
+ * Revision 1.17  2002/09/08 02:05:22  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.16  2002/07/28 17:14:11  stu_c
+ * Exhausts and further particle work
+ *
+ * Revision 1.15  2002/05/31 23:52:20  stu
+ * Removed all warnings from the code
+ *
+ * Revision 1.14  2002/04/13 15:33:57  stu
+ * Rotation, Alycians, behaviour
+ *
+ * Revision 1.13  2002/02/10 21:38:53  stu
+ * fast dyn objects
+ *
+ * Revision 1.12  2002/02/02 23:03:46  stu
+ * gen_planet_name now takes anotehr parameter telling it whether to append [m],[p] or [s]
+ *
+ * Revision 1.11  2002/01/27 18:05:15  stu
+ * Unused variables removed
+ *
+ * Revision 1.10  2002/01/20 17:08:34  stu
+ * loading of FAR_STARS
+ *
+ * Revision 1.9  2001/12/29 01:10:45  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.8  2001/12/02 19:32:49  stu
+ * Dunno
+ *
+ * Revision 1.7  2001/11/24 21:21:59  rob
+ * Background galaxy changes
+ *
+ * Revision 1.6  2001/11/24 19:27:33  stu
+ * RA_line_len in place of sqrt
+ *
+ * Revision 1.5  2001/11/02 23:21:37  stu
+ * Further OS X work. Enabled syscon logging.
+ *
+ * Revision 1.4  2001/11/02 19:31:32  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/24 21:41:21  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.2  2001/10/22 21:28:55  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:12:02  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:05  rob
-/* First Imported.
-/*
-/* Revision 1.12  2001/09/23 17:59:53  rob
-/* Galaxy no longer contains solar system objects
-/*
-/* Revision 1.11  2001/09/22 08:36:13  rob
-/* Added scale display
-/*
-/* Revision 1.10  2001/09/22 07:49:01  rob
-/* Added incremental change to scale and offset - game eyecandy.
-/*
-/* Revision 1.9  2001/09/21 23:29:14  rob
-/* Added ability to zoom on solar system map.
-/*
-/* Revision 1.8  2001/09/10 21:39:25  stu
-/* 100901
+ *
+ * Revision 1.3  2001/10/24 21:41:21  stu
+ * First set of source to build on pb for carbon.
+ *
+ * Revision 1.2  2001/10/22 21:28:55  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:12:02  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:05  rob
+ * First Imported.
+ *
+ * Revision 1.12  2001/09/23 17:59:53  rob
+ * Galaxy no longer contains solar system objects
+ *
+ * Revision 1.11  2001/09/22 08:36:13  rob
+ * Added scale display
+ *
+ * Revision 1.10  2001/09/22 07:49:01  rob
+ * Added incremental change to scale and offset - game eyecandy.
+ *
+ * Revision 1.9  2001/09/21 23:29:14  rob
+ * Added ability to zoom on solar system map.
+ *
+ * Revision 1.8  2001/09/10 21:39:25  stu
+ * 100901
 More Sim, AP broken.
-/*
-/* Revision 1.7  2001/09/10 20:44:07  rob
-/* 1. Stopped linear dampers.
+ *
+ * Revision 1.7  2001/09/10 20:44:07  rob
+ * 1. Stopped linear dampers.
 2. Turned off test system.
 3. Altered so solar system map comes up.
-/*
-/* Revision 1.6  2001/06/23 20:09:03  stu
-/* 0.66 checkin
-/*
-/* Revision 1.5  2001/06/03 03:19:10  stu
-/* OCB structure now contains a sub structure called:
+ *
+ * Revision 1.6  2001/06/23 20:09:03  stu
+ * 0.66 checkin
+ *
+ * Revision 1.5  2001/06/03 03:19:10  stu
+ * OCB structure now contains a sub structure called:
 ZObjectControl
 Which contains all the control data for an object.
 
 Added accessor in access_ocbs which returns a pointer to type ZObjectControl
-/*
-/* Revision 1.4  2001/05/28 01:46:58  stu
-/* 280501
-/*
-/* Revision 1.3  2001/04/01 18:39:41  stu
-/* *** empty log message ***
-/*
-/* Revision 1.2  2001/01/14 17:14:55  stu
-/* Gourad Fix
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:35  rob
-/* First Imported.
-/*
-/* Revision 1.22  2000/12/11 19:49:42  stu
-/* Light fix in 3d_top - calc_normal
-/*
-/* Revision 1.21  2000/12/10 03:32:27  stu
-/* Calls to kill replaced with either calls to add_to_kill_list OR
+ *
+ * Revision 1.4  2001/05/28 01:46:58  stu
+ * 280501
+ *
+ * Revision 1.3  2001/04/01 18:39:41  stu
+ * *** empty log message ***
+ *
+ * Revision 1.2  2001/01/14 17:14:55  stu
+ * Gourad Fix
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:35  rob
+ * First Imported.
+ *
+ * Revision 1.22  2000/12/11 19:49:42  stu
+ * Light fix in 3d_top - calc_normal
+ *
+ * Revision 1.21  2000/12/10 03:32:27  stu
+ * Calls to kill replaced with either calls to add_to_kill_list OR
 i_know_what_im_doing_kill
 
 Rotation of planets (on-going)
  
 New light control calls.
-/*
-/* Revision 1.20  2000/12/03 23:52:05  rob
-/* changed constants for object type to get uniformity
-/*
-/* Revision 1.19  2000/11/28 22:30:11  stu
-/* Solar map updates.
-/*
-/* Revision 1.18  2000/11/26 22:54:52  stu
-/* Various.
-/*
-/* Revision 1.17  2000/11/26 22:35:13  rob
-/* Fixed solar system display
-/*
-/* Revision 1.16  2000/11/20 20:01:30  rob
-/* Commented out double equates, and make solar system map use x and z rather than y.
-/*
-/* Revision 1.15  2000/11/16 20:30:05  rob
-/* orbit
-/*
-/* Revision 1.14  2000/10/19 19:04:59  stu
-/* Relative velocities, turbulence, planet names.
-/*
-/* Revision 1.13  2000/10/11 20:21:34  rob
-/* Added facility to match object velocity that you are setting an orbit of.
-/*
-/* Revision 1.12  2000/10/10 20:33:05  rob
-/* temporarily disabled the gravity
-/*
-/* Revision 1.11  2000/10/08 21:42:51  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.10  2000/10/08 13:24:23  rob
-/* set velocity in ocb uses new accessor
-/*
-/* Revision 1.9  2000/10/07 17:00:50  rob
-/* solar system creation
-/*
-/* Revision 1.8  2000/10/01 13:33:41  rob
-/* added planetary data linkage
-/*
-/* Revision 1.7  2000/09/30 20:02:31  stu
-/* Solar System Map changes and autopilot combat mode.
-/*
-/* Revision 1.6  2000/09/20 23:46:25  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.5  2000/09/13 20:32:52  stu
-/* Changes for hud targetting and sun corona effects.
-/*
-/* Revision 1.4  2000/09/09 21:09:08  stu
-/* Pass...
-/*
-/* Revision 1.3  2000/09/04 19:26:23  stu
-/* Lurker clean up
-/*
-/* Revision 1.2  2000/09/02 13:26:51  stu
-/* Lurker clean up
-/*
-/* Revision 1.1  2000/08/27 21:40:00  stu
-/* Lurkers clear up...
-/*
-/* Revision 1.0.0.1  2000/08/21 22:02:31  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.20  2000/12/03 23:52:05  rob
+ * changed constants for object type to get uniformity
+ *
+ * Revision 1.19  2000/11/28 22:30:11  stu
+ * Solar map updates.
+ *
+ * Revision 1.18  2000/11/26 22:54:52  stu
+ * Various.
+ *
+ * Revision 1.17  2000/11/26 22:35:13  rob
+ * Fixed solar system display
+ *
+ * Revision 1.16  2000/11/20 20:01:30  rob
+ * Commented out double equates, and make solar system map use x and z rather than y.
+ *
+ * Revision 1.15  2000/11/16 20:30:05  rob
+ * orbit
+ *
+ * Revision 1.14  2000/10/19 19:04:59  stu
+ * Relative velocities, turbulence, planet names.
+ *
+ * Revision 1.13  2000/10/11 20:21:34  rob
+ * Added facility to match object velocity that you are setting an orbit of.
+ *
+ * Revision 1.12  2000/10/10 20:33:05  rob
+ * temporarily disabled the gravity
+ *
+ * Revision 1.11  2000/10/08 21:42:51  stu
+ * Engine conversion to 64 bit. Bitch of a job.
+ *
+ * Revision 1.10  2000/10/08 13:24:23  rob
+ * set velocity in ocb uses new accessor
+ *
+ * Revision 1.9  2000/10/07 17:00:50  rob
+ * solar system creation
+ *
+ * Revision 1.8  2000/10/01 13:33:41  rob
+ * added planetary data linkage
+ *
+ * Revision 1.7  2000/09/30 20:02:31  stu
+ * Solar System Map changes and autopilot combat mode.
+ *
+ * Revision 1.6  2000/09/20 23:46:25  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.5  2000/09/13 20:32:52  stu
+ * Changes for hud targetting and sun corona effects.
+ *
+ * Revision 1.4  2000/09/09 21:09:08  stu
+ * Pass...
+ *
+ * Revision 1.3  2000/09/04 19:26:23  stu
+ * Lurker clean up
+ *
+ * Revision 1.2  2000/09/02 13:26:51  stu
+ * Lurker clean up
+ *
+ * Revision 1.1  2000/08/27 21:40:00  stu
+ * Lurkers clear up...
+ *
+ * Revision 1.0.0.1  2000/08/21 22:02:31  stu
+ * First Imported.
+ *
  */
 
 

@@ -1,56 +1,59 @@
-//gamr pause
-//SB 190199
+/* game pause
+// SB 190199
 
-/* $Log: game_pause.c,v $
-/* Revision 1.9  2002/09/08 02:19:25  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.8  2002/07/28 17:13:14  stu_c
-/* Exhausts and further particle work
-/*
-/* Revision 1.7  2002/05/31 23:56:02  stu
-/* Removed all warnings from the code
-/*
-/* Revision 1.6  2002/02/24 03:40:14  stu
-/* Some compiler warnings fixed
-/*
-/* Revision 1.5  2001/12/29 01:12:32  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.4  2001/11/02 19:32:59  rob
-/* Build variants for interface lib and carbon.
+// $Log: game_pause.c,v $
+// Revision 1.1.1.1  2003/09/05 22:35:44  stu_c
+// First Imported.
+//
+// Revision 1.9  2002/09/08 02:19:25  stu_c
+// Precompiled header adjustments
+//
+// Revision 1.8  2002/07/28 17:13:14  stu_c
+// Exhausts and further particle work
+//
+// Revision 1.7  2002/05/31 23:56:02  stu
+// Removed all warnings from the code
+//
+// Revision 1.6  2002/02/24 03:40:14  stu
+// Some compiler warnings fixed
+//
+// Revision 1.5  2001/12/29 01:12:32  stu
+// Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+//
+// Revision 1.4  2001/11/02 19:32:59  rob
+// Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.3  2001/10/24 21:42:49  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.2  2001/10/22 21:29:10  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 00:57:44  stu
-/* Initial port work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:05  rob
-/* First Imported.
-/*
-/* Revision 1.3  2001/06/03 00:25:21  stu
-/* Fix for dialogs not showing. Also affects finder and Anvil console commands
-/*
-/* Revision 1.2  2001/05/28 01:55:27  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:33  rob
-/* First Imported.
-/*
-/* Revision 1.2  2000/10/08 21:46:04  stu
-/* Engine conversion to 64 bit. Bitch of a job.
-/*
-/* Revision 1.1  2000/09/20 23:52:39  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.0.0.1  2000/08/21 21:58:26  stu
-/* First Imported.
-/*
+//
+// Revision 1.3  2001/10/24 21:42:49  stu
+// First set of source to build on pb for carbon.
+//
+// Revision 1.2  2001/10/22 21:29:10  rob
+// Carbon warning changes
+//
+// Revision 1.1  2001/10/21 00:57:44  stu
+// Initial port work
+//
+// Revision 1.0.0.1  2001/10/17 20:46:05  rob
+// First Imported.
+//
+// Revision 1.3  2001/06/03 00:25:21  stu
+// Fix for dialogs not showing. Also affects finder and Anvil console commands
+//
+// Revision 1.2  2001/05/28 01:55:27  stu
+// 280501
+//
+// Revision 1.1.1.1  2001/01/01 21:13:33  rob
+// First Imported.
+//
+// Revision 1.2  2000/10/08 21:46:04  stu
+// Engine conversion to 64 bit. Bitch of a job.
+//
+// Revision 1.1  2000/09/20 23:52:39  stu
+// HUD/AP/Scaling
+//
+// Revision 1.0.0.1  2000/08/21 21:58:26  stu
+// First Imported.
+//
  */
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing

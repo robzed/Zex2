@@ -14,54 +14,57 @@
 // *
 // *
 // ***********************************************************************************
-
-/* $Log: light_control.c,v $
-/* Revision 1.5  2002/09/08 02:12:31  stu_c
-/* Precompiled header adjustments
 /*
-/* Revision 1.4  2002/01/29 22:53:11  rob
-/* pobs change
-/*
-/* Revision 1.3  2002/01/20 16:47:20  stu
-/* Added set_black_level function.
-/*
-/* Revision 1.2  2001/11/02 19:32:45  rob
-/* Build variants for interface lib and carbon.
+ * $Log: light_control.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:35:11  stu_c
+ * First Imported.
+ *
+ * Revision 1.5  2002/09/08 02:12:31  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.4  2002/01/29 22:53:11  rob
+ * pobs change
+ *
+ * Revision 1.3  2002/01/20 16:47:20  stu
+ * Added set_black_level function.
+ *
+ * Revision 1.2  2001/11/02 19:32:45  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.1  2001/10/21 01:05:06  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:04  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/01/14 17:17:00  stu
-/* Gourad Fix
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:34  rob
-/* First Imported.
-/*
-/* Revision 1.6  2000/12/11 19:45:24  stu
-/* Light fix in 3d_top - calc_normal
-/*
-/* Revision 1.5  2000/12/10 03:30:34  stu
-/* New dynamic light. Work in progress
-/*
-/* Revision 1.4  2000/09/20 23:54:31  stu
-/* HUD/AP/Scaling
-/*
-/* Revision 1.3  2000/08/27 21:33:42  stu
-/* module replaced with vec_normalize
-/*
-/* Revision 1.2  2000/08/27 19:51:00  rob
-/* Messed up file.... opps
-/*
-/* Revision 1.1  2000/08/27 19:41:22  rob
-/* Removed light movement code
-/*
-/* Revision 1.0.0.1  2000/08/21 21:59:41  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.1  2001/10/21 01:05:06  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:04  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/01/14 17:17:00  stu
+ * Gourad Fix
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:34  rob
+ * First Imported.
+ *
+ * Revision 1.6  2000/12/11 19:45:24  stu
+ * Light fix in 3d_top - calc_normal
+ *
+ * Revision 1.5  2000/12/10 03:30:34  stu
+ * New dynamic light. Work in progress
+ *
+ * Revision 1.4  2000/09/20 23:54:31  stu
+ * HUD/AP/Scaling
+ *
+ * Revision 1.3  2000/08/27 21:33:42  stu
+ * module replaced with vec_normalize
+ *
+ * Revision 1.2  2000/08/27 19:51:00  rob
+ * Messed up file.... opps
+ *
+ * Revision 1.1  2000/08/27 19:41:22  rob
+ * Removed light movement code
+ *
+ * Revision 1.0.0.1  2000/08/21 21:59:41  stu
+ * First Imported.
+ *
  */
 
 

@@ -18,62 +18,66 @@
 // *
 // *
 // ***********************************************************************************
-/* $Log: fcircle.c,v $
-/* Revision 1.11  2002/09/12 21:26:01  stu_c
-/* Commented out software circle drawing code
 /*
-/* Revision 1.10  2002/09/12 21:18:46  stu_c
-/* Fixed lens flares not working
-/*
-/* Revision 1.9  2002/09/08 02:06:27  stu_c
-/* Precompiled header adjustments
-/*
-/* Revision 1.8  2001/12/29 01:10:38  stu
-/* Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
-/*
-/* Revision 1.7  2001/12/04 22:59:01  rob
-/* sin tab proto removed
-/*
-/* Revision 1.6  2001/11/09 18:28:56  rob
-/* Various debug changes.
-/*
-/* Revision 1.5  2001/11/02 19:31:35  rob
-/* Build variants for interface lib and carbon.
+ * $Log: fcircle.c,v $
+ * Revision 1.1.1.1  2003/09/05 22:36:25  stu_c
+ * First Imported.
+ *
+ * Revision 1.11  2002/09/12 21:26:01  stu_c
+ * Commented out software circle drawing code
+ *
+ * Revision 1.10  2002/09/12 21:18:46  stu_c
+ * Fixed lens flares not working
+ *
+ * Revision 1.9  2002/09/08 02:06:27  stu_c
+ * Precompiled header adjustments
+ *
+ * Revision 1.8  2001/12/29 01:10:38  stu
+ * Removed flat carbon from project. All files update to observe zex anvil and pb builds and includethe right files as appropriate.
+ *
+ * Revision 1.7  2001/12/04 22:59:01  rob
+ * sin tab proto removed
+ *
+ * Revision 1.6  2001/11/09 18:28:56  rob
+ * Various debug changes.
+ *
+ * Revision 1.5  2001/11/02 19:31:35  rob
+ * Build variants for interface lib and carbon.
 Coffee fixes after changes for X.
-/*
-/* Revision 1.4  2001/10/24 21:41:33  stu
-/* First set of source to build on pb for carbon.
-/*
-/* Revision 1.3  2001/10/23 21:55:01  stu
-/* More carbon work
-/*
-/* Revision 1.2  2001/10/22 21:28:47  rob
-/* Carbon warning changes
-/*
-/* Revision 1.1  2001/10/21 01:04:08  stu
-/* Initial porting work
-/*
-/* Revision 1.0.0.1  2001/10/17 20:46:07  rob
-/* First Imported.
-/*
-/* Revision 1.2  2001/05/28 01:49:49  stu
-/* 280501
-/*
-/* Revision 1.1.1.1  2001/01/01 21:13:39  rob
-/* First Imported.
-/*
-/* Revision 1.3  2000/09/13 20:32:18  stu
-/* Changes for hud targetting and sun corona effects.
-/*
-/* Revision 1.2  2000/09/09 22:31:39  stu
-/* Various unfilled circle functions
-/*
-/* Revision 1.1  2000/09/05 00:39:03  stu
-/* Added new unfilled circle and elipse routines
-/*
-/* Revision 1.0.0.1  2000/08/21 22:09:22  stu
-/* First Imported.
-/*
+ *
+ * Revision 1.4  2001/10/24 21:41:33  stu
+ * First set of source to build on pb for carbon.
+ *
+ * Revision 1.3  2001/10/23 21:55:01  stu
+ * More carbon work
+ *
+ * Revision 1.2  2001/10/22 21:28:47  rob
+ * Carbon warning changes
+ *
+ * Revision 1.1  2001/10/21 01:04:08  stu
+ * Initial porting work
+ *
+ * Revision 1.0.0.1  2001/10/17 20:46:07  rob
+ * First Imported.
+ *
+ * Revision 1.2  2001/05/28 01:49:49  stu
+ * 280501
+ *
+ * Revision 1.1.1.1  2001/01/01 21:13:39  rob
+ * First Imported.
+ *
+ * Revision 1.3  2000/09/13 20:32:18  stu
+ * Changes for hud targetting and sun corona effects.
+ *
+ * Revision 1.2  2000/09/09 22:31:39  stu
+ * Various unfilled circle functions
+ *
+ * Revision 1.1  2000/09/05 00:39:03  stu
+ * Added new unfilled circle and elipse routines
+ *
+ * Revision 1.0.0.1  2000/08/21 22:09:22  stu
+ * First Imported.
+ *
  */
 
 // ***********************************************************************************
