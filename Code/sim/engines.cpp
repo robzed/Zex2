@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: engines.c,v $
+Revision 1.2  2003/09/22 20:45:33  stu_c
+Zex:Weapons: laser bay temperature and overheat (in progress)
+
 Revision 1.1.1.1  2003/09/05 22:36:21  stu_c
 First Imported.
 
@@ -942,7 +945,6 @@ void run_engine_temperature(int the_object)
 void run_laser_bay_temperature(int the_object)
 {
  float current_temp,current_flow;
- float onepc;
  ZObject *source_object;
  extern	DynObjectsFixedSize *ocb_ptr;
 

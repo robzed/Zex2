@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.c,v $
+// Revision 1.2  2003/09/20 12:57:10  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:35:46  stu_c
 // First Imported.
 //
@@ -157,6 +160,7 @@ Old lighting calls removed
   #endif
   #include "zex_misc.h"
   #include "Error_handler.h"
+  #include "game_defs.h"
 #endif //pch
 
 
@@ -182,7 +186,6 @@ Old lighting calls removed
 #include "object_control_top.h"
 
 #include "game_pause.h"
-#include "game_defs.h"
 #include "matrix_primitives.h"
 #include "Physics.h"
 #include "obj_control_misc_routines.h"
