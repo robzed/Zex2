@@ -32,16 +32,16 @@ reset_ship_data \ Tell engine to initialise the ship data
 \  Guns 
 \ Position x,y,z,class
 
- GUN01 mount_point    -1    -1   0.7    1 \ Cannon 1 - v8 - front center below. Type 1 
- GUN02 mount_point    -0.3  -1   0.7    1 \ Cannon 2 - v9 - none
- GUN03 mount_point    0.3   -1  0.7     1 \ Cannon 3 - v10 - none 
- GUN04 mount_point    1     -1    0.7   1 \ Cannon 4 - v11 - none 
+ GUN01 mount_point    9  9    9    1 \ Cannon 1 - v8 - front center below. Type 1 
+ GUN02 mount_point    -0.05  -0.4   -1.0    1 \ Cannon 2 - v9 - none
+ GUN03 mount_point    0.05   -0.4  -1.0     1 \ Cannon 3 - v10 - none 
+ GUN04 mount_point    9     9    9   1 \ Cannon 4 - v11 - none 
 
 \  Lasers 
 \ Position x,y,z,class
 
- LAS01 mount_point    -0.3   -0.5    1     1 \ Laser 1 - v12 - left wing outer. Type 1 
- LAS02 mount_point    0.3    -0.5    1     1 \ Laser 2 - v13 - right wing outer 
+ LAS01 mount_point    -0.05   -0.3    1     1 \ Laser 1 - v12 - left wing outer. Type 1 
+ LAS02 mount_point    0.05    -0.3    1     1 \ Laser 2 - v13 - right wing outer 
  LAS03 mount_point    9   9   9      1 \ Laser 3 - v14 - not used 
  LAS04 mount_point    9   9   9     1 \ Laser 4 - v15 - not used 
 
