@@ -15,6 +15,9 @@
 // *
 /* ***********************************************************************************
 // $Log: show_stats.cpp,v $
+// Revision 1.4  2003/09/28 17:29:38  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.3  2003/09/26 19:20:49  robp
 // Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 //
@@ -225,7 +228,11 @@ void show_stats()
 {
 //Handle button_data_H;
 //LSRAW *button;
+#if PORTABLE_FILESYSTEM
+ZexPicture *logo_pic_obj;
+#else
 Handle logo_H;
+#endif
 LSRAW *logo;
 //Handle button_down_data_H;
 //LSRAW *button_down;
@@ -304,6 +311,14 @@ showing_stats=1;	//stop everything firing
 
 stop_time=TickCount();
 
+    #if PORTABLE_FILESYSTEM
+    if (game_over==1)
+    logo_pic_obj = new ZexPicture('RCZ ',143);	//zex logo with game over over it.    
+    else
+    logo_pic_obj = new ZexPicture('RCZ ',130);	//zex logo.    
+    
+    logo = logo_pic_obj->GetPictureRef();
+    #else
     if (game_over==1)
     logo_H=GetZexPicture ('RCZ ',143);	//zex logo with game over over it.    
     else
@@ -311,7 +326,8 @@ stop_time=TickCount();
     
     HLock (logo_H);
     logo=(LSRAW*)*logo_H;
-    
+    #endif
+
 
 //set up drawing env.
     set_poly_clipping(0,monitor_w-1,0,monitor_h-1);	//set poly clip rect - sb 181298
@@ -396,7 +412,11 @@ if (dust_count<0 && game_over==1)
 //    setup_stats_screen(button,logo);
 //    while (handle_stats_mouse(button_down, button)==0);
 
+    #if PORTABLE_FILESYSTEM
+    delete logo_pic_obj;
+    #else
     DisposeHandle(logo_H);
+    #endif
   while (game_fire_button()==1);
 
 

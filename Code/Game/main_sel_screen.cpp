@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.cpp,v $
+// Revision 1.10  2003/09/30 21:26:32  robp
+// Changes to force the sound sub-system to build - maybe not work. No effect on build code unless PORTABLE_FILESYSTEM is enabled.
+//
 // Revision 1.9  2003/09/28 17:29:46  robp
 // Changed files from .c to .cpp and removed spaces out of a couple of filenames.
 //
@@ -268,6 +271,29 @@ extern int accumulated_game_time;
 //FSSpec the_file;
 //Handle the_file_data_H;
 //Handle object_data_H;
+#if PORTABLE_FILESYSTEM
+ZexPicture* button_data_pic_obj;
+ZexPicture* select_data_pic_obj;
+
+LSRAW *the_picture;
+LSRAW *button;
+
+ZexPicture* button_down_data_pic_obj;
+LSRAW *button_down;
+ZexPicture* arrow_down_data_pic_obj;
+ZexPicture* arrow_up_data_pic_obj;
+LSRAW *arrow_down;
+LSRAW *arrow_up;
+ZexPicture* arrow_up_down_data_pic_obj;
+LSRAW *arrow_up_down;
+ZexPicture* arrow_down_down_data_pic_obj;
+LSRAW *arrow_down_down;
+
+ZexPicture* checkbox_off_data_pic_obj;
+LSRAW *checkbox_off;
+ZexPicture* checkbox_on_data_pic_obj;
+LSRAW *checkbox_on;
+#else
 Handle button_data_H;
 Handle select_data_H;
 
@@ -289,6 +315,7 @@ Handle checkbox_off_data_H;
 LSRAW *checkbox_off;
 Handle checkbox_on_data_H;
 LSRAW *checkbox_on;
+#endif
 
 int wait_flag;
 
@@ -328,6 +355,44 @@ ship_counter=0;
 
 //	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\pprefs_bg.RCZ",&the_file);
 //	select_data_H=read_file(the_file);
+#if PORTABLE_FILESYSTEM
+    #if OGL==1
+    select_data_pic_obj= new ZexPicture ('RCZ ',147);	//prefs_bg_ogl   
+    #else
+    select_data_pic_obj = new ZexPicture ('RCZ ',131);	//prefs_bg   
+    #endif
+    the_picture = select_data_pic_obj->GetPictureRef();
+
+    button_data_pic_obj = new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+
+    button_down_data_pic_obj = new ZexPicture ('RCZ ',133);	//prefs_button_down   
+    button_down = button_down_data_pic_obj -> GetPictureRef();
+
+    arrow_down_data_pic_obj = new ZexPicture ('RCZ ',135);	//prefs_button_down   
+//	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\parrow_down.RCZ",&the_file);
+//	arrow_down_data_H=read_file(the_file);
+    arrow_down = arrow_down_data_pic_obj->GetPictureRef();
+
+    arrow_up_data_pic_obj = new ZexPicture ('RCZ ',137);	//prefs_button_down   
+//	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\parrow_up.RCZ",&the_file);
+//	arrow_up_data_H=read_file(the_file);
+    arrow_up = arrow_up_data_pic_obj->GetPictureRef();
+
+    arrow_up_down_data_pic_obj = new ZexPicture ('RCZ ',138);	//prefs_button_down   
+//	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\parrow_up_down.RCZ",&the_file);
+//	arrow_up_down_data_H=read_file(the_file);
+    arrow_up_down = arrow_up_down_data_pic_obj->GetPictureRef();
+
+    arrow_down_down_data_pic_obj = new ZexPicture ('RCZ ',136);	//prefs_button_down   
+    arrow_down_down = arrow_down_down_data_pic_obj->GetPictureRef();
+
+    checkbox_off_data_pic_obj = new ZexPicture ('RCZ ',141);	//prefs_checkbox off   
+    checkbox_off = checkbox_off_data_pic_obj->GetPictureRef();
+
+    checkbox_on_data_pic_obj= new ZexPicture ('RCZ ',142);	//prefs_checkbox on   
+    checkbox_on = checkbox_on_data_pic_obj ->GetPictureRef();
+#else
     #if OGL==1
     select_data_H=GetZexPicture ('RCZ ',147);	//prefs_bg_ogl   
     #else
@@ -373,7 +438,8 @@ ship_counter=0;
     checkbox_on_data_H=GetZexPicture ('RCZ ',142);	//prefs_checkbox on   
 	HLock(checkbox_on_data_H);
 	checkbox_on = (LSRAW*)*checkbox_on_data_H;
-
+        
+#endif
     
 
     Goutside=0;
@@ -545,6 +611,19 @@ SetNormalPriority();
 
 //fade_out_music();	
 
+#if PORTABLE_FILESYSTEM
+    delete select_data_pic_obj;
+    delete button_data_pic_obj;
+    delete button_down_data_pic_obj;
+
+    delete arrow_up_data_pic_obj;
+    delete arrow_down_data_pic_obj;
+    delete arrow_up_down_data_pic_obj;
+
+    delete arrow_down_down_data_pic_obj;
+    delete checkbox_off_data_pic_obj;
+    delete checkbox_on_data_pic_obj ;
+#else
 	 DisposeHandle(select_data_H);
      DisposeHandle(button_data_H);
      DisposeHandle(button_down_data_H);
@@ -554,7 +633,8 @@ SetNormalPriority();
      DisposeHandle(arrow_down_down_data_H);
      DisposeHandle(checkbox_off_data_H);
      DisposeHandle(checkbox_on_data_H);
-  
+#endif
+
     
     HideCursor();
      display_wait();	//
@@ -1315,7 +1395,11 @@ int end=0;
 char the_char;
 char text_line[1024];
 unsigned long last_button_press_time=0;
+#if PORTABLE_FILESYSTEM
+ZexPicture* picture_pic_obj;
+#else
 Handle picture_H;
+#endif
 LSRAW* the_picture;
 LSRAW* pictbuffer;
 int memsize;
@@ -1360,10 +1444,16 @@ int y=0;
 
 
 //get picture
+#if PORTABLE_FILESYSTEM
+    picture_pic_obj = new ZexPicture ('RCZ ',2001);	//info pict   
+    if (picture_pic_obj==0) report_error("Resource missing: RCZ 2001","\p",4);
+    the_picture = picture_pic_obj->GetPictureRef();
+#else
     picture_H=GetZexPicture ('RCZ ',2001);	//info pict   
  if (picture_H==0) report_error("Resource missing: RCZ 2001","\p",4);
 	HLock(picture_H);
 	the_picture = (LSRAW*)*picture_H;
+#endif
 
 //get text
 
@@ -1619,7 +1709,11 @@ pictbuffer=(LSRAW*)NewPtr(memsize);
     DisposeHandle(text_h);
     #endif
     DisposePtr((Ptr) pictbuffer);
+    #if PORTABLE_FILESYSTEM
+    delete picture_pic_obj;
+    #else
     DisposeHandle(picture_H);
+    #endif
 }
 
 

@@ -4,6 +4,9 @@ z_init.cpp
 game init
 
 $Log: z_init.cpp,v $
+Revision 1.3  2003/09/28 17:29:34  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.2  2003/09/27 08:58:31  robp
 Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
 
@@ -258,6 +261,38 @@ extern QDGlobals qd;
 	return 0;
 }
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* float_dialog_pic_obj;
+LSRAW *float_dialog;
+ZexPicture* small_flare_pic_obj;
+LSRAW *small_flare_picture;
+ZexPicture* large_flare_pic_obj;
+LSRAW *large_flare_picture;
+ZexPicture* sleep_dialog_pic_obj;
+LSRAW *sleep_dialog;
+ZexPicture* order_dialog_pic_obj;
+LSRAW *order_dialog;
+LSRAW *map_cursor_picture;
+ZexPicture* map_cursor_pic_obj;
+
+//inv
+LSRAW *inv_picture;
+ZexPicture* inv_pic_obj;
+LSRAW *up_picture;
+ZexPicture* up_pic_obj;
+LSRAW *down_picture;
+ZexPicture* down_pic_obj;
+LSRAW *armed_picture;
+ZexPicture* armed_pic_obj;
+
+LSRAW *inv_cursor_picture;
+ZexPicture* inv_cursor_pic_obj;
+
+LSRAW *radar_picture;
+ZexPicture* radar_picture_pic_obj;
+
+#else
+
 Handle float_dialog_H;
 LSRAW *float_dialog;
 Handle small_flare_H;
@@ -286,6 +321,7 @@ Handle inv_cursor_H;
 
 LSRAW *radar_picture;
 Handle radar_picture_H;
+#endif
 
 
 
@@ -330,6 +366,40 @@ POBs_init();
 #if INIT_LOG==1
 show_text_in_loading_screen("Init: Loading Graphics\n");
 #endif
+
+        #if PORTABLE_FILESYSTEM
+        float_dialog_pic_obj= new ZexPicture ('RCZ ',3203);	//floating dialog pict for tutorial   
+        if (float_dialog_pic_obj==0) report_error("Resource missing: RCZ 3203","\p",4);
+	float_dialog = float_dialog_pic_obj->GetPictureRef();
+
+        radar_picture_pic_obj= new ZexPicture ('RCZ ',4500);	//floating dialog pict for tutorial   
+        if (radar_picture_pic_obj==0) report_error("Resource missing: RCZ 4500 (Radar Grat)","\p",4);
+	radar_picture = radar_picture_pic_obj->GetPictureRef();
+
+        order_dialog_pic_obj= new ZexPicture ('RCZ ',3116);	//floating dialog pict for tutorial   
+        if (order_dialog_pic_obj==0) report_error("Resource missing: RCZ 3116 - order box top","\p",4);
+	order_dialog = order_dialog_pic_obj->GetPictureRef();
+	
+        map_cursor_pic_obj= new ZexPicture ('RCZ ',3304);	//cross hair pict   
+	map_cursor_picture = map_cursor_pic_obj->GetPictureRef();
+
+//inventory screens
+        inv_pic_obj= new ZexPicture ('RCZ ',4000);	//inventory pict   
+	inv_picture = inv_pic_obj->GetPictureRef();
+
+        up_pic_obj= new ZexPicture ('RCZ ',3301);	//jett up pict   
+	up_picture = up_pic_obj->GetPictureRef();
+
+        down_pic_obj= new ZexPicture ('RCZ ',3300);	//jett down pict   
+	down_picture = down_pic_obj->GetPictureRef();
+
+        inv_cursor_pic_obj= new ZexPicture ('RCZ ',3302);	    //arrow pict   
+	inv_cursor_picture = inv_cursor_pic_obj->GetPictureRef();
+
+        armed_pic_obj= new ZexPicture ('RCZ ',3303);	//arrow pict   
+	armed_picture = armed_pic_obj->GetPictureRef();
+
+        #else
 
         float_dialog_H=GetZexPicture ('RCZ ',3203);	//floating dialog pict for tutorial   
         if (float_dialog_H==0) report_error("Resource missing: RCZ 3203","\p",4);
@@ -376,6 +446,8 @@ show_text_in_loading_screen("Init: Loading Graphics\n");
     armed_H=GetZexPicture ('RCZ ',3303);	//arrow pict   
 	HLock(armed_H);
 	armed_picture = (LSRAW*)* armed_H;
+    #endif
+        
 #if INIT_LOG==1
  show_text_in_loading_screen("Init: Success\n");
 #endif
@@ -520,7 +592,11 @@ UInt32 picture_w,picture_h;
 Ptr raw_rgba_data;
 Ptr raw_data;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* the_file_data_pic_obj;
+#else
 Handle the_file_data_H;
+#endif
 LSRAW *the_picture;
 
         //load up 32 bit pictures
@@ -599,10 +675,15 @@ LSRAW *the_picture;
 
 //load short range radar reticules
      
+    #if PORTABLE_FILESYSTEM
+        the_file_data_pic_obj= new ZexPicture ('RCZA',130);	//short range radar pict   
+        the_picture = the_file_data_pic_obj -> GetPictureRef();
+    #else
      the_file_data_H=GetZexPicture ('RCZA',130);	//short range radar pict   
     HLock(the_file_data_H);
     
 	the_picture = (LSRAW*)*the_file_data_H;
+    #endif
 	
 	
        picture_w=(*the_picture).pwidth;;	//fucking Ian hard coded these rather than stick a fucking header 
@@ -621,15 +702,23 @@ LSRAW *the_picture;
 	pictbuffer_rgba->pwidth=picture_w;
 	pictbuffer_rgba->pheight=picture_h;
 
+#if PORTABLE_FILESYSTEM
+delete the_file_data_pic_obj;
+#else
 DisposeHandle(the_file_data_H);
+#endif
 
 //long range reticules 
-    the_file_data_H=GetZexPicture ('RCZA',131);	
+    #if PORTABLE_FILESYSTEM
+        the_file_data_pic_obj= new ZexPicture ('RCZA',131);
+        the_picture = the_file_data_pic_obj -> GetPictureRef();
+    #else
+     the_file_data_H=GetZexPicture ('RCZA',131);
     HLock(the_file_data_H);
     
 	the_picture = (LSRAW*)*the_file_data_H;
-	
-	
+    #endif
+		
        picture_w=	(*the_picture).pwidth;
        picture_h=	(*the_picture).pheight;	//now pointing to data
 
@@ -645,7 +734,11 @@ DisposeHandle(the_file_data_H);
 	pictbuffer_rgba->pwidth=picture_w;
 	pictbuffer_rgba->pheight=picture_h;
 
+#if PORTABLE_FILESYSTEM
+delete the_file_data_pic_obj;
+#else
 DisposeHandle(the_file_data_H);
+#endif
 	#endif
 }
 
@@ -827,6 +920,24 @@ int i;
 void load_misc_graphics()
 {
 //flares for galactic map screen
+    #if PORTABLE_FILESYSTEM
+    small_flare_pic_obj= new ZexPicture ('RCZA',3000);	//star pict   
+    if (small_flare_pic_obj!=0)
+	{
+	small_flare_picture = small_flare_pic_obj->GetPictureRef();
+        }
+    else
+        report_error("Not enough memory or resource missing.","\pRCZA",3000);
+
+    large_flare_pic_obj= new ZexPicture ('RCZA',3001);	//star pict   
+    if (large_flare_pic_obj!=0)
+	{
+	large_flare_picture = large_flare_pic_obj->GetPictureRef();
+        }
+    else
+        report_error("Not enough memory or resource missing.","\pRCZA",3001);
+        
+    #else
     small_flare_H=GetZexPicture ('RCZA',3000);	//star pict   
 	if (small_flare_H!=0)
 	{
@@ -844,6 +955,7 @@ void load_misc_graphics()
     }
     else
         report_error("Not enough memory or resource missing.","\pRCZA",3001);
+    #endif
 
 }
 

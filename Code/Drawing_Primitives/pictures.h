@@ -26,8 +26,27 @@ void print_crunched32_trans_pict(LSRAW *the_picture, UInt32 x, UInt32 y);
 void print_crunched_translucent_pict(LSRAW *the_picture, UInt32 x, UInt32 y);
 
 #if PORTABLE_FILESYSTEM
-LSRAW* GetZexPicture (unsigned long res_type, short resid);
-void DisposeZexPicture(LSRAW *pic_pointer);
+
+
+class ZexPicture
+{
+
+public:
+    ZexPicture(unsigned long res_type, short resid);	// normal constructor
+    ~ZexPicture();					// our destructor
+    LSRAW* GetPictureRef() const;			// how the user gets a reference to the picture (const means doesn't modify class data)
+
+private:
+    LSRAW* pic_pointer;					// a pointer to the memory
+        
+    // prohibit copy and assignment - since these are invalid operations
+    ZexPicture(const ZexPicture &);			// copy constructor (used on definition from another type)
+    ZexPicture& operator= (const ZexPicture&);		// copy assignment
+    // (since this class has a pointer, it needs a assignment and copy constructor ... see The C++ Programming Language Page 10.4.4.1)
+};
+
+//LSRAW* GetZexPicture (unsigned long res_type, short resid);
+//void DisposeZexPicture(LSRAW *pic_pointer);
 #else
 Handle GetZexPicture (unsigned long res_type, short resid);
 #endif

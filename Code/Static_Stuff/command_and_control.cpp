@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: command_and_control.cpp,v $
+ * Revision 1.5  2003/09/28 17:30:10  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.4  2003/09/28 10:36:05  robp
  * Signed/Unsigned comparison fixes from last night, plus collision fix.
  *
@@ -201,10 +204,17 @@ command_slot_dialog=-1;
 
 void do_command_and_control()
 {
+#if PORTABLE_FILESYSTEM
+ZexPicture* cc_pic_obj;
+LSRAW *cc_pict;
+ZexPicture* command_dialog_pic_obj;
+LSRAW *command_dialog_pict;
+#else
 Handle cc_H;
 LSRAW *cc_pict;
 Handle command_dialog_H;
 LSRAW *command_dialog_pict;
+#endif
 
 _3D light_normal_save;
 extern int freeze;
@@ -214,6 +224,13 @@ extern _3D light_normal;
 
 command_slot_dialog=-1;
 
+    #if PORTABLE_FILESYSTEM
+        cc_pic_obj= new ZexPicture ('RCZ ',3114);	//Command&Control pilot list
+	cc_pict = cc_pic_obj->GetPictureRef();
+
+        command_dialog_pic_obj= new ZexPicture ('RCZ ',3115);	//Command&Control dialog     
+	command_dialog_pict = command_dialog_pic_obj->GetPictureRef();
+    #else
    cc_H=GetZexPicture ('RCZ ',3114);	//Command&Control pilot list
 	HLock(cc_H);
 	cc_pict = (LSRAW*)*cc_H;
@@ -221,6 +238,7 @@ command_slot_dialog=-1;
    command_dialog_H=GetZexPicture ('RCZ ',3115);	//Command&Control dialog     
 	HLock(command_dialog_H);
 	command_dialog_pict = (LSRAW*)*command_dialog_H;
+    #endif
 
     freeze=1;	//in 3d_top
     light_normal_save=light_normal;
@@ -233,8 +251,13 @@ handle_command(cc_pict,command_dialog_pict);
 HideCursor();
 
 
+    #if PORTABLE_FILESYSTEM
+    delete cc_pic_obj;
+    delete command_dialog_pic_obj;
+    #else
     DisposeHandle(cc_H);
     DisposeHandle(command_dialog_H);
+    #endif
     light_normal=light_normal_save;	//restore the lighting
      freeze=0;	//unfreeze engine
 
@@ -515,13 +538,23 @@ return 0;
 }	//end of rank check
 else
 {
+#if PORTABLE_FILESYSTEM
+ZexPicture* small_dialog_pic_obj;
+#else
 Handle small_dialog_H;
+#endif
 LSRAW *small_dialog_pict;
 int prefs_x,prefs_y;
 
+    #if PORTABLE_FILESYSTEM
+        small_dialog_pic_obj= new ZexPicture ('RCZ ',3117);	//Command&Control dialog     
+	small_dialog_pict = small_dialog_pic_obj->GetPictureRef();
+    #else
    small_dialog_H=GetZexPicture ('RCZ ',3117);	//Command&Control dialog     
 	HLock(small_dialog_H);
 	small_dialog_pict = (LSRAW*)*small_dialog_H;
+    #endif
+    
 
    while (Button()==1);
    play_zsound_always(low_beep, sound_high_pri, c1_chan1, sound_vol_7);
@@ -536,7 +569,11 @@ int prefs_x,prefs_y;
 
  
      Show_it();	//splat 3d portion of window
+   #if PORTABLE_FILESYSTEM
+   delete small_dialog_pic_obj;
+   #else
    DisposeHandle(small_dialog_H);
+   #endif
    while (Button()==0);
 
  return -1;

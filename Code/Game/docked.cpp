@@ -1,6 +1,9 @@
 /* docked.cpp
 // SB 300199
 // $Log: docked.cpp,v $
+// Revision 1.4  2003/09/28 17:29:55  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.3  2003/09/26 19:20:46  robp
 // Alteration for C++ const means internal unless specified extern. Made header extern so that C compiler wouldn't complain.
 //
@@ -259,11 +262,19 @@ extern int launch_timer;
 extern int fastdock_in_progress,fastdock_fade_value;
 extern int training_mission,tutorial;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* button_data_pic_obj;
+ZexPicture* select_data_pic_obj;
+ZexPicture* button_off_pic_obj;
+ZexPicture* really_quit_pic_obj;
+ZexPicture* quit_pic_obj;
+#else
 Handle button_data_H;
 Handle select_data_H;
 Handle button_off_H;
 Handle really_quit_H;
 Handle quit_H;
+#endif
 
 LSRAW *the_picture;
 LSRAW *button;
@@ -271,7 +282,12 @@ LSRAW *button_off;
 LSRAW *really_quitp;
 LSRAW *quitp;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* button_down_data_pic_obj;
+#else
 Handle button_down_data_H;
+#endif
+
 LSRAW *button_down;
 int wait_flag,player_click;
 
@@ -322,6 +338,29 @@ tractor=0;	//not tractoring anymore
 do_launch=0;	//zex needs this. Set to 1 if relaunch ship
 //SetNormalPriority();
 set_time_multiplier_to_1();
+
+    #if PORTABLE_FILESYSTEM
+//    if (training_mission==0 && tutorial==0)
+    select_data_pic_obj= new ZexPicture ('RCZ ',2002);	//docked_bg   2002
+//	else
+//    select_data_H=GetZexPicture ('RCZ ',2114);	//docked_bg no next mission   
+    the_picture = select_data_pic_obj->GetPictureRef();
+
+    button_data_pic_obj= new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+
+    button_off_pic_obj= new ZexPicture ('RCZ ',140);	//prefs_button_up_off   
+    button_off = button_off_pic_obj->GetPictureRef();
+
+    really_quit_pic_obj= new ZexPicture ('RCZ ',3200);	//really quit grafic   
+    really_quitp = really_quit_pic_obj->GetPictureRef();
+
+    quit_pic_obj= new ZexPicture ('RCZ ',3201);	//quit grafic   
+    quitp = quit_pic_obj->GetPictureRef();
+
+    button_down_data_pic_obj= new ZexPicture ('RCZ ',133);	//prefs_button_down   
+    button_down = button_down_data_pic_obj->GetPictureRef();
+    #else
 //    if (training_mission==0 && tutorial==0)
     select_data_H=GetZexPicture ('RCZ ',2002);	//docked_bg   2002
 //	else
@@ -351,6 +390,7 @@ set_time_multiplier_to_1();
 	HLock(button_down_data_H);
 	button_down = (LSRAW*)*button_down_data_H;
 
+    #endif
 /*
 //Set up 3d scene
     Goutside=0;
@@ -563,12 +603,21 @@ set_poly_clipping(0,monitor_w,0,monitor_h);
 erase_zex_rect(monitor_w, monitor_h);     
 
 
+#if PORTABLE_FILESYSTEM
+delete select_data_pic_obj;
+delete button_data_pic_obj;
+delete button_off_pic_obj;
+delete really_quit_pic_obj;
+delete quit_pic_obj;
+delete button_down_data_pic_obj;
+#else
 DisposeHandle(select_data_H);
 DisposeHandle(button_data_H);
 DisposeHandle(button_off_H);
 DisposeHandle(really_quit_H);
 DisposeHandle(quit_H);
 DisposeHandle(button_down_data_H);
+#endif
 
 return;
 }

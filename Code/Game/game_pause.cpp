@@ -2,6 +2,9 @@
 // SB 190199
 
 // $Log: game_pause.cpp,v $
+// Revision 1.5  2003/09/28 17:29:51  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.4  2003/09/28 10:36:08  robp
 // Signed/Unsigned comparison fixes from last night, plus collision fix.
 //
@@ -131,9 +134,15 @@ extern int tutorial;
 
 _3D light_normal_save;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* prefs_screen_pic_obj;
+ZexPicture* button_data_pic_obj;
+ZexPicture* button_down_data_pic_obj;
+#else
 Handle prefs_screen_H;
 Handle button_data_H;
 Handle button_down_data_H;
+#endif
 //extern CGrafPtr the_drawing_buffer;
 //GDHandle	saveGDH;
 //GrafPtr		savePort;
@@ -148,6 +157,16 @@ int wait_flag,player_click;
  
 if (1)	//used to be quicksave in zex 1 - gone in 2! 
 { 
+    #if PORTABLE_FILESYSTEM
+    prefs_screen_pic_obj= new ZexPicture ('RCZ ',139);	//in_game_prefs.rcz     
+    prefs_screen = prefs_screen_pic_obj->GetPictureRef();
+	
+    button_data_pic_obj= new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+	
+    button_down_data_pic_obj= new ZexPicture ('RCZ ',134);	//prefs_button_down1   
+    button_down = button_down_data_pic_obj->GetPictureRef();
+    #else
     prefs_screen_H=GetZexPicture ('RCZ ',139);	//in_game_prefs.rcz     
 //	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\pin_game_prefs.RCZ",&the_file);
 //	prefs_screen_H=read_file(the_file);
@@ -161,7 +180,8 @@ if (1)	//used to be quicksave in zex 1 - gone in 2!
     button_down_data_H=GetZexPicture ('RCZ ',134);	//prefs_button_down1   
 	HLock(button_down_data_H);
 	button_down = (LSRAW*)*button_down_data_H;
-
+    #endif
+    
 	light_normal.z=1.3;	//dim the scene
     freeze=1;	//in 3d_top
     render_frame(monitor_w,monitor_h);	//in this file - calls all the needed 3d stuff
@@ -207,9 +227,15 @@ Show_it();	//splat 3d portion of wind
 
     if (tutorial==0) HideCursor();
 //    HideCursor();
+    #if PORTABLE_FILESYSTEM
+    delete prefs_screen_pic_obj;
+    delete button_data_pic_obj;
+    delete button_down_data_pic_obj;
+    #else
     DisposeHandle(prefs_screen_H);
     DisposeHandle(button_data_H);
     DisposeHandle(button_down_data_H);
+    #endif
     
 //    enable_inputs();
     light_normal=light_normal_save;	//restore the lighting
@@ -229,9 +255,15 @@ extern int freeze;
 
 _3D light_normal_save;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* prefs_screen_pic_obj;
+ZexPicture* button_data_pic_obj;
+ZexPicture* button_down_data_pic_obj;
+#else
 Handle prefs_screen_H;
 Handle button_data_H;
 Handle button_down_data_H;
+#endif
 //extern CGrafPtr the_drawing_buffer;
 //GDHandle	saveGDH;
 //GrafPtr		savePort;
@@ -246,6 +278,17 @@ int wait_flag,player_click,return_val=0;
  
  
  
+    #if PORTABLE_FILESYSTEM
+    prefs_screen_pic_obj= new ZexPicture ('RCZ ',146);	//restore/quit     
+    prefs_screen = prefs_screen_pic_obj->GetPictureRef();
+	
+    button_data_pic_obj= new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+	
+    button_down_data_pic_obj= new ZexPicture ('RCZ ',134);	//prefs_button_down1   
+    button_down = button_down_data_pic_obj->GetPictureRef();
+    
+    #else
     prefs_screen_H=GetZexPicture ('RCZ ',146);	//restore/quit     
 //	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\pin_game_prefs.RCZ",&the_file);
 //	prefs_screen_H=read_file(the_file);
@@ -259,6 +302,7 @@ int wait_flag,player_click,return_val=0;
     button_down_data_H=GetZexPicture ('RCZ ',134);	//prefs_button_down1   
 	HLock(button_down_data_H);
 	button_down = (LSRAW*)*button_down_data_H;
+    #endif
 
 	light_normal.z=1.3;	//dim the scene
     freeze=1;	//in 3d_top
@@ -303,9 +347,15 @@ Show_it();	//splat 3d portion of wind
     }
 
     HideCursor();
+    #if PORTABLE_FILESYSTEM
+    delete prefs_screen_pic_obj;
+    delete button_data_pic_obj;
+    delete button_down_data_pic_obj;
+    #else
     DisposeHandle(prefs_screen_H);
     DisposeHandle(button_data_H);
     DisposeHandle(button_down_data_H);
+    #endif
     
 //    enable_inputs();
     light_normal=light_normal_save;	//restore the lighting
@@ -331,7 +381,11 @@ _3D light_normal_save;
 UnsignedWide start_micros;
 //UnsignedWide end_micros;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* prefs_screen_pic_obj;
+#else
 Handle prefs_screen_H;
+#endif
 //Handle button_data_H;
 //Handle button_down_data_H;
 //CGrafPtr the_drawing_buffer;
@@ -345,9 +399,14 @@ int button_state;
 
     light_normal_save=light_normal;
   
+    #if PORTABLE_FILESYSTEM
+    prefs_screen_pic_obj= new ZexPicture ('RCZ ',2009);	//deaded.rcz     
+    prefs_screen = prefs_screen_pic_obj->GetPictureRef();
+    #else
     prefs_screen_H=GetZexPicture ('RCZ ',2009);	//deaded.rcz     
 	HLock(prefs_screen_H);
 	prefs_screen = (LSRAW*)*prefs_screen_H;
+    #endif
 	
 
 	light_normal.z=1.3;	//dim the scene
@@ -385,7 +444,11 @@ showing_stats=1;	//stop everything firing
     }
 showing_stats=0;	//stop everything firing
     freeze=0;	//in 3d_top
+    #if PORTABLE_FILESYSTEM
+    delete prefs_screen_pic_obj;
+    #else
     DisposeHandle(prefs_screen_H);
+    #endif
     light_normal=light_normal_save;	//restore the lighting
     (*ocb_ptr).object_list[0].invincible_count=250;	//zex is invincible whilst this is >0
 
@@ -406,9 +469,15 @@ extern int freeze;
 
 _3D light_normal_save;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* prefs_screen_pic_obj;
+ZexPicture* button_data_pic_obj;
+ZexPicture* button_down_data_pic_obj;
+#else
 Handle prefs_screen_H;
 Handle button_data_H;
 Handle button_down_data_H;
+#endif
 //extern CGrafPtr the_drawing_buffer;
 //GDHandle	saveGDH;
 //GrafPtr		savePort;
@@ -423,6 +492,16 @@ int prefs_x,prefs_y;
 
     light_normal_save=light_normal;
   
+    #if PORTABLE_FILESYSTEM
+    prefs_screen_pic_obj= new ZexPicture ('RCZ ',144);	//message     
+    prefs_screen = prefs_screen_pic_obj->GetPictureRef();
+	
+    button_data_pic_obj= new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+
+    button_down_data_pic_obj= new ZexPicture ('RCZ ',134);	//prefs_button_down1   
+    button_down = button_down_data_pic_obj->GetPictureRef();
+    #else
     prefs_screen_H=GetZexPicture ('RCZ ',144);	//message     
 //	FSMakeFSSpec(Zex_FSSpec.vRefNum,Zex_FSSpec.parID,"\pin_game_prefs.RCZ",&the_file);
 //	prefs_screen_H=read_file(the_file);
@@ -436,6 +515,7 @@ int prefs_x,prefs_y;
     button_down_data_H=GetZexPicture ('RCZ ',134);	//prefs_button_down1   
 	HLock(button_down_data_H);
 	button_down = (LSRAW*)*button_down_data_H;
+    #endif
 
 	light_normal.z=1.3;	//dim the scene
     freeze=1;	//in 3d_top
@@ -489,9 +569,15 @@ int prefs_x,prefs_y;
     }
 
     HideCursor();
+    #if PORTABLE_FILESYSTEM
+    delete prefs_screen_pic_obj;
+    delete button_data_pic_obj;
+    delete button_down_data_pic_obj;
+    #else
     DisposeHandle(prefs_screen_H);
     DisposeHandle(button_data_H);
     DisposeHandle(button_down_data_H);
+    #endif
     
 //    enable_inputs();
     light_normal=light_normal_save;	//restore the lighting
@@ -728,9 +814,13 @@ extern Zprefs gzex_prefs;
 extern _3D light_normal;
 extern int zex_alive, user_abort,death_frame_counter;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* prefs_screen_pic_obj;
+#else
 Handle prefs_screen_H;
-Handle button_data_H=0;
-Handle button_down_data_H=0;
+#endif
+//Handle button_data_H=0;
+//Handle button_down_data_H=0;
 //extern CGrafPtr the_drawing_buffer;
 //GDHandle	saveGDH;
 //GrafPtr		savePort;
@@ -746,9 +836,14 @@ int prefs_x,prefs_y;
 if ( gzex_prefs.registered==1)	//yes
 {
 //else show not registered screen and quit game
+    #if PORTABLE_FILESYSTEM
+    prefs_screen_pic_obj= new ZexPicture ('RCZ ',5001);	//registered.rcz     
+    prefs_screen = prefs_screen_pic_obj->GetPictureRef();
+    #else
    prefs_screen_H=GetZexPicture ('RCZ ',5001);	//registered.rcz     
 	HLock(prefs_screen_H);
 	prefs_screen = (LSRAW*)*prefs_screen_H;
+    #endif
 	
 
 //	light_normal.z=1.3;	//dim the scene
@@ -784,16 +879,25 @@ if ( gzex_prefs.registered==1)	//yes
         wait_flag=1;
         
     HideCursor();
+    #if PORTABLE_FILESYSTEM
+    delete prefs_screen_pic_obj;
+    #else
     DisposeHandle(prefs_screen_H);
-    DisposeHandle(button_data_H);
-    DisposeHandle(button_down_data_H);
+    #endif
+//    DisposeHandle(button_data_H);
+//    DisposeHandle(button_down_data_H);
 }
 else
 {
 //else show not registered screen and quit game
-   prefs_screen_H=GetZexPicture ('RCZ ',5000);	//no passage.rcz     
+    #if PORTABLE_FILESYSTEM
+    prefs_screen_pic_obj= new ZexPicture ('RCZ ',5000);	//no passage.rcz    
+    prefs_screen = prefs_screen_pic_obj->GetPictureRef();
+    #else
+   prefs_screen_H=GetZexPicture ('RCZ ',5000);	//no passage.rcz  
 	HLock(prefs_screen_H);
 	prefs_screen = (LSRAW*)*prefs_screen_H;
+    #endif
 	
 
 	light_normal.z=1.3;	//dim the scene
@@ -831,9 +935,13 @@ else
         death_frame_counter=1;
         
     HideCursor();
+    #if PORTABLE_FILESYSTEM
+    delete prefs_screen_pic_obj;
+    #else
     DisposeHandle(prefs_screen_H);
-    DisposeHandle(button_data_H);
-    DisposeHandle(button_down_data_H);
+    #endif
+//    DisposeHandle(button_data_H);
+//    DisposeHandle(button_down_data_H);
 }
 
 }
@@ -842,14 +950,23 @@ else
 void get_level()
 {
 extern int difficulty,tutorial,training_mission,next_level;
+#if PORTABLE_FILESYSTEM
+ZexPicture* picture_pic_obj;
+#else
 Handle picture_H;
+#endif
 LSRAW* the_picture;
 
 //Handle training_picture_H;
 //LSRAW* training_picture;
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* button_data_pic_obj;
+ZexPicture* button_down_data_pic_obj;
+#else
 Handle button_data_H;
 Handle button_down_data_H;
+#endif
 LSRAW *button;
 LSRAW *button_down;
 int player_click;
@@ -857,6 +974,20 @@ int player_click;
 
 
 game_running=0; 
+    #if PORTABLE_FILESYSTEM
+    button_data_pic_obj= new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+	
+    button_down_data_pic_obj= new ZexPicture ('RCZ ',133);	//prefs_button_down   
+    button_down = button_down_data_pic_obj->GetPictureRef();
+
+    picture_pic_obj= new ZexPicture ('RCZ ',3202);	//diff pict   
+    if (picture_pic_obj==0) report_error("Resource missing: RCZ 3202","\p",4);
+
+    fade_main_screen();
+ 
+    the_picture = picture_pic_obj->GetPictureRef();
+ #else
     button_data_H=GetZexPicture ('RCZ ',132);	//prefs_button_up   
 	HLock(button_data_H);
 	button = (LSRAW*)*button_data_H;
@@ -877,6 +1008,7 @@ game_running=0;
      fade_main_screen();
  
  the_picture = (LSRAW*)*picture_H;
+ #endif
     erase_zex_rect(monitor_w,monitor_h);	//in pictures
  
  print_crunched_pict(the_picture,screen_cent_x-190,screen_cent_y-120);
@@ -956,7 +1088,15 @@ while (player_click==0)
  Show_it();
 }
 
+#if PORTABLE_FILESYSTEM
+ delete button_data_pic_obj;
+ delete button_down_data_pic_obj;
+ delete picture_pic_obj;
+#else	// memory leak?
+
  DisposeHandle(picture_H);
+
+#endif
 // DisposeHandle(training_picture_H);
 }
 

@@ -2,6 +2,9 @@
 //SB - Lightsoft SW 8/12/98
 /*
  * $Log: pictures.cpp,v $
+ * Revision 1.7  2003/09/30 21:28:13  robp
+ * Start of new picture resource routine for PORTABLE_FILESYSTEM added.
+ *
  * Revision 1.6  2003/09/28 17:29:43  robp
  * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
  *
@@ -849,11 +852,37 @@ for (i=0;i<picture_h;i++)	//line loop
 
 
 // +--------------------------------+-------------------------+-----------------------
+// | TITLE: ZexPicture              | AUTHOR(s): Rob Probin   | DATE STARTED: 1-Oct-2003 (as a class)
+// +
+// | DESCRIPTION: Read a picture into memory. Rather a trivial class
+// +----------------------------------------------------------------ROUTINE HEADER----
+#if PORTABLE_FILESYSTEM
+
+ZexPicture::ZexPicture(unsigned long res_type, short resid)
+{
+    pic_pointer = static_cast<LSRAW *>(ZGetResource(res_type,resid, NULL));  //Get the Handle to the Resource 
+    if (pic_pointer==0) report_error("ZexPicture: RCZ Resource missing","\p",resid);
+}
+
+ZexPicture::~ZexPicture()
+{
+    ZReleaseResource(pic_pointer);
+}
+
+
+LSRAW* ZexPicture::GetPictureRef() const
+{
+    if (pic_pointer==0) report_error("ZexPicture: No picture loaded","\p",0);
+    return pic_pointer;
+}
+
+
+// +--------------------------------+-------------------------+-----------------------
 // | TITLE: GetZexPicture           | AUTHOR(s): Stu/Rob      | DATE STARTED: Prehistory
 // +
 // | DESCRIPTION: Read a picture into memory.
 // +----------------------------------------------------------------ROUTINE HEADER----
-#if PORTABLE_FILESYSTEM
+#if 0
 LSRAW* GetZexPicture (unsigned long res_type, short resid)
 {
  LSRAW* pic_pointer;
@@ -863,6 +892,7 @@ LSRAW* GetZexPicture (unsigned long res_type, short resid)
 
  return pic_pointer;
 }
+#endif
 #else
 Handle GetZexPicture (unsigned long res_type, short resid)
 {

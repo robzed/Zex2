@@ -298,11 +298,19 @@ void kwrite(char **output, char *string);
 
 void do_key_setting(void)
 {
+#if PORTABLE_FILESYSTEM
+ZexPicture* picture_pic_obj;
+LSRAW* the_picture;
+
+ZexPicture* button_data_pic_obj;
+ZexPicture* button_down_data_pic_obj;
+#else
 Handle picture_H;
 LSRAW* the_picture;
 
 Handle button_data_H;
 Handle button_down_data_H;
+#endif
 LSRAW *button;
 LSRAW *button_down;
 int player_click;
@@ -321,6 +329,19 @@ keys_changed_flag=0;	// initially no change
 
 
 // set up secreen
+    #if PORTABLE_FILESYSTEM
+    button_data_pic_obj= new ZexPicture ('RCZ ',132);	//prefs_button_up   
+    button = button_data_pic_obj->GetPictureRef();
+	
+    button_down_data_pic_obj= new ZexPicture ('RCZ ',133);	//prefs_button_down   
+    button_down = button_down_data_pic_obj->GetPictureRef();
+
+    picture_pic_obj= new ZexPicture ('RCZ ',201);	//diff pict   
+    if (picture_pic_obj==0) report_error("Resource missing: RCZ 00200","\p",2047);
+    the_picture = picture_pic_obj->GetPictureRef();
+ 
+    #else
+
     button_data_H=GetZexPicture ('RCZ ',132);	//prefs_button_up   
 	HLock(button_data_H);
 	button = (LSRAW*)*button_data_H;
@@ -337,7 +358,8 @@ keys_changed_flag=0;	// initially no change
 // fade_main_screen();
  
  the_picture = (LSRAW*)*picture_H;
- 
+    #endif
+    
  player_click=0;
 
 while (player_click==0)
@@ -367,7 +389,13 @@ while (player_click==0)
  handle_actual_key_entry();
  }
 
+#if PORTABLE_FILESYSTEM
+delete picture_pic_obj;
+delete button_data_pic_obj;
+delete button_down_data_pic_obj;
+#else	// resource memory leak?
 DisposeHandle(picture_H);
+#endif
 
 // disposal cleanup block
 destroy_screen_stars();

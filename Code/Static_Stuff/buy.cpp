@@ -2,8 +2,11 @@
 
 buy.cpp
 
-$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.cpp,v 1.5 2003/09/28 10:36:09 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Static_Stuff/buy.cpp,v 1.6 2003/09/28 17:29:59 robp Exp $
 $Log: buy.cpp,v $
+Revision 1.6  2003/09/28 17:29:59  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.5  2003/09/28 10:36:09  robp
 Signed/Unsigned comparison fixes from last night, plus collision fix.
 
@@ -293,9 +296,17 @@ extern int comms_will_fail;	//from docked
 Point mouse_xy;
 
 LSRAW *the_zoom_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* zoom_pic_obj;
+#else
 Handle zoom_H;
+#endif
 LSRAW *exit_button;
+#if PORTABLE_FILESYSTEM
+ZexPicture* exit_button_pic_obj;
+#else
 Handle exit_button_H;
+#endif
 
 
 int wait,i;
@@ -324,14 +335,25 @@ if (RangedRdm(0,100)>90) comms_will_fail=1;
  showing_stats=0;	//we're not any more
    
     disable_watchdog();
+
+#if PORTABLE_FILESYSTEM
+    zoom_pic_obj= new ZexPicture ('RCZ ',2005);	//galanet  
+    if (zoom_pic_obj==0) report_error("Memory Error: buy, zoom_H","\p",-1);
+    the_zoom_picture = zoom_pic_obj->GetPictureRef();
+    
+    exit_button_pic_obj = new ZexPicture ('RCZ ',2006);	//exit button   
+    if (exit_button_pic_obj==0) report_error("Memory Error: buy, exit_button_H","\p",-1);
+    exit_button = exit_button_pic_obj->GetPictureRef();
+#else
     zoom_H=GetZexPicture ('RCZ ',2005);	//galanet  
- 	if (zoom_H==0) report_error("Memory Error: buy, zoom_H","\p",-1);
-	HLock(zoom_H);
-	the_zoom_picture = (LSRAW*)*zoom_H;
+    if (zoom_H==0) report_error("Memory Error: buy, zoom_H","\p",-1);
+    HLock(zoom_H);
+    the_zoom_picture = (LSRAW*)*zoom_H;
     exit_button_H=GetZexPicture ('RCZ ',2006);	//exit button   
- 	if (exit_button_H==0) report_error("Memory Error: buy, exit_button_H","\p",-1);
-	HLock(exit_button_H);
-	exit_button = (LSRAW*)*exit_button_H;
+    if (exit_button_H==0) report_error("Memory Error: buy, exit_button_H","\p",-1);
+    HLock(exit_button_H);
+    exit_button = (LSRAW*)*exit_button_H;
+#endif
 
 reset_other_users();	//reset other buyrs/sellers
 
@@ -412,8 +434,13 @@ while (wait==0)
  
 }
     
+#if PORTABLE_FILESYSTEM
+    delete zoom_pic_obj;
+    delete exit_button_pic_obj;
+#else
     DisposeHandle(zoom_H);
     DisposeHandle(exit_button_H);
+#endif
 
 enable_watchdog();
 }
@@ -421,15 +448,24 @@ enable_watchdog();
 void combat_buy(LSRAW* exit_button)
 {
 LSRAW *cbuy_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* cbuy_pic_obj;
+#else
 Handle cbuy_H;
+#endif
 int wait,button_state;
 Point mouse_xy;
 int exit,i;
 
+        #if PORTABLE_FILESYSTEM
+        cbuy_pic_obj= new ZexPicture ('RCZ ',6000);	//galanet  
+	cbuy_picture = cbuy_pic_obj->GetPictureRef();
+        #else
         cbuy_H=GetZexPicture ('RCZ ',6000);	//galanet  
-	HLock(cbuy_H);
-	cbuy_picture = (LSRAW*)*cbuy_H;
-
+        HLock(cbuy_H);
+        cbuy_picture = (LSRAW*)*cbuy_H;
+        
+        #endif
 
 reset_cbuy:	for (i=0;i<2;i++)
 	{
@@ -483,8 +519,12 @@ while (wait==0)
      goto reset_cbuy;
     }
  }	//end of !exit
+ 
+    #if PORTABLE_FILESYSTEM
+    delete cbuy_pic_obj;
+    #else
     DisposeHandle(cbuy_H);
-
+    #endif
 }
 
 
@@ -492,15 +532,24 @@ while (wait==0)
 void combat_sell(LSRAW* exit_button)
 {
 LSRAW *csell_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* csell_pic_obj;
+#else
 Handle csell_H;
+#endif
 int wait,button_state;
 Point mouse_xy;
 int exit,i;
-
+        
+        #if PORTABLE_FILESYSTEM
+        csell_pic_obj= new ZexPicture ('RCZ ',6001);	 //combat net sell  
+	csell_picture = csell_pic_obj->GetPictureRef();
+        #else
         csell_H=GetZexPicture ('RCZ ',6001);	 //combat net sell  
-	HLock(csell_H);
-	csell_picture = (LSRAW*)*csell_H;
-
+        HLock(csell_H);
+        csell_picture = (LSRAW*)*csell_H;
+        #endif
+        
 
 reset_csell:	for (i=0;i<2;i++)
 	{
@@ -543,7 +592,12 @@ while (wait==0)
      goto reset_csell;
     }
  }	//end of !exit
+ 
+    #if PORTABLE_FILESYSTEM
+    delete csell_pic_obj;
+    #else
     DisposeHandle(csell_H);
+    #endif
 
 }
 
@@ -801,7 +855,11 @@ extern int credits;
 extern int hull_strength;
 extern GDHandle				mZexGDH;
 LSRAW *dialog_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* dialog_pic_obj;
+#else
 Handle dialog_H;
+#endif
 GDHandle	saveGDH;
 GrafPtr		savePort;
 unsigned char number_string[12];
@@ -820,13 +878,23 @@ tc_max_tries=ship_items[KTRADING_COMPUTER].modifier*5;
      
 rehaggle:	//err, a label!
 
+    #if PORTABLE_FILESYSTEM
+     if (ship_items[KTRADING_COMPUTER].status==1)
+     dialog_pic_obj= new ZexPicture ('RCZ ',2011);	  //haggle dialog box
+     else
+     dialog_pic_obj= new ZexPicture ('RCZ ',2012);	//confirm dialog box
+        
+    dialog_picture = dialog_pic_obj->GetPictureRef();
+    #else
      if (ship_items[KTRADING_COMPUTER].status==1)
      dialog_H=GetZexPicture ('RCZ ',2011);	  //haggle dialog box
      else
      dialog_H=GetZexPicture ('RCZ ',2012);	//confirm dialog box
-        
-	HLock(dialog_H);
-	dialog_picture = (LSRAW*)*dialog_H;
+     
+     HLock(dialog_H);
+     dialog_picture = (LSRAW*)*dialog_H;
+    #endif
+
 
 //accept price or negatiate?
 
@@ -898,7 +966,12 @@ ZRGBForeColor(&rgbBlue);
      
      }
    Show_it();
+   #if PORTABLE_FILESYSTEM
+   delete dialog_pic_obj;
+   #else
    DisposeHandle(dialog_H);
+   #endif
+   
      wait_for_mouse();
 
 //bottom 20, right 30 is exit
@@ -921,10 +994,17 @@ ZRGBForeColor(&rgbBlue);
 // 	SetPort((GrafPtr)the_drawing_buffer);
 	        SetGDevice(mZexGDH);
 
-                dialog_H=GetZexPicture ('RCZ ',2010);	     //blank dialog box   
+                #if PORTABLE_FILESYSTEM
+                dialog_pic_obj = new ZexPicture ('RCZ ',2010);	     //blank dialog box   
         
-	         HLock(dialog_H);
-	         dialog_picture = (LSRAW*)*dialog_H;
+                dialog_picture = dialog_pic_obj->GetPictureRef();
+                #else
+                dialog_H=GetZexPicture ('RCZ ',2010);	     //blank dialog box   
+                
+	        HLock(dialog_H);
+                dialog_picture = (LSRAW*)*dialog_H;
+                #endif
+                
                ship_stock[stock_item_id].temp_removed=1;	//seller got bored and removed the item
                display_goods(screen_class);
                ZRGBForeColor(&rgbRed);
@@ -939,7 +1019,11 @@ ZRGBForeColor(&rgbBlue);
                Show_it();
                
                wait_for_mouse();
-              DisposeHandle(dialog_H);
+               #if PORTABLE_FILESYSTEM
+               delete dialog_pic_obj;
+               #else
+               DisposeHandle(dialog_H);
+               #endif
                
                return;
                }
@@ -960,10 +1044,15 @@ ZRGBForeColor(&rgbBlue);
 //must be OK!
 
    
+        #if PORTABLE_FILESYSTEM
+buy_it:   dialog_pic_obj = new ZexPicture ('RCZ ',2010);	//blank dialog box   
+	dialog_picture = dialog_pic_obj->GetPictureRef();
+        #else
 buy_it:   dialog_H=GetZexPicture ('RCZ ',2010);	//blank dialog box   
 	HLock(dialog_H);
 	dialog_picture = (LSRAW*)*dialog_H;
-
+        #endif
+        
 //bottom 20, right 30 is exit
      ZexGetMouse (&mouse_xy);
 //     DSpContext_GlobalToLocal (mDisplayContext,&mouse_xy);
@@ -1065,7 +1154,11 @@ ZRGBForeColor(&rgbBlue);
 	SetPort(savePort);
     Show_it();
 
+    #if PORTABLE_FILESYSTEM
+    delete dialog_pic_obj;
+    #else
     DisposeHandle(dialog_H);
+    #endif
     wait_for_mouse();
 }
 
@@ -1077,7 +1170,11 @@ extern kit_desc ship_items[ITEMS_COUNT];
 extern int credits;
 extern GDHandle				mZexGDH;
 LSRAW *dialog_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* dialog_pic_obj;
+#else
 Handle dialog_H;
+#endif
 GDHandle	saveGDH;
 GrafPtr		savePort;
 unsigned char number_string[12];
@@ -1102,14 +1199,23 @@ rehaggle:	//err, a label!
 // 	SetPort((GrafPtr)the_drawing_buffer);
 	 SetGDevice(mZexGDH);
 
+    #if PORTABLE_FILESYSTEM
+     if (ship_items[KTRADING_COMPUTER].status==1)
+     dialog_pic_obj = new ZexPicture ('RCZ ',2011);	  //haggle dialog box
+     else
+     dialog_pic_obj = new ZexPicture ('RCZ ',2012);	//confirm dialog box
+        
+     dialog_picture = dialog_pic_obj->GetPictureRef();
+    #else
      if (ship_items[KTRADING_COMPUTER].status==1)
      dialog_H=GetZexPicture ('RCZ ',2011);	  //haggle dialog box
      else
      dialog_H=GetZexPicture ('RCZ ',2012);	//confirm dialog box
-        
-	HLock(dialog_H);
-	dialog_picture = (LSRAW*)*dialog_H;
 
+     HLock(dialog_H);
+     dialog_picture = (LSRAW*)*dialog_H;
+    #endif
+    
 //accept price or negatiate?
 
 //    if (Button()==1);	//wait for mouse up
@@ -1168,7 +1274,11 @@ ZRGBForeColor(&rgbBlue);
  	 SetGDevice(saveGDH);	 //these are here so I can SEE them!
 	SetPort(savePort);
    Show_it();
+    #if PORTABLE_FILESYSTEM
+   delete dialog_pic_obj;
+   #else
    DisposeHandle(dialog_H);
+   #endif
      wait_for_mouse();
 
 //bottom 20, right 30 is exit
@@ -1198,10 +1308,15 @@ ZRGBForeColor(&rgbBlue);
      }
 //must be OK!
 
-   
+        #if PORTABLE_FILESYSTEM
+
+buy_it:   dialog_pic_obj = new ZexPicture ('RCZ ',2010);	//blank dialog box   
+	dialog_picture = dialog_pic_obj->GetPictureRef();
+        #else
 buy_it:   dialog_H=GetZexPicture ('RCZ ',2010);	//blank dialog box   
-	HLock(dialog_H);
-	dialog_picture = (LSRAW*)*dialog_H;
+ 	HLock(dialog_H);
+ 	dialog_picture = (LSRAW*)*dialog_H;
+        #endif
 
 //bottom 20, right 30 is exit
      ZexGetMouse (&mouse_xy);
@@ -1248,7 +1363,11 @@ ZRGBForeColor(&rgbBlue);
 	SetPort(savePort);
     Show_it();
 
+    #if PORTABLE_FILESYSTEM
+    delete dialog_pic_obj;
+    #else
     DisposeHandle(dialog_H);
+    #endif
     wait_for_mouse();
 }
 
@@ -2276,14 +2395,27 @@ ZDrawString(number_string);
 void draw_windows()
 {
 LSRAW *the_window_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture *window_pic_obj;
+LSRAW *the_bar_picture;
+ZexPicture *bar_pic_obj;
+#else
 Handle window_H;
 LSRAW *the_bar_picture;
 Handle bar_H;
+#endif
 
 int x,y,i;
 x=0;
 y=0;
 
+    #if PORTABLE_FILESYSTEM
+    window_pic_obj =  new ZexPicture ('RCZ ',2008);	//small window   
+    the_window_picture = window_pic_obj->GetPictureRef();
+
+    bar_pic_obj = new ZexPicture ('RCZA',129);	//bottom bar   
+    the_bar_picture = bar_pic_obj->GetPictureRef();
+    #else
     window_H=GetZexPicture ('RCZ ',2008);	//small window   
 	HLock(window_H);
 	the_window_picture = (LSRAW*)*window_H;
@@ -2291,6 +2423,7 @@ y=0;
     bar_H=GetZexPicture ('RCZA',129);	//bottom bar   
 	HLock(bar_H);
 	the_bar_picture = (LSRAW*)*bar_H;
+    #endif
 	print_pict(the_bar_picture,0+off_640_x,430+off_480_y);
 
    for (i=0; i<15;i++)
@@ -2305,8 +2438,13 @@ y=0;
      }
     }
     
+#if PORTABLE_FILESYSTEM
+delete window_pic_obj;
+delete bar_pic_obj;
+#else
 DisposeHandle(window_H);
 DisposeHandle(bar_H);
+#endif
 }
 
 int show_x,show_y;
@@ -2323,16 +2461,27 @@ int x,y,width,price;
 Rect erase_desc = {111,20,123,100};
 unsigned char number_string[12];
 LSRAW *item_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* item_picture_pic_obj;
+#else
 Handle item_picture_H;
+#endif
 
 x=show_x*128; y=show_y*140;
 
 //get the items picture
+    #if PORTABLE_FILESYSTEM
+        item_picture_pic_obj = new ZexPicture('RCZ ',ship_stock[stock_index].rcz_id);	//the picture handle  
+	item_picture = item_picture_pic_obj->GetPictureRef();
+	print_crunched_trans_pict(item_picture,x+30+off_640_x,y+24+off_480_y);
+	delete item_picture_pic_obj;
+    #else
     item_picture_H=GetZexPicture ('RCZ ',ship_stock[stock_index].rcz_id);	//the picture handle  
 	HLock(item_picture_H);
 	item_picture = (LSRAW*)*item_picture_H;
 	print_crunched_trans_pict(item_picture,x+30+off_640_x,y+24+off_480_y);
 	DisposeHandle(item_picture_H);
+    #endif
 
 //draw the string
 ZRGBBackColor(&rgbBlack);
@@ -2412,7 +2561,11 @@ int do_buy_connect()
 //extern kit_desc ship_items[ITEMS_COUNT];
 //extern int mothership_cat;
 extern int comms_will_fail;
+#if PORTABLE_FILESYSTEM
+ZexPicture* zoom_pic_obj;
+#else
 Handle zoom_H;
+#endif
 
 LSRAW *the_zoom_picture;
 int i, toggle;
@@ -2525,10 +2678,17 @@ if (return_val==-2)
 if (return_val==0)
 {
  play_zsound(sound_test, sound_high_pri, ls1_chan, sound_vol_7);
+ 
+    #if PORTABLE_FILESYSTEM
+   zoom_pic_obj = new ZexPicture('RCZ ',2005);	//zoomed   
+ 	if (zoom_pic_obj==0) report_error("Memory Error: do_buy_connect, zoom_H","\p",-1);
+	the_zoom_picture = zoom_pic_obj->GetPictureRef();
+    #else
    zoom_H=GetZexPicture ('RCZ ',2005);	//zoomed   
  	if (zoom_H==0) report_error("Memory Error: do_buy_connect, zoom_H","\p",-1);
 	HLock(zoom_H);
 	the_zoom_picture = (LSRAW*)*zoom_H;
+    #endif
 
 //    the_drawing_buffer=Get_back_buffer();
 //	  SetPort((GrafPtr)the_drawing_buffer);
@@ -2543,7 +2703,11 @@ if (return_val==0)
 	print_crunched_pict(the_zoom_picture,0+off_640_x,0+off_480_y);
     Show_it();
 
-	DisposeHandle(zoom_H);
+    #if PORTABLE_FILESYSTEM
+    delete zoom_pic_obj;
+    #else
+    DisposeHandle(zoom_H);
+    #endif
 }
 return return_val;
 }
@@ -2552,7 +2716,11 @@ void do_buy_intro()
 {
 //get the picture - rcz 2004
 
+#if PORTABLE_FILESYSTEM
+ZexPicture* computer_pic_obj;
+#else
 Handle computer_H;
+#endif
 
 LSRAW *the_picture;
 
@@ -2564,10 +2732,16 @@ float mag;
  return;
  
 
+    #if PORTABLE_FILESYSTEM
+    computer_pic_obj = new ZexPicture('RCZ ',2004);	//computer   
+    if (computer_pic_obj==0) report_error("Memory Error: do_buy_intro, computer_pic_obj","\p",-1);
+    the_picture = computer_pic_obj->GetPictureRef();
+    #else
     computer_H=GetZexPicture ('RCZ ',2004);	//computer   
  	if (computer_H==0) report_error("Memory Error: do_buy_intro, computer_H","\p",-1);
 	HLock(computer_H);
 	the_picture = (LSRAW*)*computer_H;
+    #endif
 
 //    zoom_H=GetZexPicture ('RCZ ',2005);	//zoomed   
 // 	if (zoom_H==0) report_error("Memory Error: do_buy_intro, zoom_H","\p",-1);
@@ -2618,7 +2792,11 @@ float mag;
 //	  print_crunched_pict(the_zoom_picture,0,0);
 //    Show_it();
 //	DisposeHandle(zoom_H);
+        #if PORTABLE_FILESYSTEM
+        delete computer_pic_obj;
+        #else
 	DisposeHandle(computer_H);
+        #endif
 	DisposePtr((Ptr) pictbuffer);
 }
 
@@ -3186,6 +3364,16 @@ extern int credits;
 GDHandle	saveGDH;
 GrafPtr		savePort;
 int wait,quit,button_state;
+#if PORTABLE_FILESYSTEM
+LSRAW *bottom_bar;
+ZexPicture* bottom_bar_pic_obj;
+LSRAW *bottom_bar1;
+ZexPicture* bottom_bar1_pic_obj;
+LSRAW *fwd;
+ZexPicture* fwd_pic_obj;
+LSRAW *back;
+ZexPicture* back_pic_obj;
+#else
 LSRAW *bottom_bar;
 Handle bottom_bar_H;
 LSRAW *bottom_bar1;
@@ -3194,6 +3382,7 @@ LSRAW *fwd;
 Handle fwd_H;
 LSRAW *back;
 Handle back_H;
+#endif
 int item_selected;
 Point mouse_xy;
 int display_base_index;
@@ -3214,15 +3403,24 @@ while (Button()==1);	//standard
       if (kit_data.the_value==1)
       {
       LSRAW *dialog_picture;
+      #if PORTABLE_FILESYSTEM
+      ZexPicture* dialog_pic_obj;
+      #else
       Handle dialog_H;
+      #endif
       
 //           the_drawing_buffer=Get_back_buffer();
      GetPort (&savePort);
 	saveGDH = GetGDevice();	//All calls to QD are surrounded by save and set gdevices
 
+        #if PORTABLE_FILESYSTEM
+        dialog_pic_obj= new ZexPicture ('RCZ ',2010);	//blank dialog box   
+	dialog_picture = dialog_pic_obj->GetPictureRef();
+        #else
         dialog_H=GetZexPicture ('RCZ ',2010);	//blank dialog box   
 	HLock(dialog_H);
 	dialog_picture = (LSRAW*)*dialog_H;
+        #endif
 
 
       print_crunched_pict(dialog_picture,180+off_640_x,130+off_480_y);
@@ -3236,7 +3434,11 @@ while (Button()==1);	//standard
       ZDrawString("\pYour Trading Computer is reducing ");
       ZMoveTo (200+off_640_x,190+off_480_y);
       ZDrawString("\pon-line charges to 18Cr per minute.");
+      #if PORTABLE_FILESYSTEM
+      delete dialog_pic_obj;
+      #else
       DisposeHandle(dialog_H);
+      #endif
 	SetGDevice(saveGDH);	//these are here so I can SEE them!
 	SetPort(savePort);
          Show_it();
@@ -3244,6 +3446,19 @@ while (Button()==1);	//standard
 
       }
 
+        #if PORTABLE_FILESYSTEM
+        bottom_bar_pic_obj= new ZexPicture ('RCZ ',3400);	//computer   
+        bottom_bar = bottom_bar_pic_obj->GetPictureRef();
+
+        bottom_bar1_pic_obj= new ZexPicture ('RCZ ',3401);	//computer   
+        bottom_bar1 = bottom_bar1_pic_obj->GetPictureRef();
+
+        fwd_pic_obj= new ZexPicture ('RCZ ',3402);  
+        fwd = fwd_pic_obj->GetPictureRef();
+        
+        back_pic_obj= new ZexPicture ('RCZ ',3403);  
+        back = back_pic_obj->GetPictureRef();
+        #else
          bottom_bar_H=GetZexPicture ('RCZ ',3400);	//computer   
 	HLock(bottom_bar_H);
         bottom_bar = (LSRAW*)*bottom_bar_H;
@@ -3258,6 +3473,7 @@ while (Button()==1);	//standard
         back_H=GetZexPicture ('RCZ ',3403);  
 	HLock(back_H);
         back = (LSRAW*)*back_H;
+        #endif
         
 
 display_base_index=0;
@@ -3392,10 +3608,17 @@ while(quit==0)	//from exit button
      }
  
 }
+#if PORTABLE_FILESYSTEM
+delete bottom_bar_pic_obj;
+delete bottom_bar1_pic_obj;
+delete back_pic_obj;
+delete fwd_pic_obj;
+#else
 DisposeHandle(bottom_bar_H);
 DisposeHandle(bottom_bar1_H);
 DisposeHandle(back_H);
 DisposeHandle(fwd_H);
+#endif
 }
 
 void draw_bottom_bar(LSRAW*bar_pict,int can_exit, int can_buy, int can_sell, int can_inv)
@@ -4121,7 +4344,11 @@ void sell_cargo(int item_selected)
 extern int credits;
 extern GDHandle				mZexGDH;
 LSRAW *dialog_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* dialog_pic_obj;
+#else
 Handle dialog_H;
+#endif
 GDHandle	saveGDH;
 GrafPtr		savePort;
 unsigned char number_string[12];
@@ -4254,9 +4481,14 @@ tc_max_tries=ship_items[KTRADING_COMPUTER].modifier*5;
 
    
 //buy_it:   
+#if PORTABLE_FILESYSTEM
+        dialog_pic_obj= new ZexPicture ('RCZ ',2010);	//blank dialog box   
+	dialog_picture = dialog_pic_obj->GetPictureRef();
+#else
         dialog_H=GetZexPicture ('RCZ ',2010);	//blank dialog box   
 	HLock(dialog_H);
 	dialog_picture = (LSRAW*)*dialog_H;
+#endif
 
 //bottom 20, right 30 is exit
      ZexGetMouse (&mouse_xy);
@@ -4301,7 +4533,11 @@ ZRGBForeColor(&rgbBlue);
 	SetPort(savePort);
     Show_it();
 
+    #if PORTABLE_FILESYSTEM
+    delete dialog_pic_obj;
+    #else
     DisposeHandle(dialog_H);
+    #endif
     wait_for_mouse();
 
 }
@@ -4312,7 +4548,11 @@ void buy_cargo(int item_selected)
 {
 extern int credits;
 LSRAW *dialog_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* dialog_pic_obj;
+#else
 Handle dialog_H;
+#endif
 unsigned char number_string[12];
 unsigned char temp_string[300];	//how long is a piece of string????
 Point mouse_xy;
@@ -4379,11 +4619,16 @@ rehaggle:	//err, a label!
 //     if (kit_data.the_value>0)
 //     dialog_H=GetZexPicture ('RCZ ',2011);	    //haggle dialog box
 //     else
+#if PORTABLE_FILESYSTEM
+     dialog_pic_obj= new ZexPicture ('RCZ ',2012);	  //confirm dialog box
+     dialog_picture = dialog_pic_obj->GetPictureRef();
+#else
      dialog_H=GetZexPicture ('RCZ ',2012);	  //confirm dialog box
         
 	  HLock(dialog_H);
 	  dialog_picture = (LSRAW*)*dialog_H;
-
+          
+#endif
 //accept price or negatiate?
 
 //    if (Button()==1);	//wait for mouse up
@@ -4444,7 +4689,11 @@ rehaggle:	//err, a label!
 // 	SetGDevice(saveGDH);	//these are here so I can SEE them!
 //	  SetPort(savePort);
    Show_it();
+#if PORTABLE_FILESYSTEM
+    delete dialog_pic_obj;
+#else
    DisposeHandle(dialog_H);
+#endif
      wait_for_mouse();
 
 //bottom 20, right 30 is exit
@@ -4478,9 +4727,14 @@ rehaggle:	//err, a label!
 
    
 buy_it:   
+    #if PORTABLE_FILESYSTEM
+        dialog_pic_obj=new ZexPicture ('RCZ ',2010);	//blank dialog box   
+	dialog_picture = dialog_pic_obj->GetPictureRef();
+    #else
         dialog_H=GetZexPicture ('RCZ ',2010);	//blank dialog box   
 	HLock(dialog_H);
 	dialog_picture = (LSRAW*)*dialog_H;
+    #endif
 
 //bottom 20, right 30 is exit
      ZexGetMouse (&mouse_xy);
@@ -4525,7 +4779,11 @@ ZRGBForeColor(&rgbBlue);
 //	SetPort(savePort);
     Show_it();
 
+#if PORTABLE_FILESYSTEM
+    delete dialog_pic_obj;
+#else
     DisposeHandle(dialog_H);
+#endif
     wait_for_mouse();
 
 }
@@ -4534,13 +4792,22 @@ ZRGBForeColor(&rgbBlue);
 void do_string_dialog(const unsigned char * the_string)
 {
 LSRAW *dialog_picture;
+#if PORTABLE_FILESYSTEM
+ZexPicture* dialog_pic_obj;
+#else
 Handle dialog_H;
+#endif
 GDHandle	saveGDH;
 GrafPtr		savePort;
 
+    #if PORTABLE_FILESYSTEM
+        dialog_pic_obj=new ZexPicture ('RCZ ',2010);	//blank dialog box   
+	dialog_picture = dialog_pic_obj->GetPictureRef();
+    #else
         dialog_H=GetZexPicture ('RCZ ',2010);	     //blank dialog box   
 	HLock(dialog_H);
 	dialog_picture = (LSRAW*)*dialog_H;
+    #endif
 
        GetPort (&savePort);
 	 saveGDH = GetGDevice();	//All calls to QD are surrounded by save and set gdevices
@@ -4567,6 +4834,10 @@ GrafPtr		savePort;
 	SetPort(savePort);
     Show_it();
     wait_for_mouse();
+#if PORTABLE_FILESYSTEM
+    delete dialog_pic_obj;
+#else
     DisposeHandle(dialog_H);
+#endif
 
 }
