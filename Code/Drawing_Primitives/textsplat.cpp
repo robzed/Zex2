@@ -25,6 +25,9 @@
 //              in draw_it.
 //              Check if ZRAW resource got else error (text looks bad without it <G>).
 // $Log: textsplat.cpp,v $
+// Revision 1.4  2003/09/28 17:29:36  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.3  2003/09/24 21:39:39  robp
 // More work on Portable file-system. No work should effect current operation on Zex. When it is up and running as the standard system, we can remove the #if conditional compilation. Currently the sound needs work, plus one ZGetResource before we can debug. Then rest of the file-system can be completed.
 //
@@ -129,15 +132,15 @@ module_private void Draw_to_Double_Buffer(char *char_ptr, int x_pos, int y_pos, 
  Ptr double_buffer;
  int screen_width;
  #if PORTABLE_FILESYSTEM
- void *font_pointer;
+ char *font_pointer;
  #else
  Handle hpic;
  #endif
  Ptr medium_font;
  Ptr tiny_font;
  #if PORTABLE_FILESYSTEM
- void *small_font_pointer;
- void *large_font_pointer;
+ char *small_font_pointer;
+ char *large_font_pointer;
  #else
  Handle small_font_h;
  Handle large_font_h;
@@ -147,15 +150,15 @@ void InitText()
  {
  #if PORTABLE_FILESYSTEM
  
- font_pointer = ZGetResource('JESS',129, NULL);  //Get the Handle to the Resource 
+ font_pointer = static_cast<char *>(ZGetResource('JESS',129, NULL));  //Get the Handle to the Resource 
  if (font_pointer==NULL) report_error("Resource missing: JESS 129","\p.",4);
  medium_font = font_pointer;
  
- large_font_pointer = ZGetResource('JESS',128, NULL);  //Get the Handle to the Large font Resource 
+ large_font_pointer = static_cast<char *>(ZGetResource('JESS',128, NULL));  //Get the Handle to the Large font Resource 
  if (large_font_pointer==NULL) report_error("Resource missing: JESS 128","\p.",4);
  large_font = large_font_pointer; 
 
- small_font_pointer = ZGetResource('JESS',130,NULL);  //Get the Handle to the Large font Resource 
+ small_font_pointer = static_cast<char *>(ZGetResource('JESS',130,NULL));  //Get the Handle to the Large font Resource 
  if (small_font_pointer==NULL) report_error("Resource missing: JESS 130","\p.",4);
  tiny_font = small_font_pointer; 
  

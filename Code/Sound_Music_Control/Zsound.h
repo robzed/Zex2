@@ -159,7 +159,7 @@ int is_music_busy(void);
 void fade_out_music();
 void do_fade_out_music();
 #if PORTABLE_FILESYSTEM
-void fade_and_play(void *the_tune);
+void fade_and_play(char *the_tune);
 #else
 void fade_and_play(Handle the_tune);
 #endif

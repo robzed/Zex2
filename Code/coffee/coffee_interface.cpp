@@ -17,6 +17,9 @@
 // *
 /* ***********************************************************************************
  * $Log: coffee_interface.cpp,v $
+ * Revision 1.6  2003/09/28 18:04:30  robp
+ * Fixed filename too long (!) problem, and booked in project file.
+ *
  * Revision 1.5  2003/09/28 17:29:57  robp
  * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
  *
@@ -272,7 +275,7 @@ void setup_coffee(void);
 Ptr forthspace;
 
 #if PORTABLE_FILESYSTEM
-void *coffee_loaded_ptr;
+char *coffee_loaded_ptr;
 #else
 Handle coffee_code_handle;
 #endif
@@ -322,7 +325,7 @@ Str63 fragname = "\pcoffee";
 //int i;
 
 #if PORTABLE_FILESYSTEM
-coffee_loaded_ptr = ZGetResource('LSGF',128, &hsize);	// load and get the size of the resource
+coffee_loaded_ptr = static_cast<char *>(ZGetResource('LSGF',128, &hsize));	// load and get the size of the resource
 if (coffee_loaded_ptr==NULL) report_error("Exec: Couldn't load Coffee. Zex corrupt?","\p",4000);
 #else
 coffee_code_handle=ZGetResource('LSGF',128);
@@ -338,7 +341,7 @@ HUnlock (coffee_code_handle);
 #define OVERRUN_GAP 512					// protection only
 
 #if PORTABLE_FILESYSTEM
-coffee_loaded_ptr = ZSetResourceSize(coffee_loaded_ptr, hsize+OVERRUN_GAP+FORTH_SIZE);	// set space for the forth environment as well
+coffee_loaded_ptr = static_cast<char *>(ZSetResourceSize(coffee_loaded_ptr, hsize+OVERRUN_GAP+FORTH_SIZE));	// set space for the forth environment as well
 if(coffee_loaded_ptr==NULL)
     {
     report_error("Memory problem loading coffee","\p",-1);

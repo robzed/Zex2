@@ -5,6 +5,9 @@ Owner: SB
 Started: 29/10/98
 ©Lightsoft 98
 $Log: sound.cpp,v $
+Revision 1.5  2003/09/28 17:29:35  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.4  2003/09/27 21:52:40  robp
 Fixed places where we were loading an unsigned with -1.
 
@@ -157,10 +160,13 @@ return 0;	// music never busy (all ever used for)
 #if PORTABLE_FILESYSTEM
 // perhaps this should be the type - but what happens about the mac sound calls?
 //
-#error "No ZexSoundPtr defined yet rob!!"
+#warning "This codeset uses a hack in sound.cpp that emulates a Handle for the sound routines!!! REMOVE PLEASE"
+//#warning "No ZexSoundPtr defined yet rob!!"
 // typedef void *ZexSoundPtr;
+typedef SndListPtr ZexSoundPtr;
 //
-ZexSoundPtr the_sounds[max_sounds];	//array of handles for sounds
+ZexSoundPtr the_sound_ptrs[max_sounds];	//array of pointers for sounds
+SndListHandle the_sounds[max_sounds];	//array of handles for sounds	 *** HACK ***
 #else
 SndListHandle the_sounds[max_sounds];	//array of handles for sounds
 #endif
@@ -201,7 +207,8 @@ while (inter_sound_load!=0 && sound_counter<80)
 	    inter_sound_load=ZGetResource('snd ',sound_counter+128, NULL);	//returns zero when no resource 
             if (inter_sound_load) 
 		{
-		  the_sounds[sound_counter]=(ZexSoundPtr)inter_sound_load; //store handle in array
+		  the_sound_ptrs[sound_counter] = static_cast<ZexSoundPtr>(inter_sound_load); //store handle in array
+                  the_sounds[sound_counter] = &(the_sound_ptrs[sound_counter]);	// set up *hacked* handle for these  (already locked!)
 		}
             sound_counter++;	//next resource
         #else
@@ -366,7 +373,8 @@ void play_zsound_relative_to_zex(int the_object, int sound_number)
 //simple stop sound stops the sound and frees up the memory
 
 #if PORTABLE_FILESYSTEM
-ZexSoundPtr the_sound;
+ZexSoundPtr the_sound_ptr;
+SndListHandle the_sound;		// *** HACK ***
 #else
 SndListHandle the_sound;
 #endif
@@ -376,7 +384,8 @@ void simple_play_sound(int id)
 {
 SndNewChannel (&simple_sound_chan,sampledSynth,initStereo,nil);
 #if PORTABLE_FILESYSTEM
-the_sound=(ZexSoundPtr) ZGetResource('snd ',id, NULL);
+the_sound_ptr = static_cast<ZexSoundPtr>(ZGetResource('snd ',id, NULL));
+the_sound = &the_sound_ptr;			// a *hacked* handle (already locked!)
 #else
 the_sound=(SndListHandle) ZGetResource('snd ',id);
 //DetachResource((Handle)the_sound);
@@ -493,7 +502,7 @@ int firstcall=1;	//set to zero on subsequent calls
 int actual_volume;
 int gNewTune=0;	//at end of fade, if set music in new_music_ptr is played
 #if PORTABLE_FILESYSTEM
-void *new_music_pointer;
+char *new_music_pointer;
 #else
 Handle new_music_handle;
 #endif
@@ -515,7 +524,7 @@ extern short zex_res_file;
 void fade_and_play_zex_resource (unsigned long res_id)
 {
 #if PORTABLE_FILESYSTEM
-void *music_ptr;
+char *music_ptr;
 #else
 Handle music_h;
 #endif
@@ -531,7 +540,7 @@ Handle music_h;
   #endif
 
     #if PORTABLE_FILESYSTEM
-        music_ptr = ZGetResource('MADH',res_id, NULL);  //Get the Handle to the Resource
+        music_ptr = static_cast<char *>(ZGetResource('MADH',res_id, NULL));  //Get the Handle to the Resource
         fade_and_play(music_ptr);
     #else
 //        UseResFile(zex_res_file);
@@ -544,7 +553,7 @@ Handle music_h;
 
 
 #if PORTABLE_FILESYSTEM
-void fade_and_play(void *the_tune)
+void fade_and_play(char *the_tune)
 #else
 void fade_and_play(Handle the_tune)
 #endif
@@ -626,7 +635,7 @@ if(do_fade_schedule<0)
 void play_zex_resource_now (unsigned long res_id)
 {
 #if PORTABLE_FILESYSTEM
-void *music_ptr;
+char *music_ptr;
 #else
 Handle music_h;
 #endif
@@ -642,7 +651,7 @@ Handle music_h;
   #endif
 
   #if PORTABLE_FILESYSTEM
-  music_ptr = ZGetResource('MADH',res_id, NULL);  //Get the Handle to the Resource
+  music_ptr = static_cast<char *>(ZGetResource('MADH',res_id, NULL));  //Get the Handle to the Resource
   mod_player(1,music_ptr); // play
   ZReleaseResource(music_ptr);
   #else

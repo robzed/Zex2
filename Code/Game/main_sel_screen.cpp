@@ -18,6 +18,9 @@
 
 /*
 // $Log: main_sel_screen.cpp,v $
+// Revision 1.9  2003/09/28 17:29:46  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.8  2003/09/28 10:36:08  robp
 // Signed/Unsigned comparison fixes from last night, plus collision fix.
 //
@@ -1367,7 +1370,7 @@ int y=0;
  #if PORTABLE_FILESYSTEM
  text_ptr = ZGetResource('STRY',128, &text_size);  //Get the Handle to the Resource 
  if (text_ptr==0) report_error("Resource missing: STRY 128","\p",4);
- text = text_ptr;
+ text = (char *)text_ptr;
  #else
  text_h = (Handle) ZGetResource('STRY',128);  //Get the Handle to the Resource 
  if (text_h==0) report_error("Resource missing: STRY 128","\p",4);
