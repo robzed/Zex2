@@ -101,7 +101,7 @@ SOLR
 **** Earth mothership
 ****LMSP 12500,1000,-580000,1,0
 
-**** Alien mothership
+**** Alien mothership next to player
 LMSP 20000,0,-350000,1,1
 
 **** Neutral mothership

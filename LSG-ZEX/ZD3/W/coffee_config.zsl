@@ -27,7 +27,7 @@ user# USER_ROB = [IF]
   asteroid_master OFF
   remove_opengl_context_on_switch OFF
   bg_galaxies ON
-  show_fps_pane
+  show_sim_pane
   .( Hello Stu... ) CR
   
 [ELSE] \ standard game user
