@@ -62,7 +62,6 @@
 
 #define REMOVE_GRAVITY_FROM_GAME  1   // remove gravity and orbits from game
 
-#define DirStr "\pZD3"	//what folder we are running from
 
 typedef struct
 {

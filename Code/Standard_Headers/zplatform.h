@@ -19,6 +19,9 @@
 
 /* CVS bits
 $Log: zplatform.h,v $
+Revision 1.1.1.1  2003/09/05 22:37:05  stu_c
+First Imported.
+
 Revision 1.10  2002/09/08 02:21:14  stu_c
 Precompiled header adjustments
 
@@ -73,10 +76,14 @@ Initial issue.
 
             */
 
-//enable only one of these!!!!!
-#define MAC 1
-#define WIN 0
-#define LIN 0	//not used
+
+//
+// depreciated - currently unused. The system headers may well contain these types of linkage...
+//
+// enable only one of these!!!!!
+//#define MAC 1
+//#define WIN 0
+//#define LIN 0	//not used
 
 
 

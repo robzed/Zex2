@@ -37,3 +37,14 @@
 #define TEXT_DISPLAY_TIME 600	//frame count for a message to stay on screen
 #define OGL 1	//set to 1 for OGL version, 0 for SW renderer
 #define FIRST_PERSON 1	//set to 1 to enable first person view (Zex 2 ish)
+
+
+//
+// Flags for protecting existing code, whilst porting it over to a more portable system.
+//
+#define PORTABLE_ZEX 0
+
+#if PORTABLE_ZEX
+    #define PORTABLE_RUNNING_FROM_SDL 0		// not currently running from SDL
+    #define PORTABLE_FILESYSTEM	1		// these labels (and all the #if code) can disappear as they become the "defacto" Zex sub-systems
+#endif
