@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
 // $Log: ship_control.c,v $
+// Revision 1.2  2003/09/20 12:57:11  robp
+// Removed nested comments
+//
 // Revision 1.1.1.1  2003/09/05 22:36:14  stu_c
 // First Imported.
 //
@@ -193,7 +196,7 @@ Coffee fixes after changes for X.
 #include "keyboard.h"
 #include "npc.h"
 #include "hud2.h"
-
+#include "game_defs.h"
 #include "access_ocbs.h"
 // ***********************************************************************************
 // * CONSTANTS 
@@ -1064,18 +1067,32 @@ if (gVertDownThrust)
 
 
 //laser
-//if laser was up and is now down then fire laser
-if (gLaser && old_laser_button_state==0)
-{
- old_laser_button_state=1;
- do_player_laser();
-}
 
 if (!gLaser && old_laser_button_state==1)
 {
  old_laser_button_state=0;
  kill_player_laser();
 }
+
+//laser and overheat, temperature is managed in engines
+if (get_laser_bay_temperature_in_C(get_main_camera_object())>MAX_LASER_TEMP-50)
+{
+ if(old_laser_button_state==1)
+ {
+  old_laser_button_state=0;
+  kill_player_laser(); 
+ }
+}
+else
+{
+  //if laser was up and is now down then fire laser
+  if (gLaser && old_laser_button_state==0 && (get_laser_bay_temperature_in_C(get_main_camera_object())<MAX_LASER_TEMP-500))
+  {
+    old_laser_button_state=1;
+    do_player_laser();
+  }
+}
+
 
 if (gCannon)
 {
