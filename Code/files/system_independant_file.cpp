@@ -17,15 +17,15 @@
  * exceptionally rare.
  *
  * $Author: robp $
- * $Date: 2003/09/22 22:01:32 $
- * $Revision: 1.2 $
+ * $Date: 2003/09/28 17:29:36 $
+ * $Revision: 1.3 $
  *
  * For log see end of file...
  *
  */
 
 #include "system_independant_file.h"
-
+#include "string.h"
 
 // ***********************************************************************************
 // * CONSTANTS 
@@ -76,6 +76,60 @@ static int lsf_getstring(char *string, int max, FILE *file);
 // | DESCRIPTION: Opens a file and record basic information about it.
 // +----------------------------------------------------------------ROUTINE HEADER----
 
+
+#if defined(__MRC__)	// detect compilation by MrC ... therefore we have a Classic Mac Target
+
+// this is currently the only platform specific thing... 
+//
+// path name conversion for Classic Mac OS
+// 
+// Classic Mac OS doesn't use / for pathnames. Therefore, to keep all the filestuff constant through the rest of the game
+// we convert in our own routines. It's really was a good idea we had this layer, otherwise I would indeed be swearing...
+#define PATH_MAX 1024
+char hfs_pathname_buffer[PATH_MAX];
+
+
+// convert_pathname_to_native_format
+//
+// Relies on the fact we never refer to the filesystem root directory - only ever relative to the app and
+// do not use . or repeated slashes /. 
+//
+// If we ever need anyhting more compilicated the options are twofold: SDL_Rwops.c has a routine called unix_to_mac
+// although this is LGPL (need to clean engineer)(it's also a static function), or the mac c lib system has a unix to hfs conversion routine.
+char *convert_pathname_to_native_format(const char *filename)
+{
+int len = strlen(filename);
+char *path_ptr;
+
+if(len>PATH_MAX) len=PATH_MAX;
+
+path_ptr = hfs_pathname_buffer;
+
+*path_ptr = ':'; path_ptr++;	// Classic mac relative paths all start with a colon
+
+while(*filename)
+  {
+  if(*filename=='/')		// change slashes to colons. (double colons are back up one)
+    {
+    *path_ptr=':';
+    }
+  else
+    {
+    *path_ptr = *filename;
+    }
+    
+  path_ptr++; filename++;
+  }
+
+*path_ptr = '\0';
+
+return hfs_pathname_buffer;
+}
+
+#else
+    #define convert_pathname_to_native_format(x) (x)
+#endif
+
 ls_file_t lsf_open_file(const char *filename, const char *mode)
 {
 FILE *input_f;
@@ -105,7 +159,7 @@ else	// we are not at the max yet
   opened_file_ref = lsf_file_counter;	// make a record of the current file ref
   }
   
-input_f = fopen(filename,mode);
+input_f = fopen(convert_pathname_to_native_format(filename),mode);
 if(input_f==NULL) 
   {
   #if DEBUG_GENERAL_STATUS
@@ -565,6 +619,11 @@ return FALSE;
 /* CVS LOG
  *
  * $Log: system_independant_file.cpp,v $
+ * Revision 1.10  2003/10/13 22:13:37  robp
+ * System specific code (yuck!) - we must use mac colon paths instead of slashes, so we convert at lowest level...
+ * Revision 1.3  2003/09/28 17:29:36  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.2  2003/09/22 22:01:32  robp
  * Work in progress: portable file system, stage 1 - load resources via C standard library calls. THIS INCLUDES A PROJECT FILE UPDATE.
  *
