@@ -23,10 +23,10 @@
 #define MAX_NUMBER_OF_DYN_POLY_SLOTS MAX_NUMBER_OF_DYN_OBJECTS+MAX_NUMBER_OF_FAST_DYN_OBJECTS 
 #define MAX_NUMBER_OF_STAT_OBJECTS 140
 #define MAX_NUMBER_OF_POLYS 5000
-#define MAX_NUMBER_POLYS_PER_OBJ 520
+#define MAX_NUMBER_POLYS_PER_OBJ 550
 #define MAX_NUMBER_OF_CLIPPED_POLYS 4000
 
-#define NUMBER_OF_SCALED_POINTS 500	//max number of points in a scaled object
+#define NUMBER_OF_SCALED_POINTS 1500	//max number of points in a scaled object
 #define NUMBER_OF_SCALED_OBJECTS 1600 //max number of scaled objects
 
 #define NUMBER_OF_CMAP_OBJS 1000	//this can be wanged up - it's just a list of ints
@@ -57,7 +57,7 @@
 //this define is used to set up a system when testing - i.e. no solar system,
 //no dust, asteroids etc
 
-#define TEST_SYSTEM 0	//after changing this you should completely rebuild the project! Neither Anvil nor PB can cope with the dependencies correctly
+#define TEST_SYSTEM 1	//after changing this you should completely rebuild the project! Neither Anvil nor PB can cope with the dependencies correctly
 #define RIGHT_HANDED 1  //Should be 1 for right handed operation. Zex was until 080202 left handed
 
 #define REMOVE_GRAVITY_FROM_GAME  1   // remove gravity and orbits from game
