@@ -50,5 +50,3 @@
     #define REMOVE_OLD_FILESYSTEM_JUNK 0 	// only used this when all the filesystem stuff is removed
 #endif
 
-
-#define IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE __cplusplus

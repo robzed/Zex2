@@ -3,6 +3,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.cpp,v $
+Revision 1.6  2003/09/28 17:29:50  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.5  2003/09/27 21:52:39  robp
 Fixed places where we were loading an unsigned with -1.
 
@@ -295,11 +298,7 @@ if(file_size == -1) { report_error("read_file_into_memory(filename) had an error
 data_storage = calloc(1, file_size+4);		// ensure a zero terminated file (zero space and put 4 on the end)
 if(data_storage == NULL) { report_error("read_file_into_memory(filename) had an error: No memory","\p",1102); }
 
-#if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 actual_bytes_read = lsf_read_bytes_from_file(my_file, static_cast<char *>(data_storage), file_size);
-#else
-actual_bytes_read = lsf_read_bytes_from_file(my_file, data_storage, file_size);
-#endif
 
 if(actual_bytes_read != file_size) { report_error("read_file_into_memory(filename) had an error on matching bytes read.","\p",1103); }
 
@@ -785,7 +784,7 @@ Handle ZGetResource(unsigned int Type, short ID)
 #endif
 {
 #if PORTABLE_FILESYSTEM
-unsigned char filename[FILENAME_LENGTH];
+char filename[FILENAME_LENGTH];
 unsigned char numberstr[FILENAME_LENGTH];
 #else
 Str255 filename;

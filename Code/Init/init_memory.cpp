@@ -1,6 +1,9 @@
 //init_memory.cpp
 /*
  * $Log: init_memory.cpp,v $
+ * Revision 1.4  2003/09/28 17:29:47  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.3  2003/09/27 08:58:34  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *
@@ -243,11 +246,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		cmap_ptr_base = static_cast<cmap_objects *>(temp_ptr);
-                #else
-		cmap_ptr_base =temp_ptr;
-		#endif
 		}
 	else
 		report_error("Not enough memory (init_ocbs: cmap).","\p",3);
@@ -260,13 +259,8 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		scaled_points_ptr= static_cast<scaled_points_array_type *>(temp_ptr);
-                #else
-		scaled_points_ptr=temp_ptr;
-                #endif
-		
-		}
+                }
 	else
 		report_error("Not enough memory (init_ocbs: scaled points).","\p",3);	
 		
@@ -279,11 +273,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		points_list_ptr = static_cast<_3D*>(temp_ptr);
-                #else
-		points_list_ptr =temp_ptr;
-                #endif
 		points_list_ptr_reset=points_list_ptr;	//so we can reset it
 		points_list_top=(MAX_NUMBER_OF_STAT_OBJECTS*MAX_NUMBER_POLYS_PER_OBJ*3)/sizeof(_3D);
 		}
@@ -297,11 +287,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		Polygon_handle=(Polygon**)temp_h;
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		Polygon_ptr = static_cast<Polygon*>(temp_ptr);
-                #else
-		Polygon_ptr =temp_ptr;
-                #endif
 		}
 	else
 		report_error("Not enough memory (init_ocbs: Polygon).","\p",3);
@@ -312,11 +298,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		visible_points_list_ptr = static_cast<visible_poly*>(temp_ptr);
-                #else
-		visible_points_list_ptr =temp_ptr;
-                #endif
 		visible_points_list_top=(MAX_NUMBER_OF_DYN_OBJECTS*MAX_NUMBER_POLYS_PER_OBJ*3)/sizeof(_3D);
 		}
 	else
@@ -329,11 +311,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		view_points_list_ptr = static_cast<_2DPoly*>(temp_ptr);
-                #else
-		view_points_list_ptr =temp_ptr;
-                #endif
 		view_points_list_top=(MAX_NUMBER_OF_DYN_OBJECTS*MAX_NUMBER_POLYS_PER_OBJ*3)/sizeof(_2D);
 		}
 	else
@@ -345,11 +323,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		points_offsets_ptr = static_cast<int*>(temp_ptr);
-                #else
-		points_offsets_ptr =(int*)temp_ptr;
-                #endif
 		points_offsets_top=300000/sizeof(int);
 		}
 	else
@@ -361,11 +335,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		world_points_list_ptr = static_cast<_3D*>(temp_ptr);
-                #else
-		world_points_list_ptr =temp_ptr;
-                #endif
 		world_points_list_top=(MAX_NUMBER_OF_DYN_OBJECTS*MAX_NUMBER_POLYS_PER_OBJ*3)/sizeof(_3D);
 		}
 	else
@@ -389,11 +359,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		connection_list_ptr = static_cast<textured_connections*>(temp_ptr);
-                #else
-		connection_list_ptr =temp_ptr;
-                #endif
 		connection_list_ptr_reset=connection_list_ptr;
 		connection_list_top=connection_list_ptr+(300000/sizeof(textured_connections));
 		}
@@ -408,11 +374,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		Spoly_list_ptr = static_cast<_ZPoly*>(temp_ptr);
-                #else
-		Spoly_list_ptr =temp_ptr;
-                #endif
 		Spoly_list_ptr_reset=Spoly_list_ptr;
 		
 		Spoly_list_top=Spoly_list_ptr+MAX_NUMBER_OF_POLYS;
@@ -436,11 +398,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		{ 
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		dynamic_polys_ptr = static_cast<_ZPoly_objs *>(temp_ptr);
-                #else
-		dynamic_polys_ptr =temp_ptr;
-                #endif
 //set em all empty
 		temp_dynamic_polys_ptr=dynamic_polys_ptr;
 
@@ -463,11 +421,7 @@ _ZPoly_objs *temp_dynamic_polys_ptr;
 		
 		HLock(temp_h);
 		temp_ptr=*temp_h;
-                #if IF_CPP_COMPILER__REMOVE_ME_AFTER_CPP_CONVERSION_COMPLETE
 		clipped_polys_ptr = static_cast<_clipped_poly*>(temp_ptr);
-                #else
-		clipped_polys_ptr =temp_ptr;
-                #endif
 		}
 	else
 		report_error("Not enough memory (init_ocbs: _clipped_polys).","\p",3);
