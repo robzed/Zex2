@@ -1,6 +1,9 @@
 //Error_handler.cpp
 /*
  * $Log: Error_handler.cpp,v $
+ * Revision 1.4  2003/09/28 17:30:09  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.3  2003/09/27 08:58:31  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *
@@ -215,6 +218,11 @@ id_string[3]=id>>8;
 id_string[4]=id;
 //	ISpSuspend();
 
+    fprintf (stderr, "Zex EXEC: Fatal Error Dialog. Detail follows...\n");
+    fprintf (stderr, &errorString[1]);
+    fprintf (stderr, (char *)id_string);
+    fprintf (stderr, " \n\n");
+
 	ParamText((unsigned char*)errorString, (unsigned char*) id_string, "\p", "\p");
 	if (Alert(kALRTFatal, nil) == cancel)
 		Debugger();
@@ -288,6 +296,10 @@ id_string[3]=id>>8;
 id_string[4]=id;
 //	ISpSuspend();
 
+    fprintf (stderr, "Zex EXEC: Fatal Error Dialog. Detail follows...\n");
+    fprintf (stderr, &errorString[1]);
+    fprintf (stderr, (char *)id_string);
+    fprintf (stderr, " %d\n\n", number);
 	ParamText((unsigned char*)errorString, (unsigned char*) id_string, (unsigned char*) number_string, "\p");
 	if (Alert(kALRTFatal, nil) == cancel)
 		Debugger();
