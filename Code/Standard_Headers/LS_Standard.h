@@ -34,3 +34,19 @@ typedef struct
 {
 float top,left,bottom,right;
 } LSFloatRect;
+
+//
+// These were added to support the Z_dungeon code-set.
+//
+#ifdef  __cplusplus
+typedef bool BOOL;
+#else
+typedef char BOOL;
+#endif
+
+// this is the output channel for printf
+#define OUTPUT_FP stderr		// this was stderr in SDL documentation
+
+#define DEBUG_GENERAL_STATUS	1	// general debug info to console
+
+
