@@ -204,7 +204,7 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object];
           {
            //we can fire
            object_ptr->Dyn_OCB_control_data.control_use_1_float+=time_in_secs;
-           if (object_ptr->Dyn_OCB_control_data.control_use_1_float>0.8)
+           if (object_ptr->Dyn_OCB_control_data.control_use_1_float>1.5)
            { 
              
              if(distance<4000) //close enough for guns?
