@@ -3,6 +3,9 @@
 //See 3D engine design for notes
 /*
  * $Log: load_game.c,v $
+ * Revision 1.3  2003/09/20 12:56:58  robp
+ * Removed nested comments
+ *
  * Revision 1.2  2003/09/14 12:18:46  stu_c
  * Removed some unused commented out code
  *
@@ -312,7 +315,7 @@ load_dyn_object_pb the_params;
 	 the_params.missile_cat=1;
 	 the_params.number_of_missiles=3;
 
-	load_dyn_object(zex,0,&the_params,galactic_id,1,-1,!DUST_BIT);	  //the object, the position (-1=next free)
+	load_dyn_object(zex,0,&the_params,galactic_id,8,-1,!DUST_BIT);	  //the object, the position (-1=next free)
         return 0; // dyn slot of player ship is ALWAYS 0
 }
 

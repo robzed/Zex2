@@ -53,6 +53,7 @@ void get_translated_normal(int object_slot_number,_3D *trans_normal_ptr);
 float get_total_fuel_consumption(int object_slot_number);
 float get_engine_temperature_in_C(int object_slot_number);
 float get_hull_temperature_in_C(int object_slot_number);
+float get_laser_bay_temperature_in_C(int object_slot_number);
 
 
 // writing functions
@@ -72,6 +73,7 @@ void set_blobbed_object_colour(int object_slot_number, float red, float green, f
 
 void set_engine_temperature_in_C(int object_slot_number, float the_temperature_in_C);
 void set_hull_temperature_in_C(int object_slot_number, float the_temperature_in_C);
+void set_laser_bay_temperature_in_C(int object_slot_number, float the_temperature_in_C);
 
 void set_has_children(int object_slot_number); //Tell engine that object has at least one child
 

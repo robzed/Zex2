@@ -165,7 +165,7 @@ extern	DynObjectsFixedSize *ocb_ptr;
       max_count=46;
     }
 */
-    max_count=30;    
+    max_count=50;    
 
     clear_pb(&the_params);
     the_params.controller_ref=LASER_CONTROL_1;
@@ -181,6 +181,7 @@ extern	DynObjectsFixedSize *ocb_ptr;
     while(particle_count<max_count)	//generate 20 of the things
     {
       particle_count++;
+      
     
       current_object_ptr->Dyn_OCB_control_data.control_use_2=0;
       the_params.init_check='chek';
@@ -323,11 +324,11 @@ _quat temp_quat;
    //to give us a line of laser particles
    
     current_object_ptr->Oworldx+=ocb_ptr->object_list[owner].n_translated.x*
-    (20*(current_object_ptr->Dyn_OCB_control_data.control_use_2 *current_object_ptr->Dyn_OCB_control_data.control_use_2));
+    (30*(current_object_ptr->Dyn_OCB_control_data.control_use_2 *current_object_ptr->Dyn_OCB_control_data.control_use_2));
     current_object_ptr->Oworldy+=ocb_ptr->object_list[owner].n_translated.y*
-    (20*(current_object_ptr->Dyn_OCB_control_data.control_use_2*current_object_ptr->Dyn_OCB_control_data.control_use_2));
+    (30*(current_object_ptr->Dyn_OCB_control_data.control_use_2*current_object_ptr->Dyn_OCB_control_data.control_use_2));
     current_object_ptr->Oworldz+=ocb_ptr->object_list[owner].n_translated.z*
-    (20*(current_object_ptr->Dyn_OCB_control_data.control_use_2*current_object_ptr->Dyn_OCB_control_data.control_use_2));
+    (30*(current_object_ptr->Dyn_OCB_control_data.control_use_2*current_object_ptr->Dyn_OCB_control_data.control_use_2));
     
     //fade the colour to red
     //get pointer to the polys
@@ -342,7 +343,7 @@ _quat temp_quat;
      {
        the_polys->Prgb.green=0;
        the_polys->Prgb.blue-=blue_dec/4;
-       the_polys->Prgb.red-=blue_dec;
+       //the_polys->Prgb.red-=blue_dec;
        the_polys++;
      }
 }

@@ -1,6 +1,9 @@
 //object control top
 /*
 $Log: object_control_top.c,v $
+Revision 1.2  2003/09/14 12:22:38  stu_c
+Zex: Combat: Added a call to run_npc_gen so we can monitor the player and introduce monsters when we think the time is right (hypertransport etc).
+
 Revision 1.1.1.1  2003/09/05 22:36:08  stu_c
 First Imported.
 
@@ -165,7 +168,7 @@ First Imported.
 #include "particles.h"
 #include "npc_gen.h"
 
-#define KILL_LIST_MAX 200
+#define KILL_LIST_MAX 800
 
 int kill_list[KILL_LIST_MAX];
 int kill_list_index=0;

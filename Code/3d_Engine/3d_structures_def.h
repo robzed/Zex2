@@ -510,6 +510,9 @@ UInt8 command_ORCS_damper;	// ORCS applies linear/rotational drag if bits set
 
 UInt32 MEMBER_ command_fired_flags _MEMBER
 
+//Laser temp
+float laser_bay_temperature_in_C;
+
 //fuel control variables
 double fuel_tank_value_in_KGS;
 Float32 reverse_thrust_consumption_per_second_in_KGS; //per engine

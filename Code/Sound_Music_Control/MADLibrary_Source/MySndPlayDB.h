@@ -21,10 +21,8 @@
 **	was descended from Apple Sample Code, but that you've made changes.
 */
 
-#pragma export on
 				OSErr	MySndPlayDoubleBuffer (SndChannelPtr chan, SndDoubleBufferHeaderPtr theParams);
 				OSErr	MySndDoImmediate (SndChannelPtr chan, SndCommand * cmd);
-#pragma export off
 //static	pascal	void	MySndPlayDoubleBufferCleanUpProc (SndChannelPtr theChannel, SndCommand * theCallBackCmd);
 static	pascal	void	MySndPlayDoubleBufferCallBackProc (SndChannelPtr theChannel, SndCommand * theCmd);
 static			void	InsertSndDoCommand (SndChannelPtr chan, SndCommand * theCmd);
