@@ -12,6 +12,7 @@ enum { //behaviour types
 	   DOCK_BEHAVIOUR,
 	   DEFENSIVE_BEHAVIOUR,
 	   AGGRESIVE_BEHAVIOUR,
+           GUARD_BEHAVIOUR,
 	   LOW_FUEL_BEHAVIOUR,
      };
 	 

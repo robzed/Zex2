@@ -48,6 +48,7 @@ static bool check_out_of_bubble(int the_object);
 static int handle_survival(int the_object);
 static void handle_trader_control(int the_object);
 static void handle_fighter_control(int the_object);
+static void handle_guard_control(int the_object);
 void fire_lasers(int the_object);
 void insert_exhaust_animation(int the_object);
 
@@ -213,6 +214,12 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object]; //ptr to mothership;
    handle_fighter_control(the_object);
    return;
   }
+
+  if (object_ptr->Dyn_OCB_control_data.NPC_class==NPC_CLASS_GUARD) 
+  {
+   handle_guard_control(the_object);
+   return;
+  }
       
  report_error ("control_NPC: Unknown NPC_class","",-1);
 
@@ -285,6 +292,20 @@ static void handle_fighter_control(int the_object)
  if (dispatch_behaviour(the_object)==FALSE)
  {
     set_behaviour(the_object,AGGRESIVE_BEHAVIOUR); //Kick start  the fighter ebhaviour in case it wasn't loadedd with aggressive
+ }
+
+ object_systems_sim(the_object);
+}
+
+
+static void handle_guard_control(int the_object)
+{
+
+ insert_exhaust_animation(the_object);
+ 
+ if (dispatch_behaviour(the_object)==FALSE)
+ {
+    set_behaviour(the_object,GUARD_BEHAVIOUR); //Kick start  the guard behaviour in case it wasn't loaded
  }
 
  object_systems_sim(the_object);
