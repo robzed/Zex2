@@ -39,7 +39,7 @@
 			<key>Title</key>
 			<string>Item</string>
 			<key>Width</key>
-			<real>4.770000e+02</real>
+			<real>5.280000e+02</real>
 		</dict>
 		<dict>
 			<key>Formatter</key>
@@ -670,8 +670,6 @@
 									<string>292</string>
 									<string>0</string>
 								</array>
-								<key>Expanded</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>Children</key>
@@ -689,7 +687,7 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs20 \cf0 Fix badly mutated auto generated motherships (for example, Earth MS with 14 arms!)}</string>
-											<string>8</string>
+											<string>32</string>
 											<string></string>
 										</array>
 									</dict>
@@ -706,9 +704,11 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Mothership bugs}</string>
-									<string>8</string>
+									<string>32</string>
 									<string>0</string>
 								</array>
+								<key>Expanded</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>Cols</key>
@@ -719,10 +719,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Mothership self-defence or attack combat}</string>
+\f0\fs24 \cf0 Mothership self-defence or attack combat}</string>
 									<string>32</string>
 									<string></string>
 								</array>
@@ -736,10 +736,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Change from 3 to 9 races/allegiances}</string>
+\f0\fs24 \cf0 Change from 3 to 9 races/allegiances}</string>
 									<string>32</string>
 									<string></string>
 								</array>
@@ -757,11 +757,9 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Motherships}</string>
-							<string>668</string>
+							<string>692</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -1395,6 +1393,8 @@
 											<string>136</string>
 											<string>0</string>
 										</array>
+										<key>Expanded</key>
+										<true/>
 										<key>Style</key>
 										<dict>
 											<key>TextColor</key>
@@ -2815,10 +2815,12 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf0 Smart Bombs}</string>
+\f0\fs20 \cf0 Smart Bombs (PHD's)}</string>
 											<string>136</string>
 											<string>0</string>
 										</array>
+										<key>Expanded</key>
+										<true/>
 										<key>Style</key>
 										<dict>
 											<key>TextColor</key>
@@ -2910,8 +2912,6 @@
 							<string>1332</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 						<key>Style</key>
 						<dict>
 							<key>TextColor</key>
@@ -3113,6 +3113,23 @@
 											<string></string>
 										</array>
 									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 Tempmult control during AP needs to increase as well as decrease.}</string>
+											<string>4</string>
+											<string></string>
+										</array>
+									</dict>
 								</array>
 								<key>Cols</key>
 								<array>
@@ -3126,7 +3143,7 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs24 \cf0 Ship controls}</string>
-									<string>80</string>
+									<string>84</string>
 									<string>0</string>
 								</array>
 								<key>Expanded</key>
@@ -3290,8 +3307,6 @@
 									<string>544</string>
 									<string>0</string>
 								</array>
-								<key>Expanded</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>Children</key>
@@ -3461,10 +3476,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Add mission penalty - deduction, fine or worst}</string>
+\f0\fs20 \cf0 Add mission penalty - deduction, fine or worst}</string>
 											<string>8</string>
 											<string></string>
 										</array>
@@ -3478,10 +3493,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Messages for missions &amp; grades - left hand text display}</string>
+\f0\fs20 \cf0 Messages for missions &amp; grades - left hand text display}</string>
 											<string>16</string>
 											<string></string>
 										</array>
@@ -3495,10 +3510,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Special message for mission &amp; grades - dialog}</string>
+\f0\fs20 \cf0 Special message for mission &amp; grades - dialog}</string>
 											<string>16</string>
 											<string></string>
 										</array>
@@ -3656,10 +3671,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Player status screen - right MFD display}</string>
+\f0\fs24 \cf0 Player status screen - right MFD display}</string>
 									<string>8</string>
 									<string></string>
 								</array>
@@ -3673,10 +3688,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 BUG: Hull temp for binary suns}</string>
+\f0\fs24 \cf0 BUG: Hull temp for binary suns}</string>
 									<string>16</string>
 									<string></string>
 								</array>
@@ -3694,11 +3709,9 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Flight/Player/Missions}</string>
-							<string>2848</string>
+							<string>2852</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -3770,8 +3783,6 @@
 							<string>240</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -3805,10 +3816,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 XPLAT display (Drawspockets to SDL)}</string>
+\f0\fs20 \cf0 XPLAT display (Drawspockets to SDL)}</string>
 											<string>120</string>
 											<string></string>
 										</array>
@@ -3822,10 +3833,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 XPLAT sound}</string>
+\f0\fs20 \cf0 XPLAT sound}</string>
 											<string>120</string>
 											<string></string>
 										</array>
@@ -3839,27 +3850,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
-
-\f0\fs20 \cf2 Xplat music}</string>
-											<string>120</string>
-											<string></string>
-										</array>
-									</dict>
-									<dict>
-										<key>Cols</key>
-										<array>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl}
 {\colortbl;\red255\green255\blue255;}
-}</string>
-											<string>{\rtf1\mac\ansicpg10000\cocoartf102
-{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 XPLAT control keys}</string>
+\f0\fs20 \cf0 Xplat music}</string>
 											<string>120</string>
 											<string></string>
 										</array>
@@ -3873,10 +3867,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 xplat usb pads, etc}</string>
+\f0\fs20 \cf0 XPLAT control keys}</string>
 											<string>120</string>
 											<string></string>
 										</array>
@@ -3890,10 +3884,27 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 complete filesystem}</string>
+\f0\fs20 \cf0 xplat usb pads, etc}</string>
+											<string>120</string>
+											<string></string>
+										</array>
+									</dict>
+									<dict>
+										<key>Cols</key>
+										<array>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+											<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\fs20 \cf0 complete filesystem}</string>
 											<string>120</string>
 											<string></string>
 										</array>
@@ -3910,10 +3921,10 @@
 }</string>
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 add missing words to Z_dungeon forth}</string>
+\f0\fs20 \cf0 add missing words to Z_dungeon forth}</string>
 													<string>80</string>
 													<string></string>
 												</array>
@@ -3927,10 +3938,10 @@
 }</string>
 													<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 changes to get it working under LSGF}</string>
+\f0\fs20 \cf0 changes to get it working under LSGF}</string>
 													<string>32</string>
 													<string></string>
 												</array>
@@ -3944,10 +3955,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 remove LSGF replace with z_dungeon forth}</string>
+\f0\fs20 \cf0 remove LSGF replace with z_dungeon forth}</string>
 											<string>112</string>
 											<string>0</string>
 										</array>
@@ -3963,10 +3974,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Graphic setup screen}</string>
+\f0\fs20 \cf0 Graphic setup screen}</string>
 											<string>80</string>
 											<string></string>
 										</array>
@@ -3980,10 +3991,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 make text line endings reads cross platform}</string>
+\f0\fs20 \cf0 make text line endings reads cross platform}</string>
 											<string>16</string>
 											<string></string>
 										</array>
@@ -3997,10 +4008,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 make fix for 16-bit endian picture reads}</string>
+\f0\fs20 \cf0 make fix for 16-bit endian picture reads}</string>
 											<string>8</string>
 											<string></string>
 										</array>
@@ -4014,10 +4025,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Font - use texture cutter}</string>
+\f0\fs20 \cf0 Font - use texture cutter}</string>
 											<string>32</string>
 											<string></string>
 										</array>
@@ -4031,10 +4042,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 Static OGL Graphics}</string>
+\f0\fs20 \cf0 Static OGL Graphics}</string>
 											<string>40</string>
 											<string></string>
 										</array>
@@ -4048,10 +4059,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Cross platform work}</string>
+\f0\fs24 \cf0 Cross platform work}</string>
 									<string>1008</string>
 									<string>0</string>
 								</array>
@@ -4074,8 +4085,6 @@
 							<string>1016</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -4092,10 +4101,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 story and credits}</string>
+\f0\fs20 \cf0 story and credits}</string>
 											<string>32</string>
 											<string></string>
 										</array>
@@ -4109,10 +4118,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 hi scores}</string>
+\f0\fs20 \cf0 hi scores}</string>
 											<string>32</string>
 											<string></string>
 										</array>
@@ -4126,10 +4135,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 register}</string>
+\f0\fs20 \cf0 register}</string>
 											<string>24</string>
 											<string></string>
 										</array>
@@ -4143,10 +4152,10 @@
 }</string>
 											<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs20 \cf2 custom mouse pointer for main menu / data screens}</string>
+\f0\fs20 \cf0 custom mouse pointer for main menu / data screens}</string>
 											<string>8</string>
 											<string></string>
 										</array>
@@ -4160,10 +4169,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Main menu}</string>
+\f0\fs24 \cf0 Main menu}</string>
 									<string>96</string>
 									<string>0</string>
 								</array>
@@ -4179,15 +4188,13 @@
 }</string>
 							<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fnil\fcharset77 LucidaGrande-Bold;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\b\fs24 \cf2 Non-Game Coding}</string>
+\f0\b\fs24 \cf0 Non-Game Coding}</string>
 							<string>96</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -4235,10 +4242,10 @@
 }</string>
 									<string>{\rtf1\mac\ansicpg10000\cocoartf102
 {\fonttbl\f0\fswiss\fcharset77 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
-\f0\fs24 \cf2 Game levels / difficulty}</string>
+\f0\fs24 \cf0 Game levels / difficulty}</string>
 									<string>16</string>
 									<string></string>
 								</array>
@@ -4259,8 +4266,6 @@
 							<string>336</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -4298,8 +4303,6 @@
 							<string>120</string>
 							<string>0</string>
 						</array>
-						<key>Expanded</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>Children</key>
@@ -4352,6 +4355,23 @@
 
 \f0\fs24 \cf0 Internal Alpha test and bug fix}</string>
 									<string>160</string>
+									<string></string>
+								</array>
+							</dict>
+							<dict>
+								<key>Cols</key>
+								<array>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl}
+{\colortbl;\red255\green255\blue255;}
+}</string>
+									<string>{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720
+
+\f0\fs24 \cf2 Product Registration}</string>
+									<string>40</string>
 									<string></string>
 								</array>
 							</dict>
@@ -4470,7 +4490,7 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\b\fs24 \cf0 Tuning/Polish}</string>
-							<string>984</string>
+							<string>1024</string>
 							<string>0</string>
 						</array>
 						<key>Expanded</key>
@@ -4489,7 +4509,7 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
 
 \f0\fs48 \cf0 Zex ToDo and Timings}</string>
-					<string>7640</string>
+					<string>7708</string>
 					<string>0</string>
 				</array>
 				<key>Expanded</key>
@@ -4506,7 +4526,7 @@
 {\fonttbl}
 {\colortbl;\red255\green255\blue255;}
 }</string>
-			<string>7640</string>
+			<string>7708</string>
 			<string>0</string>
 		</array>
 		<key>Expanded</key>
