@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: Autopilot.cpp,v $
+Revision 1.3  2003/09/28 17:30:08  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.2  2003/09/27 20:41:53  robp
 Fixed float->int warnings.
 
@@ -406,9 +409,9 @@ float accel=source_object->Dyn_OCB_control_data.ht_accel;
                   {
 
                    add_to_text_display("AP> Hypertransport disengaged - mass detected.",DLP_GREEN);  
-                   add_to_text_display("AP> Changing to transport mode.",DLP_GREEN);  
+                   add_to_text_display("AP> Changing to steer cue mode.",DLP_GREEN);  
                   } 
-                   engage_ap(object,AP_TRANSPORT);
+                   engage_ap(object,AP_STEER_CUE);
                  }
                }
               }
@@ -419,9 +422,9 @@ float accel=source_object->Dyn_OCB_control_data.ht_accel;
                   if (object==get_main_camera_object())
                   {
                    add_to_text_display("AP> Hypertransport disengaged - too close.",DLP_GREEN);  
-                   add_to_text_display("AP> Changing to Transport.",DLP_GREEN);  
+                   add_to_text_display("AP> Changing to steer cue.",DLP_GREEN);  
                   }
-                 engage_ap(object,AP_TRANSPORT);
+                 engage_ap(object,AP_STEER_CUE);
                }
               }
 }
@@ -479,7 +482,7 @@ float ht_engage_time=source_object->Dyn_OCB_control_data.ap_ht_engage_timer;
 	             add_to_text_display("AP> Hypertransport Engaged.",DLP_GREEN);  
                      play_zsound(explosion4, sound_high_pri, c1_chan1, sound_vol_7);
                   }
-                   flash_screen=35;
+                   flash_screen=15;
                    decrement_ship_attrib_data(the_object, HTRNV);
    }
    else
@@ -1056,11 +1059,11 @@ source_object->Dyn_OCB_control_data.ORCS_thrust_down=0;
 
         if (get_mass_in_kg(source_object->object_targetted)>500000000) //planet?
         {
-         radius_mult=2.5;
+         radius_mult=AP_RADIUS_STOP_PLANET;
         }
         else
         {
-         radius_mult=16;
+         radius_mult=AP_RADIUS_STOP; //16;
         }
 		
 		

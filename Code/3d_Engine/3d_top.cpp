@@ -1,6 +1,9 @@
 //3d_top.cpp
 /*
 $Log: 3d_top.cpp,v $
+Revision 1.5  2003/09/28 17:30:10  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.4  2003/09/28 10:36:03  robp
 Signed/Unsigned comparison fixes from last night, plus collision fix.
 
@@ -1086,6 +1089,7 @@ if (fast_object)
         
             if (p1.x<0.72 && p1.y<0.72 && p1.z <0.72 )  
             {
+
              if ( distance_to<15000000)
              {
 
@@ -1108,9 +1112,10 @@ if (fast_object)
               }
               
               else
-              if ( distance_to<10000000000.0)
+              
+              if ( distance_to<100000000000.0)
               {
-
+                
 	        if (ocb_ptr->object_list[object].Dyn_OCB_control_data.controller==MOTHERSHIP_CONTROL)
 			{
 			 view_mship_object++;

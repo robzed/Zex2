@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: load_objects.cpp,v $
+ * Revision 1.5  2003/09/28 17:29:46  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.4  2003/09/27 08:58:30  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *
@@ -206,6 +209,7 @@ Added accessor in access_ocbs which returns a pointer to type ZObjectControl
 #include "particle_dyn.h"
 #include "call_signs.h"
 #include "object_manipulation.h"
+#include "physics.h"
 
 // ***********************************************************************************
 // * CONSTANTS 
@@ -241,6 +245,9 @@ char *taddr;
 //SB 14/1198
 /*
  * $Log: load_objects.cpp,v $
+ * Revision 1.5  2003/09/28 17:29:46  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.4  2003/09/27 08:58:30  robp
  * Removal of Invalid Conversion Warning for C++ (I hate unsigned/signed chars)
  *
@@ -718,9 +725,14 @@ _ZPoly *the_polys;
 unsigned char or_bit;
 int how_many_polys,poly_count;
 int n;
-
+char debug_oid[5];
 
 if(the_pb->init_check!='chek') report_error ("load_dyn_object: Uninitialised parameter block.","\p Static slot =",static_slot);
+
+if ((static_slot>=42) && (static_slot<=46))
+{
+              fprintf (stderr, "load_dyn_object: Non human mothership part loaded\n"); 
+}
 
 if(scale<1)  report_error ("load_dyn_object: Scale less than 1.","\p Static slot =",static_slot);
 
@@ -730,15 +742,44 @@ the_pb->init_check=0;
 if (the_pb->mass<=0) report_error ("load_dyn_object: Mass=0 or -ve! Static slot =","\p",static_slot);
 if (dest_ocb!=-1)
     {
-        
+        current_object_ptr=&ocb_ptr->object_list[dest_ocb];
         if (the_pb->parent!=-1)
         {
             set_has_children(the_pb->parent); //tell parent it has had a child!
         }
 
-     current_object_ptr=&ocb_ptr->object_list[dest_ocb];
      if (current_object_ptr->in_use!=0)  report_error ("load_dyn_object: Dynamic Object already in use. Object must be dead.","\p Static slot =",static_slot);
 	(*ocb_ptr).object_list[dest_ocb]=(*ocb_Sptr).object_list[static_slot];	//copy the object
+//debug
+        #if DYNLOAD_LOG==1
+            debug_oid[0]=(current_object_ptr->Oid>>24);
+            debug_oid[1]=(current_object_ptr->Oid>>16);
+            debug_oid[2]=(current_object_ptr->Oid>>8);
+            debug_oid[3]=(current_object_ptr->Oid);
+            debug_oid[4]=0;
+            
+            fprintf (stderr, "load_dyn_object: StatObj: %i (%s). DynObj: %i Pos (metres)= x:%.0f, y:%.0f, z:%.0f\n",static_slot, 
+            debug_oid, dest_ocb, the_pb->world_x*ZEX_UNIT_SIZE_IN_METERS, the_pb->world_y*ZEX_UNIT_SIZE_IN_METERS, 
+            the_pb->world_z*ZEX_UNIT_SIZE_IN_METERS);
+
+            if (the_pb->world_x==0.0 && the_pb->world_y==0.0 && the_pb->world_z==0.0)
+            {
+              fprintf (stderr, "load_dyn_object: WARNING: StatObj: %i (%s). DynObj: %i Is loaded at 0,0,0\n",static_slot,debug_oid, dest_ocb); 
+              if (current_object_ptr->parent!=-1)
+              {
+              fprintf (stderr, "Parent is %i\n",current_object_ptr->parent); 
+              }
+              else
+              {
+              fprintf (stderr, "NO Parent\n"); 
+              }
+              
+            }
+
+        #endif
+        
+//end debug
+
 	//fill in callsign
 	current_object_ptr->in_use=1;	//Let's not "where do you want to crash today?" Stuforgot this and hence receives the WOW award.
 	current_object_ptr->targetted=0;

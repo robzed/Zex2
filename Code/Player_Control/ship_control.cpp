@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
 // $Log: ship_control.cpp,v $
+// Revision 1.8  2003/10/14 21:25:46  stu_c
+// Objects in test environment are now controlled by the mouse instead of the keyboard - left/right is yaw, up/down is pitch. Have a dead range of +-100. This gives us ship control in the TE as well as object control.
+//
 // Revision 1.7  2003/10/12 21:05:20  stu_c
 // Zex:Test Mode: In test mode, you can now target an object then control it with the uaw, pitch and roll keys to get a better idea of how a model looks in the game. This is a work in progress, but at least it's a start.
 //
@@ -1132,7 +1135,7 @@ void control_targetted_object_for_test(int object)
  vector p,d;
  Point delta_mouse;
  int m_yaw=0;
- int m_roll=0;
+// int m_roll=0;
  int m_pitch=0;
  
  reset_angular_torque(object);

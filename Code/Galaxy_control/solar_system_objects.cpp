@@ -641,6 +641,7 @@ else	//not a known allegiance - fatal error
 {
  report_error ("load_mothership: Unknown allegiance!","\pAllegiance=",allegiance);
 }
+fprintf (stderr, "\n\n");
 
 return the_return_slot;
 }

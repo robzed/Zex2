@@ -57,7 +57,7 @@
 //this define is used to set up a system when testing - i.e. no solar system,
 //no dust, asteroids etc
 
-#define TEST_SYSTEM 1	//after changing this you should completely rebuild the project! Neither Anvil nor PB can cope with the dependencies correctly
+#define TEST_SYSTEM 0	//after changing this you should completely rebuild the project! Neither Anvil nor PB can cope with the dependencies correctly
 #define RIGHT_HANDED 1  //Should be 1 for right handed operation. Zex was until 080202 left handed
 
 #define REMOVE_GRAVITY_FROM_GAME  1   // remove gravity and orbits from game

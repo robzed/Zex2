@@ -7,8 +7,11 @@ Zex.cpp
 060903 - Zex 2.3 in CVS
 
 Here is what people have been up to:
-$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.cpp,v 1.6 2003/09/28 17:30:11 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Main/ZEX.cpp,v 1.7 2003/10/15 17:30:34 stu_c Exp $
 $Log: ZEX.cpp,v $
+Revision 1.7  2003/10/15 17:30:34  stu_c
+Zex: OGL: Lock to VBL now always active, now boots to main menu.
+
 Revision 1.6  2003/09/28 17:30:11  robp
 Changed files from .c to .cpp and removed spaces out of a couple of filenames.
 
@@ -935,9 +938,18 @@ if (end_time-start_time>=60)	//calc fps 2 times/sec
   if ((run_time%30)==0)
   { 
    _3D pos;
-    get_raw_position(get_main_camera_object(),&pos);
+   _3D target_pos;
+   
+   int targetted_object;
+    get_position_in_m(get_main_camera_object(),&pos);
     
-    fprintf (stderr, "Exec: HEARTBEAT %d secs. Location x:%.0f y:%.0f z:%.0f\n", heartbeat+1,pos.x, pos.y, pos.z);
+    fprintf (stderr, "Exec: HEARTBEAT %d secs. Location (metres) x:%.0f y:%.0f z:%.0f\n", heartbeat+1,pos.x, pos.y, pos.z);
+    //calculate difference to targetted object
+    targetted_object=get_object_targetted(get_main_camera_object());
+    get_position_in_m(targetted_object,&target_pos);
+    pos.x=pos.x-target_pos.x; pos.y=pos.y-target_pos.y; pos.z=pos.z-target_pos.z;
+    fprintf (stderr, "Exec: Diff to target (metres) is: x:%.0f y:%.0f z:%.0f\n", pos.x, pos.y, pos.z);
+
   }
  heartbeat++;
  #endif

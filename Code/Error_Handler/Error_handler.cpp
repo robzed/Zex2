@@ -1,6 +1,9 @@
 //Error_handler.cpp
 /*
  * $Log: Error_handler.cpp,v $
+ * Revision 1.5  2003/10/25 18:14:30  stu_c
+ * A complete of the routines weren't dumping to the system log.
+ *
  * Revision 1.4  2003/09/28 17:30:09  robp
  * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
  *
@@ -219,7 +222,7 @@ id_string[4]=id;
 //	ISpSuspend();
 
     fprintf (stderr, "Zex EXEC: Fatal Error Dialog. Detail follows...\n");
-    fprintf (stderr, &errorString[1]);
+    fprintf (stderr, (const char*) &errorString[1]);
     fprintf (stderr, (char *)id_string);
     fprintf (stderr, " \n\n");
 
@@ -297,7 +300,7 @@ id_string[4]=id;
 //	ISpSuspend();
 
     fprintf (stderr, "Zex EXEC: Fatal Error Dialog. Detail follows...\n");
-    fprintf (stderr, &errorString[1]);
+    fprintf (stderr, (const char*) &errorString[1]);
     fprintf (stderr, (char *)id_string);
     fprintf (stderr, " %d\n\n", number);
 	ParamText((unsigned char*)errorString, (unsigned char*) id_string, (unsigned char*) number_string, "\p");

@@ -30,6 +30,10 @@
 #define MAX_LASER_TEMP 1500
 
 
+//How far away does AP start decelerating and stop
+#define AP_RADIUS_STOP_PLANET 2.5
+#define AP_RADIUS_STOP 16
+
 //
 // Zex file locations and file specific details
 //

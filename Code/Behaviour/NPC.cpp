@@ -595,9 +595,9 @@ ZObject * object_ptr=&ocb_ptr->object_list[the_object]; //ptr to parentship;
 
         (*ocb_ptr).object_list[the_object].Dyn_OCB_control_data.exhaust_trigger_slot=dest_ocb;
 
-	the_params.world_x=0;
-	the_params.world_y=0;
-	the_params.world_z=0;
+	the_params.world_x=object_ptr->Oworldx;
+	the_params.world_y=object_ptr->Oworldy;
+	the_params.world_z=object_ptr->Oworldz;
 	the_params.controller_ref=PARTICLE_GENERATOR_EXHAUST;
 	the_params.control_use_1=1;	//0=single laser, 1=twin
 	the_params.mass=1;	//basic ship weighs 1 tonne

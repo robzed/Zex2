@@ -16,6 +16,9 @@
 // ***********************************************************************************
 
 // $Log: make_solar_system.cpp,v $
+// Revision 1.4  2003/09/28 17:29:47  robp
+// Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+//
 // Revision 1.3  2003/09/27 20:41:49  robp
 // Fixed float->int warnings.
 //
@@ -374,6 +377,7 @@ double x1,y1,z1,angle,orbit_dist;
     angle=RangedRdm(0,360); x1=orbit_dist*(COS(angle)); z1=orbit_dist*(SIN(angle));
     x1+=orbited_x; y1=orbited_y; z1+=orbited_z;
     POBs_load_spacestation(x1,y1,z1,RangedRdm(0,MSS_SPACESTATION_SEED),RangedRdm(0,MSS_NUM_SPACESTATION_ALLEGIANCES));
+//    POBs_load_spacestation(x1,y1,z1,RangedRdm(0,MSS_SPACESTATION_SEED),1);
     return (object_diameter/2)*MSS_min_planet_spacestation_distance;	 // allow for object
 //    }
 //else  // no place spacestation
@@ -422,11 +426,12 @@ extern int difficulty;
    {
    report_error("Unknown difficulty in my_make_moons","\p FATAL ",4);
    }
-
+   
+   number_of_planet_motherships=1; //debug - always 1
 
 cd=planet_diameter/2;
 
-for (n=1;n<number_of_planet_motherships;n++)
+for (n=0;n<number_of_planet_motherships;n++)
 {
   cd+=my_place_spacestation(planet_x,planet_y,planet_z,planet_diameter);
 }

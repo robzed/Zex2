@@ -97,7 +97,10 @@ void MS_launch_ship(int MS, int MS_allegiance)
 {
 int val=NDRangedRdm(0,10);
    
-   //return;
+   #if !NPCS_ON
+     return;
+   #endif
+   
    
    if (val<9)
    { 
