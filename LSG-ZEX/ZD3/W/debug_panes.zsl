@@ -279,6 +279,7 @@ THEN
 : show_basic_pane    ['] basic_pane       debug_pane_vector ! ;
 : show_object_pane   ['] object_info_pane debug_pane_vector ! ;
 : show_vector_pane   ['] vector_pane      debug_pane_vector ! ;
+: show_sim_pane ['] sim_pane1      debug_pane_vector ! ;
 : show_fps_pane     ['] fps_pane     debug_pane_vector ! ;
 : sim_pane  ['] sim_pane1     debug_pane_vector ! ;
 : ap_pane  ['] ap_pane1     debug_pane_vector ! ;
