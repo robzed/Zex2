@@ -103,6 +103,7 @@ void disable_inputs(void);
 void poll_input_device(void);
 void init_input_device(void);
 void ZexGetMouse(Point* where);
+void ZexGetMouseDelta (Point *the_point);
 
 short isPressed(unsigned short k );
 int game_fire_button(void);

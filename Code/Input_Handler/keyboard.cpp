@@ -17,6 +17,9 @@
 // ***********************************************************************************
 /* CVS bits
 $Log: keyboard.cpp,v $
+Revision 1.2  2003/09/28 17:29:49  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.1.1.1  2003/09/05 22:35:55  stu_c
 First Imported.
 
@@ -174,6 +177,8 @@ UInt32 gRearView;
 UInt32 gPane;     //MFD pane toggle
 
 static int keyboard_is_input=0;
+static int mouse_first_run; //for mouse delta
+Point mouse_last;
 
 // ***********************************************************************************
 // * INTERNAL FUNCTION PROTOTYPES
@@ -197,6 +202,7 @@ void init_keyboard_input(void)
 {
  keyboard_is_input=0;
  clear_keyglobs(); 
+ mouse_first_run=1;
 }
 
 
@@ -367,6 +373,26 @@ extern	  AGLDrawable aglWindow;
 DSpGetMouse (the_point);
 SetPort(GetWindowPort((WindowRef)aglWindow));
 GlobalToLocal (the_point);
+
+}
+
+void ZexGetMouseDelta (Point *the_point)
+{
+extern	  AGLDrawable aglWindow;
+Point current_point;
+
+DSpGetMouse (&current_point);
+SetPort(GetWindowPort((WindowRef)aglWindow));
+GlobalToLocal (&current_point);
+
+if (mouse_first_run)
+{
+  mouse_last=current_point;
+  mouse_first_run=0;
+}
+
+the_point->h=mouse_last.h-current_point.h;
+the_point->v=mouse_last.v-current_point.v;
 
 }
 

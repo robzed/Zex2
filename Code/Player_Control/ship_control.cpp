@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
 // $Log: ship_control.cpp,v $
+// Revision 1.7  2003/10/12 21:05:20  stu_c
+// Zex:Test Mode: In test mode, you can now target an object then control it with the uaw, pitch and roll keys to get a better idea of how a model looks in the game. This is a work in progress, but at least it's a start.
+//
 // Revision 1.6  2003/09/28 17:29:38  robp
 // Changed files from .c to .cpp and removed spaces out of a couple of filenames.
 //
@@ -577,8 +580,8 @@ if(get_object_targetted(get_main_camera_object())!=-1)
     }
 
 
-  object_systems_sim(0);	//handle all ships systems/engines/fuel etc
-  return;
+//  object_systems_sim(0);	//handle all ships systems/engines/fuel etc
+//  return;
 }
 #endif
 
@@ -1127,7 +1130,21 @@ void do_ejection()
 void control_targetted_object_for_test(int object)
 {
  vector p,d;
-
+ Point delta_mouse;
+ int m_yaw=0;
+ int m_roll=0;
+ int m_pitch=0;
+ 
+ reset_angular_torque(object);
+ 
+ ZexGetMouseDelta(&delta_mouse);
+ 
+ if (delta_mouse.h>100) m_yaw=delta_mouse.h;
+ if (delta_mouse.h<-100) m_yaw=delta_mouse.h;
+ if (delta_mouse.v>100) m_pitch=delta_mouse.v;
+ if (delta_mouse.v<-100) m_pitch=delta_mouse.v;
+ 
+ 
 /*
 if (gThrustDown)
   {
@@ -1157,26 +1174,26 @@ if (gVertDownThrust)
   }
 */
 
-   if (gYawl)	//left arrow
+   if (m_yaw<0)	//left arrow
    {
    p.x=0; p.y=0; p.z=1;	//position of force
    d.x=1; d.y=0; d.z=0;	//direction of force
-   apply_a_force(object, 10, p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, m_yaw, p /*oint*/ , d /*irection*/);   
 
    p.x=0; p.y=0; p.z=-1;	//position of force
    d.x=-1; d.y=0; d.z=0;	//direction of force
-   apply_a_force(object, 10, p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, m_yaw, p /*oint*/ , d /*irection*/);   
    }
    else //no left input
-   if (gYawr)	//right arrow
+   if (m_yaw>0)	//right arrow
    {  
    p.x=0; p.y=0; p.z=1;	//position of force
    d.x=1; d.y=0; d.z=0;	//direction of force
-   apply_a_force(object, -10, p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, m_yaw, p /*oint*/ , d /*irection*/);   
 
    p.x=0; p.y=0; p.z=-1;	//position of force
    d.x=-1; d.y=0; d.z=0;	//direction of force
-   apply_a_force(object, -10, p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, m_yaw, p /*oint*/ , d /*irection*/);   
    }
 
 
@@ -1202,26 +1219,26 @@ if (gVertDownThrust)
    apply_a_force(object,-10 /*newton*/ , p   /*point*/ , d /*direction*/);
    }
 
-   if (gPitchu )	
+   if (m_pitch>0)	
    {
    p.x=0; p.y=0; p.z=1;	//position of force
    d.x=0; d.y=-1; d.z=0;	//direction of force
-   apply_a_force(object, 10,p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, -m_pitch,p /*oint*/ , d /*irection*/);   
 
    p.x=0; p.y=0; p.z=-1;	//position of force
    d.x=0; d.y=1; d.z=0;	//direction of force
-   apply_a_force(object, 10, p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, -m_pitch, p /*oint*/ , d /*irection*/);   
    }
    else //no left input
-   if (gPitchd)	
+   if (m_pitch<0)	
    {
    p.x=0; p.y=0; p.z=1;	//position of force
    d.x=0; d.y=-1; d.z=0;	//direction of force
-   apply_a_force(object, -10,p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, abs(m_pitch), p /*oint*/ , d /*irection*/);   
 
    p.x=0; p.y=0; p.z=-1;	//position of force
    d.x=0; d.y=1; d.z=0;	//direction of force
-   apply_a_force(object, -10, p /*oint*/ , d /*irection*/);   
+   apply_a_force(object, abs(m_pitch) , p /*oint*/ , d /*irection*/);   
    }
 }
 
