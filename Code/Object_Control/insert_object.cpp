@@ -1,6 +1,9 @@
 //insert object.cpp
 /*
  * $Log: insert_object.cpp,v $
+ * Revision 1.5  2003/09/28 17:29:48  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.4  2003/09/27 21:52:39  robp
  * Fixed places where we were loading an unsigned with -1.
  *
@@ -209,6 +212,9 @@ for (i=0;i<object_number_of_polys;i++)
 
 //copy the polys to polylist_ptr
 //(*poly_list_ptr).poly_list[0]=test_polys;
+
+memset(&test,0,sizeof(ZObject));
+
 test.kill_flags=0;
 test.Dyn_OCB_control_data.request_dock=0;
 test.eng_invisible=0;
@@ -557,6 +563,9 @@ int temp_red, temp_green, temp_blue;
 
 //copy the polys to polylist_ptr
 //(*poly_list_ptr).poly_list[0]=test_polys;
+
+memset(&test,0,sizeof(ZObject));
+
 test.kill_flags=0;
 test.Dyn_OCB_control_data.request_dock=0;
 test.eng_invisible=0;
