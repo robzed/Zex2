@@ -151,6 +151,7 @@ print-debug-blank
  cstring" SQuatz e-7" camera_object_quat_z @ print-debug
  cstring" SQuatw e-7" camera_object_quat_w @ print-debug
  cstring" camera_pan" camera_pan_force_debug @ print-debug
+ cstring" FPS" fps @ print-debug
 \
 
 
