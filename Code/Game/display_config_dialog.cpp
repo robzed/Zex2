@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : display_configuration_dialog.c
+// * FILENAME           : display_config_dialog.cpp
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C
@@ -44,7 +44,7 @@
 
 #endif //pch
 
-#include "display_configuration_dialog.h"
+#include "display_config_dialog.h"
 #include "coffee.h"
 #include "splat_control.h"
 

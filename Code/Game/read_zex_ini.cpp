@@ -16,6 +16,9 @@
 // ***********************************************************************************
 /*
  * $Log: read_zex_ini.cpp,v $
+ * Revision 1.3  2003/09/28 17:29:40  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.2  2003/09/20 12:57:00  robp
  * Removed nested comments
  *
@@ -101,7 +104,7 @@ Coffee fixes after changes for X.
 #include "splat_control.h"
 #include "physics.h"
 #include "coffee.h"
-#include "display_configuration_dialog.h"
+#include "display_config_dialog.h"
 
 // ***********************************************************************************
 // * CONSTANTS 

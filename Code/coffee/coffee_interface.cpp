@@ -17,6 +17,9 @@
 // *
 /* ***********************************************************************************
  * $Log: coffee_interface.cpp,v $
+ * Revision 1.5  2003/09/28 17:29:57  robp
+ * Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+ *
  * Revision 1.4  2003/09/28 10:36:04  robp
  * Signed/Unsigned comparison fixes from last night, plus collision fix.
  *
@@ -177,7 +180,7 @@ Checks for re-size or illegal addresses made.
 #include "galaxy.h"
 #include "3d_depth_of_field_manager.h"
 #include "POBS.h"
-#include "display_configuration_dialog.h"
+#include "display_config_dialog.h"
 
 // ***********************************************************************************
 // * CONSTANTS 

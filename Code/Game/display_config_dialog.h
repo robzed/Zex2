@@ -1,5 +1,5 @@
 // *************************************MODULE HEADER*********************************
-// * FILENAME           : display_configuration_dialog.h
+// * FILENAME           : display_config_dialog.h
 // * MODULE TITLE       : 
 // * PROJECT            : Zex
 // * LANGUAGE           : ANSI C

@@ -1,8 +1,11 @@
 /*
  * Splat_control.cpp
  *
-$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.cpp,v 1.2 2003/09/27 21:52:41 robp Exp $
+$Header: /home/ls_cvs/ZEX2.3/Code/Screen_Splat_Control/Splat_control.cpp,v 1.3 2003/09/28 17:30:02 robp Exp $
 $Log: Splat_control.cpp,v $
+Revision 1.3  2003/09/28 17:30:02  robp
+Changed files from .c to .cpp and removed spaces out of a couple of filenames.
+
 Revision 1.2  2003/09/27 21:52:41  robp
 Fixed places where we were loading an unsigned with -1.
 
@@ -155,7 +158,7 @@ First Imported.
 
 #include "file_io.h"
 #include "physics.h"
-#include "display_configuration_dialog.h"
+#include "display_config_dialog.h"
 
 
 #define MAXBUFFERS 2	//how many screen buffers we using - valid is 2 or 3

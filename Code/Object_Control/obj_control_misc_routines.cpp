@@ -1,5 +1,10 @@
 /*
- * $Log: object_control_misc_routines.c,v $
+ * obj_control_misc_routines.cpp
+ *
+ * $Log: obj_control_misc_routines.cpp,v $
+ * Revision 1.4  2003/09/27 21:52:38  robp
+ * Fixed places where we were loading an unsigned with -1.
+ *
  * Revision 1.3  2003/09/27 20:41:42  robp
  * Fixed float->int warnings.
  *
