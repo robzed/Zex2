@@ -3,6 +3,9 @@
 //SB 14/11/98
 /*
 $Log: file_io.cpp,v $
+Revision 1.8  2003/11/03 22:35:49  robp
+Latest changes and a comment about the flag PORTABLE_FILESYSTEM. PORTABLE_FILESYSTEM is currently turned off and shouldn't effect normal Zex.
+
 Revision 1.7  2003/09/30 21:32:38  robp
 Removed C++ temporary transition code (static type cast.)
 
@@ -546,7 +549,7 @@ saved_file_data_ptr->my_save_file.platform='MAC ';
 saved_file_data_ptr->my_save_file.vers=SAVE_VERS;
 saved_file_data_ptr->my_save_file.cstring0='Zex ';
 saved_file_data_ptr->my_save_file.cstring1='©LSG';
-saved_file_data_ptr->my_save_file.cstring2='1999';
+saved_file_data_ptr->my_save_file.cstring2='2005';
 
 //saved_file_data_ptr->my_save_file.selected_item_type=selected_item_type;
 //saved_file_data_ptr->my_save_file.selected_item_index=selected_item_index;

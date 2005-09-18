@@ -1531,24 +1531,29 @@ if(theError) MyDebugStr(theError,"Get Context","Couldn't find any information on
 
 while (theContext && number_of_contexts!=MAX_NUMBER_OF_CONTEXTS)
   {
-  /* process the context */
-  theError = DSpContext_GetAttributes(theContext, &theAttributes);
-  if(theError) MyDebugStr(theError,"Get Attributes","Couldn't find any information on that display!");      /* process the error */
-  
-  if(theAttributes.displayDepthMask & (16+32))		// only accept displays that support 16 or 32 bit
-    {
-    if(!check_for_duplicates(theAttributes.displayWidth, theAttributes.displayHeight, 
-                            theAttributes.frequency, theAttributes.displayDepthMask))
-      {
-      // read DSpContextAttributes structure for resolution, frequency and depths
-      insert_context(theAttributes.displayWidth,theAttributes.displayHeight,theAttributes.frequency,theAttributes.displayDepthMask);
-      number_of_contexts++;
-      }
-    }
-  
-  /* get the next context */
-  theError = DSpGetNextContext(theContext, &theContext);
-  if(theError) MyDebugStr(theError,"Next Context","Problem Getting Context information");     /* process the error */
+	  /* process the context */
+	  theError = DSpContext_GetAttributes(theContext, &theAttributes);
+	  if(theError) MyDebugStr(theError,"Get Attributes","Couldn't find any information on that display!");      /* process the error */
+	  
+	  if(theAttributes.displayDepthMask & (16+32))		// only accept displays that support 16 or 32 bit
+		{
+		if(!check_for_duplicates(theAttributes.displayWidth, theAttributes.displayHeight, 
+								theAttributes.frequency, theAttributes.displayDepthMask))
+		  {
+		  // read DSpContextAttributes structure for resolution, frequency and depths
+		  insert_context(theAttributes.displayWidth,theAttributes.displayHeight,theAttributes.frequency,theAttributes.displayDepthMask);
+		  number_of_contexts++;
+		  }
+		}
+	  
+	  /* get the next context */
+	  theError = DSpGetNextContext(theContext, &theContext);
+	  if(theError) 
+	  {	
+		if (theError==kDSpContextNotFoundErr) theContext=0;
+		else
+		MyDebugStr(theError,"Next Context","Problem Getting Context information");     /* process the error */
+	  }
   }
 
 

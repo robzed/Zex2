@@ -18,12 +18,12 @@
 
 #define ENG_DEBUG_EXPORT 1	//various debugging variables are updated in 3d_top
 #define RELEASE 0	        //DO set this to 1 for release - if 0 it shows useful debug/cheat stuff in log
-#define RT_PRIORITY 0	        //Use real time thread if 1 - should be 1 for release
+#define RT_PRIORITY 1	        //Use real time thread if 1 - should be 1 for release
 #define CAPTURE_DISPLAYS 0      //if 1, we capture the display on OS X -- should be 1 for release
 #define DESKTOP_BLANKING 0      //if 1 we blank the desktop out to black - should be 1 for release
-#define ALIGN_OGL_WIN_CENTRE 0  //aligns ogl window to centre of display, otherwise top/right so I can see the run log
+#define ALIGN_OGL_WIN_CENTRE 1  //aligns ogl window to centre of display, otherwise top/right so I can see the run log
 
-#define NPCS_ON 0               //MS's launch NPC's if 1
+#define NPCS_ON 1               //MS's launch NPC's if 1
 
 //Logging control macros
 
@@ -44,7 +44,7 @@
   #define TRADER_LOG 0
   #define MS_LAUNCH_LOG 0  //motherships log what they launch
   #define KILL_CHILD_LOG 1  //children being killed are logged
-  #define DYNLOAD_LOG 1     //load_dyn_object logs
+  #define DYNLOAD_LOG 0     //load_dyn_object logs
 //weapons logging
   #define SHOW_VIRTUAL_TRIGGERS 0
   #define EXTREME_LASER_LOGGING 0 //will generate a message for every laser particle created and killed!
