@@ -1,0 +1,62 @@
+# git ignore 
+=============
+# also see http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects
+
+# build files/folders
+*.o
+build/
+DerivedData/
+
+# Mac specific
+.DS_Store
+.Trashes
+
+# Xcode mac specific files
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+xcuserdata
+*.xcworkspace
+*~.nib
+*.xccheckout
+*.moved-aside
+
+#    NB: also, whitelist the default ones, some projects need to use these
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+
+# Editor files
+*~
+*.swp
+*.swo
+*.bak
+
+#Windows
+# Windows image file caches
+[Tt]humbs.db
+# Folder config file
+Desktop.ini
+
+#Android
+.csettings
+
+# KDE
+.directory
+
+# Visual Studio / win specific files
+# NOT COMPLETE!
+*.ncb
+*.suo
+*.user
+*.sdf
+*.opensdf
+
+#Code::Blocks
+*.depend
+*.layout
+*.cbTemp
