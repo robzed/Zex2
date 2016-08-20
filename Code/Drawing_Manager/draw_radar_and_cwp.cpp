@@ -119,7 +119,7 @@ i_know_what_im_doing_kill
  * Altered radar ranges, and also made planets appear on radar
  *
  * Revision 1.8  2000/10/08 21:45:51  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.7  2000/10/01 14:28:56  rob
  * Altered centerings for new ranges

@@ -152,7 +152,7 @@ Old lighting calls removed
 // orbit
 //
 // Revision 1.4  2000/10/08 21:48:46  stu
-// Engine conversion to 64 bit. Bitch of a job.
+// Engine conversion to 64 bit. Huge pain of a job.
 //
 // Revision 1.3  2000/09/20 23:50:12  stu
 // HUD/AP/Scaling

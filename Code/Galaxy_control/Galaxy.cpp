@@ -165,7 +165,7 @@ New light control calls.
  * temporarily disabled the gravity
  *
  * Revision 1.11  2000/10/08 21:42:51  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.10  2000/10/08 13:24:23  rob
  * set velocity in ocb uses new accessor

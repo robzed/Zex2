@@ -37,7 +37,7 @@ Revision 1.1.1.1  2001/01/01 21:13:39  rob
 First Imported.
 
 Revision 1.1  2000/10/08 21:47:18  stu
-Engine conversion to 64 bit. Bitch of a job.
+Engine conversion to 64 bit. Huge pain of a job.
 
 Revision 1.0.0.1  2000/08/21 22:10:20  stu
 First Imported.

@@ -420,7 +420,7 @@ AP tweaks.
  * add error message to failed find dyn object slot
  *
  * Revision 1.5  2000/10/08 21:48:13  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.4  2000/10/01 13:29:59  rob
  * Stu's changes to load objects so that it can scale different copies of the same object properly.

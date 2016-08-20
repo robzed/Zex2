@@ -76,7 +76,7 @@ Added accessor in access_ocbs which returns a pointer to type ZObjectControl
  * First Imported.
  *
  * Revision 1.1  2000/10/08 21:45:06  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.0.0.1  2000/08/21 22:07:04  stu
  * First Imported.

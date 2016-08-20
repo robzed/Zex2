@@ -85,7 +85,7 @@ Coffee fixes after changes for X.
  * Relative velocities, turbulence, planet names.
  *
  * Revision 1.6  2000/10/08 21:43:22  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.5  2000/10/08 13:21:56  rob
  * Added:

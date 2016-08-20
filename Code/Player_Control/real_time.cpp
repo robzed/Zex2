@@ -96,7 +96,7 @@ Coffee fixes after changes for X.
  * Various.
  *
  * Revision 1.3  2000/10/08 21:46:16  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.2  2000/09/20 23:55:15  stu
  * HUD/AP/Scaling

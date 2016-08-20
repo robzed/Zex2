@@ -61,7 +61,7 @@ Revision 1.5  2000/11/26 22:55:47  stu
 Various.
 
 Revision 1.4  2000/10/08 21:41:51  stu
-Engine conversion to 64 bit. Bitch of a job.
+Engine conversion to 64 bit. Huge pain of a job.
 
 Revision 1.3  2000/10/08 13:23:37  rob
 calculate normal updated

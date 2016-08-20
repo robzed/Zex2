@@ -49,7 +49,7 @@ set_main_camera_object
  * First Imported.
  *
  * Revision 1.1  2000/10/08 21:43:50  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.0.0.1  2000/08/21 22:00:03  stu
  * First Imported.

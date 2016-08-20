@@ -113,7 +113,7 @@ Dust now self lit.
  * orbit
  *
  * Revision 1.2  2000/10/08 21:45:42  stu
- * Engine conversion to 64 bit. Bitch of a job.
+ * Engine conversion to 64 bit. Huge pain of a job.
  *
  * Revision 1.1  2000/09/20 23:48:17  stu
  * HUD/AP/Scaling
