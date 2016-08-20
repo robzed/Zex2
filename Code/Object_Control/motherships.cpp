@@ -1006,7 +1006,7 @@ if (object_ptr->docking_what==-1)
 if (object_ptr->control_use_4==1)
 {
 if ((*ocb_ptr).object_list[object_ptr->docking_what].in_use==0)	//prevent anything embarrasing to my rep
-								//as a shit hot coder happening...
+								//as a quite superb coder happening...
     {
     cancel_dock(object_ptr->docking_what);
     return;
@@ -1857,7 +1857,7 @@ if (object_ptr->docking_what==-1)
 if (object_ptr->control_use_4==1)
 {
 if ((*ocb_ptr).object_list[object_ptr->docking_what].in_use==0)	//prevent anything embarrasing to my rep
-								//as a shit hot coder happening...
+								//as a quite superb coder happening...
     {
     cancel_dock(object_ptr->docking_what);
     return;

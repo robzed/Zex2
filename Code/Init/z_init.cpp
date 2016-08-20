@@ -686,8 +686,8 @@ LSRAW *the_picture;
     #endif
 	
 	
-       picture_w=(*the_picture).pwidth;;	//fucking Ian hard coded these rather than stick a fucking header 
-                                //on his fucking raw files!! BASTARD. SO I had to redo them
+       picture_w=(*the_picture).pwidth;;	// Ian hard coded these rather than stick a header
+                                //on his raw files!! SO I had to redo them
        picture_h=(*the_picture).pheight;;	//
 
        invert_y_pict(the_picture);

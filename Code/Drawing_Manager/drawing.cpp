@@ -504,7 +504,7 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
 
    {	//not blobbed
 
-     if (poly_type==GOURADTEXTURE)	//Fuck, it's texture mapped. Don't Panic boys!!!
+     if (poly_type==GOURADTEXTURE)	//Oh no, it's texture mapped. Don't Panic boys!!!
      {
      int dmf_flag;
      float translucency;
@@ -621,7 +621,7 @@ for (poly_count=0; poly_count<number_of_clipped_polys; poly_count++)
 
 
 
-     if (poly_type==TEXTURE)	//Fuck, it's texture mapped. Don't Panic boys!!!
+     if (poly_type==TEXTURE)	//Oh no, it's texture mapped. Don't Panic boys!!!
      {
 
       tpoint_list=tpoints;

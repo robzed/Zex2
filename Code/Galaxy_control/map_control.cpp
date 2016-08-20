@@ -326,7 +326,7 @@ unsigned char number_string[12];
 extern galactic_map *GM_ptr;	//ptr to the galactic map
 //this routine loads planets and motherships out of a section into the ocb's
 //motherships
-old_section=section;	//prevent double loads on load game (Bastard bug!)
+old_section=section;	//prevent double loads on load game (Hard bug!)
 number_of_scenary_loaded=0;
 
  mship_index=section*NUMBER_OF_MOTHERSHIPS_IN_A_SECTION;
