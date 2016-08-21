@@ -25,12 +25,6 @@
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <DrawSprocket/DrawSprocket.h>
-  #else
-    #include <DrawSprocket.h>
-    #include <events.h>
-  #endif
 #include "Error_handler.h"
 #include "processor.h"
 #endif //pch

@@ -150,21 +150,11 @@ Revision 1.0.0.1  2000/08/21 22:03:28  stu
 First Imported.
 
 */
-//#include <DrawSprocket.h>
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
   #include	"LS_Standard.h"
   #include "options.h"
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <ConditionalMacros.h>
-    #include <Dialogs.h>
-    #include <Types.h>
-    #include <Quickdraw.h>
-    #include	<fonts.h>
-  #endif
 #include "zex_misc.h"
 #include "processor.h"
 #include "Error_handler.h"

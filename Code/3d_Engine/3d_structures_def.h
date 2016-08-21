@@ -1,13 +1,6 @@
 //3d structures defs
 
 
-
-#if ZEX_PROJECT_BUILDER
-  #include <DrawSprocket/DrawSprocket.h>
-#else
-  #include <DrawSprocket.h>
-#endif
-
 #ifndef __LOGGING__
  #include "logging.h"
 #endif

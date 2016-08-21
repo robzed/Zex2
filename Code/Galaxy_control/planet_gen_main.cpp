@@ -80,22 +80,7 @@ Coffee fixes after changes for X.
 #ifndef __ZEX_PCH__
   #include "zselector.h"		  // this selects which build we will be doing
   #include "zplatform.h"
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <types.h>
-    #include <fp.h>
-    #if PLANET_GEN_DEBUG
-      #include <quickdraw.h>
-      #include <windows.h>
-      #include <menus.h>
-      #include <fonts.h>
-      #include <dialogs.h>
-      #include <textedit.h>
-      #include <Events.h>
-      #include <stdio.h>
-    #endif
-  #endif
+
 #include "zex_misc.h"
 #endif //pch
 

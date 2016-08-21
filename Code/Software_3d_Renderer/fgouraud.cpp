@@ -54,7 +54,6 @@ Coffee fixes after changes for X.
 #endif
 
 
-//#include <types.h>
 #include "fpoly4.h"
 #include "genpoly.h"
 #include "fdistort.h"

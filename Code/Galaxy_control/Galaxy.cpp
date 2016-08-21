@@ -211,16 +211,6 @@ New light control calls.
   #include "zplatform.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else 
-    #include <QuickDraw.h>
-    #include <memory.h>
-    #include <timer.h>
-    #include <textutils.h>
-  #endif
-
-
   #include "options.h"
   #include "3d_structures_def.h"
   #include	"zex_misc.h"

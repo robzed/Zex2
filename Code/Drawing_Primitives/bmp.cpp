@@ -17,11 +17,6 @@
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else 
-    #include <mactypes.h>
-  #endif
 #endif //pch
 
 #include "bmp.h"

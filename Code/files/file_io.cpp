@@ -109,15 +109,6 @@ First Imported.
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <files.h>
-    #include <processes.h>
-    #include <resources.h>
-    #include <folders.h>
-    #include <script.h>
-  #endif
   #include "Error_handler.h"
   #include "3d_structures_def.h"
   #include "zex_misc.h"

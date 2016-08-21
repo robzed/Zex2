@@ -96,19 +96,12 @@ Coffee fixes after changes for X.
   #include "zplatform.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <mactypes.h>
-  #endif
-
   #include "error_handler.h"
   #include "options.h"
   #include "3d_structures_def.h"
 #endif //pch
 
 
-//#include <intrinsics.h>
 #include "splat_control.h"
 #include "pictures.h"
 #include "texture_management.h"

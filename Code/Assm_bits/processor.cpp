@@ -118,21 +118,10 @@ More Sim, AP broken.
   #include "options.h"
   #include "processor.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include "/usr/include/pthread.h"
-  #else
-    #include <DriverServices.h>
-  #endif
-
   #include	"error_handler.h"
   #include "3d_structures_def.h"
 #endif //pch
 
-
-#if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-  #include "/usr/include/pthread.h"
-#endif
 
 #include "dlp.h"
 #include "logging.h"

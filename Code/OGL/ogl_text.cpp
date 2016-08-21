@@ -78,14 +78,6 @@ Coffee fixes after changes for X.
   #include "zplatform.h"
   #include "options.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include <DrawSprocket/DrawSprocket.h>
-  #else
-    #include <DrawSprocket.h>
-    #include <quickdraw.h>
-    #include <fonts.h>
-  #endif
   #include "error_handler.h"
   #include "zex_misc.h"
 

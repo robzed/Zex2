@@ -234,14 +234,6 @@ timing changes for coffee
   #include "options.h"		// should always be first include
   #include "game_defs.h"
 
-  #if  (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-   #include <Carbon/Carbon.h>
-  #else
-    #include <Quickdraw.h>
-    #include <timer.h>
-    #include <NumberFormatting.h>
-    #include	<Processes.h>
-  #endif
   #include "zex_misc.h"
   #include "error_handler.h"
   #include "3d_structures_def.h"

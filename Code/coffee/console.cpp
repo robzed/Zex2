@@ -98,15 +98,6 @@ Added instant_console flag
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
 
-
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <Dialogs.h>		// for show console window
-    #include <Types.h>
-    #include <NumberFormatting.h>
-    #include <Events.h>
-  #endif
 #include "zex_misc.h"
 #endif //pch
 

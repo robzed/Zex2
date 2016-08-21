@@ -94,14 +94,6 @@ Initial port work
   #include "zplatform.h"
   #include	"LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <types.h>
-    #include <sound.h>
-    #include <CodeFragments.h>
-    #include <files.h>
-  #endif
   #include	"error_handler.h"
   #include "zex_misc.h"
   #include "3d_structures_def.h"

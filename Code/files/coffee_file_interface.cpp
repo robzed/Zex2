@@ -74,12 +74,6 @@ Coffee fixes after changes for X.
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <types.h>
-    #include <files.h>
-  #endif
   #include "3d_structures_def.h"
   #include "error_handler.h"
 #endif //pch

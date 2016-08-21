@@ -132,15 +132,6 @@ Crash fix.
   #include "LS_Standard.h"
   #include "game_defs.h"
 
-
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <NumberFormatting.h>
-    #include <memory.h>
-    #include <timer.h>
-    #include <files.h>
-  #endif
 #include "Error_handler.h"
 #include "zex_misc.h"
 

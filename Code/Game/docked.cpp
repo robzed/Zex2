@@ -107,17 +107,6 @@ Coffee fixes after changes for X.
   #include "LS_Standard.h"
   #include "options.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #ifndef __ZEX_PCH__
-      #include <Carbon/Carbon.h>
-    #endif
-  #else
-    #include <memory.h>
-    #include <timer.h>
-    #include <files.h>
-    #include <NumberFormatting.h>
-    #include <sound.h>
-  #endif
   #include "3d_structures_def.h"
   #include "game_defs.h"
   #include "Error_handler.h"

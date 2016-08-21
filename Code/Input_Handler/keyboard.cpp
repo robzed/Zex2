@@ -86,16 +86,6 @@ First Imported.
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
-
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include <AGL/agl.h>
-    #include <DrawSprocket/DrawSprocket.h>
-  #else
-    #include <agl.h>
-    #include <events.h>
-    #include <DrawSprocket.h>
-  #endif
   
   #include "Error_handler.h"
 #endif //pch

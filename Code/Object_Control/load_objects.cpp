@@ -175,11 +175,6 @@ Added accessor in access_ocbs which returns a pointer to type ZObjectControl
   #include "zplatform.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <files.h>
-  #endif
   #include "3d_structures_def.h"
   #include "zex_misc.h"
   #include "access_ocbs.h"

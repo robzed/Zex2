@@ -58,14 +58,6 @@ Coffee fixes after changes for X.
   #include "zplatform.h"
   #include	"LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <Palettes.h>
-    #include <QDOffscreen.h>
-    #include <mactypes.h>
-    #include <fixmath.h>
-  #endif
   #include	"Error_handler.h"
   #include	"zex_misc.h"
 

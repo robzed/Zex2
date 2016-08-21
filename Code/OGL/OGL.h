@@ -15,12 +15,6 @@ typedef struct {
 	        float l;	//light
 		} fdcoord;
 			
-#if ZEX_PROJECT_BUILDER
-  #include <AGL/agl.h>
-#else
-  #include <agl.h>
-#endif
-
 int init_ogl();
 
 void ogl_active();

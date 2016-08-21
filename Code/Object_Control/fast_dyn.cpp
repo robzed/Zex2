@@ -10,12 +10,6 @@
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
   #include "LS_Standard.h"
-
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <files.h>
-  #endif
   #include "3d_structures_def.h"
   #include "Error_handler.h"
   #include "zex_misc.h"

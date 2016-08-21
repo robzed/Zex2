@@ -136,17 +136,6 @@ Coffee fixes after changes for X.
   #include "options.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include <DrawSprocket/DrawSprocket.h>
-  #else
-    #include <Palettes.h>
-    #include <quickdraw.h>
-    #include <fp.h>
-    #include <DrawSprocket.h>
-    #include <NumberFormatting.h>
-  #endif
-
   #include "3d_structures_def.h"
   #include "error_handler.h"
   #include "zex_misc.h"

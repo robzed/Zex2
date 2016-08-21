@@ -137,14 +137,6 @@ First Imported.
   #include "zplatform.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <MacTypes.h>
-    #include <MacMemory.h> 
-    #include <fp.h>
-  #endif
-
   #include "3d_structures_def.h"
   #include "Error_handler.h"
   #include "options.h"

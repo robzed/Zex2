@@ -8,9 +8,6 @@
  */
  
  #define __ZEX_PCH__
- #include <Carbon/Carbon.h>
- #include <AGL/agl.h>
- #include <DrawSprocket/DrawSprocket.h>
  
  #include "zselector.h"		// this selects which build we will be doing
  #include "zplatform.h"

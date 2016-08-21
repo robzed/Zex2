@@ -52,12 +52,6 @@ Coffee fixes after changes for X.
   #include "zplatform.h"
   #include "options.h"		// should always be first include
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <DriverServices.h>
-  #endif
-
 #endif //pch
 
 

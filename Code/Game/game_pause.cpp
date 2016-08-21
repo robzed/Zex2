@@ -74,16 +74,6 @@ Coffee fixes after changes for X.
   #include "options.h"
   #include "game_defs.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <mactypes.h>
-    #include <files.h>
-    #include <events.h>
-    #include <timer.h>
-    #include <memory.h>
-  #endif
-
   #include "Error_handler.h" 
   #include "zex_misc.h"
   #include "3d_structures_def.h"

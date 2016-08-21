@@ -1,11 +1,5 @@
 //splat_control.ext
 
-#if ZEX_PROJECT_BUILDER
-  #include <DrawSprocket/DrawSprocket.h>
-#else
-  #include <DrawSprocket.h>
-#endif
-
 extern int monitor_w, monitor_h;
 extern int screen_cent_x, screen_cent_y;
 extern int off_640_x,off_480_y, win_off_x, win_off_y;

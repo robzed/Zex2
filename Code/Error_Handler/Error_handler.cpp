@@ -78,16 +78,6 @@ carbon warning reduction
   #include "zplatform.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <Dialogs.h>
-    #include <Processes.h>
-    #include <TextUtils.h>
-    #include <memory.h>
-  #endif
-
-
   #include "options.h"
   #include	"error_handler.h"
   #include "zex_misc.h"

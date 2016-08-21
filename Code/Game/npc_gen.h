@@ -7,6 +7,4 @@
  *
  */
 
-#include <Carbon/Carbon.h>
-
 void run_npc_gen(void);

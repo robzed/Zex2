@@ -23,14 +23,6 @@
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
-
-  #if  (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <fp.h>
-    #include <types.h>
-    #include <math.h>
-  #endif
   
   #include "3d_structures_def.h"  
   #include "Error_handler.h"

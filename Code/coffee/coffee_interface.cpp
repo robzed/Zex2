@@ -129,15 +129,6 @@ Checks for re-size or illegal addresses made.
   #include "zplatform.h"
   #include "options.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include <AGL/agl.h>
-  #else
-    #include <files.h>
-    #include <processes.h>
-    #include <resources.h>
-    #include <agl.h>
-  #endif
   #include "3d_structures_def.h"
   #include "Error_handler.h"
   #include "zex_misc.h"

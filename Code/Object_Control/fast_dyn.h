@@ -7,7 +7,6 @@
  *
  */
 
-#include <Carbon/Carbon.h>
 
 int load_Fdyn_object(int static_slot,int dest_focb, load_dyn_object_pb *the_pb, float scale, int parent_slot);
 void Fi_know_what_im_doing_kill( int the_object, int kill_textures);

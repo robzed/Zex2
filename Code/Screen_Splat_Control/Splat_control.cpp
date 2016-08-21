@@ -129,21 +129,6 @@ First Imported.
   #include "zplatform.h"
   #include "options.h"		// should always be first include
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include <AGL/agl.h>
-    #include <DrawSprocket/DrawSprocket.h>
-  #else
-    #include <Palettes.h>
-    #include <QDOffscreen.h>
-    #include <mactypes.h>
-    #include <fixmath.h>
-    #include <DrawSprocket.h>
-    #include <Quickdraw.h>
-    #include <fp.h>
-    #include <agl.h>
-  #endif
-
   #include	"LS_Standard.h"
   #include	"Error_handler.h"
   #include	"zex_misc.h"

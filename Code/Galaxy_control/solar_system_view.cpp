@@ -20,12 +20,6 @@
   #include "LS_Standard.h"
 
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <textutils.h>
-  #endif
-
   #include "options.h"
   #include "3d_structures_def.h"
   #include	"zex_misc.h"

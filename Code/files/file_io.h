@@ -1,10 +1,3 @@
-#ifndef __FILES__
-#include <files.h>
-#endif
-
-#ifndef __MACMEMORY__
-#include <macmemory.h>
-#endif
 
 
 //prototypes

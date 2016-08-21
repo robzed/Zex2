@@ -174,18 +174,8 @@ Old lighting calls removed
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
   #include "LS_Standard.h"
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-    #include <AGL/agl.h>
-  #else
-    #include <files.h>
-    #include <memory.h>
-    #include <events.h>
-    #include <timer.h>
-    #include <sound.h>
-    #include <agl.h>
-  #endif
-  #include "zex_misc.h"
+
+#include "zex_misc.h"
   #include "Error_handler.h"
   #include "game_defs.h"
 #endif //pch

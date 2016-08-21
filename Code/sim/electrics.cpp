@@ -55,13 +55,6 @@ Initial issue
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <MacTypes.h>
-    #include <fp.h>
-  #endif
-
   #include "3d_structures_def.h"
   #include "access_ocbs.h"
 #endif //pch

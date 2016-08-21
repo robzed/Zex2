@@ -99,12 +99,6 @@ Revision 1.2  1999/05/06 17:40:04  stu
   #include "zplatform.h"
   #include "LS_Standard.h"
 
-  #if (!defined(__CARBON__)) && ZEX_PROJECT_BUILDER
-    #include <Carbon/Carbon.h>
-  #else
-    #include <fp.h>
-  #endif
-
   #include "3d_structures_def.h"
 #endif //pch
 
