@@ -1367,7 +1367,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
-				INFOPLIST_FILE = "Info-zex23pb_proj__Upgraded_.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
@@ -1398,7 +1398,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
-				INFOPLIST_FILE = "Info-zex23pb_proj__Upgraded_.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
@@ -1429,7 +1429,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
-				INFOPLIST_FILE = "Info-zex23pb_proj__Upgraded_.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
@@ -1461,7 +1461,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
-				INFOPLIST_FILE = "Info-zex23pb_proj__Upgraded_.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OPTIMIZATION_CFLAGS = "-O2 -mcpu=7400 -mdynamic-no-pic -funroll-loops -ffast-math -fstrict-aliasing";
@@ -1492,7 +1492,7 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
-				INFOPLIST_FILE = "Info-zex23pb_proj__Upgraded_.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
