@@ -256,7 +256,7 @@
 		20E36CD60539BA6F006D392F /* game.ZLV */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = game.ZLV; path = "../../LSG-ZEX/ZD3/L/game.ZLV"; sourceTree = SOURCE_ROOT; };
 		20E36CD70539BA6F006D392F /* test.ZLV */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = test.ZLV; path = "../../LSG-ZEX/ZD3/L/test.ZLV"; sourceTree = SOURCE_ROOT; };
 		20E36CD80539BA6F006D392F /* test_obj.ZLV */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = test_obj.ZLV; path = "../../LSG-ZEX/ZD3/L/test_obj.ZLV"; sourceTree = SOURCE_ROOT; };
-		20FC99990528D49C00D2B1AB /* Info-zex23pb_proj__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-zex23pb_proj__Upgraded_.plist"; sourceTree = SOURCE_ROOT; };
+		20FC99990528D49C00D2B1AB /* Info-Zex2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Zex2.plist"; sourceTree = SOURCE_ROOT; };
 		20FC999A0528D49C00D2B1AB /* Zex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D431F21C051CF3E7000001E2 /* system_independant_file.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = system_independant_file.cpp; path = ../../Code/files/system_independant_file.cpp; sourceTree = SOURCE_ROOT; };
 		D431F21D051CF3E7000001E2 /* system_independant_file.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = system_independant_file.h; path = ../../Code/files/system_independant_file.h; sourceTree = SOURCE_ROOT; };
@@ -521,7 +521,7 @@
 				20286C2CFDCF999611CA2CEA /* Resources */,
 				20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */,
 				195DF8C9FE9D4F0611CA2CBB /* Products */,
-				20FC99990528D49C00D2B1AB /* Info-zex23pb_proj__Upgraded_.plist */,
+				20FC99990528D49C00D2B1AB /* Info-Zex2.plist */,
 			);
 			name = zex22pb_proj;
 			sourceTree = "<group>";
