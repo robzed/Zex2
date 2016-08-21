@@ -2,6 +2,9 @@
 =============
 # also see http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects
 
+# Zex Specific things to ignore
+Zex2_Mac_Project/SDL2.framework/
+
 # build files/folders
 *.o
 build/

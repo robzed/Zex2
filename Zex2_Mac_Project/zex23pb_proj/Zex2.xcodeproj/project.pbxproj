@@ -221,12 +221,12 @@
 		20FC998D0528D49B00D2B1AB /* system_independant_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D431F21C051CF3E7000001E2 /* system_independant_file.cpp */; };
 		20FC998E0528D49B00D2B1AB /* system_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D44BA859051F96FE000001E2 /* system_interface.cpp */; };
 		20FC99900528D49B00D2B1AB /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20286C33FDCF999611CA2CEA /* Carbon.framework */; };
-		20FC99910528D49B00D2B1AB /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0249A669FF388E3911CA2CEA /* libstdc++.a */; };
-		20FC99920528D49B00D2B1AB /* DrawSprocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350F6001791EDE019D6BC9 /* DrawSprocket.framework */; };
 		20FC99930528D49B00D2B1AB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350F6101791EDE019D6BC9 /* OpenGL.framework */; };
-		20FC99940528D49B00D2B1AB /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F565F98E0188BE9101A8010A /* AGL.framework */; };
 		20FC99950528D49B00D2B1AB /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56377FD0296D1EC01A8010A /* CoreServices.framework */; };
 		20FC99970528D49B00D2B1AB /* main.r in Rez */ = {isa = PBXBuildFile; fileRef = 20286C2DFDCF999611CA2CEA /* main.r */; settings = {ATTRIBUTES = (); }; };
+		D4F25C9A1D6A280D00233D59 /* mac_emulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F25C981D6A280D00233D59 /* mac_emulation.cpp */; };
+		D4F25C9B1D6A280D00233D59 /* mac_emulation.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F25C991D6A280D00233D59 /* mac_emulation.h */; };
+		D4F25C9D1D6A29C100233D59 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F25C9C1D6A29C100233D59 /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -241,8 +241,6 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
-		0249A669FF388E3911CA2CEA /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/libstdc++.a"; sourceTree = "<absolute>"; };
-		0640BAA4FFF0323A11CA0E50 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20286C2DFDCF999611CA2CEA /* main.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = main.r; sourceTree = "<group>"; };
 		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
@@ -264,6 +262,11 @@
 		D44BA85A051F96FE000001E2 /* system_interface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = system_interface.h; path = ../../Code/files/system_interface.h; sourceTree = SOURCE_ROOT; };
 		D4B2CAD3051BA27E000001E2 /* npc_gen.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = npc_gen.cpp; path = ../../Code/Game/npc_gen.cpp; sourceTree = SOURCE_ROOT; };
 		D4B2CAD5051BA2A6000001E2 /* npc_gen.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = npc_gen.h; path = ../../Code/Game/npc_gen.h; sourceTree = SOURCE_ROOT; };
+		D4F25C981D6A280D00233D59 /* mac_emulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mac_emulation.cpp; path = ../../Code/Main/mac_emulation.cpp; sourceTree = "<group>"; };
+		D4F25C991D6A280D00233D59 /* mac_emulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mac_emulation.h; path = ../../Code/Main/mac_emulation.h; sourceTree = "<group>"; };
+		D4F25C9C1D6A29C100233D59 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../SDL2.framework; sourceTree = "<group>"; };
+		D4F25C9E1D6A2B6600233D59 /* SDL2-2.0.4.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SDL2-2.0.4.dmg"; path = "../SDL2-2.0.4.dmg"; sourceTree = "<group>"; };
+		D4F25CA01D6A2B7C00233D59 /* SDL2 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = SDL2; path = ../SDL2.framework/Versions/A/SDL2; sourceTree = "<group>"; };
 		F503329A0214DBEF01A8010A /* fast_dyn.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = fast_dyn.h; path = ../../Code/Object_Control/fast_dyn.h; sourceTree = SOURCE_ROOT; };
 		F503329B0214DBEF01A8010A /* fast_dyn.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fast_dyn.cpp; path = ../../Code/Object_Control/fast_dyn.cpp; sourceTree = SOURCE_ROOT; };
 		F50A49B901792FB301DAC950 /* zex_misc.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zex_misc.h; path = ../../Code/flotsam_and_jetsam/zex_misc.h; sourceTree = SOURCE_ROOT; };
@@ -366,7 +369,6 @@
 		F51DD1C001779FA201735DBC /* game_defs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = game_defs.h; path = ../../Code/Standard_Headers/game_defs.h; sourceTree = SOURCE_ROOT; };
 		F521B3C902A8721601A8010A /* particles.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = particles.h; path = ../../Code/Object_Control/particles.h; sourceTree = SOURCE_ROOT; };
 		F521B3CA02A8721701A8010A /* particles.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = particles.cpp; path = ../../Code/Object_Control/particles.cpp; sourceTree = SOURCE_ROOT; };
-		F5350F6001791EDE019D6BC9 /* DrawSprocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DrawSprocket.framework; path = /System/Library/Frameworks/DrawSprocket.framework; sourceTree = "<absolute>"; };
 		F5350F6101791EDE019D6BC9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		F53BC217018F3BAD010001DC /* zselector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zselector.h; path = ../../Code/Standard_Headers/PB_BUILD/zselector.h; sourceTree = SOURCE_ROOT; };
 		F548C57E01BAA43401A8010A /* motherships2.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = motherships2.cpp; path = ../../Code/Object_Control/motherships2.cpp; sourceTree = SOURCE_ROOT; };
@@ -383,7 +385,6 @@
 		F563A94F0260D22001A8010A /* behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = behaviour.cpp; path = ../../Code/Behaviour/behaviour.cpp; sourceTree = SOURCE_ROOT; };
 		F565F98A0188BD7B01A8010A /* textsplat.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = textsplat.cpp; path = ../../Code/Drawing_Primitives/textsplat.cpp; sourceTree = SOURCE_ROOT; };
 		F565F98C0188BDC501A8010A /* zplatform.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = zplatform.h; path = ../../Code/Standard_Headers/zplatform.h; sourceTree = SOURCE_ROOT; };
-		F565F98E0188BE9101A8010A /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		F5676F30020427B3010001DC /* POBS_object_management.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = POBS_object_management.cpp; path = ../../Code/POBs/POBS_object_management.cpp; sourceTree = SOURCE_ROOT; };
 		F5676F33020427BE010001DC /* POBS.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = POBS.h; path = ../../Code/POBs/POBS.h; sourceTree = SOURCE_ROOT; };
 		F57A3FF102296B4F01A8010A /* 3d_depth_of_field_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = 3d_depth_of_field_manager.cpp; path = ../../Code/3d_Engine/3d_depth_of_field_manager.cpp; sourceTree = SOURCE_ROOT; };
@@ -493,11 +494,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20FC99900528D49B00D2B1AB /* Carbon.framework in Frameworks */,
-				20FC99910528D49B00D2B1AB /* libstdc++.a in Frameworks */,
-				20FC99920528D49B00D2B1AB /* DrawSprocket.framework in Frameworks */,
 				20FC99930528D49B00D2B1AB /* OpenGL.framework in Frameworks */,
-				20FC99940528D49B00D2B1AB /* AGL.framework in Frameworks */,
 				20FC99950528D49B00D2B1AB /* CoreServices.framework in Frameworks */,
+				D4F25C9D1D6A29C100233D59 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +514,8 @@
 		20286C29FDCF999611CA2CEA /* zex22pb_proj */ = {
 			isa = PBXGroup;
 			children = (
+				D4F25CA01D6A2B7C00233D59 /* SDL2 */,
+				D4F25C9E1D6A2B6600233D59 /* SDL2-2.0.4.dmg */,
 				F583F44302DE2F66010001E2 /* Forth Files */,
 				F507733D01FCCA8A01A8010A /* Notes */,
 				20286C2AFDCF999611CA2CEA /* Sources */,
@@ -529,6 +530,8 @@
 		20286C2AFDCF999611CA2CEA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D4F25C981D6A280D00233D59 /* mac_emulation.cpp */,
+				D4F25C991D6A280D00233D59 /* mac_emulation.h */,
 				F50EA3EC017773D201AFB9BD /* ZEX.cpp */,
 				F5676F2E02042779010001DC /* POBS */,
 				F5152C7A0177925B01236145 /* Static Screens */,
@@ -566,13 +569,10 @@
 		20286C32FDCF999611CA2CEA /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D4F25C9C1D6A29C100233D59 /* SDL2.framework */,
 				F56377FD0296D1EC01A8010A /* CoreServices.framework */,
 				20286C33FDCF999611CA2CEA /* Carbon.framework */,
-				0249A669FF388E3911CA2CEA /* libstdc++.a */,
-				0640BAA4FFF0323A11CA0E50 /* ApplicationServices.framework */,
-				F5350F6001791EDE019D6BC9 /* DrawSprocket.framework */,
 				F5350F6101791EDE019D6BC9 /* OpenGL.framework */,
-				F565F98E0188BE9101A8010A /* AGL.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -1038,6 +1038,7 @@
 				20FC98D10528D49B00D2B1AB /* autopilot.h in Headers */,
 				20FC98D20528D49B00D2B1AB /* angular_stuff.h in Headers */,
 				20FC98D30528D49B00D2B1AB /* buy.h in Headers */,
+				D4F25C9B1D6A280D00233D59 /* mac_emulation.h in Headers */,
 				20FC98D40528D49B00D2B1AB /* bmp.h in Headers */,
 				20FC98D50528D49B00D2B1AB /* camera_control.h in Headers */,
 				20FC98D60528D49B00D2B1AB /* cargo.h in Headers */,
@@ -1133,7 +1134,7 @@
 			);
 			dependencies = (
 			);
-			name = "Zex2";
+			name = Zex2;
 			productInstallPath = "$(HOME)/Applications";
 			productName = zex22pb_proj;
 			productReference = 20FC999A0528D49C00D2B1AB /* Zex2.app */;
@@ -1231,6 +1232,7 @@
 				20FC99470528D49B00D2B1AB /* bmp.cpp in Sources */,
 				20FC99480528D49B00D2B1AB /* dlp.cpp in Sources */,
 				20FC99490528D49B00D2B1AB /* fcircle.cpp in Sources */,
+				D4F25C9A1D6A280D00233D59 /* mac_emulation.cpp in Sources */,
 				20FC994A0528D49B00D2B1AB /* fgouraud.cpp in Sources */,
 				20FC994B0528D49B00D2B1AB /* FPOLY4_1.cpp in Sources */,
 				20FC994C0528D49B00D2B1AB /* polyclip.cpp in Sources */,
@@ -1366,7 +1368,7 @@
 				GCC_PREFIX_HEADER = ../../Code/Main/zex_pch.h;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
+				HEADER_SEARCH_PATHS = ../SDL2.framework/Headers;
 				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
@@ -1397,7 +1399,7 @@
 				GCC_PREFIX_HEADER = ../../Code/Main/zex_pch.h;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
+				HEADER_SEARCH_PATHS = ../SDL2.framework/Headers;
 				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
@@ -1428,7 +1430,7 @@
 				GCC_PREFIX_HEADER = ../../Code/Main/zex_pch.h;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
+				HEADER_SEARCH_PATHS = ../SDL2.framework/Headers;
 				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
@@ -1460,7 +1462,7 @@
 				GCC_PREFIX_HEADER = ../../Code/Main/zex_pch.h;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
+				HEADER_SEARCH_PATHS = ../SDL2.framework/Headers;
 				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
@@ -1491,7 +1493,7 @@
 				GCC_PREFIX_HEADER = ../../Code/Main/zex_pch.h;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = /Developer/OpenGL1.2SDK/Headers;
+				HEADER_SEARCH_PATHS = ../SDL2.framework/Headers;
 				INFOPLIST_FILE = "$(SRCROOT)/Info-Zex2.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";

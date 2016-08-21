@@ -8,7 +8,8 @@
  */
  
  #define __ZEX_PCH__
- 
+ #include "SDL.h"
+ #include "mac_emulation.h"
  #include "zselector.h"		// this selects which build we will be doing
  #include "zplatform.h"
  #include "options.h"

@@ -1,0 +1,5 @@
+Unpack SDL framework here.
+
+(Afterwards there should be SDL2.framework in the same folder as this ReadMe.)
+
+
