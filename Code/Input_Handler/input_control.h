@@ -12,6 +12,6 @@ void untake_mouse_keyboard_as_input();
 int game_fire_button();
 void ZexGetMouse (Point *the_point);
 short isPressed(unsigned short k );	//k is keycode
-init_ip_globs();
+void init_ip_globs();
 
 

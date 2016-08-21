@@ -224,6 +224,7 @@
 		20FC99930528D49B00D2B1AB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5350F6101791EDE019D6BC9 /* OpenGL.framework */; };
 		20FC99950528D49B00D2B1AB /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56377FD0296D1EC01A8010A /* CoreServices.framework */; };
 		20FC99970528D49B00D2B1AB /* main.r in Rez */ = {isa = PBXBuildFile; fileRef = 20286C2DFDCF999611CA2CEA /* main.r */; settings = {ATTRIBUTES = (); }; };
+		D470F6F91D6A513A00B41FDB /* main.h in Headers */ = {isa = PBXBuildFile; fileRef = D470F6F81D6A513A00B41FDB /* main.h */; };
 		D4F25C9A1D6A280D00233D59 /* mac_emulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F25C981D6A280D00233D59 /* mac_emulation.cpp */; };
 		D4F25C9B1D6A280D00233D59 /* mac_emulation.h in Headers */ = {isa = PBXBuildFile; fileRef = D4F25C991D6A280D00233D59 /* mac_emulation.h */; };
 		D4F25C9D1D6A29C100233D59 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F25C9C1D6A29C100233D59 /* SDL2.framework */; };
@@ -244,8 +245,8 @@
 		0867D6ABFE840B52C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20286C2DFDCF999611CA2CEA /* main.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = main.r; sourceTree = "<group>"; };
 		20286C33FDCF999611CA2CEA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		2036DB9B05BA396C00BE5F08 /* fonts_ogl.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fonts_ogl.cpp; path = "/Users/stu/Current Projects/ZEX2.3/Code/Drawing_Manager/fonts_ogl.cpp"; sourceTree = "<absolute>"; };
-		2036DB9C05BA396C00BE5F08 /* fonts_ogl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = fonts_ogl.h; path = "/Users/stu/Current Projects/ZEX2.3/Code/Drawing_Manager/fonts_ogl.h"; sourceTree = "<absolute>"; };
+		2036DB9B05BA396C00BE5F08 /* fonts_ogl.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = fonts_ogl.cpp; path = ../../Code/Drawing_Manager/fonts_ogl.cpp; sourceTree = SOURCE_ROOT; };
+		2036DB9C05BA396C00BE5F08 /* fonts_ogl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = fonts_ogl.h; path = ../../Code/Drawing_Manager/fonts_ogl.h; sourceTree = SOURCE_ROOT; };
 		20AE51440507CCB100000103 /* Zex_Design.doc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zex_Design.doc; path = ../../Docs/Zex_Design.doc; sourceTree = SOURCE_ROOT; };
 		20AE51450507CCB100000103 /* trading_design.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = trading_design.txt; path = ../../Docs/trading_design.txt; sourceTree = SOURCE_ROOT; };
 		20AE51460507CCB100000103 /* POBs_planet+buy_data.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = "POBs_planet+buy_data.txt"; path = "../../Docs/POBs_planet+buy_data.txt"; sourceTree = SOURCE_ROOT; };
@@ -260,6 +261,7 @@
 		D431F21D051CF3E7000001E2 /* system_independant_file.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = system_independant_file.h; path = ../../Code/files/system_independant_file.h; sourceTree = SOURCE_ROOT; };
 		D44BA859051F96FE000001E2 /* system_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = system_interface.cpp; path = ../../Code/files/system_interface.cpp; sourceTree = SOURCE_ROOT; };
 		D44BA85A051F96FE000001E2 /* system_interface.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = system_interface.h; path = ../../Code/files/system_interface.h; sourceTree = SOURCE_ROOT; };
+		D470F6F81D6A513A00B41FDB /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = main.h; path = ../../Code/Main/main.h; sourceTree = "<group>"; };
 		D4B2CAD3051BA27E000001E2 /* npc_gen.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = npc_gen.cpp; path = ../../Code/Game/npc_gen.cpp; sourceTree = SOURCE_ROOT; };
 		D4B2CAD5051BA2A6000001E2 /* npc_gen.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = npc_gen.h; path = ../../Code/Game/npc_gen.h; sourceTree = SOURCE_ROOT; };
 		D4F25C981D6A280D00233D59 /* mac_emulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mac_emulation.cpp; path = ../../Code/Main/mac_emulation.cpp; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 		20286C2AFDCF999611CA2CEA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D470F6F81D6A513A00B41FDB /* main.h */,
 				D4F25C981D6A280D00233D59 /* mac_emulation.cpp */,
 				D4F25C991D6A280D00233D59 /* mac_emulation.h */,
 				F50EA3EC017773D201AFB9BD /* ZEX.cpp */,
@@ -1105,6 +1108,7 @@
 				20FC99130528D49B00D2B1AB /* show_stats.h in Headers */,
 				20FC99140528D49B00D2B1AB /* ship_control.h in Headers */,
 				20FC99150528D49B00D2B1AB /* texture_management.h in Headers */,
+				D470F6F91D6A513A00B41FDB /* main.h in Headers */,
 				20FC99160528D49B00D2B1AB /* txtsplat.h in Headers */,
 				20FC99170528D49B00D2B1AB /* Z_init.h in Headers */,
 				20FC99180528D49B00D2B1AB /* Zsound.h in Headers */,

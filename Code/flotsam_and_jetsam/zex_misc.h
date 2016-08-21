@@ -11,7 +11,7 @@ void num_to_string99(int value, Ptr string);
 void num_to_string99_suppress_leading_zero(int value, Ptr string);
 void num_to_string999(int value, Ptr string);
 void show_loading_screen();
-void show_text_in_loading_screen(char *the_text);
+void show_text_in_loading_screen(const char *the_text);
 void show_text_in_loading_screen_nocr(Str255 the_text);
 void show_text_in_loading_screen_fcr(Str255 the_text);
 void append_text_to_loading_screen(Str255 the_text);

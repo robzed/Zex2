@@ -9,11 +9,11 @@ extern int remove_opengl_context_on_switch;
 
 
 //Splat_Control.int
-extern	DSpContextReference		  mDisplayContext;
-extern DSpContextAttributes	mDisplayAttributes;
-extern GDHandle				mZexGDH;
+//extern	DSpContextReference		  mDisplayContext;
+//extern DSpContextAttributes	mDisplayAttributes;
+//extern GDHandle				mZexGDH;
 extern CTabHandle			   mZexCLUT;
-extern CGrafPtr	backBuff;
+//extern CGrafPtr	backBuff;
 
 extern const RGBColor	rgbBlack;
 extern const RGBColor	rgbWhite;
@@ -41,7 +41,7 @@ int init_screen();
 //dsp and our functions
 void screen_quit();
 void GraphicsSelectContext();
-void GraphicsInitAttributes(DSpContextAttributes *inAttributes);
+//void GraphicsInitAttributes(DSpContextAttributes *inAttributes);
 void GraphicsActive(void);
 void GraphicsInactive(void);
 void GraphicsPaused(void);
@@ -58,7 +58,7 @@ void deferred_vbl_proc();
 Boolean ZexPseudoVBLProc (void);
 
 
-CGrafPtr Get_back_buffer(void);
+LS_CGrafPtr Get_back_buffer(void);
 void display_wait();
 
 extern int use_zbuffer;

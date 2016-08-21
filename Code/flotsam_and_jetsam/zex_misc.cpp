@@ -500,7 +500,7 @@ TextMode (0);
 
 int boot_log;
 
-void show_text_in_loading_screen(char *the_text)
+void show_text_in_loading_screen(const char *the_text)
 {
 extern int OGL_active;
 int n;
