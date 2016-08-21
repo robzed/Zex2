@@ -1118,9 +1118,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		20FC98B70528D49B00D2B1AB /* zex23pb_proj (Upgraded) */ = {
+		20FC98B70528D49B00D2B1AB /* Zex2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 203F785C1D687D3D0069D6C4 /* Build configuration list for PBXNativeTarget "zex23pb_proj (Upgraded)" */;
+			buildConfigurationList = 203F785C1D687D3D0069D6C4 /* Build configuration list for PBXNativeTarget "Zex2" */;
 			buildPhases = (
 				20FC98B80528D49B00D2B1AB /* Headers */,
 				20FC991D0528D49B00D2B1AB /* Resources */,
@@ -1133,7 +1133,7 @@
 			);
 			dependencies = (
 			);
-			name = "zex23pb_proj (Upgraded)";
+			name = "Zex2";
 			productInstallPath = "$(HOME)/Applications";
 			productName = zex22pb_proj;
 			productReference = 20FC999A0528D49C00D2B1AB /* Zex2.app */;
@@ -1157,7 +1157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				20FC98B70528D49B00D2B1AB /* zex23pb_proj (Upgraded) */,
+				20FC98B70528D49B00D2B1AB /* Zex2 */,
 			);
 		};
 /* End PBXProject section */
@@ -1521,7 +1521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		203F785C1D687D3D0069D6C4 /* Build configuration list for PBXNativeTarget "zex23pb_proj (Upgraded)" */ = {
+		203F785C1D687D3D0069D6C4 /* Build configuration list for PBXNativeTarget "Zex2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				203F78561D687D3D0069D6C4 /* Development */,
