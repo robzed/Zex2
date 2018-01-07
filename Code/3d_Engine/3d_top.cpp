@@ -176,7 +176,7 @@ int view_other_object;
 int view_moon_object;
 int view_mship_object;
 
-
+ 
 DynObjectsFixedSize *ocb_ptr;
 DynFObjectsFixedSize *Focb_ptr;
 DynPObjectsFixedSize *Pocb_ptr;
