@@ -175,7 +175,7 @@ Vmultiply(&force,magnitude,&velocity);
 
 
 // apply a force (is local to object coords and ) can be perhaps optimised for the special case of 
-// a non-rotational force, e.g. perhaps a tracker beam?
+// a non-rotational force, e.g. perhaps a tractor beam?
 void apply_initial_force (int object, float magnitude, float for_how_long_in_secs, vector in_p /*oint*/ , vector in_d /*irection*/)
 {
 vector torque,accel;
@@ -212,7 +212,7 @@ Vmultiply(&d,(magnitude/(*ocb_ptr).object_list[object].mass),&accel);
  //And extract and store the magnitude of the torque
  torqueMag=vectorMod(&torque);
 
-// add to cumlative torque vect total for this object
+// add to cumulative torque vect total for this object
 (*ocb_ptr).object_list[object].torque_sum.x+=torque.x;
 (*ocb_ptr).object_list[object].torque_sum.y+=torque.y;
 (*ocb_ptr).object_list[object].torque_sum.z+=torque.z;
@@ -231,7 +231,7 @@ extern DynObjectsFixedSize *ocb_ptr;
 
 
 
-//Apply a force to an object; handled linear and angular acceleration
+//Apply a force to an object; handles linear and angular acceleration
 void apply_a_force(int object, float magnitude, vector in_p /*oint*/ , vector in_d /*irection*/) 
 {
 vector torque,accel;
@@ -296,7 +296,8 @@ Vmultiply(&d,(mag_frame/(*ocb_ptr).object_list[object].mass),&accel);
   *  We're trying to find the Torque vector, which has direction as the axis
   * the torque will produce rotation around, and magnitude equal to the magnitude
   * of the force times the perpendicular distance to the origin.
-  *  This (rather conveniently :) is given by the cross (vector) product. You have
+  * 
+  * This (rather conveniently :) is given by the cross (vector) product. You have
   * any idea how long it took me to notice that?
   *
   * nb;
@@ -373,7 +374,7 @@ angMom.z=TorqueSum->z*time_in_secs;
 
 
 // --------------------------------1 second functions used for camera
-//Apply a force to an object; handled linear and angular acceleration
+//Apply a force to an object; handles linear and angular acceleration
 void apply_a_force_1sec(int object, float magnitude, vector in_p /*oint*/ , vector in_d /*irection*/) 
 {
 vector torque,accel;
@@ -475,7 +476,7 @@ angMom.z=TorqueSum->z*1;
 //¥¥¥¥¥¥¥¥
 
 
-//can return either distance or -1 if too far
+//Can return either distance or -1 if too far
 double get_distance_to_zex(int object)
 {
 return  get_distance_to_from(0,object);
