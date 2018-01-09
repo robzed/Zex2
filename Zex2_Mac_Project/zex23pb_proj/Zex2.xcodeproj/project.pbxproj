@@ -194,6 +194,17 @@
 		20FC99720528D49B00D2B1AB /* object_manipulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F592EAF501DC154A01A8010A /* object_manipulation.cpp */; };
 		20FC99730528D49B00D2B1AB /* key_setting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5F3AD0001E33B04010001DC /* key_setting.cpp */; };
 		20FC99740528D49B00D2B1AB /* key_setup_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5F3AD0101E33B04010001DC /* key_setup_display.cpp */; };
+		20FC99750528D49B00D2B1AB /* DelayOutPut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EBE01E65869010001DC /* DelayOutPut.cpp */; };
+		20FC99760528D49B00D2B1AB /* Effects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EBF01E65869010001DC /* Effects.cpp */; };
+		20FC99770528D49B00D2B1AB /* Interrupt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC001E65869010001DC /* Interrupt.cpp */; };
+		20FC99780528D49B00D2B1AB /* Mac-FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC101E65869010001DC /* Mac-FileUtils.cpp */; };
+		20FC99790528D49B00D2B1AB /* Mac-PlugImport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC201E65869010001DC /* Mac-PlugImport.cpp */; };
+		20FC997A0528D49B00D2B1AB /* Mac-SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC301E65869010001DC /* Mac-SoundManager.cpp */; };
+		20FC997B0528D49B00D2B1AB /* MainDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC401E65869010001DC /* MainDriver.cpp */; };
+		20FC997C0528D49B00D2B1AB /* MySndPlayDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC501E65869010001DC /* MySndPlayDB.cpp */; };
+		20FC997D0528D49B00D2B1AB /* OutPut8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC601E65869010001DC /* OutPut8.cpp */; };
+		20FC997E0528D49B00D2B1AB /* Realft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC701E65869010001DC /* Realft.cpp */; };
+		20FC997F0528D49B00D2B1AB /* TickRemover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5B04EC801E65869010001DC /* TickRemover.cpp */; };
 		20FC99800528D49B00D2B1AB /* mod_player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5D9585901E71558010001DC /* mod_player.cpp */; };
 		20FC99810528D49B00D2B1AB /* POBS_object_management.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5676F30020427B3010001DC /* POBS_object_management.cpp */; };
 		20FC99820528D49B00D2B1AB /* fast_dyn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F503329B0214DBEF01A8010A /* fast_dyn.cpp */; };
@@ -407,6 +418,17 @@
 		F5A610150179226A01AE21E1 /* draw_radar_and_cwp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = draw_radar_and_cwp.h; path = ../../Code/Drawing_Manager/draw_radar_and_cwp.h; sourceTree = SOURCE_ROOT; };
 		F5AE1A270326C95B010001C8 /* 3d_structures_def.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = 3d_structures_def.h; path = ../../Code/3d_Engine/3d_structures_def.h; sourceTree = SOURCE_ROOT; };
 		F5AE1A2B0326D8C7010001C8 /* zex_pch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 30; name = zex_pch.h; path = ../../Code/Main/zex_pch.h; sourceTree = SOURCE_ROOT; };
+		F5B04EBE01E65869010001DC /* DelayOutPut.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = DelayOutPut.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/DelayOutPut.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EBF01E65869010001DC /* Effects.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Effects.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/Effects.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EC001E65869010001DC /* Interrupt.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Interrupt.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/Interrupt.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EC101E65869010001DC /* Mac-FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = "Mac-FileUtils.cpp"; path = "../../Code/Sound_Music_Control/MADLibrary_Source/Mac-FileUtils.cpp"; sourceTree = SOURCE_ROOT; };
+		F5B04EC201E65869010001DC /* Mac-PlugImport.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = "Mac-PlugImport.cpp"; path = "../../Code/Sound_Music_Control/MADLibrary_Source/Mac-PlugImport.cpp"; sourceTree = SOURCE_ROOT; };
+		F5B04EC301E65869010001DC /* Mac-SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = "Mac-SoundManager.cpp"; path = "../../Code/Sound_Music_Control/MADLibrary_Source/Mac-SoundManager.cpp"; sourceTree = SOURCE_ROOT; };
+		F5B04EC401E65869010001DC /* MainDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = MainDriver.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/MainDriver.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EC501E65869010001DC /* MySndPlayDB.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = MySndPlayDB.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/MySndPlayDB.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EC601E65869010001DC /* OutPut8.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = OutPut8.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/OutPut8.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EC701E65869010001DC /* Realft.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = Realft.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/Realft.cpp; sourceTree = SOURCE_ROOT; };
+		F5B04EC801E65869010001DC /* TickRemover.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = TickRemover.cpp; path = ../../Code/Sound_Music_Control/MADLibrary_Source/TickRemover.cpp; sourceTree = SOURCE_ROOT; };
 		F5BF245E01792B4D01A9CF59 /* collision.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = collision.h; path = ../../Code/3d_Engine/collision.h; sourceTree = SOURCE_ROOT; };
 		F5BF245F01792B4D01A9CF59 /* light_control.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = light_control.h; path = ../../Code/3d_Engine/light_control.h; sourceTree = SOURCE_ROOT; };
 		F5BF246001792B4D01A9CF59 /* matrix_primitives.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = matrix_primitives.h; path = ../../Code/3d_Engine/matrix_primitives.h; sourceTree = SOURCE_ROOT; };
@@ -530,6 +552,7 @@
 				F5152D8A01779ACA01236145 /* Game */,
 				F5152D9D01779BA401236145 /* Hardware */,
 				F5152DA701779C1501236145 /* Sound */,
+				F5B04EBD01E65802010001DC /* PlayerPro */,
 				F5152C7E017792DD01236145 /* Header */,
 				F5AE1A2B0326D8C7010001C8 /* zex_pch.h */,
 			);
@@ -966,6 +989,24 @@
 			name = "Game Support ZSL";
 			sourceTree = "<group>";
 		};
+		F5B04EBD01E65802010001DC /* PlayerPro */ = {
+			isa = PBXGroup;
+			children = (
+				F5B04EBE01E65869010001DC /* DelayOutPut.cpp */,
+				F5B04EBF01E65869010001DC /* Effects.cpp */,
+				F5B04EC001E65869010001DC /* Interrupt.cpp */,
+				F5B04EC101E65869010001DC /* Mac-FileUtils.cpp */,
+				F5B04EC201E65869010001DC /* Mac-PlugImport.cpp */,
+				F5B04EC301E65869010001DC /* Mac-SoundManager.cpp */,
+				F5B04EC401E65869010001DC /* MainDriver.cpp */,
+				F5B04EC501E65869010001DC /* MySndPlayDB.cpp */,
+				F5B04EC601E65869010001DC /* OutPut8.cpp */,
+				F5B04EC701E65869010001DC /* Realft.cpp */,
+				F5B04EC801E65869010001DC /* TickRemover.cpp */,
+			);
+			name = PlayerPro;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1239,6 +1280,17 @@
 				20FC99720528D49B00D2B1AB /* object_manipulation.cpp in Sources */,
 				20FC99730528D49B00D2B1AB /* key_setting.cpp in Sources */,
 				20FC99740528D49B00D2B1AB /* key_setup_display.cpp in Sources */,
+				20FC99750528D49B00D2B1AB /* DelayOutPut.cpp in Sources */,
+				20FC99760528D49B00D2B1AB /* Effects.cpp in Sources */,
+				20FC99770528D49B00D2B1AB /* Interrupt.cpp in Sources */,
+				20FC99780528D49B00D2B1AB /* Mac-FileUtils.cpp in Sources */,
+				20FC99790528D49B00D2B1AB /* Mac-PlugImport.cpp in Sources */,
+				20FC997A0528D49B00D2B1AB /* Mac-SoundManager.cpp in Sources */,
+				20FC997B0528D49B00D2B1AB /* MainDriver.cpp in Sources */,
+				20FC997C0528D49B00D2B1AB /* MySndPlayDB.cpp in Sources */,
+				20FC997D0528D49B00D2B1AB /* OutPut8.cpp in Sources */,
+				20FC997E0528D49B00D2B1AB /* Realft.cpp in Sources */,
+				20FC997F0528D49B00D2B1AB /* TickRemover.cpp in Sources */,
 				20FC99800528D49B00D2B1AB /* mod_player.cpp in Sources */,
 				20FC99810528D49B00D2B1AB /* POBS_object_management.cpp in Sources */,
 				20FC99820528D49B00D2B1AB /* fast_dyn.cpp in Sources */,
