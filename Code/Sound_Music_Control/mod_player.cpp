@@ -5,7 +5,7 @@ Zex Mod Player
 SB: Dec 98
 Update: 20 Apr 99 - Surround and deluxe for G3's/4's
 RP: Hacked 15 Oct 01 to work with direct PP source interface.
-
+SB: 2018-01-09 - todo: replace with SDLMixer
 */
 /********************************************************/
 #ifndef __ZEX_PCH__
