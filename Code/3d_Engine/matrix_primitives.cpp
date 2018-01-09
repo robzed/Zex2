@@ -174,6 +174,7 @@ void MAT_Copy(double source[4][4], double dest[4][4])
 
 
 //mult 2 matricies and store in dest matrix
+//Note: Potentially vectorisable
 void MAT_Mult(double mat1[4][4], double mat2[4][4], double dest[4][4])
 {
    int i,j;
@@ -201,6 +202,7 @@ void MAT_Mult(double mat1[4][4], double mat2[4][4], double dest[4][4])
 
 
 //matrix product
+//Note: Potentially vectorisable
 void VEC_MultMatrix(_3D *Source, double mat[4][4],_3D *Dest)
 {
     Dest->x=Source->x*mat[0][0]+
@@ -242,6 +244,7 @@ void VEC_MultMatrix(_3D *Source, double mat[4][4],_3D *Dest)
 
 
 //fills in an identity matrix
+//Note: Potentially vectorisable (but possibly not worth it)
 void MAT_Identity(double mat[4][4])
 {
 //using blockmove might offer a slightt speed increase
@@ -256,7 +259,7 @@ void MAT_Identity(double mat[4][4])
 
 }
 
-
+//Note: Potentially vectorisable
 void TR_Translate(double matrix[4][4],double tx,double ty,double tz)
 {
 //extern double tmat[4][4];
@@ -268,6 +271,7 @@ void TR_Translate(double matrix[4][4],double tx,double ty,double tz)
    MAT_Copy(mat1,matrix);
 }
 
+//Note: Potentially vectorisable
 void TR_Scale(double matrix[4][4],double sx,double sy, double sz)
 {
    double smat[4][4];
@@ -301,7 +305,7 @@ MAT_Mult(matrix,Or_mat,r_mat);	//<-Commutation - had Or_mat*matrix which is wron
 MAT_Copy(r_mat,matrix);
 }
 
-
+//Assumes xmat, ymat and zmat is pre-zero'd (which it is)
 void TR_Rotate(double matrix[4][4],int ax,int ay,int az)
 {
    double Cax,Sax,Cay,Say,Caz,Saz;
@@ -360,8 +364,8 @@ Caz=COS(az);
 //***********************************************************************EDOC*/
 //
 //
-
-void NewQuatToMat(_quat * quat, double m[4][4]) 
+//Note: Potentially vectorisable
+void NewQuatToMat(_quat * quat, double m[4][4])
 {
    double xx = quat->x * quat->x;
    double xy = quat->x * quat->y;
@@ -405,7 +409,8 @@ double dotProduct(double x1,double y1, double z1, double x2, double y2, double z
    return (x1 * x2) + (y1 * y2) + (z1 * z2);
 }
 
-void quaternionMultiply(_quat* q1,_quat* q2, _quat* qr) 
+//Note: Potentially vectorisable
+void quaternionMultiply(_quat* q1,_quat* q2, _quat* qr)
 {
    qr->x = (q1->w * q2->x) + (q2->w * q1->x) + (q1->y * q2->z) - (q1->z * q2->y);
    qr->y = (q1->w * q2->y) + (q2->w * q1->y) + (q1->z * q2->x) - (q1->x * q2->z);
@@ -426,6 +431,7 @@ void VmultiplyBy(vector *q1, double constant)
    q1->y *= constant;
    q1->z *= constant;
   };
+
 
 void VdivideBy(vector *q1, double constant) 
 {      //divide this vector by a scalar

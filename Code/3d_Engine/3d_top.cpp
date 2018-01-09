@@ -273,6 +273,8 @@ module_private int front_clip(_clipped_poly* output_poly,int vertex_index, _3D V
 //this is the top level function of the transformation engine
 //it takes a list of points
 //do_3d (int number_of_points,float *points_list)
+
+//Note: Typically, anything in this code-set begining with a capital 'Q' means quternion and vv is velocity vector
 float Qor_delta=0.01;
 
 int backface_cull=-1;	//backface culling on/off
@@ -360,7 +362,7 @@ world_points_list_index=0;	//our transformed points go here
 
 //output_points =radar_list;
 active_object_counter=2;
-object_counter=2;	//0 is zex, 1 is vv
+object_counter=2;	//0 is zex, 1 is vv (vv is velocity vector)
 		#if ENG_DEBUG_EXPORT==1
          debug_radius_objects=0;
 		 debug_in_frustum_objects=0;

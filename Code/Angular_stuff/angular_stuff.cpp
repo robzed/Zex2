@@ -132,6 +132,7 @@ else ang2=-ang2;
 return ang1-ang2;
  
 }
+
 //takes two objects and returns if second is pointing exactly at first
 //used in cannon fire mainly
 //9/4/99
@@ -448,3 +449,4 @@ int offset_ang(int the_angle, int the_offset)
  if (the_angle<0) the_angle+=360;	//final crash check
 return the_angle; 
 }
+
