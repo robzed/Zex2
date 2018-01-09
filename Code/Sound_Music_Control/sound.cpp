@@ -89,6 +89,9 @@ Initial port work
 
  */
 
+//StuPortNote: Some work on platform interface here
+
+
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"

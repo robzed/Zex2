@@ -21,6 +21,9 @@
 //	Internet: 		RossetAntoine@bluewin.ch
 //
 /********************						***********************/
+
+//StuPortNote: Note sure of license here...
+
 #ifndef __ZEX_PCH__
   #include "zselector.h"		// this selects which build we will be doing
   #include "zplatform.h"

@@ -41,6 +41,9 @@ It works thus:
     
 */
 
+//StuPortNote: Some work on platform interface here...
+
+
 
 // ----------------------------------------------------------------------
 // Eclipse constants

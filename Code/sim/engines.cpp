@@ -214,7 +214,7 @@ float main_accel,reverse_accel;	//engine thrust accel for this frame
 float actual_thrust;
 int engine2_in_use, engine2_rev_in_use;
 float main_thrust1,main_thrust2,rev_thrust1,rev_thrust2;
-double orcs_cons;
+double orcs_cons;   //Note: orcs=orientation control systems
 
 
 
