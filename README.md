@@ -2,7 +2,7 @@
 
 Summary: OpenGL, traditional first person view, quaternion based engine - RNG procedural generation, trading, stack based AI management, motherships, ship upgrades, wingmen etc.
 
-**NOTE: PORTING IS IN PROGRESS - THIS GAME DOES NOT ON MODERN PLATFORMS RUN YET!!!**
+**NOTE: PORTING IS IN PROGRESS - THIS GAME DOES NOT RUN ON MODERN PLATFORMS YET!!!**
 
 ## BACKGROUND
 
