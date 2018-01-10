@@ -107,141 +107,61 @@ SB: 2018-01-09 - todo: replace with SDLMixer
 
 int mod_player( int command, Ptr music)
 {
-    MADDriverSettings	init;
     OSErr		err;
 
-    static MADDriverRec	*the_driver;
-    static MADLibrary	*MADLib;
-    static MADMusic     *MADMusic;
     static int          driver_running=0;
-//    static int shlb_loaded=0;
     
     int return_val=0;
     
-/*******************************************************************************************/
-/****** MAD Library Initialisation : choose the best driver for the current hardware  ******/
-/*******************************************************************************************/
-if (command==0) //init
-{
-//	long gestaltAnswer;
-	OSErr err;
-	
-//        if(!shlb_loaded)
-//          {
-//	    get_playerpro_shared_lib();
-//	    shlb_loaded=1;
-//	    }
-//
-
-/*	Since we are OGL only, why adjust for lower machines?
-
-
-	Gestalt('cput',&gestaltAnswer);
-*/	
-	err = MADInitLibrary("", false, &MADLib);
-	if( err) DebugStr("\pMADInitLibrary Err");
-	
-	MADGetBestDriver( &init);
-	init.repeatMusic=1;
-
-/*
-	if (gestaltAnswer==101)	//if 601 then rate11025hz
-	{
-	init.outPutRate=rate11025hz;
-    init.Interpolation=false;
-    init.surround=false;
-    }
-	else
-	if (gestaltAnswer<104)
+    if (command==0) //init
     {
-	init.outPutRate=rate22050hz;	//603's get 22Khz
-    init.Interpolation=false;
-    init.surround=false;
+        //Do init
+        //...
+        driver_running=0;
     }
-	else	
-	{
-*/
+    else
+    if (command==1) //play music
+    {
+       if(driver_running)
+       {
+              //Stop driver
+              //...
+       }
+       else
+       {
+           //Load and play
+           //...
+           driver_running=1;
+       }
+    }
+    else if (command==2)	//clean up music
+    {
+       if(driver_running)
+          {
+              //Stop driver
+              //...
+          }
 
-	init.outPutRate=rate44khz;	//anything else gets 44Khz
-//not in latest pp    init.Interpolation=true;
-    init.surround=false;
-    init.outPutMode=DeluxeStereoOutPut;
-//    }
-    
-	err = MADCreateDriver( &init, MADLib, &the_driver);
-	if( err) DebugStr("\pMADCreateDriver Err");
-//	the_driver=MADGetMADDriverPtr();
-	the_driver->VolGlobal=63;	//set max volume
-
-	driver_running=0;
-   }
-
-else
-/***************************************************/
-/***   Open MADH Resource ID 3214 and play it !   **/
-/***************************************************/
-if (command==1) //play music
-   {
-   if(driver_running)
-      {
-      MADStopMusic(the_driver);			  // Stop the music
-      MADStopDriver(the_driver);		// Stop the driver
-      MADDisposeMusic(&MADMusic, the_driver);	 // Clear music
-      }
-      
-   if( (err=MADLoadMusicPtr(&MADMusic, music)) != noErr) 
-   {
-   #if ZEX_PROJECT_BUILDER==1 //can only printf to OSX syscon
-    fprintf (stderr, "Mod Player: ***Error*** loading music. MADLoadMusicPtr. Error = %i \n",err); 
-   #endif
-   
-
-	//MyDebugStr(err,"Music Error","MADLoadMusicPtr Err"); // DebugStr("\pMADLoadMusicPtr Err");
-   }
-   else
-   {
-    MADAttachDriverToMusic( the_driver, MADMusic, 0L);
-    if( MADStartDriver(the_driver) != noErr) DebugStr("\pMADStartDriver Err");
-    MADPlayMusic(the_driver);
-    driver_running=1;
-   }
-   }
-
-else if (command==2)	//clean up music
-  {
-   if(driver_running)
-      {
-      MADStopMusic(the_driver);			  // Stop the music
-      MADStopDriver(the_driver);		// Stop the driver
-      MADDisposeMusic(&MADMusic, the_driver);	 // Clear music
-      }
-
-   MADDisposeDriver(the_driver);					// Dispose driver
-   MADDisposeLibrary(MADLib);				// Close Music Library
-   driver_running=0;
-   }
-else if (command==3) //status
-   {
-	//the_driver=MADGetMADDriverPtr();
-	if (!the_driver->musicEnd) return_val=0;	//not end of music
-	else return_val=1;
-   }
-else if (command==4) //stop music
-   {
-   if(driver_running)
-      {
-      MADStopMusic(the_driver);			  // Stop the music
-      MADStopDriver(the_driver);		// Stop the driver
-      MADDisposeMusic(&MADMusic, the_driver);	 // Clear music
-      }
-   driver_running=0;
-   return_val=0;
-   }
-
-else if (command>10 )	     //volume (0-64)
-   {
-   the_driver->VolGlobal=command-10;
-   }
+       driver_running=0;
+    }
+    else if (command==3) //status
+    {
+           //If running, return 0 else return 1
+    }
+    else if (command==4) //stop music
+    {
+       if(driver_running)
+          {
+              //Stop driver
+              //...
+          }
+       driver_running=0;
+       return_val=0;
+    }
+    else if (command>10 )	     //volume (0-64)
+    {
+           //Set volume to command-10
+    }
 
 return return_val;
 }

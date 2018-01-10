@@ -452,36 +452,8 @@ Handle get_sound_handle(int the_sound)
 //This function uses the new names 
 void load_mod_player()
 {
-//int hsize;
-//OSErr my_err;
-//CFragConnectionID mod_conn_id;
-//Str255 ErrName;
-//Str63 fragname = "\pMODPlayer";
-
-//Handle tune_handle;
-//Ptr tune;
-//int test;
-
-// commented out when converted to internal mod_player controller
-//mod_handle=ZGetResource('pMoD',128);
-//if (mod_handle==0) report_error("Corrupt ZEX. Couldn't load pMoD code resource.","\p",4);
-//MoveHHi(mod_handle);
-//HLock(mod_handle);
-//hsize=GetHandleSize(mod_handle);
-//my_err=GetMemFragment(*mod_handle, hsize, fragname, kPrivateCFragCopy, &mod_conn_id, 
-//               (Ptr *) &mod_main_addr,ErrName);
-//
-//if (my_err!=0) report_error("Couldn't link pMoD code resource. Try giving ZEX more memory.","\p",my_err);
-//
-//#if !CARBONIZE_MUSIC
-//  mod_ptr=NewRoutineDescriptor (mod_main_addr,modProcInfo, GetCurrentISA());
-//#endif
-
-//  CallUniversalProc(mod_ptr,modProcInfo,0,0);	//init
 
   mod_player(0,0); // init
-
-
 }
 
 //takes valume 0-63
